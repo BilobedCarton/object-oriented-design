@@ -9,6 +9,11 @@ import cs3500.animator.view.IView;
 public interface IController {
 
   /**
+   * Runs the animation. Doing a loop until the animation is finished updating the model and views.
+   */
+  void run();
+
+  /**
    * Update the model and view.
    */
   void update();

@@ -21,10 +21,10 @@ public class SimpleAnimationController implements IController {
    */
   SimpleAnimationController(IAnimationModel model, IView view, double ticksPerSecond)
           throws IllegalArgumentException {
-    if (model.getTicksPerSecond() != ticksPerSecond || view.getTicksPerSecond() != ticksPerSecond) {
+    if (model.getTicksPerSecond() != ticksPerSecond) {
       throw new IllegalArgumentException("SimpleAnimationController(IAnimationModel, IView, double)"
-              + " -- ticksPerSecond do not match. Make sure the model, view, and controller all "
-              + "use the same value for ticksPerSecond.");
+              + " -- ticksPerSecond do not match. Make sure the model and controller use the same "
+              + "value for ticksPerSecond.");
     }
     this.model = model;
     this.view = view;
@@ -32,8 +32,21 @@ public class SimpleAnimationController implements IController {
   }
 
   @Override
+  public void run() {
+    // TODO actually work in time logic.
+    double currTime = 0;
+    while (model.animationIncomplete(currTime)) {
+      this.update();
+      currTime++;
+    }
+  }
+
+  @Override
   public void update() {
     // TODO update model and view based on the time since last update (using ticksPerSecond).
+    // TODO should look something like this:
+    // this.model.runCycle(someTime);
+    // this.view.update();
   }
 
   @Override
