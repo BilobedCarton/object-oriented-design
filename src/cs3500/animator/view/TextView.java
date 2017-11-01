@@ -1,6 +1,6 @@
 package cs3500.animator.view;
 
-import cs3500.animator.model.IAnimationModel;
+import cs3500.animator.model.ReadOnlyAnimation;
 
 /**
  * Represents a text based view for an animation program.
@@ -11,11 +11,10 @@ public class TextView extends AbstractView {
   /**
    * Creates a new {@code TextView} object.
    * @param model is the model.
-   * @param ticksPerSecond is the number of ticks executed per second.
    * @param out is the output location for this TextView, where we output the text to.
    */
-  TextView(IAnimationModel model, double ticksPerSecond, Appendable out) {
-    super(model, ticksPerSecond);
+  TextView(ReadOnlyAnimation model, Appendable out) {
+    super(model);
     this.out = out;
   }
 
