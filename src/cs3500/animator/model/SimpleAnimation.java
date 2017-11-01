@@ -103,6 +103,9 @@ public class SimpleAnimation implements IAnimationModel {
       }
     }
     for (AnimationAction action : actions) {
+      if (action.getStartTick() == currTime * ticksPerSecond) {
+        action.updateOriginalValues();
+      }
       if (action.getStartTick() <= currTime * ticksPerSecond
               && action.getEndTick() > currTime * ticksPerSecond) {
         action.execute();

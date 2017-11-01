@@ -8,8 +8,8 @@ import cs3500.animator.model.shapes.Shape;
 public class ScaleAction extends AnimationAction {
   private final double targetSizeX;
   private final double targetSizeY;
-  private final double originalSizeX;
-  private final double originalSizeY;
+  private double originalSizeX;
+  private double originalSizeY;
 
   /**
    * Creates a new {@code ScaleAction} object.
@@ -44,6 +44,12 @@ public class ScaleAction extends AnimationAction {
             + this.targetSizeX + " Height: " + this.targetSizeY + " from t="
             + this.getStartTick() / ticksPerSecond + "s to t="
             +  this.getEndTick() / ticksPerSecond + "s\n";
+  }
+
+  @Override
+  public void updateOriginalValues() {
+    this.originalSizeX = this.getShape().getSizeX();
+    this.originalSizeY = this.getShape().getSizeY();
   }
 
   /**

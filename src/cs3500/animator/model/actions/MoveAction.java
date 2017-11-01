@@ -8,8 +8,8 @@ import cs3500.animator.model.shapes.Shape;
 public class MoveAction extends AnimationAction {
   private final double targetX;
   private final double targetY;
-  private final double originalX;
-  private final double originalY;
+  private double originalX;
+  private double originalY;
 
   /**
    * Creates a new {@code MoveAction} object.
@@ -44,6 +44,12 @@ public class MoveAction extends AnimationAction {
             + this.getShape().getPosX() + ") to (" + this.targetX + "," + this.targetY + ") from t="
             + this.getStartTick() / ticksPerSecond + "s to t="
             + this.getEndTick() / ticksPerSecond + "s\n";
+  }
+
+  @Override
+  public void updateOriginalValues() {
+    this.originalX = this.getShape().getPosX();
+    this.originalY = this.getShape().getPosY();
   }
 
   /**

@@ -34,6 +34,12 @@ public abstract class AnimationAction implements ITimedAction {
 
   public abstract String toString(double ticksPerSecond);
 
+  /**
+   * Update the original values of this action. i.e. if moving, update original x and y with the
+   * current location of the shape.
+   */
+  public abstract void updateOriginalValues();
+
   @Override
   public int getStartTick() {
     return timeStart;

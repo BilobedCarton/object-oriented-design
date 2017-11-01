@@ -9,7 +9,7 @@ import cs3500.animator.model.shapes.Shape;
  */
 public class ColorShiftAction extends AnimationAction {
   private final Color targetColor;
-  private final Color originalColor;
+  private Color originalColor;
 
   /**
    * Creates a new {@code ColorShiftAction} object.
@@ -47,6 +47,11 @@ public class ColorShiftAction extends AnimationAction {
             + "," + this.targetColor.getGreen() + "," + this.targetColor.getBlue() + ") from t="
             + this.getStartTick() / ticksPerSecond + "s to t="
             + this.getEndTick() / ticksPerSecond + "s\n";
+  }
+
+  @Override
+  public void updateOriginalValues() {
+    this.originalColor = this.getShape().getColor();
   }
 
   /**
