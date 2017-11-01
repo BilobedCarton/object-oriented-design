@@ -56,12 +56,6 @@ public interface IAnimationPiece {
   int getDisappearTick();
 
   /**
-   * Gets the number of ticks that happen to this IAnimationPiece per second.
-   * @return the double representing the ticks per second.
-   */
-  double getTicksPerSecond();
-
-  /**
    * Changes the size of this IAnimationPiece.
    * @param sizeX is the desired length in the x dimension. e.g. Width for rectangles,
    *              x-radius for circles.
@@ -100,20 +94,14 @@ public interface IAnimationPiece {
   IAnimationPiece setLifeSpan(int start, int end) throws IllegalArgumentException;
 
   /**
-   * Sets the ticksPerSecond property to the given value.
-   * @param ticksPerSecond is the new number of ticks that execute on this shape per second.
-   * @return this IAnimationPiece.
-   * @throws IllegalArgumentException if ticksPerSecond is less than or equal to zero.
-   */
-  IAnimationPiece setTicksPerSecond(double ticksPerSecond) throws IllegalArgumentException;
-
-  /**
    * Render this IAnimationPiece.
    */
   void render();
 
   /**
    * We make sure all AnimationPieces can be converted into Strings.
+   * @param ticksPerSecond is the number of ticks executed by the model per second.
+   * @return the string representing this IAnimationPiece
    */
-  String toString();
+  String toString(double ticksPerSecond);
 }

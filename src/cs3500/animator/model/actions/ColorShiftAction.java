@@ -16,12 +16,11 @@ public class ColorShiftAction extends AnimationAction {
    * @param timeStart is the time this action begins.
    * @param timeEnd is the time this action ends.
    * @param shape is the shape this action is executed upon.
-   * @param ticksPerSecond is the number of ticks per second of this ColorShiftAction.
    * @param targetColor is the color this action changes the shape to.
    */
   ColorShiftAction(
-          int timeStart, int timeEnd, Shape shape, double ticksPerSecond, Color targetColor) {
-    super(timeStart, timeEnd, shape, ticksPerSecond);
+          int timeStart, int timeEnd, Shape shape, Color targetColor) {
+    super(timeStart, timeEnd, shape);
     this.targetColor = targetColor;
     this.originalColor = shape.getColor();
   }
@@ -41,13 +40,13 @@ public class ColorShiftAction extends AnimationAction {
   }
 
   @Override
-  public String toString() {
+  public String toString(double ticksPerSecond) {
     return "Shape " + this.getShape().getName() + " changes color from ("
             + this.getShape().getColor().getRed() + "," + this.getShape().getColor().getGreen()
             + "," + this.getShape().getColor().getBlue() + ") to (" + this.targetColor.getRed()
             + "," + this.targetColor.getGreen() + "," + this.targetColor.getBlue() + ") from t="
-            + this.getStartTick() / this.getTicksPerSecond() + "s to t="
-            + this.getEndTick() / this.getTicksPerSecond() + "s\n";
+            + this.getStartTick() / ticksPerSecond + "s to t="
+            + this.getEndTick() / ticksPerSecond + "s\n";
   }
 
   /**

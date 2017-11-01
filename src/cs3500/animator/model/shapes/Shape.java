@@ -14,7 +14,6 @@ public abstract class Shape implements IAnimationPiece {
   private double sizeY;
   private int appearTick;
   private int disappearTick;
-  private double ticksPerSecond;
 
   /**
    * Creates a new {@code Shape} object.
@@ -26,10 +25,9 @@ public abstract class Shape implements IAnimationPiece {
    * @param sizeY is the size in the y axis of this Shape object.
    * @param appearTick is the tick when this Shape first appears.
    * @param disappearTick is the tick when this shape disappears.
-   * @param ticksPerSecond is the number of ticks executed on this shape per second.
    */
   Shape(String name, double posX, double posY, Color color, double sizeX, double sizeY,
-        int appearTick, int disappearTick, double ticksPerSecond) {
+        int appearTick, int disappearTick) {
     this.name = name;
     this.posX = posX;
     this.posY = posY;
@@ -38,7 +36,6 @@ public abstract class Shape implements IAnimationPiece {
     this.sizeY = sizeY;
     this.appearTick = appearTick;
     this.disappearTick = disappearTick;
-    this.ticksPerSecond = ticksPerSecond;
   }
 
   @Override
@@ -74,11 +71,6 @@ public abstract class Shape implements IAnimationPiece {
 
   @Override
   public int getDisappearTick() { return disappearTick; }
-
-  @Override
-  public double getTicksPerSecond() {
-    return ticksPerSecond;
-  }
 
   @Override
   public Shape resize(double sizeX, double sizeY) throws IllegalArgumentException {
@@ -118,19 +110,10 @@ public abstract class Shape implements IAnimationPiece {
     return this;
   }
 
-  @Override
-  public Shape setTicksPerSecond(double ticksPerSecond) throws IllegalArgumentException {
-    if (ticksPerSecond <= 0) {
-      throw new IllegalArgumentException("Shape.setTicksPerSecond(double) -- ticksPerSecond <= 0.");
-    }
-    this.ticksPerSecond = ticksPerSecond;
-    return this;
-  }
-
   /**
    * Renders this Shape object.
    */
   public abstract void render();
 
-  public abstract String toString();
+  public abstract String toString(double ticksPerSecond);
 }

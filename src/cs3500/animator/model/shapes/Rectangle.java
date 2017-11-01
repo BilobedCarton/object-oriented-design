@@ -17,11 +17,10 @@ public class Rectangle extends Shape {
    * @param sizeY is the size in the y axis of this Rectangle object.
    * @param timeAppear is the tick when this Rectangle first appears.
    * @param timeDisappear is the tick when this Rectangle disappears.
-   * @param ticksPerSecond is the number of ticks executed on this Rectangle per second.
    */
   Rectangle(String name, double posX, double posY, Color color, double sizeX, double sizeY,
-              int timeAppear, int timeDisappear, double ticksPerSecond) {
-    super(name, posX, posY, color, sizeX, sizeY, timeAppear, timeDisappear, ticksPerSecond);
+              int timeAppear, int timeDisappear) {
+    super(name, posX, posY, color, sizeX, sizeY, timeAppear, timeDisappear);
   }
 
   @Override
@@ -30,13 +29,13 @@ public class Rectangle extends Shape {
   }
 
   @Override
-  public String toString() {
+  public String toString(double ticksPerSecond) {
     return "Name: " + this.getName() + "\n" + "Type: rectangle\n"
             + "Lower-left corner: (" + this.getPosX() + "," + this.getPosY() + "), Width: "
             + this.getSizeX() + " Height: " + this.getSizeY() + ", Color: ("
             + this.getColor().getRed() + "," + this.getColor().getGreen() + ","
             + this.getColor().getBlue() + ")\n" + "Appears at t="
-            + this.getAppearTick() * this.getTicksPerSecond() + "s\n" + "Disappears at t="
-            + this.getDisappearTick() * this.getTicksPerSecond() + "s\n";
+            + this.getAppearTick() * ticksPerSecond + "s\n" + "Disappears at t="
+            + this.getDisappearTick() * ticksPerSecond + "s\n";
   }
 }

@@ -14,7 +14,6 @@ public class ShapeBuilder {
   private double sizeY = 0;
   private int appearTick = 0;
   private int disappearTick = 0;
-  private double ticksPerSecond = 0;
 
   /**
    * Represents a type of Shape object.
@@ -88,16 +87,6 @@ public class ShapeBuilder {
   }
 
   /**
-   * Sets the ticks per second of the new Shape.
-   * @param ticksPerSecond the number of ticks per second for the shape.
-   * @return this ShapeBuilder.
-   */
-  public ShapeBuilder setTicksPerSecond(double ticksPerSecond) {
-    this.ticksPerSecond = ticksPerSecond;
-    return this;
-  }
-
-  /**
    * Creates a new shape of the given type without any set values.
    * @param type the type of shape we want.
    * @return the Shape we have created.
@@ -120,17 +109,13 @@ public class ShapeBuilder {
               + "appearTick or disappearTick is less than zero, or disappearTick is less than "
               + "appearTick.");
     }
-    if (this.ticksPerSecond <= 0) {
-      throw new IllegalArgumentException("ShapeBuilder.build(ShapeType) -- "
-              + "ticksPerSecond is less than or equal to zero.");
-    }
     switch (type) {
       case OVAL:
         return new Oval(this.name, this.posX, this.posY, this.color, this.sizeX, this.sizeY,
-                this.appearTick, this.disappearTick, this.ticksPerSecond);
+                this.appearTick, this.disappearTick);
       case RECTANGLE:
         return new Rectangle(this.name, this.posX, this.posY, this.color, this.sizeX, this.sizeY,
-                this.appearTick, this.disappearTick, this.ticksPerSecond);
+                this.appearTick, this.disappearTick);
       default:
         throw new IllegalArgumentException("ShapeBuilder.buildShape(ShapeType) "
                 + "-- ShapeType not recognized.");
@@ -147,7 +132,6 @@ public class ShapeBuilder {
     ShapeBuilder builder = ShapeBuilder.initialize()
             .setName(shape.getName())
             .setColor(shape.getColor())
-            .setTicksPerSecond(shape.getTicksPerSecond())
             .setPosition(shape.getPosX(), shape.getPosY())
             .setSize(shape.getSizeX(), shape.getSizeY())
             .setTimeSpan(shape.getAppearTick(), shape.getDisappearTick());

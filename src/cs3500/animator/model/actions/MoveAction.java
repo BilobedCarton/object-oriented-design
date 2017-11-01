@@ -16,13 +16,12 @@ public class MoveAction extends AnimationAction {
    * @param timeStart is the time this action begins.
    * @param timeEnd is the time this action ends.
    * @param shape is the shape this action executes upon.
-   * @param ticksPerSecond is the number of ticks per second of this ColorShiftAction.
    * @param targetX is the target x coord the shape should be moved to.
    * @param targetY is the target y coord the shape should be moved to.
    */
-  MoveAction(int timeStart, int timeEnd, Shape shape, double ticksPerSecond, double targetX,
+  MoveAction(int timeStart, int timeEnd, Shape shape, double targetX,
              double targetY) {
-    super(timeStart, timeEnd, shape, ticksPerSecond);
+    super(timeStart, timeEnd, shape);
     this.targetX = targetX;
     this.targetY = targetY;
     this.originalX = shape.getPosX();
@@ -40,11 +39,11 @@ public class MoveAction extends AnimationAction {
   }
 
   @Override
-  public String toString() {
+  public String toString(double ticksPerSecond) {
     return "Shape " + this.getShape().getName() + " moves from (" + this.getShape().getPosX() + ","
             + this.getShape().getPosX() + ") to (" + this.targetX + "," + this.targetY + ") from t="
-            + this.getStartTick() / this.getTicksPerSecond() + "s to t="
-            + this.getEndTick() / this.getTicksPerSecond() + "s\n";
+            + this.getStartTick() / ticksPerSecond + "s to t="
+            + this.getEndTick() / ticksPerSecond + "s\n";
   }
 
   /**

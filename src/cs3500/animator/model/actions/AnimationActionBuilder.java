@@ -16,7 +16,6 @@ public class AnimationActionBuilder {
   private int startTime = 0;
   private int endTime = 0;
   private Shape targetShape = null;
-  private double ticksPerSecond = 0;
 
   /**
    * Represents a type of AnimationAction.
@@ -96,17 +95,6 @@ public class AnimationActionBuilder {
   }
 
   /**
-   * Sets the ticks per second for a new action.
-   *
-   * @param ticksPerSecond is the number of ticks the new action should execute per second.
-   * @return this AnimationActionBuilder.
-   */
-  public AnimationActionBuilder setTicksPerSecond(double ticksPerSecond) {
-    this.ticksPerSecond = ticksPerSecond;
-    return this;
-  }
-
-  /**
    * Builds a new AnimationAction of the given type.
    *
    * @param type is the type of AnimationAction being built.
@@ -123,28 +111,24 @@ public class AnimationActionBuilder {
               + "startTime or endTime is invalid. They must be greater than zero and "
               + "endTime must be greater than startTime.");
     }
-    if (this.ticksPerSecond <= 0) {
-      throw new IllegalArgumentException("AnimationActionBuilder.build(AnimationActionType) -- "
-              + "ticksPerSecond must be greater than zero.");
-    }
     switch (type) {
       case MOVE:
-        return new MoveAction(this.startTime, this.endTime, this.targetShape, this.ticksPerSecond,
-                this.targetPosX, this.targetPosY);
+        return new MoveAction(
+                this.startTime, this.endTime, this.targetShape, this.targetPosX, this.targetPosY);
       case SCALE:
         if (this.targetSizeX < 0 || this.targetSizeY < 0) {
           throw new IllegalArgumentException("AnimationActionBuilder.build(AnimationActionType) -- "
                   + "targetSizeX or targetSizeY is less than zero.");
         }
-        return new ScaleAction(this.startTime, this.endTime, this.targetShape, this.ticksPerSecond,
-                this.targetSizeX, this.targetSizeY);
+        return new ScaleAction(
+                this.startTime, this.endTime, this.targetShape, this.targetSizeX, this.targetSizeY);
       case COLORSHIFT:
         if (this.targetColor == null) {
           throw new IllegalArgumentException("AnimationActionBuilder.build(AnimationActionType) -- "
                   + "targetColor is null");
         }
-        return new ColorShiftAction(this.startTime, this.endTime, this.targetShape,
-                this.ticksPerSecond, this.targetColor);
+        return new ColorShiftAction(
+                this.startTime, this.endTime, this.targetShape, this.targetColor);
       default:
         throw new IllegalArgumentException("AnimationActionBuilder.build(AnimationActionType) -- "
                 + "Given type not recognized.");
@@ -160,7 +144,6 @@ public class AnimationActionBuilder {
   public static AnimationAction copy(AnimationAction action) throws IllegalArgumentException {
     AnimationActionBuilder builder = AnimationActionBuilder.initialize()
             .setTimeTicks(action.getStartTick(), action.getEndTick())
-            .setTicksPerSecond(action.getTicksPerSecond())
             .setTargetShape(action.getShape());
     if (action.getClass() == ColorShiftAction.class) {
       return builder.setTargetColor(((ColorShiftAction) action).getTargetColor())

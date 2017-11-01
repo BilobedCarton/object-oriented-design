@@ -15,9 +15,10 @@ public interface ITimedAction {
 
   /**
    * Converts this action into a string.
+   * @param ticksPerSecond is the number of ticks that occur per second.
    * @return the String representing this action.
    */
-  String toString();
+  String toString(double ticksPerSecond);
 
   /**
    * Gets the int representing the starting tick of this action.
@@ -30,17 +31,4 @@ public interface ITimedAction {
    * @return the int that is the ending tick.
    */
   int getEndTick();
-
-  /**
-   * Gets the int representing the number of ticks that happen per second.
-   * @return the double representing the ticks per second.
-   */
-  double getTicksPerSecond();
-
-  /**
-   * Sets the ticks per second of this action to the given value.
-   * @param ticksPerSecond is the double representing the new ticks per second.
-   * @throws IllegalArgumentException if ticksPerSecond <= 0.
-   */
-  void setTicksPerSecond(double ticksPerSecond) throws IllegalArgumentException;
 }

@@ -16,13 +16,12 @@ public class ScaleAction extends AnimationAction {
    * @param timeStart is the time this action begins.
    * @param timeEnd is the time this action ends.
    * @param shape is the shape this action executes upon.
-   * @param ticksPerSecond is the number of ticks per second of this ColorShiftAction.
    * @param targetSizeX is the target sizeX we are changing the shape to.
    * @param targetSizeY is the target sizeY we are changing the shape to.
    */
-  ScaleAction(int timeStart, int timeEnd, Shape shape, double ticksPerSecond, double targetSizeX,
+  ScaleAction(int timeStart, int timeEnd, Shape shape, double targetSizeX,
               double targetSizeY) {
-    super(timeStart, timeEnd, shape, ticksPerSecond);
+    super(timeStart, timeEnd, shape);
     this.targetSizeX = targetSizeX;
     this.targetSizeY = targetSizeY;
     this.originalSizeX = shape.getSizeX();
@@ -39,12 +38,12 @@ public class ScaleAction extends AnimationAction {
   }
 
   @Override
-  public String toString() {
+  public String toString(double ticksPerSecond) {
     return "Shape " + this.getShape().getName() + " scales from Width: "
             + this.getShape().getSizeX() + " Height: " + this.getShape().getSizeY() + " to Width: "
             + this.targetSizeX + " Height: " + this.targetSizeY + " from t="
-            + this.getStartTick() / this.getTicksPerSecond() + "s to t="
-            +  this.getEndTick() / this.getTicksPerSecond() + "s\n";
+            + this.getStartTick() / ticksPerSecond + "s to t="
+            +  this.getEndTick() / ticksPerSecond + "s\n";
   }
 
   /**
