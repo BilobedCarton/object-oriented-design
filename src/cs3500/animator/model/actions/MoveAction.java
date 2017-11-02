@@ -52,6 +52,16 @@ public class MoveAction extends AnimationAction {
     this.originalY = this.getShape().getPosY();
   }
 
+  @Override
+  public void setOriginalValues(Shape s) throws IllegalArgumentException {
+    if (this.getShape().getName().equals(s.getName()) == false) {
+      throw new IllegalArgumentException("ColorShiftAction.setOriginalValues(Shape) -- "
+              + "This action does not execute upon the given shape.");
+    }
+    this.originalX = s.getPosX();
+    this.originalY = s.getPosY();
+  }
+
   /**
    * Gets the target x coordinate.
    * @return the double representing the target x coordinate.

@@ -52,6 +52,16 @@ public class ScaleAction extends AnimationAction {
     this.originalSizeY = this.getShape().getSizeY();
   }
 
+  @Override
+  public void setOriginalValues(Shape s) throws IllegalArgumentException {
+    if (this.getShape().getName().equals(s.getName()) == false) {
+      throw new IllegalArgumentException("ColorShiftAction.setOriginalValues(Shape) -- "
+              + "This action does not execute upon the given shape.");
+    }
+    this.originalSizeX = s.getSizeX();
+    this.originalSizeY = s.getSizeY();
+  }
+
   /**
    * Gets the target size in the x dimension.
    * @return the double representing the target width or size in the x dimension.

@@ -54,6 +54,15 @@ public class ColorShiftAction extends AnimationAction {
     this.originalColor = this.getShape().getColor();
   }
 
+  @Override
+  public void setOriginalValues(Shape s) throws IllegalArgumentException {
+    if (this.getShape().getName().equals(s.getName()) == false) {
+      throw new IllegalArgumentException("ColorShiftAction.setOriginalValues(Shape) -- "
+              + "This action does not execute upon the given shape.");
+    }
+    this.originalColor = s.getColor();
+  }
+
   /**
    * Get the target color of this colorshift.
    * @return the target Color.

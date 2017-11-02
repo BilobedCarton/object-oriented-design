@@ -56,13 +56,19 @@ public class SimpleAnimation implements IAnimationModel {
   }
 
   @Override
-  public SimpleAnimation addAction(AnimationAction action) throws IllegalArgumentException {
+  public SimpleAnimation addAction(AnimationAction action) {
+    Shape shape = this.getShapeStateAt(action.getStartTick(), action.getShape());
+    action.setOriginalValues(shape);
     this.actions.add(action);
     return this;
   }
 
   @Override
   public SimpleAnimation addShape(Shape shape) throws IllegalArgumentException {
+    if (findShape(shape.getName(), this.shapes) != null) {
+      throw new IllegalArgumentException("SimpleAnimation.addShape(Shape) -- Shape with the given "
+              + "name already exists in this model.");
+    }
     this.shapes.add(shape);
     return this;
   }
@@ -119,12 +125,13 @@ public class SimpleAnimation implements IAnimationModel {
    */
   public String toString() {
     String str = "Shapes:\n";
-    for (Shape shape : shapes) {
+    for (Shape shape : this.shapes) {
       str += shape.toString(ticksPerSecond) + "\n";
     }
-    for (AnimationAction action : actions) {
+    for (AnimationAction action : this.actions) {
       str += action.toString(ticksPerSecond) + "\n";
     }
+
     return str;
   }
 
@@ -141,6 +148,38 @@ public class SimpleAnimation implements IAnimationModel {
       }
     }
     return null;
+  }
+
+  /**
+   * Gets the state of a shape at the given tick.
+   * @param tick is the tick we want to check the shape at.
+   * @param s is the Shape we are checking.
+   * @return a copy of the shape with data updated to the given tick.
+   * @throws IllegalArgumentException if the given shape does not exist in this model.
+   */
+  public Shape getShapeStateAt(int tick, Shape s) throws IllegalArgumentException {
+    if (this.shapes.contains(s) == false) {
+      throw new IllegalArgumentException("SimpleAnimation.getShapeStateAt(int, Shape) -- "
+              + "The given shape does not exist in this model.");
+    }
+    Shape sCopy = ShapeBuilder.copy(s);
+
+    for (int i = 0; i < tick; i++) {
+      for (AnimationAction a : this.actions) {
+        if (a.getShape().getName().equals(s.getName())) {
+          if (a.getStartTick() == i) {
+            a.updateOriginalValues();
+          }
+          if (a.getStartTick() >= i && a.getEndTick() < i) {
+            a.execute();
+          }
+        }
+      }
+    }
+
+    this.shapes.remove(s);
+    this.shapes.add(sCopy);
+    return s;
   }
 
   /**

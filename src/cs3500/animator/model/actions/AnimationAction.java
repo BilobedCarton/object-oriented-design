@@ -40,6 +40,14 @@ public abstract class AnimationAction implements ITimedAction {
    */
   public abstract void updateOriginalValues();
 
+  /**
+   * Sets the original values of this AnimationAction to the given Shape's current corresponding
+   * values.
+   * @param s is the shape we are getting the values of.
+   * @throws IllegalArgumentException if the given shape is not the shape modified by this action.
+   */
+  public abstract void setOriginalValues(Shape s) throws IllegalArgumentException;
+
   @Override
   public int getStartTick() {
     return timeStart;

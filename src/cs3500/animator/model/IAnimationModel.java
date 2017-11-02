@@ -36,7 +36,6 @@ public interface IAnimationModel {
    * Adds the given action to this model's list of actions.
    * @param action is the AnimationAction to be added.
    * @return this SimpleAnimation.
-   * @throws IllegalArgumentException if the action's ticksPerSecond is different from the model's.
    */
   SimpleAnimation addAction(AnimationAction action);
 
@@ -44,9 +43,9 @@ public interface IAnimationModel {
    * Adds the given shape to this model's list of shapes.
    * @param shape is the Shape to be added.
    * @return this SimpleAnimation.
-   * @throws IllegalArgumentException if the shape's ticksPerSecond is different from the model's.
+   * @throws IllegalArgumentException if the shape has the same name as one already in the model.
    */
-  SimpleAnimation addShape(Shape shape);
+  SimpleAnimation addShape(Shape shape) throws IllegalArgumentException;
 
   /**
    * Runs the animation, executing actions and rendering shapes.
