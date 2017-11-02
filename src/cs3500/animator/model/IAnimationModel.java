@@ -24,19 +24,6 @@ public interface IAnimationModel {
   List<Shape> getShapes();
 
   /**
-   * Gets the number of ticks executed per second by this model.
-   * @return the double representing the ticksPerSecond of this model.
-   */
-  double getTicksPerSecond();
-
-  /**
-   * Sets the ticks executed per second to the given number.
-   * @param ticksPerSecond the new number of ticks per second.
-   * @throws IllegalArgumentException if ticksPerSecond is less than or equal to zero.
-   */
-  void setTicksPerSecond(double ticksPerSecond) throws IllegalArgumentException;
-
-  /**
    * Adds the given action to this model's list of actions.
    * @param action is the AnimationAction to be added.
    */
@@ -50,26 +37,22 @@ public interface IAnimationModel {
   void addShape(Shape shape) throws IllegalArgumentException;
 
   /**
-   * Runs the animation, executing actions and rendering shapes.
-   */
-  void runAnimation();
-
-  /**
    * Checks to see if this animation has any more actions to undertake or shapes to render.
-   * @param currTime is the current time of this animation.
+   * @param currTick is the current tick of this animation.
    * @return a boolean where true means there is more to do and false means there isn't.
    */
-  boolean animationIncomplete(double currTime);
+  boolean animationIncomplete(int currTick);
 
   /**
    * Runs a cycle of this animation.
-   * @param currTime is the current time of this animation.
+   * @param currTick is the current tick of this animation.
    */
-  void runCycle(double currTime);
+  void runCycle(int currTick);
 
   /**
    * Converts this object into a string.
+   * @param ticksPerSecond is the number of ticks executed per second by this animation program.
    * @return the String representing this object.
    */
-  String toString();
+  String toString(double ticksPerSecond);
 }
