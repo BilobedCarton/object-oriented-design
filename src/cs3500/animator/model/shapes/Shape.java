@@ -110,6 +110,19 @@ public abstract class Shape implements IAnimationPiece {
     return this;
   }
 
+  @Override
+  public boolean equals(Object other) {
+    if (other instanceof Rectangle || other instanceof Oval) {
+      return this.name.equals(((Shape) other).getName());
+    }
+    return false;
+  }
+
+  @Override
+  public int hashCode() {
+    return this.name.hashCode();
+  }
+
   /**
    * Renders this Shape object.
    */

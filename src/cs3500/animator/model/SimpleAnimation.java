@@ -12,12 +12,12 @@ import cs3500.animator.model.shapes.ShapeBuilder;
 import cs3500.animator.util.TweenModelBuilder;
 
 /**
- * This represents an animation that involves shapes and various actions taken upon these shapes.
- * The actions consist of:
+ * This represents an animation that involves shapesToAdd and various actionsToAdd taken upon these shapesToAdd.
+ * The actionsToAdd consist of:
  *  * ColorShiftAction - Change the color of a shape over time.
  *  * MoveAction - Move the shape from one place to another over time.
  *  * ScaleAction - Change the size of a shape from one size to another.
- * The shapes consist of:
+ * The shapesToAdd consist of:
  *  * Rectangle - a rectangular shape.
  *  * Oval - a oblong shape.
  */
@@ -65,21 +65,19 @@ public class SimpleAnimation implements IAnimationModel {
   }
 
   @Override
-  public SimpleAnimation addAction(AnimationAction action) {
+  public void addAction(AnimationAction action) {
     Shape shape = this.getShapeStateAt(action.getStartTick(), action.getShape());
     action.setOriginalValues(shape);
     this.actions.add(action);
-    return this;
   }
 
   @Override
-  public SimpleAnimation addShape(Shape shape) throws IllegalArgumentException {
+  public void addShape(Shape shape) throws IllegalArgumentException {
     if (findShape(shape.getName(), this.shapes) != null) {
       throw new IllegalArgumentException("SimpleAnimation.addShape(Shape) -- Shape with the given "
               + "name already exists in this model.");
     }
     this.shapes.add(shape);
-    return this;
   }
 
   @Override
@@ -195,8 +193,8 @@ public class SimpleAnimation implements IAnimationModel {
    * Represents a builder for a new SimpleAnimation.
    */
   public static final class Builder implements TweenModelBuilder<IAnimationModel> {
-    private List<Shape> shapes = new ArrayList<Shape>();
-    private List<AnimationAction> actions = new ArrayList<AnimationAction>();
+    private List<Shape> shapesToAdd = new ArrayList<Shape>();
+    private List<AnimationAction> actionsToAdd = new ArrayList<AnimationAction>();
 
     /**
      * Initializes the builder to begin construction of a new model.
@@ -211,7 +209,7 @@ public class SimpleAnimation implements IAnimationModel {
                                                       float xRadius, float yRadius, float red,
                                                       float green, float blue, int startOfLife,
                                                       int endOfLife) {
-      this.shapes.add(ShapeBuilder.initialize()
+      this.shapesToAdd.add(ShapeBuilder.initialize()
               .setName(name)
               .setPosition(cx, cy)
               .setSize(xRadius, yRadius)
@@ -226,7 +224,7 @@ public class SimpleAnimation implements IAnimationModel {
                                                            float width, float height, float red,
                                                            float green, float blue, int startOfLife,
                                                            int endOfLife) {
-      this.shapes.add(ShapeBuilder.initialize()
+      this.shapesToAdd.add(ShapeBuilder.initialize()
               .setName(name)
               .setPosition(lx, ly)
               .setSize(width, height)
@@ -240,8 +238,8 @@ public class SimpleAnimation implements IAnimationModel {
     public TweenModelBuilder<IAnimationModel> addMove(String name, float moveFromX, float moveFromY,
                                                       float moveToX, float moveToY, int startTime,
                                                       int endTime) {
-      this.actions.add(AnimationActionBuilder.initialize()
-              .setTargetShape(SimpleAnimation.findShape(name, this.shapes))
+      this.actionsToAdd.add(AnimationActionBuilder.initialize()
+              .setTargetShape(SimpleAnimation.findShape(name, this.shapesToAdd))
               .setTargetPosition(moveToX, moveToY)
               .setTimeTicks(startTime, endTime)
               .build(AnimationActionBuilder.AnimationActionType.MOVE));
@@ -253,8 +251,8 @@ public class SimpleAnimation implements IAnimationModel {
                                                              float oldB, float newR, float newG,
                                                              float newB, int startTime,
                                                              int endTime) {
-      this.actions.add(AnimationActionBuilder.initialize()
-              .setTargetShape(SimpleAnimation.findShape(name, this.shapes))
+      this.actionsToAdd.add(AnimationActionBuilder.initialize()
+              .setTargetShape(SimpleAnimation.findShape(name, this.shapesToAdd))
               .setTargetColor(new Color(newR, newG, newB))
               .setTimeTicks(startTime, endTime)
               .build(AnimationActionBuilder.AnimationActionType.COLORSHIFT));
@@ -265,8 +263,8 @@ public class SimpleAnimation implements IAnimationModel {
     public TweenModelBuilder<IAnimationModel> addScaleToChange(String name, float fromSx,
                                                                float fromSy, float toSx, float toSy,
                                                                int startTime, int endTime) {
-      this.actions.add(AnimationActionBuilder.initialize()
-              .setTargetShape(SimpleAnimation.findShape(name, this.shapes))
+      this.actionsToAdd.add(AnimationActionBuilder.initialize()
+              .setTargetShape(SimpleAnimation.findShape(name, this.shapesToAdd))
               .setTargetSize(toSx, toSy)
               .setTimeTicks(startTime, endTime)
               .build(AnimationActionBuilder.AnimationActionType.SCALE));
@@ -276,10 +274,10 @@ public class SimpleAnimation implements IAnimationModel {
     @Override
     public IAnimationModel build() {
       IAnimationModel animationModel = new SimpleAnimation(1);
-      for (Shape s : this.shapes) {
+      for (Shape s : this.shapesToAdd) {
         animationModel.addShape(s);
       }
-      for (AnimationAction a : this.actions) {
+      for (AnimationAction a : this.actionsToAdd) {
         animationModel.addAction(a);
       }
       return animationModel;

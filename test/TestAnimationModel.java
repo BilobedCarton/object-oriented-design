@@ -24,7 +24,8 @@ public class TestAnimationModel {
             .setTargetPosition(12, 12)
             .setTargetShape(rect)
             .build(AnimationActionBuilder.AnimationActionType.MOVE);
-    model.addAction(action).addShape(rect);
+    model.addShape(rect);
+    model.addAction(action);
     assertEquals(model.toString(), "Shapes:\n" + "Name: Test\n" + "Type: rectangle\n"
             + "Lower-left corner: (0.0,0.0), Width: 0.0 Height: 0.0, Color: (0,0,0)\n"
             + "Appears at t=0.0s\n" + "Disappears at t=0.0s\n" + "\n"
@@ -75,7 +76,10 @@ public class TestAnimationModel {
             .setTargetSize(20, 10)
             .setTargetShape(oval)
             .build(AnimationActionBuilder.AnimationActionType.SCALE);
-    model.addShape(rect).addShape(oval).addAction(move).addAction(scale);
+    model.addShape(rect);
+    model.addShape(oval);
+    model.addAction(move);
+    model.addAction(scale);
     model.runAnimation();
     assertEquals(rect.getPosX(), 20, 0);
     assertEquals(rect.getPosY(), 40, 0);
