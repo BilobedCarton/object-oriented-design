@@ -14,6 +14,13 @@ public interface ITimedAction {
   void execute();
 
   /**
+   * Runs the final step of this action.
+   * e.g. executes the exact final changes to the target,
+   * putting it in the exact desired final state.
+   */
+  void executeFinal();
+
+  /**
    * Converts this action into a string.
    * @param ticksPerSecond is the number of ticks that occur per second.
    * @return the String representing this action.

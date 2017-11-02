@@ -8,7 +8,7 @@ import cs3500.animator.model.shapes.Shape;
 public abstract class AnimationAction implements ITimedAction {
   private final int timeStart;
   private final int timeEnd;
-  private final Shape shape;
+  private Shape shape;
 
   /**
    * Creates a new {@code AnimationAction} object.
@@ -31,6 +31,8 @@ public abstract class AnimationAction implements ITimedAction {
   }
 
   public abstract void execute();
+
+  public abstract void executeFinal();
 
   public abstract String toString(double ticksPerSecond);
 
@@ -64,5 +66,19 @@ public abstract class AnimationAction implements ITimedAction {
    */
   public Shape getShape() {
     return shape;
+  }
+
+  /**
+   * Sets the target shape of this action to the given one.
+   * This should only be used if the shape has the same name as the current target shape.
+   * @param s is the new target Shape of this action.
+   * @throws IllegalArgumentException if s has a different name from the current target shape.
+   */
+  public void setShape(Shape s) {
+    if (s.getName().equals(this.shape.getName()) == false) {
+      throw new IllegalArgumentException("AnimationAction.setShape(Shape) -- Shape s has different "
+              + "name from current target Shape.");
+    }
+    this.shape = s;
   }
 }

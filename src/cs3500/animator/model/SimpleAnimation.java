@@ -88,11 +88,11 @@ public class SimpleAnimation implements IAnimationModel {
       }
     }
     for (AnimationAction action : actions) {
-      if (action.getStartTick() == currTick) {
-        action.updateOriginalValues();
-      }
       if (action.getStartTick() <= currTick && action.getEndTick() > currTick) {
         action.execute();
+      }
+      if (action.getEndTick() == currTick) {
+        action.executeFinal();
       }
     }
   }
@@ -140,11 +140,13 @@ public class SimpleAnimation implements IAnimationModel {
       throw new IllegalArgumentException("SimpleAnimation.getShapeStateAt(int, Shape) -- "
               + "The given shape does not exist in this model.");
     }
+    // Create a identical copy to modify.
     Shape sCopy = ShapeBuilder.copy(s);
 
     for (int i = 0; i < tick; i++) {
       for (AnimationAction a : this.actions) {
         if (a.getShape().getName().equals(s.getName())) {
+          a.setShape(sCopy);
           if (a.getStartTick() == i) {
             a.updateOriginalValues();
           }
@@ -155,9 +157,14 @@ public class SimpleAnimation implements IAnimationModel {
       }
     }
 
-    this.shapes.remove(s);
-    this.shapes.add(sCopy);
-    return s;
+    // Set actions back to original shape.
+    for (AnimationAction a : this.actions) {
+      if (a.getShape().getName().equals(s.getName())) {
+        a.setShape(s);
+      }
+    }
+
+    return sCopy;
   }
 
   /**

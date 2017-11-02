@@ -80,7 +80,11 @@ public class TestAnimationModel {
     model.addShape(oval);
     model.addAction(move);
     model.addAction(scale);
-    model.runAnimation();
+
+    for (int i = 0; i <= 30; i++) {
+      model.runCycle(i);
+    }
+
     assertEquals(rect.getPosX(), 20, 0);
     assertEquals(rect.getPosY(), 40, 0);
     assertEquals(oval.getSizeX(), 20, 0);

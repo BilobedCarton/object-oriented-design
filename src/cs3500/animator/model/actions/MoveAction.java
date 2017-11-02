@@ -39,6 +39,11 @@ public class MoveAction extends AnimationAction {
   }
 
   @Override
+  public void executeFinal() {
+    this.getShape().relocate(this.targetX, this.targetY);
+  }
+
+  @Override
   public String toString(double ticksPerSecond) {
     return "Shape " + this.getShape().getName() + " moves from (" + this.getShape().getPosX() + ","
             + this.getShape().getPosX() + ") to (" + this.targetX + "," + this.targetY + ") from t="
