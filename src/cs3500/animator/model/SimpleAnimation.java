@@ -2,6 +2,7 @@ package cs3500.animator.model;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import cs3500.animator.model.actions.AnimationAction;
@@ -11,7 +12,14 @@ import cs3500.animator.model.shapes.ShapeBuilder;
 import cs3500.animator.util.TweenModelBuilder;
 
 /**
- * This represents an animation.
+ * This represents an animation that involves shapes and various actions taken upon these shapes.
+ * The actions consist of:
+ *  * ColorShiftAction - Change the color of a shape over time.
+ *  * MoveAction - Move the shape from one place to another over time.
+ *  * ScaleAction - Change the size of a shape from one size to another.
+ * The shapes consist of:
+ *  * Rectangle - a rectangular shape.
+ *  * Oval - a oblong shape.
  */
 public class SimpleAnimation implements IAnimationModel {
   private List<AnimationAction> actions;
@@ -24,7 +32,8 @@ public class SimpleAnimation implements IAnimationModel {
    */
   public SimpleAnimation(double ticksPerSecond) throws IllegalArgumentException {
     if (ticksPerSecond <= 0) {
-      throw new IllegalArgumentException("SimpleAnimation(int) -- ticksPerSecond must be greater than 0");
+      throw new IllegalArgumentException("SimpleAnimation(int) -- ticksPerSecond must be greater "
+              + "than 0");
     }
     actions = new ArrayList<AnimationAction>();
     shapes = new ArrayList<Shape>();
@@ -33,12 +42,12 @@ public class SimpleAnimation implements IAnimationModel {
 
   @Override
   public List<AnimationAction> getActions() {
-    return actions;
+    return Collections.unmodifiableList(this.actions);
   }
 
   @Override
   public List<Shape> getShapes() {
-    return shapes;
+    return Collections.unmodifiableList(this.shapes);
   }
 
   @Override

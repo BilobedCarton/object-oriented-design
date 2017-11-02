@@ -5,6 +5,10 @@ import java.util.List;
 import cs3500.animator.model.actions.AnimationAction;
 import cs3500.animator.model.shapes.Shape;
 
+/**
+ * Represents a model for running an animation involving shapes and various actions executed upon
+ * those shapes.
+ */
 public interface IAnimationModel {
 
   /**
