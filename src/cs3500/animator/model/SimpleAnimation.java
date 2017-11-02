@@ -24,7 +24,6 @@ import cs3500.animator.util.TweenModelBuilder;
 public class SimpleAnimation implements IAnimationModel {
   private List<AnimationAction> actions;
   private List<Shape> shapes;
-  private double ticksPerSecond;
 
   /**
    * Creates a new {@code SimpleAnimation} object.
@@ -37,7 +36,6 @@ public class SimpleAnimation implements IAnimationModel {
     }
     actions = new ArrayList<AnimationAction>();
     shapes = new ArrayList<Shape>();
-    this.ticksPerSecond = ticksPerSecond;
   }
 
   @Override
@@ -48,20 +46,6 @@ public class SimpleAnimation implements IAnimationModel {
   @Override
   public List<Shape> getShapes() {
     return Collections.unmodifiableList(this.shapes);
-  }
-
-  @Override
-  public double getTicksPerSecond() {
-    return ticksPerSecond;
-  }
-
-  @Override
-  public void setTicksPerSecond(double ticksPerSecond) throws IllegalArgumentException {
-    if (ticksPerSecond <= 0) {
-      throw new IllegalArgumentException("SimpleAnimation.setTicksPerSecond(double) -- "
-              + "ticksPerSecond is less than or equal to zero.");
-    }
-    this.ticksPerSecond = ticksPerSecond;
   }
 
   @Override
@@ -81,46 +65,33 @@ public class SimpleAnimation implements IAnimationModel {
   }
 
   @Override
-  public void runAnimation() {
-    double currTime = 0;
-    while (animationIncomplete(currTime)) {
-      runCycle(currTime);
-      currTime++;
-    }
-  }
-
-  @Override
-  public boolean animationIncomplete(double currTime) {
+  public boolean animationIncomplete(int currTick) {
     for (Shape shape : shapes) {
-      if (shape.getDisappearTick() > currTime * ticksPerSecond) {
+      if (shape.getDisappearTick() > currTick) {
         return true;
       }
     }
     for (AnimationAction action : actions) {
-      if (action.getEndTick() > currTime * ticksPerSecond) {
+      if (action.getEndTick() > currTick) {
         return true;
       }
     }
     return false;
   }
 
-  /**
-   * Runs a cycle of this animation.
-   * @param currTime is the current time of this animation.
-   */
-  public void runCycle(double currTime) {
+  @Override
+  public void runCycle(int currTick) {
     for (Shape shape : shapes) {
-      if (shape.getAppearTick() <= currTime * ticksPerSecond
-              && shape.getDisappearTick() > currTime * ticksPerSecond) {
+      if (shape.getAppearTick() <= currTick && shape.getDisappearTick() > currTick) {
+        // TODO remove this, handle rendering in views
         shape.render();
       }
     }
     for (AnimationAction action : actions) {
-      if (action.getStartTick() == currTime * ticksPerSecond) {
+      if (action.getStartTick() == currTick) {
         action.updateOriginalValues();
       }
-      if (action.getStartTick() <= currTime * ticksPerSecond
-              && action.getEndTick() > currTime * ticksPerSecond) {
+      if (action.getStartTick() <= currTick && action.getEndTick() > currTick) {
         action.execute();
       }
     }
@@ -130,7 +101,7 @@ public class SimpleAnimation implements IAnimationModel {
    * Converts this object into a string.
    * @return the String representing this object.
    */
-  public String toString() {
+  public String toString(double ticksPerSecond) {
     String str = "Shapes:\n";
     for (Shape shape : this.shapes) {
       str += shape.toString(ticksPerSecond) + "\n";
