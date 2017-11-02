@@ -8,37 +8,28 @@ import cs3500.animator.model.shapes.Shape;
 /**
  * Represents a readonly version of an IAnimationModel.
  */
-public class ReadOnlyAnimation {
+public class ReadOnlySimpleAnimation implements IReadOnlyAnimationModel {
   private IAnimationModel model;
 
   /**
-   * Creates a new {@code ReadOnlyAnimation} object.
+   * Creates a new {@code ReadOnlySimpleAnimation} object.
    * @param model is the model whose data we are reading.
    */
-  public ReadOnlyAnimation(IAnimationModel model) {
+  public ReadOnlySimpleAnimation(IAnimationModel model) {
     this.model = model;
   }
 
-  /**
-   * Get the list of shapes in the model.
-   * @return the List of Shapes in the model.
-   */
+  @Override
   public List<Shape> getShapes() {
     return model.getShapes();
   }
 
-  /**
-   * Get the list of actions in the model.
-   * @return the List of AnimationActions in the model.
-   */
+  @Override
   public List<AnimationAction> getActions() {
     return model.getActions();
   }
 
-  /**
-   * Convert the model into a string.
-   * @return the string representing the model.
-   */
+  @Override
   public String toString() {
     return model.toString();
   }

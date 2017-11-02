@@ -1,23 +1,23 @@
 package cs3500.animator.view;
 
-import cs3500.animator.model.ReadOnlyAnimation;
+import cs3500.animator.model.ReadOnlySimpleAnimation;
 
 /**
  * Represents an abstract implementation of a view for an animation program.
  */
 public abstract class AbstractView implements IView {
-  private ReadOnlyAnimation model;
+  private ReadOnlySimpleAnimation model;
 
   /**
    * Creates a new {@code AbstractView} object.
    * @param model is the model related to this view.
    */
-  AbstractView(ReadOnlyAnimation model) {
+  AbstractView(ReadOnlySimpleAnimation model) {
     this.model = model;
   }
 
   @Override
-  public ReadOnlyAnimation getModel() {
+  public ReadOnlySimpleAnimation getModel() {
     return model;
   }
 

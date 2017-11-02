@@ -1,6 +1,6 @@
 package cs3500.animator.view;
 
-import cs3500.animator.model.ReadOnlyAnimation;
+import cs3500.animator.model.ReadOnlySimpleAnimation;
 
 /**
  * Represents a text based view for an animation program.
@@ -13,7 +13,7 @@ public class TextView extends AbstractView {
    * @param model is the model.
    * @param out is the output location for this TextView, where we output the text to.
    */
-  TextView(ReadOnlyAnimation model, Appendable out) {
+  TextView(ReadOnlySimpleAnimation model, Appendable out) {
     super(model);
     this.out = out;
   }

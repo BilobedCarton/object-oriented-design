@@ -1,6 +1,6 @@
 package cs3500.animator.view;
 
-import cs3500.animator.model.ReadOnlyAnimation;
+import cs3500.animator.model.ReadOnlySimpleAnimation;
 
 /**
  * Represents an SVG based view for an animation. Takes model data and outputs and SVG version.
@@ -8,7 +8,7 @@ import cs3500.animator.model.ReadOnlyAnimation;
 public class SVGView extends AbstractView {
   // TODO add some output property?
 
-  public SVGView(ReadOnlyAnimation model) {
+  public SVGView(ReadOnlySimpleAnimation model) {
     super(model);
   }
 
