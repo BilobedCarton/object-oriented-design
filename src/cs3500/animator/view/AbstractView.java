@@ -3,7 +3,7 @@ package cs3500.animator.view;
 import cs3500.animator.model.ReadOnlyAnimation;
 
 /**
- * Represents an abstract implementation of a view.
+ * Represents an abstract implementation of a view for an animation program.
  */
 public abstract class AbstractView implements IView {
   private ReadOnlyAnimation model;
