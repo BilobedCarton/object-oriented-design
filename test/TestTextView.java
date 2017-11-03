@@ -9,7 +9,6 @@ import cs3500.animator.model.actions.AnimationActionBuilder;
 import cs3500.animator.model.shapes.Shape;
 import cs3500.animator.model.shapes.ShapeBuilder;
 import cs3500.animator.view.IView;
-import cs3500.animator.view.SVGView;
 import cs3500.animator.view.TextView;
 
 import static org.junit.Assert.assertEquals;
