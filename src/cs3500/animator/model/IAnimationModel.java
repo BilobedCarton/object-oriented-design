@@ -49,4 +49,12 @@ public interface IAnimationModel {
    */
   void runCycle(int currTick);
 
+  /**
+   * Gets the state of a shape at the given tick.
+   * @param tick is the tick we want to check the shape at.
+   * @param s is the Shape we are checking.
+   * @return a copy of the shape with data updated to the given tick.
+   * @throws IllegalArgumentException if the given shape does not exist in this model.
+   */
+  public Shape getShapeStateAt(int tick, Shape s) throws IllegalArgumentException;
 }

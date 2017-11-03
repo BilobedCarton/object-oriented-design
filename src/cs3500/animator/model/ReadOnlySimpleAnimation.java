@@ -25,6 +25,11 @@ public class ReadOnlySimpleAnimation implements IReadOnlyAnimationModel {
   }
 
   @Override
+  public Shape getShapeStateAt(int tick, Shape s) throws IllegalArgumentException {
+    return model.getShapeStateAt(tick, s);
+  }
+
+  @Override
   public List<AnimationAction> getActions() {
     return model.getActions();
   }
