@@ -97,7 +97,7 @@ public final class EasyAnimator {
         }
         break;
       case "visual":
-        launchView = new VisualView(useModel, speed);
+        launchView = new VisualView(useModel, speed, 700, 500);
         break;
       case "svg":
         if(outputFile != "System.out") {
