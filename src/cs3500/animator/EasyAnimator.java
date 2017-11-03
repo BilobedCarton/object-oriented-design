@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.swing.*;
 
 import cs3500.animator.model.IAnimationModel;
+import cs3500.animator.model.IReadOnlyAnimationModel;
 import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.SimpleAnimation;
 import cs3500.animator.util.AnimationFileReader;
@@ -63,12 +64,8 @@ public final class EasyAnimator {
           throws FileNotFoundException{
     SimpleAnimation buildModel = new SimpleAnimation();
     AnimationFileReader animReader = new <IAnimationModel>AnimationFileReader();
-<<<<<<< HEAD
     String useFile = System.getProperty("user.dir") + "\\resources\\"+inputFile;
-    ReadOnlyAnimation useModel = new ReadOnlyAnimation(animReader.readFile(useFile,
-=======
-    ReadOnlySimpleAnimation useModel = new ReadOnlySimpleAnimation(animReader.readFile(inputFile,
->>>>>>> master
+    ReadOnlySimpleAnimation useModel = new ReadOnlySimpleAnimation(animReader.readFile(useFile,
             new SimpleAnimation.Builder()));
     IView launchView;
 
@@ -177,12 +174,12 @@ public final class EasyAnimator {
           case "-o":
             i+=1;
             s2 = args[i];
-            if(s2.length() <= 4 && !s2.substring(s2.length() - 4).equals(".txt") &&
-                    !s2.substring(s2.length() - 4).equals(".svg")) {
-              throwErrorMessage("Invalid output, must output to .svg for svg or .txt for text");
-              return;
-            }else {
+            if(s2.length() >= 4 && (s2.substring(s2.length() - 4).equals(".txt") ||
+                    s2.substring(s2.length() - 4).equals(".svg"))) {
               outputFile = s2;
+            }else {
+              throwErrorMessage("Invalid output, must output to .svg for svg or .txt for text "
+                      + "defaulting to System.out. If System.out intended, omit -o from command");
             }
             break;
           case "-speed":

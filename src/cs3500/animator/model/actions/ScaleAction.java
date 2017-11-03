@@ -108,7 +108,7 @@ public class ScaleAction extends AnimationAction {
             +"ms\" dur=\"" + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" "
             +"attributeName=\"" + yChar + "\" from=\"" + originalSizeY + "\" to=\"" + targetSizeY
             +"\" fill=\"freeze\" />\n";
-    execute();
+    executeFinal();
     return retString;
   }
 }

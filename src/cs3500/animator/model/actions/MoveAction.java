@@ -28,20 +28,16 @@ public class MoveAction extends AnimationAction {
     this.originalY = shape.getPosY();
   }
 
-  //@Override
-  //public void execute() {
-  //  this.getShape().relocate(
-  //          this.getShape().getPosX()
-  //                  + ((this.targetX - this.originalX) / (this.getEndTick() - this.getStartTick())),
-  //          this.getShape().getPosY()
-  //                  + ((this.targetY - this.originalY)
-  //                  / (this.getEndTick() - this.getStartTick())));
-  //}
-
   @Override
   public void execute() {
-    this.getShape().relocate(this.targetX, this.targetY);
+    this.getShape().relocate(
+            this.getShape().getPosX()
+                    + ((this.targetX - this.originalX) / (this.getEndTick() - this.getStartTick())),
+            this.getShape().getPosY()
+                    + ((this.targetY - this.originalY)
+                    / (this.getEndTick() - this.getStartTick())));
   }
+
 
   @Override
   public void executeFinal() {
@@ -113,7 +109,7 @@ public class MoveAction extends AnimationAction {
             +"ms\" dur=\"" + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" "
             +"attributeName=\"" + yChar + "\" from=\"" + originalY + "\" to=\"" + getTargetY()
             +"\" fill=\"freeze\" />\n";
-    execute();
+    executeFinal();
     return retString;
   }
 }

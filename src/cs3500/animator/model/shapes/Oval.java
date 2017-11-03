@@ -30,11 +30,12 @@ public class Oval extends Shape {
 
   @Override
   public String toString(double ticksPerSecond) {
+    float[] colArray = this.getColor().getColorComponents(null);
     return "Name: " + this.getName() + "\n" + "Type: oval\n"
             + "Lower-left corner: (" + this.getPosX() + "," + this.getPosY() + "), Width: "
             + this.getSizeX() + " Height: " + this.getSizeY() + ", Color: ("
-            + this.getColor().getRed() + "," + this.getColor().getGreen() + ","
-            + this.getColor().getBlue() + ")\n" + "Appears at t="
+            + colArray[0] + "," + colArray[1] + ","
+            + colArray[2] + ")\n" + "Appears at t="
             + this.getAppearTick() / ticksPerSecond + "s\n" + "Disappears at t="
             + this.getDisappearTick() / ticksPerSecond + "s\n";
   }
