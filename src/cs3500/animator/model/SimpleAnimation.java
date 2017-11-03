@@ -48,10 +48,10 @@ public class SimpleAnimation implements IAnimationModel {
   public void addAction(AnimationAction action) {
     Shape shape = this.getShapeStateAt(action.getStartTick(), action.getShape());
     action.setOriginalValues(shape);
-    for (AnimationAction a: this.actions) {
-      action.setOriginalValues(this.getShapeStateAt(a.getStartTick(), a.getShape()));
-    }
     this.actions.add(action);
+    for (AnimationAction a: this.actions) {
+      a.setOriginalValues(this.getShapeStateAt(a.getStartTick(), a.getShape()));
+    }
   }
 
   @Override
@@ -96,6 +96,21 @@ public class SimpleAnimation implements IAnimationModel {
     }
   }
 
+  /**
+   * Converts this object into a string.
+   * @return the String representing this object.
+   */
+  public String toString(double ticksPerSecond) {
+    String str = "Shapes:\n";
+    for (Shape shape : this.shapes) {
+      str += shape.toString(ticksPerSecond) + "\n";
+    }
+    for (AnimationAction action : this.actions) {
+      str += action.toString(ticksPerSecond);
+    }
+
+    return str;
+  }
 
   /**
    * Finds the shape in the given list with the given name.
@@ -134,7 +149,7 @@ public class SimpleAnimation implements IAnimationModel {
           if (a.getStartTick() == i) {
             a.updateOriginalValues();
           }
-          if (a.getStartTick() >= i && a.getEndTick() < i) {
+          if (a.getStartTick() <= i && a.getEndTick() > i) {
             a.execute();
           }
         }
