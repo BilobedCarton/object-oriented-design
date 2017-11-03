@@ -1,4 +1,4 @@
-package cs3500.animator.view;
+package cs3500.animator.view.graphics;
 
 import java.awt.*;
 import java.util.List;
@@ -10,7 +10,7 @@ import cs3500.animator.model.shapes.Shape;
 public class AnimationGraphicsFrame extends JFrame {
   private AnimationPanel animationPanel;
 
-  AnimationGraphicsFrame(int width, int height) {
+  public AnimationGraphicsFrame(int width, int height) {
     super();
     this.setTitle("Animation");
 

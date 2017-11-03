@@ -64,7 +64,7 @@ public final class EasyAnimator {
           throws FileNotFoundException{
     SimpleAnimation buildModel = new SimpleAnimation();
     AnimationFileReader animReader = new <IAnimationModel>AnimationFileReader();
-    String useFile = System.getProperty("user.dir") + "\\resources\\"+inputFile;
+    String useFile = System.getProperty("user.dir") + "/resources/"+inputFile;
     ReadOnlySimpleAnimation useModel = new ReadOnlySimpleAnimation(animReader.readFile(useFile,
             new SimpleAnimation.Builder()));
     IView launchView;
@@ -98,6 +98,7 @@ public final class EasyAnimator {
         break;
       case "visual":
         launchView = new VisualView(useModel, speed, 700, 500);
+        ((VisualView) launchView).start();
         break;
       case "svg":
         if(outputFile != "System.out") {
@@ -120,7 +121,8 @@ public final class EasyAnimator {
             throwErrorMessage("Error closing file.");
             return;
           }
-        }else {
+        }
+        else {
           launchView = new SVGView(useModel, System.out, speed);
           launchView.update();
         }

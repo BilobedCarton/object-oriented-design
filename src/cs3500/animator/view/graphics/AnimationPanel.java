@@ -1,4 +1,4 @@
-package cs3500.animator.view;
+package cs3500.animator.view.graphics;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;

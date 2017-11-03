@@ -9,6 +9,7 @@ import javax.swing.*;
 
 import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.shapes.Shape;
+import cs3500.animator.view.graphics.AnimationGraphicsFrame;
 
 /**
  * Represents a visual view of an animation. This actually renders a moving image.
@@ -40,10 +41,12 @@ public class VisualView extends AbstractView {
       shapesToDraw.add(this.getModel().getShapeStateAt(this.currTick, s));
     }
     this.currTick++;
+    frame.refresh();
   }
 
   public void start() {
     this.timer.start();
+    frame.makeVisible();
   }
 
   public void reset() {
