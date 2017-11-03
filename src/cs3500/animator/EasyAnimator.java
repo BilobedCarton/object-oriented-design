@@ -101,7 +101,6 @@ public final class EasyAnimator {
         break;
       case "svg":
         if(outputFile != "System.out") {
-          System.out.println(outputFile);
           if(!outputFile.substring(outputFile.length() - 4).equals(".svg")) {
             throwErrorMessage("Invalid input, output must be svg for type svg.");
           }
