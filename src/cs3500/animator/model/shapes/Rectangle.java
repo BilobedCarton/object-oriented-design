@@ -24,11 +24,6 @@ public class Rectangle extends Shape {
   }
 
   @Override
-  public void render() {
-    // empty.
-  }
-
-  @Override
   public String toString(double ticksPerSecond) {
     float[] colArray = this.getColor().getColorComponents(null);
     return "Name: " + this.getName() + "\n" + "Type: rectangle\n"

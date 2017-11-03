@@ -128,11 +128,6 @@ public abstract class Shape implements IAnimationPiece {
     return this.name.hashCode();
   }
 
-  /**
-   * Renders this Shape object.
-   */
-  public abstract void render();
-
   public abstract String toString(double ticksPerSecond);
 
   public abstract String toSVG(double ticksPerSecond);
