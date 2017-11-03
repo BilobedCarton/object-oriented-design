@@ -15,9 +15,9 @@ import cs3500.animator.view.graphics.AnimationGraphicsFrame;
  * Represents a visual view of an animation. This actually renders a moving image.
  */
 public class VisualView extends AbstractView {
-  AnimationGraphicsFrame frame;
-  Timer timer;
-  int currTick;
+  protected AnimationGraphicsFrame frame;
+  protected Timer timer;
+  protected int currTick;
 
   /**
    * Creates a new {@code TextView} object.
