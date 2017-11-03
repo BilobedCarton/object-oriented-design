@@ -2,29 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef0f9589-2e2b-4ee4-916b-c07c062d3af8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/ReadOnlyAnimation.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/EasyAnimator.class" afterPath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/EasyAnimator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/SimpleAnimation$Builder.class" afterPath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/SimpleAnimation$Builder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/SimpleAnimation.class" afterPath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/SimpleAnimation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/actions/AnimationAction.class" afterPath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/actions/AnimationAction.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/actions/ColorShiftAction.class" afterPath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/actions/ColorShiftAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/actions/ITimedAction.class" afterPath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/actions/ITimedAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/actions/MoveAction.class" afterPath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/actions/MoveAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/actions/ScaleAction.class" afterPath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/actions/ScaleAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/shapes/Oval.class" afterPath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/shapes/Oval.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/shapes/Rectangle.class" afterPath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/model/shapes/Rectangle.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/view/AbstractView.class" afterPath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/view/AbstractView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/view/SVGView.class" afterPath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/view/SVGView.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/view/TextView.class" afterPath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/view/TextView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/view/VisualView.class" afterPath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/view/VisualView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/Assignment6/TestAnimationModel.class" afterPath="$PROJECT_DIR$/out/test/Assignment6/TestAnimationModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/out.svg" afterPath="$PROJECT_DIR$/resources/out.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs3500/animator/EasyAnimator.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/EasyAnimator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs3500/animator/model/actions/ColorShiftAction.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/actions/ColorShiftAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs3500/animator/model/actions/MoveAction.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/actions/MoveAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs3500/animator/model/actions/ScaleAction.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/actions/ScaleAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs3500/animator/model/shapes/Oval.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/shapes/Oval.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs3500/animator/model/shapes/Rectangle.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/shapes/Rectangle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs3500/animator/view/TextView.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/TextView.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -123,8 +103,8 @@
       <file leaf-file-name="TextView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/TextView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="40" column="5" lean-forward="true" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+            <state relative-caret-position="189">
+              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -191,7 +171,6 @@
         <option value="$PROJECT_DIR$/src/cs3500/animator/model/ReadOnlySimpleAnimation.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/model/ReadOnlyAnimation.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/view/IView.java" />
-        <option value="$PROJECT_DIR$/src/cs3500/animator/view/TextView.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/model/actions/ITimedAction.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/controller/IController.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/controller/SimpleAnimationController.java" />
@@ -209,11 +188,13 @@
         <option value="$PROJECT_DIR$/src/cs3500/animator/view/AbstractView.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/view/SVGView.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/model/SimpleAnimation.java" />
+        <option value="$PROJECT_DIR$/src/cs3500/animator/view/TextView.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1920" />
+    <option name="x" value="-8" />
+    <option name="width" value="976" />
     <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -341,7 +322,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="cs3500.animator.EasyAnimator" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="-iv svg -o out.svg -if buildings.txt -speed 30" />
+      <option name="PROGRAM_PARAMETERS" value="-if smalldemo.txt -iv text -o out -speed 2" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -624,14 +605,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/SVGView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="29" lean-forward="false" selection-start-line="0" selection-start-column="29" selection-end-line="0" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cs3500/animator/model/actions/ITimedAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -922,14 +895,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/TextView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="40" column="5" lean-forward="true" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cs3500/animator/EasyAnimator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -1031,6 +996,22 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../homework/HW05/src/cs3500/hw05/EasyMoveImplementation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="116" column="5" lean-forward="true" selection-start-line="86" selection-start-column="4" selection-end-line="116" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/TextView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
