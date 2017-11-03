@@ -1,4 +1,5 @@
 Animator Readme by Matthew Hosking and Jeffrey Curran
+Object Oriented Design Assignment 6 - Animator With Views
 
 ---------------------- The Model ----------------------
 The AnimationModel class is a representation of the data used in an Animation.
@@ -74,3 +75,42 @@ SimpleAnimation:
 		- Added an executeFinal() method that executes the final change to the target. This guarantees that the target will be exactly where its meant to be.
 		- Added updateOriginalValues() and setOriginalValues(Shape s) to allow for the action to have the correct original values at time of execution.
 		- Added get methods for the various properties.
+
+---------------------- VIEWS ----------------------
+There are three types of view:
+TextView - outputs a text version of the animation.
+VisualView - outputs a graphical version of the animation.
+SVGView - outputs an SVG version of the animation.
+
+All three extend the AbstractView class.
+AbstractView implements IView.
+
+IView has the following methods:
+	- getModel() - returns the ReadOnlyAnimationModel that this view is using for data.
+	- update() - runs an update on the output. (Outputs text, updates visuals, outputs svg xml data.)
+
+AbstractView:
+	Properties:
+		* private ReadOnlySimpleAnimation model - this is the model whose data we use.
+		* protected double speed - this is the speed in ticks per second of the animation.
+
+TextView:
+	Properties:
+		* private Appendable out - this is where the text is outputted to on update.
+
+VisualView:
+	Properties:
+		* protected AnimationGraphicsFrame frame - this is the visual frame in which the visuals are rendered.
+		* protected Timer timer - this is the timer used to pace the ticks.
+		* protected int currTick - this is the current tick being executed by the animation.
+
+	Methods:
+		- public void start() - this begins the animation.
+		- public void reset() - this resets the animation to the beginning.
+
+	VisualView includes the UpdateListener class that implements ActionListener.
+	This is used to trigger a VisualView update every time the timer signals an event.
+
+SVGView:
+	Properties:
+		* private Appendable out - this is where the svg xml data is outputted to on update.
