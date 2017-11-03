@@ -104,7 +104,7 @@ public class TestShapes {
             .setColor(new Color(0, 0, 0))
             .build(ShapeBuilder.ShapeType.OVAL);
     assertEquals(oval.toString(1), "Name: Test\n" + "Type: oval\n"
-            + "Lower-left corner: (0.0,0.0), Width: 0.0 Height: 0.0, Color: (0,0,0)\n"
+            + "Lower-left corner: (0.0,0.0), Width: 0.0 Height: 0.0, Color: (0.0,0.0,0.0)\n"
             + "Appears at t=0.0s\n" + "Disappears at t=0.0s\n");
   }
 
@@ -115,7 +115,7 @@ public class TestShapes {
             .setColor(new Color(0, 0, 0))
             .build(ShapeBuilder.ShapeType.RECTANGLE);
     assertEquals(rect.toString(1), "Name: Test\n" + "Type: rectangle\n"
-            + "Lower-left corner: (0.0,0.0), Width: 0.0 Height: 0.0, Color: (0,0,0)\n"
+            + "Lower-left corner: (0.0,0.0), Width: 0.0 Height: 0.0, Color: (0.0,0.0,0.0)\n"
             + "Appears at t=0.0s\n" + "Disappears at t=0.0s\n");
   }
 }
