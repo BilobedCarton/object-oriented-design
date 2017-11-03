@@ -30,6 +30,7 @@ public class ViewFactory {
         if (outputFile != "System.out") {
           if (!outputFile.substring(outputFile.length() - 4).equals(".txt")) {
             EasyAnimator.throwErrorMessage("Invalid input, output must be .txt for type text.");
+            return null;
           }
           FileWriter writer;
           try {
@@ -38,8 +39,7 @@ public class ViewFactory {
             EasyAnimator.throwErrorMessage("Error making file.");
             return null;
           }
-          view = new TextView(model
-                  , writer, speed);
+          view = new TextView(model, writer, speed);
           view.update();
           try {
             writer.close();
@@ -48,18 +48,12 @@ public class ViewFactory {
             return null;
           }
         } else {
-          view = new TextView(model
-                  , System.out, speed);
+          view = new TextView(model, System.out, speed);
           view.update();
         }
         break;
       case "visual":
-<<<<<<< HEAD
         view = new VisualView(model, speed, 700, 700);
-=======
-        view = new VisualView(model
-                , speed, 700, 700);
->>>>>>> master
         ((VisualView) view).start();
         break;
       case "svg":
@@ -75,8 +69,7 @@ public class ViewFactory {
             EasyAnimator.throwErrorMessage("Error making file.");
             return null;
           }
-          view = new SVGView(model
-                  , writer, speed);
+          view = new SVGView(model, writer, speed);
           view.update();
           try {
             writer.close();
@@ -85,8 +78,7 @@ public class ViewFactory {
             return null;
           }
         } else {
-          view = new SVGView(model
-                  , System.out, speed);
+          view = new SVGView(model, System.out, speed);
           view.update();
         }
         break;
