@@ -2,6 +2,8 @@ package cs3500.animator.view.graphics;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,15 +38,15 @@ public class AnimationPanel extends JPanel {
     g2D.setBackground(Color.WHITE);
 
     AffineTransform originalTransform = g2D.getTransform();
-    g2D.translate(0, this.getPreferredSize().getHeight());
-    g2D.scale(1, -1);
+    g2D.scale(1, 1);
 
     for (Shape s : shapesToDraw) {
+      g2D.setColor(s.getColor());
       if (s instanceof Rectangle) {
-        g2D.drawRect((int) s.getPosX(), (int) s.getPosY(), (int) s.getSizeX(), (int) s.getSizeY());
+        g2D.fill(new Rectangle2D.Double(s.getPosX(), s.getPosY(), s.getSizeX(), s.getSizeY()));
       }
       else if (s instanceof Oval) {
-        g2D.drawOval((int) s.getPosX(), (int) s.getPosY(), (int) s.getSizeX(), (int) s.getSizeY());
+        g2D.fill(new Ellipse2D.Double(s.getPosX(), s.getPosY(), s.getSizeX(), s.getSizeY()));
       }
     }
 
