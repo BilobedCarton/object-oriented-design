@@ -1,4 +1,4 @@
-
+Animator Readme by Matthew Hosking and Jeffrey Curran
 
 ---------------------- The Model ----------------------
 The AnimationModel class is a representation of the data used in an Animation.
@@ -27,22 +27,17 @@ SimpleAnimation:
 
 	SimpleAnimation includes the Builder class.
 	Builder implements TweenModelBuilder<IAnimationModel>
+		Properties:
+		* actions - private ArrayList<AnimationAction> - This is the list of actions to be used by the animation model.
+		* shapes - private ArrayList<Shape> - This is the list of shapes to be used by the animation model.
 
-Shape:
-	Properties:
-	* name - String - the name of the shape.
-	* posX - double - the position of the shape in the x dimension.
-	* posY - double - the position of the shape in the y dimension.
-	* color - Color - the color of the shape.
-	* sizeX - double - the size of the shape in the x dimension.
-	* sizeY - double - the size of the shape in the y dimension.
-	* appearTick - int - the tick this shape appears.
-	* disappearTick - int - the tick this shape disappears.
-	* type - String - the type of the shape.
-
-	Methods:
-	- 
-
+		Methods:
+		- public addOval(String name, float cx, float cy, float xRadius, float yRadius, float red, float green, float blue, int startOfLife, int endOfLife) - adds an oval.
+		- public addRectangle(String name, float cx, float cy, float xRadius, float yRadius, float red, float green, float blue, int startOfLife, int endOfLife) - adds a rectangle.
+		- public addMove(String name, float moveFromX, float moveFromY, float moveToX, float moveToY, int startTime, int endTime)  - adds a move action.
+		- public addColorChange(String name, float oldR, float oldG, float oldB, float newR, float newG, float newB, int startTime, int endTime) - adds a ColorShift action.
+		- public addScaleToChange(String name, float fromSx, float fromSy, float toSx, float toSy, int startTime, int endTime) - adds a scale action.
+		- public build() - this method actually creates and returns the model.
 
 
 ---------------------- Model CHANGELOG ----------------------
