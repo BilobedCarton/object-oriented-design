@@ -77,7 +77,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VisualView.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="VisualView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/VisualView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
@@ -86,6 +86,16 @@
                 <element signature="e#377#378#0" expanded="true" />
                 <element signature="e#402#403#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EasyAnimator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/cs3500/animator/EasyAnimator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-872">
+              <caret line="20" column="19" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -571,16 +581,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/SVGView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="29" lean-forward="false" selection-start-line="0" selection-start-column="29" selection-end-line="0" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cs3500/animator/model/actions/ITimedAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -1035,6 +1035,14 @@
             <element signature="e#377#378#0" expanded="true" />
             <element signature="e#402#403#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/EasyAnimator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-872">
+          <caret line="20" column="19" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
