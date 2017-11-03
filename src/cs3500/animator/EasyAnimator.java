@@ -7,7 +7,7 @@ import java.io.IOException;
 import javax.swing.*;
 
 import cs3500.animator.model.IAnimationModel;
-import cs3500.animator.model.ReadOnlyAnimation;
+import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.SimpleAnimation;
 import cs3500.animator.util.AnimationFileReader;
 import cs3500.animator.view.IView;
@@ -45,7 +45,7 @@ public final class EasyAnimator {
           throws FileNotFoundException{
     SimpleAnimation buildModel = new SimpleAnimation();
     AnimationFileReader animReader = new <IAnimationModel>AnimationFileReader();
-    ReadOnlyAnimation useModel = new ReadOnlyAnimation(animReader.readFile(inputFile,
+    ReadOnlySimpleAnimation useModel = new ReadOnlySimpleAnimation(animReader.readFile(inputFile,
             new SimpleAnimation.Builder()));
     IView launchView;
 
@@ -70,7 +70,8 @@ public final class EasyAnimator {
             throwErrorMessage("Error closing file.");
             return;
           }
-        }else {
+        }
+        else {
           launchView = new TextView(useModel, System.out, speed);
           launchView.update();
         }
