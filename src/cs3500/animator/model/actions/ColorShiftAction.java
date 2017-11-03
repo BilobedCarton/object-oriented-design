@@ -40,6 +40,11 @@ public class ColorShiftAction extends AnimationAction {
   }
 
   @Override
+  public void executeFinal() {
+    this.getShape().recolor(this.targetColor);
+  }
+
+  @Override
   public String toString(double ticksPerSecond) {
     return "Shape " + this.getShape().getName() + " changes color from ("
             + this.getShape().getColor().getRed() + "," + this.getShape().getColor().getGreen()
@@ -69,5 +74,19 @@ public class ColorShiftAction extends AnimationAction {
    */
   public Color getTargetColor() {
     return targetColor;
+  }
+
+  @Override
+  public String toSVG(double ticksPerSecond){
+    String startColor = "rgb(" + originalColor.getRed() + ","
+            + originalColor.getGreen() + "," + originalColor.getBlue() + ")";
+    String endColor = "rgb(" + targetColor.getRed() + ","
+            + targetColor.getGreen() + "," + targetColor.getBlue() + ")";
+
+    String retString = "\t<animate attributeType=\"xml\" begin=\""
+            + (getStartTick()*ticksPerSecond*1000) +"ms\" dur=\""
+            + ((getEndTick()- getStartTick())*ticksPerSecond*1000)+"ms\" attributeName=\"fill\""
+            + " from=\"" + startColor + "\" to=\"" + endColor +"\" fill=\"freeze\" />\n";
+    return retString;
   }
 }

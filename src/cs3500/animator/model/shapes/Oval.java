@@ -20,7 +20,7 @@ public class Oval extends Shape {
    */
   Oval(String name, double posX, double posY, Color color, double sizeX, double sizeY,
               int timeAppear, int timeDisappear) {
-    super(name, posX, posY, color, sizeX, sizeY, timeAppear, timeDisappear);
+    super(name, posX, posY, color, sizeX, sizeY, timeAppear, timeDisappear, "oval");
   }
 
   @Override
@@ -38,4 +38,26 @@ public class Oval extends Shape {
             + this.getAppearTick() * ticksPerSecond + "s\n" + "Disappears at t="
             + this.getDisappearTick() * ticksPerSecond + "s\n";
   }
+
+
+  @Override
+  public String toSVG(double ticksPerSecond) {
+    String retString = "<ellipse id=\"" + this.getName() + "\"" + " cx=\"" + this.getPosX()
+            + "\" cy=\"" + this.getPosY() + "\" rx=\"" + this.getSizeX() + "\" ry=\""
+            + this.getSizeY() + "\" fill=\"rgb(" + this.getColor().getRed() + ","
+            + this.getColor().getGreen() + "," + this.getColor().getBlue() + ")\""
+            + " visibility=\"hidden\" >\n";
+    retString += "\t<animate attributeType=\"xml\" begin=\""+ (getAppearTick()*ticksPerSecond*1000)
+            + "ms\" attributeName=\"visibility\" to=\"visible\" />\n";
+    retString += "\t<animate attributeType=\"xml\" begin=\""
+            +(getDisappearTick()*ticksPerSecond*1000) +"ms\" attributeName=\"visibility\""
+            + " to=\"hidden\" />\n";
+    return retString;
+  }
+
+  @Override
+  public String svgEnd() {
+    return "</ellipse>\n";
+  }
+
 }

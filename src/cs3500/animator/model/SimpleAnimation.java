@@ -29,11 +29,7 @@ public class SimpleAnimation implements IAnimationModel {
    * Creates a new {@code SimpleAnimation} object.
    * @throws IllegalArgumentException if ticksPerSecond is less than or eqaul to zero.
    */
-  public SimpleAnimation(double ticksPerSecond) throws IllegalArgumentException {
-    if (ticksPerSecond <= 0) {
-      throw new IllegalArgumentException("SimpleAnimation(int) -- ticksPerSecond must be greater "
-              + "than 0");
-    }
+  public SimpleAnimation() throws IllegalArgumentException {
     actions = new ArrayList<AnimationAction>();
     shapes = new ArrayList<Shape>();
   }
@@ -53,6 +49,9 @@ public class SimpleAnimation implements IAnimationModel {
     Shape shape = this.getShapeStateAt(action.getStartTick(), action.getShape());
     action.setOriginalValues(shape);
     this.actions.add(action);
+    for (AnimationAction a: this.actions) {
+      a.setOriginalValues(this.getShapeStateAt(a.getStartTick(), a.getShape()));
+    }
   }
 
   @Override
@@ -88,11 +87,11 @@ public class SimpleAnimation implements IAnimationModel {
       }
     }
     for (AnimationAction action : actions) {
-      if (action.getStartTick() == currTick) {
-        action.updateOriginalValues();
-      }
       if (action.getStartTick() <= currTick && action.getEndTick() > currTick) {
         action.execute();
+      }
+      if (action.getEndTick() == currTick) {
+        action.executeFinal();
       }
     }
   }
@@ -107,7 +106,7 @@ public class SimpleAnimation implements IAnimationModel {
       str += shape.toString(ticksPerSecond) + "\n";
     }
     for (AnimationAction action : this.actions) {
-      str += action.toString(ticksPerSecond) + "\n";
+      str += action.toString(ticksPerSecond);
     }
 
     return str;
@@ -140,24 +139,31 @@ public class SimpleAnimation implements IAnimationModel {
       throw new IllegalArgumentException("SimpleAnimation.getShapeStateAt(int, Shape) -- "
               + "The given shape does not exist in this model.");
     }
+    // Create a identical copy to modify.
     Shape sCopy = ShapeBuilder.copy(s);
 
     for (int i = 0; i < tick; i++) {
       for (AnimationAction a : this.actions) {
         if (a.getShape().getName().equals(s.getName())) {
+          a.setShape(sCopy);
           if (a.getStartTick() == i) {
             a.updateOriginalValues();
           }
-          if (a.getStartTick() >= i && a.getEndTick() < i) {
+          if (a.getStartTick() <= i && a.getEndTick() > i) {
             a.execute();
           }
         }
       }
     }
 
-    this.shapes.remove(s);
-    this.shapes.add(sCopy);
-    return s;
+    // Set actions back to original shape.
+    for (AnimationAction a : this.actions) {
+      if (a.getShape().getName().equals(s.getName())) {
+        a.setShape(s);
+      }
+    }
+
+    return sCopy;
   }
 
   /**
@@ -244,7 +250,7 @@ public class SimpleAnimation implements IAnimationModel {
 
     @Override
     public IAnimationModel build() {
-      IAnimationModel animationModel = new SimpleAnimation(1);
+      IAnimationModel animationModel = new SimpleAnimation();
       for (Shape s : this.shapesToAdd) {
         animationModel.addShape(s);
       }
