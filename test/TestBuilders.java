@@ -140,8 +140,28 @@ public class TestBuilders {
             .build();
     assertEquals(model.getActions().size(), 3);
     assertEquals(model.getShapes().size(), 2);
+    assertEquals(model.getShapes().get(0).getName(), "R");
+    assertEquals(model.getShapes().get(0).getColor(), new Color(0.3f, 0.3f, 0.3f));
+    assertEquals(model.getShapes().get(1).getName(), "O");
+    assertEquals(model.getShapes().get(1).getPosX(), 10, 0);
+    assertEquals(model.getShapes().get(1).getPosY(), 20, 0);
+    assertEquals(model.getShapes().get(1).getSizeX(), 5, 0);
+    assertEquals(model.getShapes().get(1).getSizeY(), 5, 0);
+
     assertEquals(model.getActions().get(0).getShape().getName(), "O");
     assertEquals(model.getActions().get(1).getShape().getName(), "R");
     assertEquals(model.getActions().get(2).getShape().getName(), "O");
+
+    for (int i = 0; i <= 15; i++) {
+      model.runCycle(i);
+    }
+
+    assertEquals(model.getShapes().get(0).getName(), "R");
+    assertEquals(model.getShapes().get(0).getColor(), new Color(0.05f, 0.1f, 0.15f));
+    assertEquals(model.getShapes().get(1).getName(), "O");
+    assertEquals(model.getShapes().get(1).getPosX(), 10, 0);
+    assertEquals(model.getShapes().get(1).getPosY(), 0, 0.0001);
+    assertEquals(model.getShapes().get(1).getSizeX(), 20, 0.0001);
+    assertEquals(model.getShapes().get(1).getSizeY(), 10, 0.0001);
   }
 }

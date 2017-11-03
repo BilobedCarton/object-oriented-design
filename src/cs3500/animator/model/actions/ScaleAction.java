@@ -38,6 +38,11 @@ public class ScaleAction extends AnimationAction {
   }
 
   @Override
+  public void executeFinal() {
+    this.getShape().resize(this.targetSizeX, this.targetSizeY);
+  }
+
+  @Override
   public String toString(double ticksPerSecond) {
     return "Shape " + this.getShape().getName() + " scales from Width: "
             + this.getShape().getSizeX() + " Height: " + this.getShape().getSizeY() + " to Width: "

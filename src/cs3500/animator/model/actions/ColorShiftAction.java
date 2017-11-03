@@ -40,6 +40,11 @@ public class ColorShiftAction extends AnimationAction {
   }
 
   @Override
+  public void executeFinal() {
+    this.getShape().recolor(this.targetColor);
+  }
+
+  @Override
   public String toString(double ticksPerSecond) {
     return "Shape " + this.getShape().getName() + " changes color from ("
             + this.getShape().getColor().getRed() + "," + this.getShape().getColor().getGreen()

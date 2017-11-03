@@ -49,6 +49,9 @@ public class SimpleAnimation implements IAnimationModel {
     Shape shape = this.getShapeStateAt(action.getStartTick(), action.getShape());
     action.setOriginalValues(shape);
     this.actions.add(action);
+    for (AnimationAction a: this.actions) {
+      a.setOriginalValues(this.getShapeStateAt(a.getStartTick(), a.getShape()));
+    }
   }
 
   @Override
@@ -84,15 +87,30 @@ public class SimpleAnimation implements IAnimationModel {
       }
     }
     for (AnimationAction action : actions) {
-      if (action.getStartTick() == currTick) {
-        action.updateOriginalValues();
-      }
       if (action.getStartTick() <= currTick && action.getEndTick() > currTick) {
         action.execute();
+      }
+      if (action.getEndTick() == currTick) {
+        action.executeFinal();
       }
     }
   }
 
+  /**
+   * Converts this object into a string.
+   * @return the String representing this object.
+   */
+  public String toString(double ticksPerSecond) {
+    String str = "Shapes:\n";
+    for (Shape shape : this.shapes) {
+      str += shape.toString(ticksPerSecond) + "\n";
+    }
+    for (AnimationAction action : this.actions) {
+      str += action.toString(ticksPerSecond);
+    }
+
+    return str;
+  }
 
   /**
    * Finds the shape in the given list with the given name.
@@ -121,11 +139,13 @@ public class SimpleAnimation implements IAnimationModel {
       throw new IllegalArgumentException("SimpleAnimation.getShapeStateAt(int, Shape) -- "
               + "The given shape does not exist in this model.");
     }
+    // Create a identical copy to modify.
     Shape sCopy = ShapeBuilder.copy(s);
 
     for (int i = 0; i < tick; i++) {
       for (AnimationAction a : this.actions) {
         if (a.getShape().getName().equals(s.getName())) {
+          a.setShape(sCopy);
           if (a.getStartTick() == i) {
             a.updateOriginalValues();
           }
@@ -136,9 +156,14 @@ public class SimpleAnimation implements IAnimationModel {
       }
     }
 
-    this.shapes.remove(s);
-    this.shapes.add(sCopy);
-    return s;
+    // Set actions back to original shape.
+    for (AnimationAction a : this.actions) {
+      if (a.getShape().getName().equals(s.getName())) {
+        a.setShape(s);
+      }
+    }
+
+    return sCopy;
   }
 
   /**

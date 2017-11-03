@@ -2,7 +2,7 @@ package cs3500.animator.view;
 
 import java.io.IOException;
 
-import cs3500.animator.model.ReadOnlyAnimation;
+import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.actions.AnimationAction;
 import cs3500.animator.model.shapes.Shape;
 
@@ -12,7 +12,7 @@ import cs3500.animator.model.shapes.Shape;
 public class SVGView extends AbstractView {
   private Appendable out;
 
-  public SVGView(ReadOnlyAnimation model, Appendable out, double speed) {
+  public SVGView(ReadOnlySimpleAnimation model, Appendable out, double speed) {
     super(model,speed);
     this.out = out;
   }

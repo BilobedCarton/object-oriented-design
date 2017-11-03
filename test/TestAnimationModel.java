@@ -20,16 +20,30 @@ public class TestAnimationModel {
             .setColor(new Color(0, 0, 0))
             .build(ShapeBuilder.ShapeType.RECTANGLE);
     AnimationAction action = AnimationActionBuilder.initialize()
-            .setTimeTicks(0, 20)
+            .setTimeTicks(10, 20)
             .setTargetPosition(12, 12)
+            .setTargetShape(rect)
+            .build(AnimationActionBuilder.AnimationActionType.MOVE);
+    AnimationAction action2 = AnimationActionBuilder.initialize()
+            .setTimeTicks(20, 40)
+            .setTargetPosition(24, 12)
+            .setTargetShape(rect)
+            .build(AnimationActionBuilder.AnimationActionType.MOVE);
+    AnimationAction action3 = AnimationActionBuilder.initialize()
+            .setTimeTicks(0, 10)
+            .setTargetPosition(12, 0)
             .setTargetShape(rect)
             .build(AnimationActionBuilder.AnimationActionType.MOVE);
     model.addShape(rect);
     model.addAction(action);
-    assertEquals(model.toString(), "Shapes:\n" + "Name: Test\n" + "Type: rectangle\n"
+    model.addAction(action2);
+    model.addAction(action3);
+    assertEquals(model.toString(1), "Shapes:\n" + "Name: Test\n" + "Type: rectangle\n"
             + "Lower-left corner: (0.0,0.0), Width: 0.0 Height: 0.0, Color: (0,0,0)\n"
             + "Appears at t=0.0s\n" + "Disappears at t=0.0s\n" + "\n"
-            + "Shape Test moves from (0.0,0.0) to (12.0,12.0) from t=0.0s to t=20.0s\n\n");
+            + "Shape Test moves from (12.0,0.0) to (12.0,12.0) from t=10.0s to t=20.0s\n"
+            + "Shape Test moves from (12.0,12.0) to (24.0,12.0) from t=20.0s to t=40.0s\n"
+            + "Shape Test moves from (0.0,0.0) to (12.0,0.0) from t=0.0s to t=10.0s\n");
   }
 
   @Test
@@ -80,6 +94,11 @@ public class TestAnimationModel {
     model.addShape(oval);
     model.addAction(move);
     model.addAction(scale);
+
+    for (int i = 0; i <= 30; i++) {
+      model.runCycle(i);
+    }
+
     assertEquals(rect.getPosX(), 20, 0);
     assertEquals(rect.getPosY(), 40, 0);
     assertEquals(oval.getSizeX(), 20, 0);

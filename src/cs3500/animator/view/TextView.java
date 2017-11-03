@@ -1,8 +1,7 @@
 package cs3500.animator.view;
-
 import java.io.IOException;
 
-import cs3500.animator.model.ReadOnlyAnimation;
+import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.actions.AnimationAction;
 import cs3500.animator.model.shapes.Shape;
 
@@ -17,7 +16,7 @@ public class TextView extends AbstractView {
    * @param model is the model.
    * @param out is the output location for this TextView, where we output the text to.
    */
-  public TextView(ReadOnlyAnimation model, Appendable out, double speed) {
+  public TextView(ReadOnlySimpleAnimation model, Appendable out, double speed) {
     super(model, speed);
     this.out = out;
   }
