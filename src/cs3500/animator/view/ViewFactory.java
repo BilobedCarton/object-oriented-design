@@ -10,7 +10,6 @@ import cs3500.animator.model.ReadOnlySimpleAnimation;
  * Represents a factory to create new views.
  */
 public class ViewFactory {
-
   /**
    * Creates and returns a new view based on the given viewType.
    * Returns null if a view could not be created.
@@ -20,7 +19,7 @@ public class ViewFactory {
    * @param speed is the speed of the animation in ticksPerSecond.
    * @param model is the model this new view will be using to get data from.
    */
-  public IView build(String viewType,
+  public static IView build(String viewType,
                      String outputFile,
                      double speed,
                      ReadOnlySimpleAnimation model) {
@@ -28,22 +27,19 @@ public class ViewFactory {
 
     switch (viewType) {
       case "text":
-        if (outputFile == null) {
-          throw new IllegalArgumentException("ViewFactory(String, String, double, "
-                  + "ReadOnlySimpleAnimation) -- outputFile name cannot be null for a text view.");
-        }
         if (outputFile != "System.out") {
-          if (outputFile.substring(outputFile.length() - 4) != ".txt") {
+          if (!outputFile.substring(outputFile.length() - 4).equals(".txt")) {
             EasyAnimator.throwErrorMessage("Invalid input, output must be .txt for type text.");
           }
           FileWriter writer;
           try {
-            writer = new FileWriter(outputFile);
-          } catch (IOException error) {
-            EasyAnimator.throwErrorMessage("Invalid input, issue creating output file");
+            writer = EasyAnimator.genFileWriter(outputFile);
+          } catch (IOException e) {
+            EasyAnimator.throwErrorMessage("Error making file.");
             return null;
           }
-          view = new TextView(model, writer, speed);
+          view = new TextView(model
+                  , writer, speed);
           view.update();
           try {
             writer.close();
@@ -52,30 +48,31 @@ public class ViewFactory {
             return null;
           }
         } else {
-          view = new TextView(model, System.out, speed);
+          view = new TextView(model
+                  , System.out, speed);
           view.update();
         }
         break;
       case "visual":
-        view = new VisualView(model, speed, 700, 700);
+        view = new VisualView(model
+                , speed, 700, 700);
+        ((VisualView) view).start();
         break;
       case "svg":
-        if (outputFile == null) {
-          throw new IllegalArgumentException("ViewFactory(String, String, double, "
-                  + "ReadOnlySimpleAnimation) -- outputFile name cannot be null for a svg view.");
-        }
         if (outputFile != "System.out") {
-          if (outputFile.substring(outputFile.length() - 4) != ".svg") {
+          System.out.println(outputFile);
+          if (!outputFile.substring(outputFile.length() - 4).equals(".svg")) {
             EasyAnimator.throwErrorMessage("Invalid input, output must be svg for type svg.");
           }
           FileWriter writer;
           try {
-            writer = new FileWriter(outputFile);
-          } catch (IOException error) {
-            EasyAnimator.throwErrorMessage("Invalid input, issue creating output file");
+            writer = EasyAnimator.genFileWriter(outputFile);
+          } catch (IOException e) {
+            EasyAnimator.throwErrorMessage("Error making file.");
             return null;
           }
-          view = new SVGView(model, writer, speed);
+          view = new SVGView(model
+                  , writer, speed);
           view.update();
           try {
             writer.close();
@@ -84,7 +81,8 @@ public class ViewFactory {
             return null;
           }
         } else {
-          view = new SVGView(model, System.out, speed);
+          view = new SVGView(model
+                  , System.out, speed);
           view.update();
         }
         break;
@@ -92,6 +90,7 @@ public class ViewFactory {
         EasyAnimator.throwErrorMessage("Not supported view type");
         return null;
     }
+
     return view;
   }
 }

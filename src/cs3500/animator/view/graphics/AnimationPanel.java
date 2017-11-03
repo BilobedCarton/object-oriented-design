@@ -20,7 +20,6 @@ import cs3500.animator.model.shapes.Shape;
  */
 public class AnimationPanel extends JPanel {
   private List<Shape> shapesToDraw = new ArrayList<Shape>();
-  private int currTick = 0;
 
   /**
    * Update this panel's shape data with the given shape data.
