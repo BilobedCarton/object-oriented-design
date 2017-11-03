@@ -68,7 +68,7 @@ public final class EasyAnimator {
     String useFile = System.getProperty("user.dir") + "/resources/"+inputFile;
     ReadOnlySimpleAnimation useModel = new ReadOnlySimpleAnimation(animReader.readFile(useFile,
             new SimpleAnimation.Builder()));
-    IView launchView = ViewFactory.build(viewType, outputFile, speed, useModel);
+    IView launchView = new ViewFactory().build(viewType, outputFile, speed, useModel);
   }
 
   /**

@@ -100,11 +100,6 @@ public interface IAnimationPiece {
   IAnimationPiece setLifeSpan(int start, int end) throws IllegalArgumentException;
 
   /**
-   * Render this IAnimationPiece.
-   */
-  void render();
-
-  /**
    * We make sure all AnimationPieces can be converted into Strings.
    * @param ticksPerSecond is the number of ticks executed by the model per second.
    * @return the string representing this IAnimationPiece

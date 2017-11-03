@@ -1,5 +1,6 @@
 package cs3500.animator.view;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import cs3500.animator.model.ReadOnlySimpleAnimation;
@@ -26,22 +27,42 @@ public class TextView extends AbstractView {
   //in this case we output the shapes and such as a string.
   @Override
   public void update() {
-    String str = "Shapes:\n";
-    for (Shape shape : getModel().getShapes()) {
-      str += shape.toString(this.speed) + "\n";
+
+    int[] shapeTimes = new int[getModel().getShapes().size()];
+    for (int i = 0; i < getModel().getShapes().size(); i++) {
+      shapeTimes[i] = getModel().getShapes().get(i).getAppearTick();
+    }
+    Arrays.sort(shapeTimes);
+    String retString = "Shapes:\n";
+    for (int i = 0; i < shapeTimes.length; i++) {
+      for (int x = 0; x < getModel().getShapes().size(); x++) {
+        if (shapeTimes[i] == getModel().getShapes().get(x).getAppearTick()) {
+          retString += getModel().getShapes().get(x).toString(speed);
+          retString += "\n";
+          break;
+        }
+      }
     }
 
-    List<AnimationAction> ourActions = getModel().getActions();
+    int[] actionTimes = new int[getModel().getActions().size()];
+    for (int i = 0; i < getModel().getActions().size(); i++) {
+      actionTimes[i] = getModel().getActions().get(i).getStartTick();
+    }
+    Arrays.sort(actionTimes);
 
-
-    for (AnimationAction action : getModel().getActions()) {
-      action.updateOriginalValues();
-      str += action.toString(this.speed);
-      action.executeFinal();
+    for (int i = 0; i < actionTimes.length; i++) {
+      for (int x = 0; x < getModel().getActions().size(); x++) {
+        if (actionTimes[i] == getModel().getActions().get(x).getStartTick()) {
+          getModel().getActions().get(x).updateOriginalValues();
+          retString += getModel().getActions().get(x).toString(speed);
+          getModel().getActions().get(x).executeFinal();
+          break;
+        }
+      }
     }
 
     try {
-      out.append(str);
+      out.append(retString);
     } catch (IOException e) {
       throw new IllegalStateException("error with writing file");
     }
