@@ -49,10 +49,4 @@ public interface IAnimationModel {
    */
   void runCycle(int currTick);
 
-  /**
-   * Converts this object into a string.
-   * @param ticksPerSecond is the number of ticks executed per second by this animation program.
-   * @return the String representing this object.
-   */
-  String toString(double ticksPerSecond);
 }

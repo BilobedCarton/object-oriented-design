@@ -11,7 +11,7 @@ import cs3500.animator.model.shapes.ShapeBuilder;
 import static org.junit.Assert.assertEquals;
 
 public class TestAnimationModel {
-  SimpleAnimation model = new SimpleAnimation(1);
+  SimpleAnimation model = new SimpleAnimation();
 
   @Test
   public void testAdd() {

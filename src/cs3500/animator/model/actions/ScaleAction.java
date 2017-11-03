@@ -82,4 +82,33 @@ public class ScaleAction extends AnimationAction {
   public double getTargetSizeY() {
     return targetSizeY;
   }
+
+  @Override
+  public String toSVG(double ticksPerSecond){
+    //updateOriginalValues();
+    String xChar;
+    String yChar;
+    switch(getShape().getType()) {
+      case "rect":
+        xChar = "width";
+        yChar = "height";
+        break;
+      case "oval":
+        xChar = "rx";
+        yChar = "ry";
+        break;
+      default:
+        throw new IllegalArgumentException("invalid shape type");
+    }
+    String retString = "\t<animate attributeType=\"xml\" begin=\""
+            + (getStartTick()*ticksPerSecond*1000) +"ms\" dur=\""
+            + ((getEndTick()- getStartTick())*ticksPerSecond*1000)+"ms\" attributeName=\"" + xChar
+            + "\" from=\"" + originalSizeX + "\" to=\"" + targetSizeX +"\" fill=\"freeze\" />\n";
+    retString += "\t<animate attributeType=\"xml\" begin=\"" + (getStartTick()*ticksPerSecond*1000)
+            +"ms\" dur=\"" + ((getEndTick()- getStartTick())*ticksPerSecond*1000)+"ms\" "
+            +"attributeName=\"" + yChar + "\" from=\"" + originalSizeY + "\" to=\"" + targetSizeY
+            +"\" fill=\"freeze\" />\n";
+    //execute();
+    return retString;
+  }
 }

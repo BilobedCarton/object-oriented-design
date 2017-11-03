@@ -7,13 +7,19 @@ import cs3500.animator.model.ReadOnlySimpleAnimation;
  */
 public abstract class AbstractView implements IView {
   private ReadOnlySimpleAnimation model;
+  protected int frameSizeX;
+  protected int frameSizeY;
+  protected double speed;
 
   /**
    * Creates a new {@code AbstractView} object.
    * @param model is the model related to this view.
    */
-  AbstractView(ReadOnlySimpleAnimation model) {
+  AbstractView(ReadOnlySimpleAnimation model, double speed) {
+    this.frameSizeX = 700;
+    this.frameSizeY= 500;
     this.model = model;
+    this.speed = speed;
   }
 
   @Override

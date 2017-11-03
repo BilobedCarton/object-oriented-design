@@ -81,4 +81,6 @@ public abstract class AnimationAction implements ITimedAction {
     }
     this.shape = s;
   }
+
+  public abstract String toSVG(double ticksPerSecond);
 }
