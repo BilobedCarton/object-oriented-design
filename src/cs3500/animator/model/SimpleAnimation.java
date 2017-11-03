@@ -52,6 +52,9 @@ public class SimpleAnimation implements IAnimationModel {
   public void addAction(AnimationAction action) {
     Shape shape = this.getShapeStateAt(action.getStartTick(), action.getShape());
     action.setOriginalValues(shape);
+    for (AnimationAction a: this.actions) {
+      action.setOriginalValues(this.getShapeStateAt(a.getStartTick(), a.getShape()));
+    }
     this.actions.add(action);
   }
 
