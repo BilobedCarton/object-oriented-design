@@ -1,4 +1,4 @@
-package cs3500.animator.util;
+package util;
 
 /**
  * This interface contains all the methods that the AnimationFileReader class

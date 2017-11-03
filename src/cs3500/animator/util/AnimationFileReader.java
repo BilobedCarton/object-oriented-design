@@ -1,8 +1,7 @@
-package cs3500.animator.util;
+package util;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
@@ -24,13 +23,13 @@ public class AnimationFileReader {
    * @param builder  the builder used to build the model
    * @param <T>      the type of model
    * @return the model
-   * @throws FileNotFoundException if the specified file cannot be read
+   * @throws FileNotFoundException  if the specified file cannot be read
    * @throws InputMismatchException if some data value is not of the expected
-   * type
-   * @throws IllegalStateException if an illegal token is read from the file
+   *                                type
+   * @throws IllegalStateException  if an illegal token is read from the file
    */
   public <T> T readFile(String fileName, TweenModelBuilder<T> builder) throws
-          FileNotFoundException, IllegalStateException,InputMismatchException {
+          FileNotFoundException, IllegalStateException, InputMismatchException {
     Scanner sc;
 
     sc = new Scanner(new FileInputStream(fileName));
@@ -52,10 +51,10 @@ public class AnimationFileReader {
           OvalInfo cinfo = readOvalInfo(sc);
           builder.addOval(
                   cinfo.getName(),
-                  cinfo.getX(),cinfo.getY(),
-                  cinfo.getXRadius(),cinfo.getYRadius(),
-                  cinfo.getR(),cinfo.getG(),cinfo.getB(),
-                  cinfo.getStart(),cinfo.getEnd());
+                  cinfo.getX(), cinfo.getY(),
+                  cinfo.getXRadius(), cinfo.getYRadius(),
+                  cinfo.getR(), cinfo.getG(), cinfo.getB(),
+                  cinfo.getStart(), cinfo.getEnd());
           break;
         case "move":
           MoveInfo minfo = readMoveInfo(sc);
@@ -100,7 +99,7 @@ public class AnimationFileReader {
   }
 
   private RectangleInfo readRectangleInfo(Scanner sc) throws
-          IllegalStateException,InputMismatchException {
+          IllegalStateException, InputMismatchException {
     RectangleInfo info = new RectangleInfo();
 
     while (!info.isAllInitialized()) {
@@ -133,7 +132,7 @@ public class AnimationFileReader {
           info.setEnd(sc.nextInt());
           break;
         default:
-          throw new IllegalStateException("Invalid attribute "+command+" for "
+          throw new IllegalStateException("Invalid attribute " + command + " for "
                   + "rectangle");
       }
     }
@@ -142,7 +141,7 @@ public class AnimationFileReader {
   }
 
   private OvalInfo readOvalInfo(Scanner sc) throws
-          IllegalStateException,InputMismatchException {
+          IllegalStateException, InputMismatchException {
     OvalInfo info = new OvalInfo();
 
     while (!info.isAllInitialized()) {
@@ -175,7 +174,7 @@ public class AnimationFileReader {
           info.setEnd(sc.nextInt());
           break;
         default:
-          throw new IllegalStateException("Invalid attribute "+command+" for "
+          throw new IllegalStateException("Invalid attribute " + command + " for "
                   + "oval");
       }
     }
@@ -184,7 +183,7 @@ public class AnimationFileReader {
   }
 
   private MoveInfo readMoveInfo(Scanner sc) throws
-          IllegalStateException,InputMismatchException {
+          IllegalStateException, InputMismatchException {
     MoveInfo info = new MoveInfo();
 
     while (!info.isAllInitialized()) {
@@ -206,7 +205,7 @@ public class AnimationFileReader {
           info.setEnd(sc.nextInt());
           break;
         default:
-          throw new IllegalStateException("Invalid attribute "+command+" for "
+          throw new IllegalStateException("Invalid attribute " + command + " for "
                   + "move");
       }
     }
@@ -215,7 +214,7 @@ public class AnimationFileReader {
   }
 
   private ChangeColorInfo readChangeColorInfo(Scanner sc) throws
-          IllegalStateException,InputMismatchException {
+          IllegalStateException, InputMismatchException {
     ChangeColorInfo info = new ChangeColorInfo();
 
     while (!info.isAllInitialized()) {
@@ -239,7 +238,7 @@ public class AnimationFileReader {
           info.setEnd(sc.nextInt());
           break;
         default:
-          throw new IllegalStateException("Invalid attribute "+command+" for "
+          throw new IllegalStateException("Invalid attribute " + command + " for "
                   + "change-color");
       }
     }
@@ -248,7 +247,7 @@ public class AnimationFileReader {
   }
 
   private ScaleByInfo readScaleByInfo(Scanner sc) throws
-          IllegalStateException,InputMismatchException {
+          IllegalStateException, InputMismatchException {
     ScaleByInfo info = new ScaleByInfo();
 
     while (!info.isAllInitialized()) {
@@ -270,7 +269,7 @@ public class AnimationFileReader {
           info.setEnd(sc.nextInt());
           break;
         default:
-          throw new IllegalStateException("Invalid attribute "+command+" for "
+          throw new IllegalStateException("Invalid attribute " + command + " for "
                   + "scale-to");
       }
     }
@@ -280,83 +279,86 @@ public class AnimationFileReader {
 
 
   class Inputable {
-    protected Map<String,Boolean> valueFlags;
+    protected Map<String, Boolean> valueFlags;
 
     public Inputable() {
       valueFlags = new HashMap<String, Boolean>();
 
     }
 
-      public boolean isAllInitialized() {
-        for (Map.Entry<String,Boolean> entry:valueFlags.entrySet()) {
-          if (!entry.getValue()) {
-            return false;
-          }
+    public boolean isAllInitialized() {
+      for (Map.Entry<String, Boolean> entry : valueFlags.entrySet()) {
+        if (!entry.getValue()) {
+          return false;
         }
-        return true;
       }
+      return true;
+    }
   }
 
-  class ShapeInfo extends Inputable{
+  class ShapeInfo extends Inputable {
     private String name;
-    private float r, g, b;
-    private int start, end;
+    private float r;
+    private float g;
+    private float b;
+    private int start;
+    private int end;
 
 
-
-     ShapeInfo() {
+    ShapeInfo() {
       super();
-      valueFlags.put("name",false);
-      valueFlags.put("r",false);
-      valueFlags.put("g",false);
-      valueFlags.put("b",false);
-      valueFlags.put("start",false);
-      valueFlags.put("end",false);
+      valueFlags.put("name", false);
+      valueFlags.put("r", false);
+      valueFlags.put("g", false);
+      valueFlags.put("b", false);
+      valueFlags.put("start", false);
+      valueFlags.put("end", false);
     }
 
-     void setName(String name) {
+    void setName(String name) {
       this.name = name;
-      valueFlags.replace("name",true);
+      valueFlags.replace("name", true);
     }
 
-     void setR(float r) {
+    void setR(float r) {
       this.r = r;
-      valueFlags.replace("r",true);
+      valueFlags.replace("r", true);
     }
 
-     void setG(float g) {
+    void setG(float g) {
       this.g = g;
-      valueFlags.replace("g",true);
+      valueFlags.replace("g", true);
     }
 
 
-     void setB(float b) {
+    void setB(float b) {
       this.b = b;
-      valueFlags.replace("b",true);
+      valueFlags.replace("b", true);
     }
-     void setStart(int start) {
+
+    void setStart(int start) {
       this.start = start;
-      valueFlags.replace("start",true);
+      valueFlags.replace("start", true);
     }
 
-     void setEnd(int end) {
+    void setEnd(int end) {
       this.end = end;
-      valueFlags.replace("end",true);
+      valueFlags.replace("end", true);
     }
 
-     float getR() {
+    float getR() {
       return r;
     }
 
-     float getG() {
+    float getG() {
       return g;
     }
 
-     float getB() {
+    float getB() {
       return b;
     }
 
-     String getName() {
+    String getName() {
       return name;
     }
 
@@ -369,38 +371,40 @@ public class AnimationFileReader {
     }
 
 
-
   }
 
   class RectangleInfo extends ShapeInfo {
-    private float x, y, width, height;
+    private float x;
+    private float y;
+    private float width;
+    private float height;
 
     RectangleInfo() {
       super();
-      valueFlags.put("x",false);
-      valueFlags.put("y",false);
-      valueFlags.put("width",false);
-      valueFlags.put("height",false);
+      valueFlags.put("x", false);
+      valueFlags.put("y", false);
+      valueFlags.put("width", false);
+      valueFlags.put("height", false);
     }
 
     void setX(float x) {
       this.x = x;
-      valueFlags.replace("x",true);
+      valueFlags.replace("x", true);
     }
 
     void setY(float y) {
       this.y = y;
-      valueFlags.replace("y",true);
+      valueFlags.replace("y", true);
     }
 
     void setWidth(float width) {
       this.width = width;
-      valueFlags.replace("width",true);
+      valueFlags.replace("width", true);
     }
 
     void setHeight(float height) {
       this.height = height;
-      valueFlags.replace("height",true);
+      valueFlags.replace("height", true);
     }
 
     float getX() {
@@ -421,34 +425,37 @@ public class AnimationFileReader {
   }
 
   class OvalInfo extends ShapeInfo {
-    private float cx, cy, xradius, yradius;
+    private float cx;
+    private float cy;
+    private float xradius;
+    private float yradius;
 
     OvalInfo() {
       super();
-      valueFlags.put("cx",false);
-      valueFlags.put("cy",false);
-      valueFlags.put("xradius",false);
-      valueFlags.put("yradius",false);
+      valueFlags.put("cx", false);
+      valueFlags.put("cy", false);
+      valueFlags.put("xradius", false);
+      valueFlags.put("yradius", false);
     }
 
     void setX(float x) {
       this.cx = x;
-      valueFlags.replace("cx",true);
+      valueFlags.replace("cx", true);
     }
 
     void setY(float y) {
       this.cy = y;
-      valueFlags.replace("cy",true);
+      valueFlags.replace("cy", true);
     }
 
     void setXRadius(float radius) {
       this.xradius = radius;
-      valueFlags.replace("xradius",true);
+      valueFlags.replace("xradius", true);
     }
 
     void setYRadius(float radius) {
       this.yradius = radius;
-      valueFlags.replace("yradius",true);
+      valueFlags.replace("yradius", true);
     }
 
     float getX() {
@@ -463,75 +470,79 @@ public class AnimationFileReader {
       return xradius;
     }
 
-     float getYRadius() {
+    float getYRadius() {
       return yradius;
     }
 
   }
 
-  class MoveInfo extends Inputable{
+  class MoveInfo extends Inputable {
     private String name;
-    private float fromX,fromY,toX,toY;
-    private int start,end;
+    private float fromX;
+    private float fromY;
+    private float toX;
+    private float toY;
+    private int start;
+    private int end;
 
-     MoveInfo() {
+    MoveInfo() {
       super();
 
-      valueFlags.put("name",false);
-      valueFlags.put("fromx",false);
-      valueFlags.put("fromy",false);
-       valueFlags.put("tox",false);
-       valueFlags.put("toy",false);
-       valueFlags.put("start",false);
-      valueFlags.put("end",false);
+      valueFlags.put("name", false);
+      valueFlags.put("fromx", false);
+      valueFlags.put("fromy", false);
+      valueFlags.put("tox", false);
+      valueFlags.put("toy", false);
+      valueFlags.put("start", false);
+      valueFlags.put("end", false);
 
     }
 
-     void setName(String name) {
+    void setName(String name) {
       this.name = name;
-      valueFlags.replace("name",true);
+      valueFlags.replace("name", true);
     }
 
-     void setFromX(float x) {
+    void setFromX(float x) {
       this.fromX = x;
-      valueFlags.replace("fromx",true);
+      valueFlags.replace("fromx", true);
     }
 
-     void setFromY(float y) {
+    void setFromY(float y) {
       this.fromY = y;
-      valueFlags.replace("fromy",true);
+      valueFlags.replace("fromy", true);
     }
 
 
     void setToX(float x) {
       this.toX = x;
-      valueFlags.replace("tox",true);
+      valueFlags.replace("tox", true);
     }
 
     void setToY(float y) {
       this.toY = y;
-      valueFlags.replace("toy",true);
+      valueFlags.replace("toy", true);
     }
 
-     void setStart(int start) {
+    void setStart(int start) {
       this.start = start;
-      valueFlags.replace("start",true);
+      valueFlags.replace("start", true);
     }
 
-     void setEnd(int end) {
+    void setEnd(int end) {
       this.end = end;
-      valueFlags.replace("end",true);
+      valueFlags.replace("end", true);
     }
 
-     String getName() {
+    String getName() {
       return name;
     }
 
-     float getFromX() {
+    float getFromX() {
       return fromX;
     }
 
-     float getFromY() {
+    float getFromY() {
       return fromY;
     }
 
@@ -548,75 +559,81 @@ public class AnimationFileReader {
       return start;
     }
 
-     int getEnd() {
+    int getEnd() {
       return end;
     }
   }
 
-  class ChangeColorInfo extends Inputable{
+  class ChangeColorInfo extends Inputable {
     private String name;
-    private float fromR,fromG,fromB,toR,toG,toB;
-    private int start,end;
+    private float fromR;
+    private float fromG;
+    private float fromB;
+    private float toR;
+    private float toG;
+    private float toB;
+    private int start;
+    private int end;
 
     ChangeColorInfo() {
       super();
 
-      valueFlags.put("name",false);
-      valueFlags.put("tor",false);
-      valueFlags.put("tog",false);
-      valueFlags.put("tob",false);
-      valueFlags.put("fromr",false);
-      valueFlags.put("fromg",false);
-      valueFlags.put("fromb",false);
-      valueFlags.put("start",false);
-      valueFlags.put("end",false);
+      valueFlags.put("name", false);
+      valueFlags.put("tor", false);
+      valueFlags.put("tog", false);
+      valueFlags.put("tob", false);
+      valueFlags.put("fromr", false);
+      valueFlags.put("fromg", false);
+      valueFlags.put("fromb", false);
+      valueFlags.put("start", false);
+      valueFlags.put("end", false);
 
     }
 
     void setName(String name) {
       this.name = name;
-      valueFlags.replace("name",true);
+      valueFlags.replace("name", true);
     }
 
     void setFromR(float r) {
       this.fromR = r;
-      valueFlags.replace("fromr",true);
+      valueFlags.replace("fromr", true);
     }
 
     void setFromG(float g) {
       this.fromG = g;
-      valueFlags.replace("fromg",true);
+      valueFlags.replace("fromg", true);
     }
 
     void setFromB(float b) {
       this.fromB = b;
-      valueFlags.replace("fromb",true);
+      valueFlags.replace("fromb", true);
     }
 
 
     void setToR(float r) {
       this.toR = r;
-      valueFlags.replace("tor",true);
+      valueFlags.replace("tor", true);
     }
 
     void setToG(float g) {
       this.toG = g;
-      valueFlags.replace("tog",true);
+      valueFlags.replace("tog", true);
     }
 
     void setToB(float b) {
       this.toB = b;
-      valueFlags.replace("tob",true);
+      valueFlags.replace("tob", true);
     }
 
     void setStart(int start) {
       this.start = start;
-      valueFlags.replace("start",true);
+      valueFlags.replace("start", true);
     }
 
     void setEnd(int end) {
       this.end = end;
-      valueFlags.replace("end",true);
+      valueFlags.replace("end", true);
     }
 
     String getName() {
@@ -631,7 +648,9 @@ public class AnimationFileReader {
       return fromG;
     }
 
-    float getFromB() { return fromB;}
+    float getFromB() {
+      return fromB;
+    }
 
 
     float getToR() {
@@ -642,7 +661,9 @@ public class AnimationFileReader {
       return toG;
     }
 
-    float getToB() { return toB;}
+    float getToB() {
+      return toB;
+    }
 
     int getStart() {
       return start;
@@ -653,59 +674,63 @@ public class AnimationFileReader {
     }
   }
 
-  class ScaleByInfo extends Inputable{
+  class ScaleByInfo extends Inputable {
     private String name;
-    private float fromSx,fromSy,toSx,toSy;
-    private int start,end;
+    private float fromSx;
+    private float fromSy;
+    private float toSx;
+    private float toSy;
+    private int start;
+    private int end;
 
     ScaleByInfo() {
       super();
 
-      valueFlags.put("name",false);
-      valueFlags.put("fromsx",false);
-      valueFlags.put("fromsy",false);
-      valueFlags.put("tosx",false);
-      valueFlags.put("tosy",false);
-      valueFlags.put("start",false);
-      valueFlags.put("end",false);
+      valueFlags.put("name", false);
+      valueFlags.put("fromsx", false);
+      valueFlags.put("fromsy", false);
+      valueFlags.put("tosx", false);
+      valueFlags.put("tosy", false);
+      valueFlags.put("start", false);
+      valueFlags.put("end", false);
 
     }
 
     void setName(String name) {
       this.name = name;
-      valueFlags.replace("name",true);
+      valueFlags.replace("name", true);
     }
 
     void setFromXScale(float sx) {
       this.fromSx = sx;
-      valueFlags.replace("fromsx",true);
+      valueFlags.replace("fromsx", true);
     }
 
     void setFromYScale(float sy) {
       this.fromSy = sy;
-      valueFlags.replace("fromsy",true);
+      valueFlags.replace("fromsy", true);
     }
 
 
     void setToXScale(float sx) {
       this.toSx = sx;
-      valueFlags.replace("tosx",true);
+      valueFlags.replace("tosx", true);
     }
 
     void setToYScale(float sy) {
       this.toSy = sy;
-      valueFlags.replace("tosy",true);
+      valueFlags.replace("tosy", true);
     }
 
 
     void setStart(int start) {
       this.start = start;
-      valueFlags.replace("start",true);
+      valueFlags.replace("start", true);
     }
 
     void setEnd(int end) {
       this.end = end;
-      valueFlags.replace("end",true);
+      valueFlags.replace("end", true);
     }
 
     String getName() {

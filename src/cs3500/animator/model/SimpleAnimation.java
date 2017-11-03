@@ -9,7 +9,6 @@ import cs3500.animator.model.actions.AnimationAction;
 import cs3500.animator.model.actions.AnimationActionBuilder;
 import cs3500.animator.model.shapes.Shape;
 import cs3500.animator.model.shapes.ShapeBuilder;
-import cs3500.animator.util.TweenModelBuilder;
 
 /**
  * This represents an animation that involves shapesToAdd and various actionsToAdd taken upon these shapesToAdd.
