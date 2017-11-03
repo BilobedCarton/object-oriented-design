@@ -54,12 +54,7 @@ public class ViewFactory {
         }
         break;
       case "visual":
-<<<<<<< HEAD
         view = new VisualView(model, speed, 700, 700);
-=======
-        view = new VisualView(model
-                , speed, 700, 700);
->>>>>>> master
         ((VisualView) view).start();
         break;
       case "svg":
