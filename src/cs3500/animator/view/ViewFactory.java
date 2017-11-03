@@ -58,6 +58,7 @@ public class ViewFactory {
         break;
       case "visual":
         view = new VisualView(model, speed, 700, 700);
+        ((VisualView) view).start();
         break;
       case "svg":
         if (outputFile == null) {

@@ -15,6 +15,7 @@ import cs3500.animator.util.AnimationFileReader;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGView;
 import cs3500.animator.view.TextView;
+import cs3500.animator.view.ViewFactory;
 import cs3500.animator.view.VisualView;
 
 /**
@@ -69,67 +70,7 @@ public final class EasyAnimator {
             new SimpleAnimation.Builder()));
     IView launchView;
 
-    switch(viewType) {
-      case "text":
-        if(outputFile != "System.out") {
-          if(!outputFile.substring(outputFile.length() - 4).equals(".txt")) {
-            throwErrorMessage("Invalid input, output must be .txt for type text.");
-          }
-          FileWriter writer;
-          try {
-            writer = genFileWriter(outputFile);
-          }catch(IOException e) {
-            throwErrorMessage("Error making file.");
-            return;
-          }
-          launchView = new TextView(useModel,writer, speed);
-          launchView.update();
-          try {
-            writer.close();
-          } catch(IOException error){
-            throwErrorMessage("Error closing file.");
-            return;
-          }
-        }
-        else {
-          launchView = new TextView(useModel, System.out, speed);
-          launchView.update();
-        }
-        break;
-      case "visual":
-        launchView = new VisualView(useModel, speed, 700, 700);
-        ((VisualView) launchView).start();
-        break;
-      case "svg":
-        if(outputFile != "System.out") {
-          if(!outputFile.substring(outputFile.length() - 4).equals(".svg")) {
-            throwErrorMessage("Invalid input, output must be svg for type svg.");
-          }
-          FileWriter writer;
-          try {
-            writer = genFileWriter(outputFile);
-          }catch(IOException e) {
-            throwErrorMessage("Error making file.");
-            return;
-          }
-          launchView = new SVGView(useModel,writer, speed);
-          launchView.update();
-          try {
-            writer.close();
-          } catch(IOException error){
-            throwErrorMessage("Error closing file.");
-            return;
-          }
-        }
-        else {
-          launchView = new SVGView(useModel, System.out, speed);
-          launchView.update();
-        }
-        break;
-      default:
-        throwErrorMessage("Not supported view type");
-        return;
-    }
+    launchView = new ViewFactory().build(viewType, outputFile, speed, useModel);
   }
 
   /**
