@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e12a5ef1-331f-482f-9075-97773d5e4cb0" name="Default" comment="" />
-    <ignored path="$PROJECT_DIR$/out/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="2138e66a-0150-413c-b39a-b9d80db1ed96" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/test/Assignment6/TestTextView.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Assignment6/META-INF/MANIFEST.MF" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/TestTextView.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/view/ViewFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/big-bang-big-crunch.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/buildings.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/simple-example-with-loopback.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/simple-example.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/smalldemo.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/toh-12.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/toh-3.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/toh-5.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/toh-8.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/view/TextView.class" afterPath="$PROJECT_DIR$/out/production/Assignment6/cs3500/animator/view/TextView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/Assignment6/TestSVGView.class" afterPath="$PROJECT_DIR$/out/test/Assignment6/TestSVGView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs3500/animator/view/TextView.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/TextView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/TestSVGView.java" afterPath="$PROJECT_DIR$/test/TestSVGView.java" />
+    </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +77,7 @@
         <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/VisualView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="510">
-              <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+              <caret line="34" column="1" lean-forward="false" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/test/TestAnimationActions.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
-              <caret line="107" column="32" lean-forward="true" selection-start-line="107" selection-start-column="32" selection-end-line="107" selection-end-column="32" />
+              <caret line="107" column="32" lean-forward="false" selection-start-line="107" selection-start-column="32" selection-end-line="107" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -123,44 +141,10 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>shape</find>
-      <find>public</find>
-      <find>.setTicksPerSecond(1)</find>
-      <find>System</find>
-      <find>system.out.pr</find>
-      <find>ticks</find>
-      <find>useModel</find>
-      <find>launchView</find>
-    </findStrings>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
     </option>
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/test/TestSVGView.java" />
-        <option value="$PROJECT_DIR$/test/TestAnimationModel.java" />
-        <option value="$PROJECT_DIR$/src/cs3500/animator/view/ViewFactory.java" />
-        <option value="$PROJECT_DIR$/test/TestViewFactory.java" />
-        <option value="$PROJECT_DIR$/README.txt" />
-        <option value="$PROJECT_DIR$/src/cs3500/animator/util/AnimationFileReader.java" />
-        <option value="$PROJECT_DIR$/src/cs3500/animator/util/TweenModelBuilder.java" />
-        <option value="$PROJECT_DIR$/src/cs3500/animator/model/SimpleAnimation.java" />
-        <option value="$PROJECT_DIR$/src/cs3500/animator/view/VisualView.java" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1366" />
-    <option name="height" value="768" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -189,6 +173,11 @@
             <path>
               <item name="Assignment6" type="b2602c69:ProjectViewProjectNode" />
               <item name="Assignment6" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Assignment6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Assignment6" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Assignment6" type="b2602c69:ProjectViewProjectNode" />
@@ -428,50 +417,10 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="e12a5ef1-331f-482f-9075-97773d5e4cb0" name="Default" comment="" />
-      <created>1509749761991</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1509749761991</updated>
-    </task>
     <servers />
-  </component>
-  <component name="TestHistory">
-    <history-entry file="TestAnimationModel_testGetShapeStateAt - 2017.11.03 at 18h 29m 15s.xml">
-      <configuration name="TestAnimationModel.testGetShapeStateAt" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestAnimationModel_testGetShapeStateAt - 2017.11.03 at 18h 29m 39s.xml">
-      <configuration name="TestAnimationModel.testGetShapeStateAt" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestAnimationModel_testGetShapeStateAt - 2017.11.03 at 18h 29m 48s.xml">
-      <configuration name="TestAnimationModel.testGetShapeStateAt" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestViewFactory - 2017.11.03 at 18h 42m 09s.xml">
-      <configuration name="TestViewFactory" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestViewFactory - 2017.11.03 at 18h 46m 16s.xml">
-      <configuration name="TestViewFactory" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestViewFactory - 2017.11.03 at 18h 46m 28s.xml">
-      <configuration name="TestViewFactory" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestViewFactory_testNewTextViewInvalid - 2017.11.03 at 18h 39m 11s.xml">
-      <configuration name="TestViewFactory.testNewTextViewInvalid" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestViewFactory_testNewTextViewInvalid - 2017.11.03 at 18h 39m 20s.xml">
-      <configuration name="TestViewFactory.testNewTextViewInvalid" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestViewFactory_testNewTextViewToFile - 2017.11.03 at 18h 37m 19s.xml">
-      <configuration name="TestViewFactory.testNewTextViewToFile" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestViewFactory_testNewTextViewToOut - 2017.11.03 at 18h 35m 53s.xml">
-      <configuration name="TestViewFactory.testNewTextViewToOut" configurationId="JUnit" />
-    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="768" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -482,7 +431,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19106881" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19106881" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39972144" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -630,7 +579,7 @@
     <entry file="file://$PROJECT_DIR$/test/TestAnimationActions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
-          <caret line="107" column="32" lean-forward="true" selection-start-line="107" selection-start-column="32" selection-end-line="107" selection-end-column="32" />
+          <caret line="107" column="32" lean-forward="false" selection-start-line="107" selection-start-column="32" selection-end-line="107" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -916,7 +865,7 @@
     <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/VisualView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
-          <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+          <caret line="34" column="1" lean-forward="false" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
