@@ -37,13 +37,6 @@ public interface IAnimationModel {
   void addShape(Shape shape) throws IllegalArgumentException;
 
   /**
-   * Checks to see if this animation has any more actions to undertake or shapes to render.
-   * @param currTick is the current tick of this animation.
-   * @return a boolean where true means there is more to do and false means there isn't.
-   */
-  boolean animationIncomplete(int currTick);
-
-  /**
    * Runs a cycle of this animation.
    * @param currTick is the current tick of this animation.
    */

@@ -61,28 +61,7 @@ public class SimpleAnimation implements IAnimationModel {
   }
 
   @Override
-  public boolean animationIncomplete(int currTick) {
-    for (Shape shape : shapes) {
-      if (shape.getDisappearTick() > currTick) {
-        return true;
-      }
-    }
-    for (AnimationAction action : actions) {
-      if (action.getEndTick() > currTick) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  @Override
   public void runCycle(int currTick) {
-    for (Shape shape : shapes) {
-      if (shape.getAppearTick() <= currTick && shape.getDisappearTick() > currTick) {
-        // TODO remove this, handle rendering in views
-        shape.render();
-      }
-    }
     for (AnimationAction action : actions) {
       if (action.getStartTick() <= currTick && action.getEndTick() > currTick) {
         action.execute();
