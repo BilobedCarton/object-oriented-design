@@ -47,6 +47,7 @@ public class TestSVGView {
    * Tests that our svg view correctly outputs a rect when added.
    */
   @Test
+<<<<<<< HEAD
   public void testAddShapesR() {
     SimpleAnimation buildModel = new SimpleAnimation();
     StringBuilder testBuilder = new StringBuilder();
@@ -231,5 +232,8 @@ public class TestSVGView {
             + "0.0ms\" dur=\"5000.0ms\" attributeName=\"rx\" from=\"10.0\" to=\"60.0\" fill=\"free"
             + "ze\" />\n\t<animate attributeType=\"xml\" begin=\"5000.0ms\" dur=\"5000.0ms\" attri"
             + "buteName=\"ry\" from=\"10.0\" to=\"60.0\" fill=\"freeze\" />\n</ellipse>\n</svg>");
+=======
+  public void testAddShapes() {
+>>>>>>> master
   }
 }
