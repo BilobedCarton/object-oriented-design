@@ -46,10 +46,13 @@ public class ColorShiftAction extends AnimationAction {
 
   @Override
   public String toString(double ticksPerSecond) {
+    float[] colArrayO = this.getShape().getColor().getColorComponents(null);
+    float[] colArrayN = this.getShape().getColor().getColorComponents(null);
+
     return "Shape " + this.getShape().getName() + " changes color from ("
-            + this.getShape().getColor().getRed() + "," + this.getShape().getColor().getGreen()
-            + "," + this.getShape().getColor().getBlue() + ") to (" + this.targetColor.getRed()
-            + "," + this.targetColor.getGreen() + "," + this.targetColor.getBlue() + ") from t="
+            + colArrayO[0] + "," + colArrayO[1]
+            + "," + colArrayO[2] + ") to (" + colArrayN[0]
+            + "," + colArrayN[1] + "," + colArrayN[2] + ") from t="
             + this.getStartTick() / ticksPerSecond + "s to t="
             + this.getEndTick() / ticksPerSecond + "s\n";
   }
@@ -84,8 +87,8 @@ public class ColorShiftAction extends AnimationAction {
             + targetColor.getGreen() + "," + targetColor.getBlue() + ")";
 
     String retString = "\t<animate attributeType=\"xml\" begin=\""
-            + (getStartTick()*ticksPerSecond*1000) +"ms\" dur=\""
-            + ((getEndTick()- getStartTick())*ticksPerSecond*1000)+"ms\" attributeName=\"fill\""
+            + (getStartTick()/ticksPerSecond*1000) +"ms\" dur=\""
+            + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" attributeName=\"fill\""
             + " from=\"" + startColor + "\" to=\"" + endColor +"\" fill=\"freeze\" />\n";
     return retString;
   }

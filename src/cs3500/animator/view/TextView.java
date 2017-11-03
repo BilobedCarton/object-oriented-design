@@ -1,8 +1,10 @@
 package cs3500.animator.view;
 import java.io.IOException;
+import java.util.List;
 
 import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.actions.AnimationAction;
+import cs3500.animator.model.actions.ITimedAction;
 import cs3500.animator.model.shapes.Shape;
 
 /**
@@ -28,8 +30,14 @@ public class TextView extends AbstractView {
     for (Shape shape : getModel().getShapes()) {
       str += shape.toString(this.speed) + "\n";
     }
+
+    List<AnimationAction> ourActions = getModel().getActions();
+
+
     for (AnimationAction action : getModel().getActions()) {
-      str += action.toString(this.speed) + "\n";
+      action.updateOriginalValues();
+      str += action.toString(this.speed);
+      action.executeFinal();
     }
 
     try {
