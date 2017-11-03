@@ -35,8 +35,8 @@ public class Rectangle extends Shape {
             + this.getSizeX() + " Height: " + this.getSizeY() + ", Color: ("
             + this.getColor().getRed() + "," + this.getColor().getGreen() + ","
             + this.getColor().getBlue() + ")\n" + "Appears at t="
-            + this.getAppearTick() * ticksPerSecond + "s\n" + "Disappears at t="
-            + this.getDisappearTick() * ticksPerSecond + "s\n";
+            + this.getAppearTick() / ticksPerSecond + "s\n" + "Disappears at t="
+            + this.getDisappearTick() / ticksPerSecond + "s\n";
   }
 
   @Override
@@ -46,10 +46,10 @@ public class Rectangle extends Shape {
             + this.getSizeY() + "\" fill=\"rgb(" + this.getColor().getRed() + ","
             + this.getColor().getGreen() + "," + this.getColor().getBlue() + ")\""
             + " visibility=\"hidden\" >\n";
-    retString += "\t<animate attributeType=\"xml\" begin=\""+ (getAppearTick()*ticksPerSecond*1000)
+    retString += "\t<animate attributeType=\"xml\" begin=\""+ (getAppearTick()/ticksPerSecond*1000)
             + "ms\" attributeName=\"visibility\" to=\"visible\" />\n";
     retString += "\t<animate attributeType=\"xml\" begin=\""
-            +(getDisappearTick()*ticksPerSecond*1000) +"ms\" attributeName=\"visibility\""
+            +(getDisappearTick()/ticksPerSecond*1000) +"ms\" attributeName=\"visibility\""
             + " to=\"hidden\" />\n";
     return retString;
   }

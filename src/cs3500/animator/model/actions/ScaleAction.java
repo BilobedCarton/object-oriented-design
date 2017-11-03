@@ -80,7 +80,7 @@ public class ScaleAction extends AnimationAction {
 
   @Override
   public String toSVG(double ticksPerSecond){
-    //updateOriginalValues();
+    updateOriginalValues();
     String xChar;
     String yChar;
     switch(getShape().getType()) {
@@ -96,14 +96,14 @@ public class ScaleAction extends AnimationAction {
         throw new IllegalArgumentException("invalid shape type");
     }
     String retString = "\t<animate attributeType=\"xml\" begin=\""
-            + (getStartTick()*ticksPerSecond*1000) +"ms\" dur=\""
-            + ((getEndTick()- getStartTick())*ticksPerSecond*1000)+"ms\" attributeName=\"" + xChar
+            + (getStartTick()/ticksPerSecond*1000) +"ms\" dur=\""
+            + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" attributeName=\"" + xChar
             + "\" from=\"" + originalSizeX + "\" to=\"" + targetSizeX +"\" fill=\"freeze\" />\n";
-    retString += "\t<animate attributeType=\"xml\" begin=\"" + (getStartTick()*ticksPerSecond*1000)
-            +"ms\" dur=\"" + ((getEndTick()- getStartTick())*ticksPerSecond*1000)+"ms\" "
+    retString += "\t<animate attributeType=\"xml\" begin=\"" + (getStartTick()/ticksPerSecond*1000)
+            +"ms\" dur=\"" + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" "
             +"attributeName=\"" + yChar + "\" from=\"" + originalSizeY + "\" to=\"" + targetSizeY
             +"\" fill=\"freeze\" />\n";
-    //execute();
+    execute();
     return retString;
   }
 }

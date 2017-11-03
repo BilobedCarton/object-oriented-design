@@ -129,7 +129,7 @@ public class SimpleAnimation implements IAnimationModel {
           if (a.getStartTick() == i) {
             a.updateOriginalValues();
           }
-          if (a.getStartTick() >= i && a.getEndTick() < i) {
+          if (a.getStartTick() <= i && a.getEndTick() > i) {
             a.execute();
           }
         }

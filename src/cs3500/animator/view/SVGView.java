@@ -19,12 +19,21 @@ public class SVGView extends AbstractView {
 
   @Override
   public void update() {
+    for(Shape shape : getModel().getShapes()) {
+      if(shape.getSizeX() > frameSizeX){
+        frameSizeX = (int)shape.getSizeX();
+      }
+      if(shape.getSizeY() > frameSizeY){
+        frameSizeY = (int)shape.getSizeY();
+      }
+    }
+
     String retString ="<svg width=\""+frameSizeX+"\" height=\""+frameSizeY+"\" version=\"1.1\" " +
-            "xmlns=\"http://www.w3.org/2000/svg\">";
+            "xmlns=\"http://www.w3.org/2000/svg\">\n";
     for(Shape shape : getModel().getShapes()) {
       retString += shape.toSVG(this.speed);
       for (AnimationAction action : getModel().getActions()) {
-        if(action.getShape() == shape){
+        if(action.getShape().getName() == shape.getName()){
           retString += action.toSVG(this.speed);
         }
       }

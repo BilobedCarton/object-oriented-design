@@ -85,7 +85,7 @@ public class MoveAction extends AnimationAction {
 
   @Override
   public String toSVG(double ticksPerSecond){
-    //updateOriginalValues();
+    updateOriginalValues();
     String xChar;
     String yChar;
     switch(getShape().getType()) {
@@ -101,14 +101,14 @@ public class MoveAction extends AnimationAction {
         throw new IllegalArgumentException("invalid shape type");
     }
     String retString = "\t<animate attributeType=\"xml\" begin=\""
-            + (getStartTick()*ticksPerSecond*1000) +"ms\" dur=\""
-            + ((getEndTick()- getStartTick())*ticksPerSecond*1000)+"ms\" attributeName=\"" + xChar
+            + (getStartTick()/ticksPerSecond*1000) +"ms\" dur=\""
+            + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" attributeName=\"" + xChar
             + "\" from=\"" + originalX + "\" to=\"" + getTargetX() +"\" fill=\"freeze\" />\n";
-    retString += "\t<animate attributeType=\"xml\" begin=\"" + (getStartTick()*ticksPerSecond*1000)
-            +"ms\" dur=\"" + ((getEndTick()- getStartTick())*ticksPerSecond*1000)+"ms\" "
+    retString += "\t<animate attributeType=\"xml\" begin=\"" + (getStartTick()/ticksPerSecond*1000)
+            +"ms\" dur=\"" + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" "
             +"attributeName=\"" + yChar + "\" from=\"" + originalY + "\" to=\"" + getTargetY()
             +"\" fill=\"freeze\" />\n";
-    //execute();
+    execute();
     return retString;
   }
 }

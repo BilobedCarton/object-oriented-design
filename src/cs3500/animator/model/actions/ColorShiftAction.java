@@ -79,8 +79,8 @@ public class ColorShiftAction extends AnimationAction {
             + targetColor.getGreen() + "," + targetColor.getBlue() + ")";
 
     String retString = "\t<animate attributeType=\"xml\" begin=\""
-            + (getStartTick()*ticksPerSecond*1000) +"ms\" dur=\""
-            + ((getEndTick()- getStartTick())*ticksPerSecond*1000)+"ms\" attributeName=\"fill\""
+            + (getStartTick()/ticksPerSecond*1000) +"ms\" dur=\""
+            + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" attributeName=\"fill\""
             + " from=\"" + startColor + "\" to=\"" + endColor +"\" fill=\"freeze\" />\n";
     return retString;
   }
