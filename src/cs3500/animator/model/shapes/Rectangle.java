@@ -20,7 +20,7 @@ public class Rectangle extends Shape {
    */
   Rectangle(String name, double posX, double posY, Color color, double sizeX, double sizeY,
               int timeAppear, int timeDisappear) {
-    super(name, posX, posY, color, sizeX, sizeY, timeAppear, timeDisappear);
+    super(name, posX, posY, color, sizeX, sizeY, timeAppear, timeDisappear, "rect");
   }
 
   @Override
@@ -37,5 +37,25 @@ public class Rectangle extends Shape {
             + this.getColor().getBlue() + ")\n" + "Appears at t="
             + this.getAppearTick() * ticksPerSecond + "s\n" + "Disappears at t="
             + this.getDisappearTick() * ticksPerSecond + "s\n";
+  }
+
+  @Override
+  public String toSVG(double ticksPerSecond) {
+    String retString = "<rect id=\"" + this.getName() + "\"" + " x=\"" + this.getPosX() + "\" y=\""
+            + this.getPosY() + "\" width=\"" + this.getSizeX() + "\" height=\""
+            + this.getSizeY() + "\" fill=\"rgb(" + this.getColor().getRed() + ","
+            + this.getColor().getGreen() + "," + this.getColor().getBlue() + ")\""
+            + " visibility=\"hidden\" >\n";
+    retString += "\t<animate attributeType=\"xml\" begin=\""+ (getAppearTick()*ticksPerSecond*1000)
+            + "ms\" attributeName=\"visibility\" to=\"visible\" />\n";
+    retString += "\t<animate attributeType=\"xml\" begin=\""
+            +(getDisappearTick()*ticksPerSecond*1000) +"ms\" attributeName=\"visibility\""
+            + " to=\"hidden\" />\n";
+    return retString;
+  }
+
+  @Override
+  public String svgEnd() {
+    return "</rect>\n";
   }
 }

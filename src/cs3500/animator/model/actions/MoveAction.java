@@ -28,14 +28,19 @@ public class MoveAction extends AnimationAction {
     this.originalY = shape.getPosY();
   }
 
+  //@Override
+  //public void execute() {
+  //  this.getShape().relocate(
+  //          this.getShape().getPosX()
+  //                  + ((this.targetX - this.originalX) / (this.getEndTick() - this.getStartTick())),
+  //          this.getShape().getPosY()
+  //                  + ((this.targetY - this.originalY)
+  //                  / (this.getEndTick() - this.getStartTick())));
+  //}
+
   @Override
   public void execute() {
-    this.getShape().relocate(
-            this.getShape().getPosX()
-                    + ((this.targetX - this.originalX) / (this.getEndTick() - this.getStartTick())),
-            this.getShape().getPosY()
-                    + ((this.targetY - this.originalY)
-                    / (this.getEndTick() - this.getStartTick())));
+    this.getShape().relocate(this.targetX, this.targetY);
   }
 
   @Override
@@ -76,5 +81,34 @@ public class MoveAction extends AnimationAction {
    */
   public double getTargetY() {
     return targetY;
+  }
+
+  @Override
+  public String toSVG(double ticksPerSecond){
+    //updateOriginalValues();
+    String xChar;
+    String yChar;
+    switch(getShape().getType()) {
+      case "rect":
+        xChar = "x";
+        yChar = "y";
+        break;
+      case "oval":
+        xChar = "cx";
+        yChar = "cy";
+        break;
+      default:
+        throw new IllegalArgumentException("invalid shape type");
+    }
+    String retString = "\t<animate attributeType=\"xml\" begin=\""
+            + (getStartTick()*ticksPerSecond*1000) +"ms\" dur=\""
+            + ((getEndTick()- getStartTick())*ticksPerSecond*1000)+"ms\" attributeName=\"" + xChar
+            + "\" from=\"" + originalX + "\" to=\"" + getTargetX() +"\" fill=\"freeze\" />\n";
+    retString += "\t<animate attributeType=\"xml\" begin=\"" + (getStartTick()*ticksPerSecond*1000)
+            +"ms\" dur=\"" + ((getEndTick()- getStartTick())*ticksPerSecond*1000)+"ms\" "
+            +"attributeName=\"" + yChar + "\" from=\"" + originalY + "\" to=\"" + getTargetY()
+            +"\" fill=\"freeze\" />\n";
+    //execute();
+    return retString;
   }
 }

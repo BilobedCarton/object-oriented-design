@@ -29,11 +29,7 @@ public class SimpleAnimation implements IAnimationModel {
    * Creates a new {@code SimpleAnimation} object.
    * @throws IllegalArgumentException if ticksPerSecond is less than or eqaul to zero.
    */
-  public SimpleAnimation(double ticksPerSecond) throws IllegalArgumentException {
-    if (ticksPerSecond <= 0) {
-      throw new IllegalArgumentException("SimpleAnimation(int) -- ticksPerSecond must be greater "
-              + "than 0");
-    }
+  public SimpleAnimation() throws IllegalArgumentException {
     actions = new ArrayList<AnimationAction>();
     shapes = new ArrayList<Shape>();
   }
@@ -97,21 +93,6 @@ public class SimpleAnimation implements IAnimationModel {
     }
   }
 
-  /**
-   * Converts this object into a string.
-   * @return the String representing this object.
-   */
-  public String toString(double ticksPerSecond) {
-    String str = "Shapes:\n";
-    for (Shape shape : this.shapes) {
-      str += shape.toString(ticksPerSecond) + "\n";
-    }
-    for (AnimationAction action : this.actions) {
-      str += action.toString(ticksPerSecond) + "\n";
-    }
-
-    return str;
-  }
 
   /**
    * Finds the shape in the given list with the given name.
@@ -244,7 +225,7 @@ public class SimpleAnimation implements IAnimationModel {
 
     @Override
     public IAnimationModel build() {
-      IAnimationModel animationModel = new SimpleAnimation(1);
+      IAnimationModel animationModel = new SimpleAnimation();
       for (Shape s : this.shapesToAdd) {
         animationModel.addShape(s);
       }

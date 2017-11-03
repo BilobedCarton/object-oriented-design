@@ -31,4 +31,11 @@ public interface ITimedAction {
    * @return the int that is the ending tick.
    */
   int getEndTick();
+
+  /**
+   * We make sure all ITimedAction can be converted into svg format.
+   * @param ticksPerSecond is the number of ticks executed by the model per second.
+   * @return the svg string representing this ITimedAction.
+   */
+  String toSVG(double ticksPerSecond);
 }

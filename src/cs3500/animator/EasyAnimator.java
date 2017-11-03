@@ -1,7 +1,15 @@
 package cs3500.animator;
 
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javax.swing.*;
 
+import cs3500.animator.model.IAnimationModel;
+import cs3500.animator.model.ReadOnlyAnimation;
+import cs3500.animator.model.SimpleAnimation;
+import cs3500.animator.util.AnimationFileReader;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGView;
 import cs3500.animator.view.TextView;
@@ -33,17 +41,67 @@ public final class EasyAnimator {
    * @param outputFile the output position of the view.
    * @param speed the ticks per second.
    */
-  public static void kickOffView(String inputFile, String viewType, String outputFile, int speed) {
+  public static void kickOffView(String inputFile, String viewType, String outputFile, double speed)
+          throws FileNotFoundException{
+    SimpleAnimation buildModel = new SimpleAnimation();
+    AnimationFileReader animReader = new <IAnimationModel>AnimationFileReader();
+    ReadOnlyAnimation useModel = new ReadOnlyAnimation(animReader.readFile(inputFile,
+            new SimpleAnimation.Builder()));
+    IView launchView;
+
     switch(viewType) {
-      IView launchView;
       case "text":
-        launchView = new TextView(inputFile, outputFile, speed);
+        if(outputFile != "System.out") {
+          if(outputFile.substring(outputFile.length() - 4) != ".txt") {
+            throwErrorMessage("Invalid input, output must be .txt for type text.");
+          }
+          FileWriter writer;
+          try {
+            writer = new FileWriter(outputFile);
+          } catch(IOException error){
+            throwErrorMessage("Invalid input, issue creating output file");
+            return;
+          }
+          launchView = new TextView(useModel,writer, speed);
+          launchView.update();
+          try {
+            writer.close();
+          } catch(IOException error){
+            throwErrorMessage("Error closing file.");
+            return;
+          }
+        }else {
+          launchView = new TextView(useModel, System.out, speed);
+          launchView.update();
+        }
         break;
       case "visual":
-        launchView = new VisualView(inputFile, outputFile, speed);
+        launchView = new VisualView(useModel, speed);
         break;
       case "svg":
-        launchView = new SVGView(inputFile, outputFile, speed);
+        if(outputFile != "System.out") {
+          if(outputFile.substring(outputFile.length() - 4) != ".svg") {
+            throwErrorMessage("Invalid input, output must be svg for type svg.");
+          }
+          FileWriter writer;
+          try {
+            writer = new FileWriter(outputFile);
+          } catch(IOException error){
+            throwErrorMessage("Invalid input, issue creating output file");
+            return;
+          }
+          launchView = new SVGView(useModel,writer, speed);
+          launchView.update();
+          try {
+            writer.close();
+          } catch(IOException error){
+            throwErrorMessage("Error closing file.");
+            return;
+          }
+        }else {
+          launchView = new SVGView(useModel, System.out, speed);
+          launchView.update();
+        }
         break;
       default:
         throwErrorMessage("Not supported view type");
@@ -59,7 +117,7 @@ public final class EasyAnimator {
     String inputFile = "";
     String viewType = "";
     String outputFile = "System.out";
-    int speed = 1;
+    double speed = 1;
     String s2 = "";
 
     for(int i = 0; i < args.length; i++) {
@@ -73,6 +131,7 @@ public final class EasyAnimator {
           case "-iv":
             i+=1;
             s2 = args[i];
+            System.out.println("i "+ s2 + " i");
             if(s2 != "text" && s2 != "visual" && s2 != "svg") {
               throwErrorMessage("Invalid input, invalid view.");
               return;
@@ -83,8 +142,9 @@ public final class EasyAnimator {
           case "-if":
             i+=1;
             s2 = args[i];
-            if(s2.length() <= 4 || s2.substring(s2.length() - 4) != ".txt") {
-              throwErrorMessage("Invalid input, input must be .txt");
+            if(s2.length() <= 4 || s2.substring(s2.length() - 4) != ".txt" ||
+                    s2.substring(s2.length() - 4) != ".svg" ) {
+              throwErrorMessage("Invalid input, input must be .txt or .svg");
               return;
             }else {
               inputFile = s2;
@@ -94,7 +154,7 @@ public final class EasyAnimator {
             i+=1;
             s2 = args[i];
             if(s2.length() <= 4 || s2.substring(s2.length() - 4) != ".txt") {
-              throwErrorMessage("Invalid output, input must be .txt");
+              throwErrorMessage("Invalid output, must output to .svg for svg or .txt for text");
               return;
             }else {
               outputFile = s2;
@@ -110,7 +170,7 @@ public final class EasyAnimator {
                 return;              }
             }
 
-            speed = Integer.parseInt(s2);
+            speed = (double)Integer.parseInt(s2);
             break;
           default:
             throwErrorMessage("Invalid commandline input.");
@@ -119,6 +179,10 @@ public final class EasyAnimator {
       }
     }
 
-
+    try {
+      kickOffView(inputFile, viewType, outputFile, speed);
+    }catch(FileNotFoundException e) {
+      throwErrorMessage("File not found.");
+    }
   }
 }

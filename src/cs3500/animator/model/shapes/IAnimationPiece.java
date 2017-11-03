@@ -38,6 +38,12 @@ public interface IAnimationPiece {
   double getSizeX();
 
   /**
+   * Gets the type of this IAnimationPiece.
+   * @return the string representing the type.
+   */
+  String getType();
+
+  /**
    * Gets the y size of this IAnimationPiece.
    * @return the double representing the x size.
    */
@@ -104,4 +110,17 @@ public interface IAnimationPiece {
    * @return the string representing this IAnimationPiece
    */
   String toString(double ticksPerSecond);
+
+  /**
+   * We make sure all AnimationPieces can be converted into svg format.
+   * @param ticksPerSecond is the number of ticks executed by the model per second.
+   * @return the svg string representing this IAnimationPiece
+   */
+  String toSVG(double ticksPerSecond);
+
+  /**
+   * We make sure all AnimationPieces can be converted into svg format via their end.
+   * @return the svg string representing this IAnimationPiece's end string
+   */
+  String svgEnd();
 }

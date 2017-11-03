@@ -11,7 +11,7 @@ import cs3500.animator.model.shapes.ShapeBuilder;
 import static org.junit.Assert.assertEquals;
 
 public class TestAnimationModel {
-  SimpleAnimation model = new SimpleAnimation(1);
+  SimpleAnimation model = new SimpleAnimation();
 
   @Test
   public void testAdd() {
@@ -80,7 +80,6 @@ public class TestAnimationModel {
     model.addShape(oval);
     model.addAction(move);
     model.addAction(scale);
-    model.runAnimation();
     assertEquals(rect.getPosX(), 20, 0);
     assertEquals(rect.getPosY(), 40, 0);
     assertEquals(oval.getSizeX(), 20, 0);

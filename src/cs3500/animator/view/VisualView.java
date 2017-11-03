@@ -10,8 +10,8 @@ public class VisualView extends AbstractView {
    * Creates a new {@code TextView} object.
    * @param model is the model.
    */
-  VisualView(ReadOnlyAnimation model) {
-  super(model);
+  public VisualView(ReadOnlyAnimation model, double speed) {
+  super(model, speed);
 }
 
   @Override
