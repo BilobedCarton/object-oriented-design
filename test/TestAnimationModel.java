@@ -24,26 +24,59 @@ public class TestAnimationModel {
             .setTargetPosition(12, 12)
             .setTargetShape(rect)
             .build(AnimationActionBuilder.AnimationActionType.MOVE);
-    AnimationAction action2 = AnimationActionBuilder.initialize()
-            .setTimeTicks(20, 40)
-            .setTargetPosition(24, 12)
-            .setTargetShape(rect)
-            .build(AnimationActionBuilder.AnimationActionType.MOVE);
-    AnimationAction action3 = AnimationActionBuilder.initialize()
-            .setTimeTicks(0, 10)
-            .setTargetPosition(12, 0)
-            .setTargetShape(rect)
-            .build(AnimationActionBuilder.AnimationActionType.MOVE);
     model.addShape(rect);
     model.addAction(action);
-    model.addAction(action2);
-    model.addAction(action3);
     assertEquals(model.toString(1), "Shapes:\n" + "Name: Test\n" + "Type: rectangle\n"
-            + "Lower-left corner: (0.0,0.0), Width: 0.0 Height: 0.0, Color: (0,0,0)\n"
+            + "Lower-left corner: (0.0,0.0), Width: 0.0 Height: 0.0, Color: (0.0,0.0,0.0)\n"
             + "Appears at t=0.0s\n" + "Disappears at t=0.0s\n" + "\n"
-            + "Shape Test moves from (12.0,0.0) to (12.0,12.0) from t=10.0s to t=20.0s\n"
-            + "Shape Test moves from (12.0,12.0) to (24.0,12.0) from t=20.0s to t=40.0s\n"
-            + "Shape Test moves from (0.0,0.0) to (12.0,0.0) from t=0.0s to t=10.0s\n");
+            + "Shape Test moves from (0.0,0.0) to (12.0,12.0) from t=10.0s to t=20.0s\n");
+  }
+
+  @Test
+  public void testGetShapeStateAt() {
+    Shape rect = ShapeBuilder.initialize()
+            .setName("Test")
+            .setColor(new Color(40, 80, 120))
+            .setSize(20, 15)
+            .setTimeSpan(0, 20)
+            .build(ShapeBuilder.ShapeType.RECTANGLE);
+    AnimationAction colorShift = AnimationActionBuilder.initialize()
+            .setTimeTicks(0, 5)
+            .setTargetShape(rect)
+            .setTargetColor(new Color(0, 0, 0))
+            .build(AnimationActionBuilder.AnimationActionType.COLORSHIFT);
+    AnimationAction move = AnimationActionBuilder.initialize()
+            .setTimeTicks(7, 12)
+            .setTargetShape(rect)
+            .setTargetPosition(20, 20)
+            .build(AnimationActionBuilder.AnimationActionType.MOVE);
+    AnimationAction scale = AnimationActionBuilder.initialize()
+            .setTimeTicks(13, 18)
+            .setTargetShape(rect)
+            .setTargetSize(100, 5)
+            .build(AnimationActionBuilder.AnimationActionType.SCALE);
+    model.addShape(rect);
+    model.addAction(colorShift);
+    model.addAction(move);
+    model.addAction(scale);
+    Shape rectAt3 = model.getShapeStateAt(3, rect);
+    assertEquals(rectAt3.getColor(), new Color(16, 32, 48));
+    assertEquals(rectAt3.getSizeX(), 20, 0);
+    assertEquals(rectAt3.getSizeY(), 15, 0);
+    assertEquals(rectAt3.getPosX(), 0, 0);
+    assertEquals(rectAt3.getPosY(), 0, 0);
+    Shape rectAt10 = model.getShapeStateAt(10, rect);
+    assertEquals(rectAt10.getColor(), new Color(0, 0, 0));
+    assertEquals(rectAt10.getSizeX(), 20, 0);
+    assertEquals(rectAt10.getSizeY(), 15, 0);
+    assertEquals(rectAt10.getPosX(), 12, 0);
+    assertEquals(rectAt10.getPosY(), 12, 0);
+    Shape rectAt15 = model.getShapeStateAt(15, rect);
+    assertEquals(rectAt15.getColor(), new Color(0, 0, 0));
+    assertEquals(rectAt15.getSizeX(), 52, 0);
+    assertEquals(rectAt15.getSizeY(), 11, 0);
+    assertEquals(rectAt15.getPosX(), 20, 0);
+    assertEquals(rectAt15.getPosY(), 20, 0);
   }
 
   @Test
@@ -65,7 +98,7 @@ public class TestAnimationModel {
     model.runCycle(6);
     assertEquals(rect.getColor(), new Color(16, 16, 16));
     model.runCycle(10);
-    assertEquals(rect.getColor(), new Color(16, 16, 16));
+    assertEquals(rect.getColor(), new Color(40, 40, 40));
   }
 
   @Test

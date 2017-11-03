@@ -47,6 +47,5 @@ public class TestSVGView {
    */
   @Test
   public void testAddShapes() {
-    ViewFactory()
   }
 }
