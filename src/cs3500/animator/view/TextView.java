@@ -38,7 +38,6 @@ public class TextView extends AbstractView {
       for (int x = 0; x < getModel().getShapes().size(); x++) {
         if (shapeTimes[i] == getModel().getShapes().get(x).getAppearTick()) {
           retString += getModel().getShapes().get(x).toString(speed);
-          retString += "\n";
           break;
         }
       }
@@ -46,6 +45,9 @@ public class TextView extends AbstractView {
 
     int[] actionTimes = new int[getModel().getActions().size()];
     for (int i = 0; i < getModel().getActions().size(); i++) {
+      if(i == 0) {
+        retString += "\n";
+      }
       actionTimes[i] = getModel().getActions().get(i).getStartTick();
     }
     Arrays.sort(actionTimes);
