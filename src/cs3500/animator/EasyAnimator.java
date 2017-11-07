@@ -8,15 +8,11 @@ import java.io.IOException;
 import javax.swing.*;
 
 import cs3500.animator.model.IAnimationModel;
-import cs3500.animator.model.IReadOnlyAnimationModel;
 import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.SimpleAnimation;
 import cs3500.animator.util.AnimationFileReader;
 import cs3500.animator.view.IView;
-import cs3500.animator.view.SVGView;
-import cs3500.animator.view.TextView;
 import cs3500.animator.view.ViewFactory;
-import cs3500.animator.view.VisualView;
 
 /**
  * The class housing our main method. Handles user input for starting the animator.
@@ -68,7 +64,7 @@ public final class EasyAnimator {
     String useFile = System.getProperty("user.dir") + "/resources/"+inputFile;
     ReadOnlySimpleAnimation useModel = new ReadOnlySimpleAnimation(animReader.readFile(useFile,
             new SimpleAnimation.Builder()));
-    IView launchView = new ViewFactory().build(viewType, outputFile, speed, useModel);
+    IView launchView = ViewFactory.build(viewType, outputFile, speed, useModel);
   }
 
   /**
