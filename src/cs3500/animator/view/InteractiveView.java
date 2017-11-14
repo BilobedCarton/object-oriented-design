@@ -2,6 +2,7 @@ package cs3500.animator.view;
 
 import java.io.IOException;
 
+import cs3500.animator.control.IAnimationController;
 import cs3500.animator.control.InteractiveAnimationController;
 import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.actions.AnimationAction;
@@ -54,6 +55,10 @@ public class InteractiveView extends AbstractView {
    */
   public void setButtonActions(InteractiveAnimationController controller) {
     this.frame.setButtonActions(controller);
+  }
+
+  public void linkSpeedSlider(IAnimationController controller) {
+    this.frame.linkSpeedSlider(controller, controller.getSpeed());
   }
 
   /**

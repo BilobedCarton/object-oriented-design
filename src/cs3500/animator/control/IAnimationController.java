@@ -26,6 +26,12 @@ public interface IAnimationController {
   IView getView();
 
   /**
+   * Gets the associated speed for this animation controller.
+   * @return this controller's speed.
+   */
+  double getSpeed();
+
+  /**
    * Run the animation software. i.e. pass control to the controller and let it update the view.
    */
   void go();

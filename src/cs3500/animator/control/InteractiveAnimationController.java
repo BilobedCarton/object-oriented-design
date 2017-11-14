@@ -19,13 +19,14 @@ public class InteractiveAnimationController extends AnimationController {
   public void go() {
     this.view.start();
     ((InteractiveView) this.view).setButtonActions(this);
+    ((InteractiveView) this.view).linkSpeedSlider(this);
   }
 
   @Override
   public void runUpdate() {
     super.runUpdate();
 
-    if (this.loopAnimation = true) {
+    if (this.loopAnimation == true) {
       int finalTick = 0;
       for (Shape s : this.model.getShapes()) {
         if (s.getDisappearTick() > finalTick) {

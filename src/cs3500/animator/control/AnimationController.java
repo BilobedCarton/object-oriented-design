@@ -43,6 +43,11 @@ public class AnimationController implements IAnimationController {
   }
 
   @Override
+  public double getSpeed() {
+    return ticksPerSecond;
+  }
+
+  @Override
   public void go() {
     view.start();
     timer.start();
@@ -57,8 +62,13 @@ public class AnimationController implements IAnimationController {
 
   @Override
   public void changeSpeed(double ticksPerSecond) {
+    boolean continueAnimation = this.timer.isRunning();
+    this.timer.stop();
     this.ticksPerSecond = ticksPerSecond;
     resetTimer();
+    if (continueAnimation) {
+      this.timer.start();
+    }
   }
 
   @Override
