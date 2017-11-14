@@ -17,4 +17,14 @@ public interface IView {
    * Updates the view with the changes to the model.
    */
   void update();
+
+  /**
+   * Starts the timer and makes the frame visible.
+   */
+  void start();
+
+  /**
+   * Resets the animation to the beginning and then runs start().
+   */
+  void reset();
 }

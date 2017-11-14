@@ -48,10 +48,9 @@ public class VisualView extends AbstractView {
     this.currTick++;
   }
 
-  /**
-   * Starts the timer and makes the frame visible.
-   */
+  @Override
   public void start() {
+    super.start();
     this.timer.start();
     frame.makeVisible();
   }
@@ -60,12 +59,9 @@ public class VisualView extends AbstractView {
    * Resets the timer to the beginning and sets the current tick back to zero. Then runs start().
    */
   public void reset() {
+    super.reset();
     this.timer = new Timer((int) (1000 / speed), new UpdateListener(this));
     this.currTick = 0;
-    for (Shape s : this.getModel().getShapes()) {
-      s.reset();
-    }
-    this.start();
   }
 
   /**
