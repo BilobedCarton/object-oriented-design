@@ -31,4 +31,9 @@ public abstract class AbstractView implements IView {
   public void start() {
     // Empty method to be overridden by views requiring a start call to begin showing the animation.
   }
+
+  @Override
+  public boolean isInteractive() {
+    return false;
+  }
 }

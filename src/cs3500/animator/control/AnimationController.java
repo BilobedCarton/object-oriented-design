@@ -13,11 +13,11 @@ import cs3500.animator.view.IView;
  * Represents a controller for an animation using an IAnimationModel and an IView.
  */
 public class AnimationController implements IAnimationController {
-  private IAnimationModel model;
-  private IView view;
-  private double ticksPerSecond;
-  private int currTick = 0;
-  private Timer timer;
+  IAnimationModel model;
+  IView view;
+  double ticksPerSecond;
+  int currTick = 0;
+  Timer timer;
 
   /**
    * Creates a new {@code AnimationController} object.
@@ -63,18 +63,20 @@ public class AnimationController implements IAnimationController {
 
   @Override
   public void reset() {
+    this.timer.stop();
     for (Shape s : this.getModel().getShapes()) {
       s.reset();
     }
     resetTimer();
     this.currTick = 0;
+    view.update(currTick);
   }
 
   /**
    * Creates a new timer for use by the controller.
    * @return the new Timer.
    */
-  private void resetTimer() {
+  void resetTimer() {
     this.timer = new Timer((int) (1000 / this.ticksPerSecond), new UpdateListener(this));
   }
 }

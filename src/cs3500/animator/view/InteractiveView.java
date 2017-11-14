@@ -2,17 +2,18 @@ package cs3500.animator.view;
 
 import java.io.IOException;
 
+import cs3500.animator.control.InteractiveAnimationController;
 import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.actions.AnimationAction;
 import cs3500.animator.model.shapes.Shape;
-import cs3500.animator.view.graphics.AnimationGraphicsFrame;
+import cs3500.animator.view.graphics.InteractiveAnimationGraphicsFrame;
 
 public class InteractiveView extends AbstractView {
   private Appendable out;
   private int frameSizeX;
   private int frameSizeY;
   private double speed;
-  protected AnimationGraphicsFrame frame;
+  protected InteractiveAnimationGraphicsFrame frame;
 
   public InteractiveView(
           ReadOnlySimpleAnimation model,
@@ -25,7 +26,7 @@ public class InteractiveView extends AbstractView {
     this.frameSizeY = windowHeight;
     this.out = out;
     this.speed = speed;
-    this.frame = new AnimationGraphicsFrame(windowWidth, windowHeight);
+    this.frame = new InteractiveAnimationGraphicsFrame(windowWidth, windowHeight);
   }
 
   @Override
@@ -38,7 +39,21 @@ public class InteractiveView extends AbstractView {
   public void start() {
     super.start();
     this.toSVG();
-    frame.makeVisible();
+    this.frame.makeVisible();
+    this.frame.refresh();
+  }
+
+  @Override
+  public boolean isInteractive() {
+    return true;
+  }
+
+  /**
+   * Set the actions executed by the buttons within the graphics frame.
+   * @param controller is the controller whose actions are being executed.
+   */
+  public void setButtonActions(InteractiveAnimationController controller) {
+    this.frame.setButtonActions(controller);
   }
 
   /**

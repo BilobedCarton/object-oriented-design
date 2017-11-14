@@ -7,10 +7,10 @@ import javax.swing.*;
 
 import cs3500.animator.model.shapes.Shape;
 
-public class AnimationGraphicsFrame extends JFrame {
-  private AnimationPanel animationPanel;
+public class BasicAnimationGraphicsFrame extends JFrame {
+  AnimationPanel animationPanel;
 
-  public AnimationGraphicsFrame(int width, int height) {
+  public BasicAnimationGraphicsFrame(int width, int height) {
     super();
     this.setTitle("Animation");
 

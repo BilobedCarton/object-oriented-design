@@ -23,4 +23,10 @@ public interface IView {
    * Starts the timer and makes the frame visible.
    */
   void start();
+
+  /**
+   * Determines whether or not this view is interactive while running the animation.
+   * @return the boolean telling us if this is interactive.
+   */
+  boolean isInteractive();
 }

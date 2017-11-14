@@ -1,20 +1,14 @@
 package cs3500.animator.view;
 
 
-import java.util.ArrayList;
-
-import javax.swing.*;
-
-import cs3500.animator.control.listeners.UpdateListener;
 import cs3500.animator.model.ReadOnlySimpleAnimation;
-import cs3500.animator.model.shapes.Shape;
-import cs3500.animator.view.graphics.AnimationGraphicsFrame;
+import cs3500.animator.view.graphics.BasicAnimationGraphicsFrame;
 
 /**
  * Represents a visual view of an animation. This actually renders a moving image.
  */
 public class VisualView extends AbstractView {
-  protected AnimationGraphicsFrame frame;
+  protected BasicAnimationGraphicsFrame frame;
 
   /**
    * Creates a new {@code TextView} object.
@@ -25,7 +19,7 @@ public class VisualView extends AbstractView {
           int windowWidth,
           int windowHeight) {
   super(model);
-  this.frame = new AnimationGraphicsFrame(windowWidth, windowHeight);
+  this.frame = new BasicAnimationGraphicsFrame(windowWidth, windowHeight);
 }
 
   @Override
