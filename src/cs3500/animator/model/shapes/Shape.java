@@ -14,7 +14,8 @@ public abstract class Shape implements IAnimationPiece {
   private double sizeY;
   private int appearTick;
   private int disappearTick;
-  private String type;
+  private final ShapeBuilder.ShapeType type;
+  private final OriginalShape originalShape;
 
   /**
    * Creates a new {@code Shape} object.
@@ -28,7 +29,7 @@ public abstract class Shape implements IAnimationPiece {
    * @param disappearTick is the tick when this shape disappears.
    */
   Shape(String name, double posX, double posY, Color color, double sizeX, double sizeY,
-        int appearTick, int disappearTick, String type) {
+        int appearTick, int disappearTick, ShapeBuilder.ShapeType type) {
     this.name = name;
     this.posX = posX;
     this.posY = posY;
@@ -38,10 +39,15 @@ public abstract class Shape implements IAnimationPiece {
     this.appearTick = appearTick;
     this.disappearTick = disappearTick;
     this.type = type;
+    this.originalShape = new OriginalShape(this);
   }
 
-  @Override
-  public String getType() { return type; }
+
+  /**
+   * Gets the type of this Shape.
+   * @return the ShapeType of this shape.
+   */
+  public ShapeBuilder.ShapeType getType() { return type; }
 
   @Override
   public String getName() { return name; }
@@ -113,6 +119,11 @@ public abstract class Shape implements IAnimationPiece {
     this.appearTick = start;
     this.disappearTick = end;
     return this;
+  }
+
+  @Override
+  public void reset() {
+    this.originalShape.resetShape();
   }
 
   @Override

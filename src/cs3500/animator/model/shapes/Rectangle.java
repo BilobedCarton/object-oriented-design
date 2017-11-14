@@ -20,7 +20,8 @@ public class Rectangle extends Shape {
    */
   Rectangle(String name, double posX, double posY, Color color, double sizeX, double sizeY,
               int timeAppear, int timeDisappear) {
-    super(name, posX, posY, color, sizeX, sizeY, timeAppear, timeDisappear, "rect");
+    super(name, posX, posY, color, sizeX, sizeY, timeAppear, timeDisappear,
+            ShapeBuilder.ShapeType.RECTANGLE);
   }
 
   @Override

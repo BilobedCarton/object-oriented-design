@@ -37,9 +37,10 @@ public class VisualView extends AbstractView {
   @Override
   public void update() {
     ArrayList<Shape> shapesToDraw = new ArrayList<Shape>();
+    this.getModel().runCycle(currTick);
     for (Shape s : this.getModel().getShapes()) {
       if (s.getAppearTick() <= currTick && s.getDisappearTick() > currTick) {
-        shapesToDraw.add(this.getModel().getShapeStateAt(this.currTick, s));
+        shapesToDraw.add(s);
       }
     }
     frame.updateShapeData(shapesToDraw);
@@ -61,6 +62,9 @@ public class VisualView extends AbstractView {
   public void reset() {
     this.timer = new Timer((int) (1000 / speed), new UpdateListener(this));
     this.currTick = 0;
+    for (Shape s : this.getModel().getShapes()) {
+      s.reset();
+    }
     this.start();
   }
 

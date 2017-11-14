@@ -39,4 +39,9 @@ public class ReadOnlySimpleAnimation implements IReadOnlyAnimationModel {
   public String toString() {
     return model.toString();
   }
+
+  // TODO remove when adding controller duties.
+  public void runCycle(int tick) {
+    this.model.runCycle(tick);
+  }
 }

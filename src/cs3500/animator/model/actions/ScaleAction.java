@@ -89,11 +89,11 @@ public class ScaleAction extends AnimationAction {
     String xChar;
     String yChar;
     switch(getShape().getType()) {
-      case "rect":
+      case RECTANGLE:
         xChar = "width";
         yChar = "height";
         break;
-      case "oval":
+      case OVAL:
         xChar = "rx";
         yChar = "ry";
         break;

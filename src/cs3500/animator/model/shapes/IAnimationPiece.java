@@ -38,12 +38,6 @@ public interface IAnimationPiece {
   double getSizeX();
 
   /**
-   * Gets the type of this IAnimationPiece.
-   * @return the string representing the type.
-   */
-  String getType();
-
-  /**
    * Gets the y size of this IAnimationPiece.
    * @return the double representing the x size.
    */
@@ -98,6 +92,11 @@ public interface IAnimationPiece {
    *                                  or end is less than start.
    */
   IAnimationPiece setLifeSpan(int start, int end) throws IllegalArgumentException;
+
+  /**
+   * Resets this IAnimationPiece to its original state at time of construction.
+   */
+  void reset();
 
   /**
    * We make sure all AnimationPieces can be converted into Strings.

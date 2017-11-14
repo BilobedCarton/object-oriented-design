@@ -20,7 +20,8 @@ public class Oval extends Shape {
    */
   Oval(String name, double posX, double posY, Color color, double sizeX, double sizeY,
               int timeAppear, int timeDisappear) {
-    super(name, posX, posY, color, sizeX, sizeY, timeAppear, timeDisappear, "oval");
+    super(name, posX, posY, color, sizeX, sizeY, timeAppear, timeDisappear,
+            ShapeBuilder.ShapeType.OVAL);
   }
 
   @Override

@@ -90,11 +90,11 @@ public class MoveAction extends AnimationAction {
     String xChar;
     String yChar;
     switch(getShape().getType()) {
-      case "rect":
+      case RECTANGLE:
         xChar = "x";
         yChar = "y";
         break;
-      case "oval":
+      case OVAL:
         xChar = "cx";
         yChar = "cy";
         break;

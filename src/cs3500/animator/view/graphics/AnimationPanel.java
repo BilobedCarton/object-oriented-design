@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.swing.*;
 
-import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.shapes.Oval;
 import cs3500.animator.model.shapes.Rectangle;
 import cs3500.animator.model.shapes.Shape;
@@ -20,6 +19,14 @@ import cs3500.animator.model.shapes.Shape;
  */
 public class AnimationPanel extends JPanel {
   private List<Shape> shapesToDraw = new ArrayList<Shape>();
+
+  /**
+   * Creates a new {@code AnimationPanel} object.
+   */
+  public AnimationPanel() {
+    super();
+    this.setBackground(Color.WHITE);
+  }
 
   /**
    * Update this panel's shape data with the given shape data.
@@ -34,7 +41,6 @@ public class AnimationPanel extends JPanel {
     super.paintComponent(g);
 
     Graphics2D g2D = (Graphics2D) g;
-    g2D.setBackground(Color.WHITE);
 
     AffineTransform originalTransform = g2D.getTransform();
     g2D.scale(1, 1);
