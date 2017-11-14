@@ -14,6 +14,7 @@ public abstract class Shape implements IAnimationPiece {
   private double sizeY;
   private int appearTick;
   private int disappearTick;
+  private boolean visible = true;
   private final ShapeBuilder.ShapeType type;
   private final OriginalShape originalShape;
 
@@ -82,6 +83,16 @@ public abstract class Shape implements IAnimationPiece {
 
   @Override
   public int getDisappearTick() { return disappearTick; }
+
+  @Override
+  public boolean isVisible() {
+    return visible;
+  }
+
+  @Override
+  public void setVisibility(boolean bool) {
+    this.visible = bool;
+  }
 
   @Override
   public Shape resize(double sizeX, double sizeY) throws IllegalArgumentException {

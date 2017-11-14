@@ -56,6 +56,14 @@ public interface IAnimationPiece {
   int getDisappearTick();
 
   /**
+   * Determines whether or not this shape is visible when the animation is run.
+   * @return the boolean representing the visibility of this shape.
+   */
+  boolean isVisible();
+
+  void setVisibility(boolean bool);
+
+  /**
    * Changes the size of this IAnimationPiece.
    * @param sizeX is the desired length in the x dimension. e.g. Width for rectangles,
    *              x-radius for circles.

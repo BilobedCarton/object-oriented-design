@@ -39,7 +39,7 @@ public class VisualView extends AbstractView {
     ArrayList<Shape> shapesToDraw = new ArrayList<Shape>();
     this.getModel().runCycle(currTick);
     for (Shape s : this.getModel().getShapes()) {
-      if (s.getAppearTick() <= currTick && s.getDisappearTick() > currTick) {
+      if (s.getAppearTick() <= currTick && s.getDisappearTick() > currTick && s.isVisible()) {
         shapesToDraw.add(s);
       }
     }
