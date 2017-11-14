@@ -52,7 +52,7 @@ public class TestSVGView {
     StringBuilder testBuilder = new StringBuilder();
     buildModel.addShape(R2);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
-    testView.update();
+    testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
             + "xmlns=\"http://www.w3.org/2000/svg\">\n<rect id=\"R2\" x=\"0.0\" y=\"0.0\""
             + " width=\"300.0\" height=\"300.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n\t"
@@ -70,7 +70,7 @@ public class TestSVGView {
     StringBuilder testBuilder = new StringBuilder();
     buildModel.addShape(O1);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
-    testView.update();
+    testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
             + "xmlns=\"http://www.w3.org/2000/svg\">\n<ellipse id=\"O1\" cx=\"100.0\" cy=\"100.0\""
             + " rx=\"10.0\" ry=\"10.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n\t"
@@ -89,7 +89,7 @@ public class TestSVGView {
     StringBuilder testBuilder = new StringBuilder();
     buildModel.addShape(R1);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
-    testView.update();
+    testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"800\" height=\"800\" version=\"1.1\" "
             + "xmlns=\"http://www.w3.org/2000/svg\">\n<rect id=\"R1\" x=\"0.0\" y=\"0.0\""
             + " width=\"800.0\" height=\"800.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n\t"
@@ -109,7 +109,7 @@ public class TestSVGView {
     buildModel.addAction(M1);
     buildModel.addAction(M2);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
-    testView.update();
+    testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
             + "xmlns=\"http://www.w3.org/2000/svg\">\n<rect id=\"R2\" x=\"0.0\" y=\"0.0\""
             + " width=\"300.0\" height=\"300.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n\t"
@@ -135,7 +135,7 @@ public class TestSVGView {
     buildModel.addShape(O1);
     buildModel.addAction(M3);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
-    testView.update();
+    testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
             + "xmlns=\"http://www.w3.org/2000/svg\">\n<ellipse id=\"O1\" cx=\"100.0\" cy=\"100.0\""
             + " rx=\"10.0\" ry=\"10.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n"
@@ -157,7 +157,7 @@ public class TestSVGView {
     buildModel.addShape(R2);
     buildModel.addAction(C1);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
-    testView.update();
+    testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
             + "xmlns=\"http://www.w3.org/2000/svg\">\n<rect id=\"R2\" x=\"0.0\" y=\"0.0\" width=\""
             + "300.0\" height=\"300.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n"
@@ -178,7 +178,7 @@ public class TestSVGView {
     buildModel.addShape(O1);
     buildModel.addAction(C2);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
-    testView.update();
+    testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
             + "xmlns=\"http://www.w3.org/2000/svg\">\n<ellipse id=\"O1\" cx=\"100.0\" cy=\"100.0\""
             + " rx=\"10.0\" ry=\"10.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n"
@@ -199,7 +199,7 @@ public class TestSVGView {
     buildModel.addShape(R2);
     buildModel.addAction(RS1);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
-    testView.update();
+    testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
             + "xmlns=\"http://www.w3.org/2000/svg\">\n<rect id=\"R2\" x=\"0.0\" y=\"0.0\" width=\""
             + "300.0\" height=\"300.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n"
@@ -222,7 +222,7 @@ public class TestSVGView {
     buildModel.addShape(O1);
     buildModel.addAction(RS2);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
-    testView.update();
+    testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
             + "xmlns=\"http://www.w3.org/2000/svg\">\n<ellipse id=\"O1\" cx=\"100.0\" cy=\"100.0\""
             + " rx=\"10.0\" ry=\"10.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n"

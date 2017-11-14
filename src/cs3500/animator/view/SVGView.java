@@ -22,7 +22,7 @@ public class SVGView extends AbstractView {
   }
 
   @Override
-  public void update() {
+  public void start() {
     for(Shape shape : getModel().getShapes()) {
       if(shape.getSizeX() > frameSizeX){
         frameSizeX = (int)shape.getSizeX();

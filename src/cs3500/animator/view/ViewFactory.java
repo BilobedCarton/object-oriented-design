@@ -40,7 +40,7 @@ public class ViewFactory {
             return null;
           }
           view = new TextView(model, writer, speed);
-          view.update();
+          view.start();
           try {
             writer.close();
           } catch (IOException error) {
@@ -49,12 +49,12 @@ public class ViewFactory {
           }
         } else {
           view = new TextView(model, System.out, speed);
-          view.update();
+          view.start();
         }
         break;
       case "visual":
         view = new VisualView(model, speed, 700, 700);
-        ((VisualView) view).start();
+        view.start();
         break;
       case "svg":
         if (outputFile != "System.out") {
@@ -70,7 +70,7 @@ public class ViewFactory {
             return null;
           }
           view = new SVGView(model, writer, speed);
-          view.update();
+          view.start();
           try {
             writer.close();
           } catch (IOException error) {
@@ -79,7 +79,7 @@ public class ViewFactory {
           }
         } else {
           view = new SVGView(model, System.out, speed);
-          view.update();
+          view.start();
         }
         break;
       default:

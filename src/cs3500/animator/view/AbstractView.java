@@ -1,7 +1,5 @@
 package cs3500.animator.view;
 
-import javax.swing.*;
-
 import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.shapes.Shape;
 
@@ -26,7 +24,9 @@ public abstract class AbstractView implements IView {
     return model;
   }
 
-  public abstract void update();
+  public void update() {
+    // Empty method to be overridden by views requiring an update call to continue the animation.
+  }
 
   @Override
   public void start() {
@@ -38,6 +38,5 @@ public abstract class AbstractView implements IView {
     for (Shape s : this.getModel().getShapes()) {
       s.reset();
     }
-    this.start();
   }
 }

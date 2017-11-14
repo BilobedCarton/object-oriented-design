@@ -24,7 +24,7 @@ public interface IView {
   void start();
 
   /**
-   * Resets the animation to the beginning and then runs start().
+   * Resets the animation to the beginning.
    */
   void reset();
 }

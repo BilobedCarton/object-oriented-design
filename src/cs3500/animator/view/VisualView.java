@@ -55,32 +55,10 @@ public class VisualView extends AbstractView {
     frame.makeVisible();
   }
 
-  /**
-   * Resets the timer to the beginning and sets the current tick back to zero. Then runs start().
-   */
+  @Override
   public void reset() {
     super.reset();
     this.timer = new Timer((int) (1000 / speed), new UpdateListener(this));
     this.currTick = 0;
-  }
-
-  /**
-   * Represents a listener that runs update on every action.
-   */
-  class UpdateListener implements ActionListener {
-    VisualView view;
-
-    /**
-     * Creates a new {@code UpdateListener} object.
-     * @param view is the view that will be updated when an action is performed.
-     */
-    UpdateListener(VisualView view) {
-      this.view = view;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-      view.update();
-    }
   }
 }
