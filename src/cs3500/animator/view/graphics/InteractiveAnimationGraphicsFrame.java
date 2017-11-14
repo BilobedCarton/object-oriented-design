@@ -9,6 +9,7 @@ import cs3500.animator.control.InteractiveAnimationController;
 
 public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFrame {
   private JButton startButton, pauseButton, unpauseButton, resetButton;
+  private ToggleButton loopingToggle;
   private JPanel buttonPanel;
 
   public InteractiveAnimationGraphicsFrame(int width, int height) {
@@ -31,6 +32,9 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
     resetButton = new JButton("Reset");
     buttonPanel.add(resetButton);
 
+    loopingToggle = new ToggleButton("Disable looping", "Enable  looping");
+    buttonPanel.add(loopingToggle);
+
     this.pack();
   }
 
@@ -39,5 +43,9 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
     pauseButton.addActionListener((ActionEvent e) -> {controller.pauseAnimation();});
     unpauseButton.addActionListener((ActionEvent e) -> {controller.startAnimation();});
     resetButton.addActionListener((ActionEvent e) -> {controller.reset();});
+    loopingToggle.addActionListener((ActionEvent e) -> {
+      controller.toggleLooping();
+      loopingToggle.toggle();
+    });
   }
 }
