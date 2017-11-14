@@ -1,0 +1,80 @@
+package cs3500.animator.control;
+
+import javax.swing.*;
+
+import cs3500.animator.control.listeners.UpdateListener;
+import cs3500.animator.model.IAnimationModel;
+import cs3500.animator.model.IReadOnlyAnimationModel;
+import cs3500.animator.model.ReadOnlySimpleAnimation;
+import cs3500.animator.model.shapes.Shape;
+import cs3500.animator.view.IView;
+
+/**
+ * Represents a controller for an animation using an IAnimationModel and an IView.
+ */
+public class AnimationController implements IAnimationController {
+  private IAnimationModel model;
+  private IView view;
+  private double ticksPerSecond;
+  private int currTick = 0;
+  private Timer timer;
+
+  /**
+   * Creates a new {@code AnimationController} object.
+   * @param model is the associated IAnimationModel for this controller.
+   * @param view is the associated IView for this controller.
+   * @param ticksPerSecond is the number of ticks executed per second by this controller.
+   */
+  public AnimationController(IAnimationModel model, IView view, double ticksPerSecond) {
+    this.model = model;
+    this.view = view;
+    this.ticksPerSecond = ticksPerSecond;
+    resetTimer();
+  }
+
+  @Override
+  public IReadOnlyAnimationModel getModel() {
+    return new ReadOnlySimpleAnimation(model);
+  }
+
+  @Override
+  public IView getView() {
+    return view;
+  }
+
+  @Override
+  public void go() {
+    view.start();
+    timer.start();
+  }
+
+  @Override
+  public void runUpdate() {
+    model.runCycle(currTick);
+    view.update(currTick);
+    currTick++;
+  }
+
+  @Override
+  public void changeSpeed(double ticksPerSecond) {
+    this.ticksPerSecond = ticksPerSecond;
+    resetTimer();
+  }
+
+  @Override
+  public void reset() {
+    for (Shape s : this.getModel().getShapes()) {
+      s.reset();
+    }
+    resetTimer();
+    this.currTick = 0;
+  }
+
+  /**
+   * Creates a new timer for use by the controller.
+   * @return the new Timer.
+   */
+  private void resetTimer() {
+    this.timer = new Timer((int) (1000 / this.ticksPerSecond), new UpdateListener(this));
+  }
+}

@@ -1,9 +1,6 @@
 package cs3500.animator.view;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.swing.*;
 
 import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.actions.AnimationAction;
@@ -14,58 +11,45 @@ public class InteractiveView extends AbstractView {
   private Appendable out;
   private int frameSizeX;
   private int frameSizeY;
+  private double speed;
   protected AnimationGraphicsFrame frame;
-  protected Timer timer;
-  protected int currTick;
 
   public InteractiveView(
           ReadOnlySimpleAnimation model,
-          double speed,
           Appendable out,
+          double speed,
           int windowWidth,
           int windowHeight) {
-    super(model, speed);
-    this.frameSizeX = 700;
-    this.frameSizeY = 500;
+    super(model);
+    this.frameSizeX = windowWidth;
+    this.frameSizeY = windowHeight;
     this.out = out;
+    this.speed = speed;
     this.frame = new AnimationGraphicsFrame(windowWidth, windowHeight);
-    this.timer = new Timer((int) (1000 / speed), new UpdateListener(this));
-    this.currTick = 0;
   }
 
   @Override
-  public void update() {
-    ArrayList<Shape> shapesToDraw = new ArrayList<Shape>();
-    this.getModel().runCycle(currTick);
-    for (Shape s : this.getModel().getShapes()) {
-      if (s.getAppearTick() <= currTick && s.getDisappearTick() > currTick && s.isVisible()) {
-        shapesToDraw.add(s);
-      }
-    }
-    frame.updateShapeData(shapesToDraw);
+  public void update(int currTick) {
+    frame.updateShapeData(this.getModel().getVisibleShapes(currTick));
     frame.refresh();
-    this.currTick++;
   }
 
   @Override
   public void start() {
     super.start();
     this.toSVG();
-    this.timer.start();
     frame.makeVisible();
-  }
-
-  @Override
-  public void reset() {
-    super.reset();
-    this.timer = new Timer((int) (1000 / speed), new UpdateListener(this));
-    this.currTick = 0;
   }
 
   /**
    * Convert this view to svg and export it to the out appendable
    */
   private void toSVG() {
+    // In the case where we don't want this to actually output svg, we just want to render visually.
+    if (out == null) {
+      return;
+    }
+
     for(Shape shape : getModel().getShapes()) {
       if(shape.getSizeX() > frameSizeX){
         frameSizeX = (int)shape.getSizeX();

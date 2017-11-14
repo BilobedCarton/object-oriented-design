@@ -1,5 +1,6 @@
 package cs3500.animator.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cs3500.animator.model.actions.AnimationAction;
@@ -26,8 +27,15 @@ public class ReadOnlySimpleAnimation implements IReadOnlyAnimationModel {
   }
 
   @Override
-  public Shape getShapeStateAt(int tick, Shape s) throws IllegalArgumentException {
-    return model.getShapeStateAt(tick, s);
+  public List<Shape> getVisibleShapes(int currTick) {
+    List<Shape> visibleShapes = new ArrayList<Shape>();
+    for (Shape s : this.getShapes()) {
+      if (s.getAppearTick() <= currTick && s.getDisappearTick() > currTick && s.isVisible()) {
+        visibleShapes.add(s);
+      }
+    }
+
+    return visibleShapes;
   }
 
   @Override
@@ -38,10 +46,5 @@ public class ReadOnlySimpleAnimation implements IReadOnlyAnimationModel {
   @Override
   public String toString() {
     return model.toString();
-  }
-
-  // TODO remove when adding controller duties.
-  public void runCycle(int tick) {
-    this.model.runCycle(tick);
   }
 }

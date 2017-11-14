@@ -7,6 +7,8 @@ import java.io.IOException;
 
 import javax.swing.*;
 
+import cs3500.animator.control.AnimationController;
+import cs3500.animator.control.IAnimationController;
 import cs3500.animator.model.IAnimationModel;
 import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.SimpleAnimation;
@@ -32,41 +34,6 @@ public final class EasyAnimator {
     JOptionPane.showMessageDialog(frame, mes, "Error", JOptionPane.ERROR_MESSAGE);
   }
 
-
-  /**
-   * Generates a filewrite object for the given output.
-   * @param output the name of the output file to be made.
-   * @return the fileWriter set to write to this file.
-   */
-  public static FileWriter genFileWriter(String output) throws IOException {
-    File file = new File(System.getProperty("user.dir") + "\\resources\\"+output);
-    try {
-      file.createNewFile();
-    } catch (IOException e) {
-      throwErrorMessage("Issue creating file.");
-    }
-    FileWriter writer;
-    writer = new FileWriter(file);
-    return writer;
-  }
-
-  /**
-   * Takes the inputs and makes a model load them in.
-   * @param inputFile the inputFile to be read.
-   * @param viewType the type of view to launch.
-   * @param outputFile the output position of the view.
-   * @param speed the ticks per second.
-   */
-  public static void kickOffView(String inputFile, String viewType, String outputFile, double speed)
-          throws FileNotFoundException{
-    SimpleAnimation buildModel = new SimpleAnimation();
-    AnimationFileReader animReader = new <IAnimationModel>AnimationFileReader();
-    String useFile = System.getProperty("user.dir") + "/resources/"+inputFile;
-    ReadOnlySimpleAnimation useModel = new ReadOnlySimpleAnimation(animReader.readFile(useFile,
-            new SimpleAnimation.Builder()));
-    IView launchView = ViewFactory.build(viewType, outputFile, speed, useModel);
-  }
-
   /**
    * The main method which will be where the program starts.
    * @param args is the string input we expect from the user.
@@ -74,7 +41,7 @@ public final class EasyAnimator {
   public static void main(String[] args) throws FileNotFoundException {
     String inputFile = "";
     String viewType = "";
-    String outputFile = "System.out";
+    String outputFile = null;
     double speed = 1;
     String s2 = "";
 
@@ -89,7 +56,10 @@ public final class EasyAnimator {
           case "-iv":
             i+=1;
             s2 = args[i];
-            if(!s2.equals("text") && !s2.equals("visual") && !s2.equals("svg")) {
+            if(!s2.equals("text")
+                    && !s2.equals("visual")
+                    && !s2.equals("svg")
+                    && !s2.equals("interactive")) {
               throwErrorMessage("Invalid input, invalid view.");
               return;
             }else {
@@ -137,7 +107,13 @@ public final class EasyAnimator {
       }
     }
 
-    kickOffView(inputFile, viewType, outputFile, speed);
+    AnimationFileReader animReader = new <IAnimationModel>AnimationFileReader();
+    String useFile = System.getProperty("user.dir") + "/resources/" + inputFile;
 
+    IAnimationModel model = animReader.readFile(useFile, new SimpleAnimation.Builder());
+    IView view = ViewFactory.build(viewType, outputFile, speed, new ReadOnlySimpleAnimation(model));
+    IAnimationController controller = new AnimationController(model, view, speed);
+
+    controller.go();
   }
 }

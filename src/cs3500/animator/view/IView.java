@@ -15,16 +15,12 @@ public interface IView {
 
   /**
    * Updates the view with the changes to the model.
+   * @param currTick is the current tick of the animation.
    */
-  void update();
+  void update(int currTick);
 
   /**
    * Starts the timer and makes the frame visible.
    */
   void start();
-
-  /**
-   * Resets the animation to the beginning.
-   */
-  void reset();
 }

@@ -1,5 +1,6 @@
 package cs3500.animator.view;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -34,13 +35,12 @@ public class ViewFactory {
           }
           FileWriter writer;
           try {
-            writer = EasyAnimator.genFileWriter(outputFile);
+            writer = genFileWriter(outputFile);
           } catch (IOException e) {
             EasyAnimator.throwErrorMessage("Error making file.");
             return null;
           }
           view = new TextView(model, writer, speed);
-          view.start();
           try {
             writer.close();
           } catch (IOException error) {
@@ -49,28 +49,24 @@ public class ViewFactory {
           }
         } else {
           view = new TextView(model, System.out, speed);
-          view.start();
         }
         break;
       case "visual":
-        view = new VisualView(model, speed, 700, 700);
-        view.start();
+        view = new VisualView(model, 700, 700);
         break;
       case "svg":
         if (outputFile != "System.out") {
-          System.out.println(outputFile);
           if (!outputFile.substring(outputFile.length() - 4).equals(".svg")) {
             EasyAnimator.throwErrorMessage("Invalid input, output must be svg for type svg.");
           }
           FileWriter writer;
           try {
-            writer = EasyAnimator.genFileWriter(outputFile);
+            writer = genFileWriter(outputFile);
           } catch (IOException e) {
             EasyAnimator.throwErrorMessage("Error making file.");
             return null;
           }
           view = new SVGView(model, writer, speed);
-          view.start();
           try {
             writer.close();
           } catch (IOException error) {
@@ -79,14 +75,58 @@ public class ViewFactory {
           }
         } else {
           view = new SVGView(model, System.out, speed);
-          view.start();
         }
         break;
+      case "interactive":
+        if (outputFile == null) {
+          view = new InteractiveView(model, null, 0, 700, 700);
+          break;
+        }
+        else if (outputFile != "System.out") {
+          if (!outputFile.substring(outputFile.length() - 4).equals(".svg")) {
+            EasyAnimator.throwErrorMessage("Invalid input, output must be svg for type svg.");
+          }
+          FileWriter writer;
+          try {
+            writer = genFileWriter(outputFile);
+          } catch (IOException e) {
+            EasyAnimator.throwErrorMessage("Error making file.");
+            return null;
+          }
+          view = new InteractiveView(model, writer, speed, 700, 700);
+          try {
+            writer.close();
+          } catch (IOException error) {
+            EasyAnimator.throwErrorMessage("Error closing file.");
+            return null;
+          }
+          break;
+        }
+        else {
+          view = new InteractiveView(model, System.out, speed, 700, 700);
+          break;
+        }
       default:
         EasyAnimator.throwErrorMessage("Not supported view type");
         return null;
     }
-
     return view;
+  }
+
+  /**
+   * Generates a filewrite object for the given output.
+   * @param output the name of the output file to be made.
+   * @return the fileWriter set to write to this file.
+   */
+  private static FileWriter genFileWriter(String output) throws IOException {
+    File file = new File(System.getProperty("user.dir") + "\\resources\\"+output);
+    try {
+      file.createNewFile();
+    } catch (IOException e) {
+      EasyAnimator.throwErrorMessage("Issue creating file.");
+    }
+    FileWriter writer;
+    writer = new FileWriter(file);
+    return writer;
   }
 }

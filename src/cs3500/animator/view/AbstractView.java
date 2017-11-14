@@ -8,15 +8,13 @@ import cs3500.animator.model.shapes.Shape;
  */
 public abstract class AbstractView implements IView {
   private ReadOnlySimpleAnimation model;
-  protected double speed;
 
   /**
    * Creates a new {@code AbstractView} object.
    * @param model is the model related to this view.
    */
-  AbstractView(ReadOnlySimpleAnimation model, double speed) {
+  AbstractView(ReadOnlySimpleAnimation model) {
     this.model = model;
-    this.speed = speed;
   }
 
   @Override
@@ -24,19 +22,13 @@ public abstract class AbstractView implements IView {
     return model;
   }
 
-  public void update() {
+  @Override
+  public void update(int currTick) {
     // Empty method to be overridden by views requiring an update call to continue the animation.
   }
 
   @Override
   public void start() {
     // Empty method to be overridden by views requiring a start call to begin showing the animation.
-  }
-
-  @Override
-  public void reset() {
-    for (Shape s : this.getModel().getShapes()) {
-      s.reset();
-    }
   }
 }

@@ -13,6 +13,7 @@ import cs3500.animator.model.shapes.Shape;
  */
 public class TextView extends AbstractView {
   private Appendable out;
+  private double speed;
 
   /**
    * Creates a new {@code TextView} object.
@@ -20,8 +21,9 @@ public class TextView extends AbstractView {
    * @param out is the output location for this TextView, where we output the text to.
    */
   public TextView(ReadOnlySimpleAnimation model, Appendable out, double speed) {
-    super(model, speed);
+    super(model);
     this.out = out;
+    this.speed = speed;
   }
 
   //in this case we output the shapes and such as a string.

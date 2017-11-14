@@ -11,14 +11,16 @@ import cs3500.animator.model.shapes.Shape;
  */
 public class SVGView extends AbstractView {
   private Appendable out;
+  private double speed;
   private int frameSizeX;
   private int frameSizeY;
 
   public SVGView(ReadOnlySimpleAnimation model, Appendable out, double speed) {
-    super(model,speed);
+    super(model);
     this.frameSizeX = 700;
     this.frameSizeY = 500;
     this.out = out;
+    this.speed = speed;
   }
 
   @Override

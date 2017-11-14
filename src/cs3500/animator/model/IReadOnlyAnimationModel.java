@@ -17,13 +17,11 @@ public interface IReadOnlyAnimationModel {
   List<Shape> getShapes();
 
   /**
-   * Gets the state of a shape at the given tick.
-   * @param tick is the tick we want to check the shape at.
-   * @param s is the Shape we are checking.
-   * @return a copy of the shape with data updated to the given tick.
-   * @throws IllegalArgumentException if the given shape does not exist in this model.
+   * Gets the list of shapes that are visible at the given tick.
+   * @param currTick is the tick we are evaluating visibility based upon.
+   * @return the List of Shapes that are visible at the given tick.
    */
-  Shape getShapeStateAt(int tick, Shape s) throws IllegalArgumentException;
+  List<Shape> getVisibleShapes(int currTick);
 
   /**
    * Get the list of actions in the model.
