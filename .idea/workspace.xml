@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2138e66a-0150-413c-b39a-b9d80db1ed96" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/TestViewFactory.java" afterPath="$PROJECT_DIR$/test/TestViewFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs3500/animator/model/IAnimationModel.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/IAnimationModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs3500/animator/model/ReadOnlySimpleAnimation.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/ReadOnlySimpleAnimation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs3500/animator/model/SimpleAnimation.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/SimpleAnimation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/TestAnimationModel.java" afterPath="$PROJECT_DIR$/test/TestAnimationModel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,50 +17,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EasyAnimator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cs3500/animator/EasyAnimator.java">
+      <file leaf-file-name="TextView.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/TextView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="55" column="19" lean-forward="false" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestViewFactory.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/TestViewFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="44" lean-forward="true" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestTextView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/TestTextView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/ViewFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-129">
+              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -88,6 +52,10 @@
         <option value="$PROJECT_DIR$/test/TestAnimationActions.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/EasyAnimator.java" />
         <option value="$PROJECT_DIR$/test/TestViewFactory.java" />
+        <option value="$PROJECT_DIR$/src/cs3500/animator/model/IAnimationModel.java" />
+        <option value="$PROJECT_DIR$/src/cs3500/animator/model/SimpleAnimation.java" />
+        <option value="$PROJECT_DIR$/test/TestAnimationModel.java" />
+        <option value="$PROJECT_DIR$/src/cs3500/animator/model/ReadOnlySimpleAnimation.java" />
       </list>
     </option>
   </component>
@@ -155,6 +123,14 @@
               <item name="Assignment6" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="animator" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="shapes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Assignment6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Assignment6" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="animator" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -203,24 +179,65 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="EasyAnimator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="cs3500.animator.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="cs3500.animator.EasyAnimator" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="-iv visual -if toh-12.txt -speed 20" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+    <configuration name="TestAnimationModel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="Assignment6" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestAnimationModel" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Assignment6" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
       <envs />
+      <patterns />
+    </configuration>
+    <configuration name="TestAnimationModel.testGetShapeStateAt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="Assignment6" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestAnimationModel" />
+      <option name="METHOD_NAME" value="testGetShapeStateAt" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="TestTextView" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="Assignment6" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestTextView" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
     </configuration>
     <configuration name="TestViewFactory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -234,52 +251,6 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method>
-        <option name="Make" enabled="false" />
-      </method>
-    </configuration>
-    <configuration name="TestViewFactory.testNewTextViewInvalid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="Assignment6" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestViewFactory" />
-      <option name="METHOD_NAME" value="testNewTextViewInvalid" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method>
-        <option name="Make" enabled="false" />
-      </method>
-    </configuration>
-    <configuration name="TestViewFactory.testNewTextViewToFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="Assignment6" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestViewFactory" />
-      <option name="METHOD_NAME" value="testNewTextViewToFile" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -373,19 +344,19 @@
       <listeners />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.EasyAnimator" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.TestViewFactory" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TestViewFactory.testNewTextViewInvalid" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TestViewFactory.testNewTextViewToFile" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.All in Assignment6" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.TestViewFactory" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.All in Assignment6" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TestAnimationModel" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TestAnimationModel.testGetShapeStateAt" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TestTextView" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.All in Assignment6" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.TestViewFactory" />
-        <item index="2" class="java.lang.String" itemvalue="Application.EasyAnimator" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TestViewFactory.testNewTextViewInvalid" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.TestViewFactory.testNewTextViewToFile" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TestTextView" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TestAnimationModel.testGetShapeStateAt" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TestAnimationModel" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TestViewFactory" />
       </list>
     </recent_temporary>
   </component>
@@ -403,35 +374,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_Assignment6 - 2017.11.03 at 19h 33m 54s.xml">
+    <history-entry file="All_in_Assignment6 - 2017.11.13 at 20h 41m 38s.xml">
       <configuration name="All in Assignment6" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Assignment6 - 2017.11.03 at 19h 35m 59s.xml">
+    <history-entry file="All_in_Assignment6 - 2017.11.13 at 20h 43m 35s.xml">
       <configuration name="All in Assignment6" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Assignment6 - 2017.11.03 at 19h 37m 39s.xml">
-      <configuration name="All in Assignment6" configurationId="JUnit" />
+    <history-entry file="TestAnimationModel - 2017.11.13 at 20h 03m 19s.xml">
+      <configuration name="TestAnimationModel" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Assignment6 - 2017.11.13 at 15h 57m 36s.xml">
-      <configuration name="All in Assignment6" configurationId="JUnit" />
+    <history-entry file="TestAnimationModel - 2017.11.13 at 20h 35m 53s.xml">
+      <configuration name="TestAnimationModel" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Assignment6 - 2017.11.13 at 15h 58m 05s.xml">
-      <configuration name="All in Assignment6" configurationId="JUnit" />
+    <history-entry file="TestAnimationModel - 2017.11.13 at 20h 39m 21s.xml">
+      <configuration name="TestAnimationModel" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Assignment6 - 2017.11.13 at 15h 59m 24s.xml">
-      <configuration name="All in Assignment6" configurationId="JUnit" />
+    <history-entry file="TestAnimationModel_testGetShapeStateAt - 2017.11.13 at 20h 38m 04s.xml">
+      <configuration name="TestAnimationModel.testGetShapeStateAt" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestViewFactory - 2017.11.06 at 15h 17m 56s.xml">
-      <configuration name="TestViewFactory" configurationId="JUnit" />
+    <history-entry file="TestAnimationModel_testGetShapeStateAt - 2017.11.13 at 20h 38m 27s.xml">
+      <configuration name="TestAnimationModel.testGetShapeStateAt" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestViewFactory - 2017.11.07 at 12h 42m 09s.xml">
-      <configuration name="TestViewFactory" configurationId="JUnit" />
+    <history-entry file="TestAnimationModel_testGetShapeStateAt - 2017.11.13 at 20h 38m 58s.xml">
+      <configuration name="TestAnimationModel.testGetShapeStateAt" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestViewFactory - 2017.11.07 at 12h 53m 30s.xml">
-      <configuration name="TestViewFactory" configurationId="JUnit" />
+    <history-entry file="TestAnimationModel_testGetShapeStateAt - 2017.11.13 at 20h 41m 31s.xml">
+      <configuration name="TestAnimationModel.testGetShapeStateAt" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestViewFactory - 2017.11.07 at 12h 53m 55s.xml">
-      <configuration name="TestViewFactory" configurationId="JUnit" />
+    <history-entry file="TestTextView - 2017.11.13 at 20h 43m 28s.xml">
+      <configuration name="TestTextView" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -474,12 +445,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/cs3500/animator/model/SimpleAnimation.java</url>
-          <line>23</line>
+          <line>135</line>
           <properties />
-          <option name="timeStamp" value="24" />
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="25" />
+      <option name="time" value="26" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -497,8 +468,10 @@
           <caret line="64" column="3" lean-forward="false" selection-start-line="64" selection-start-column="3" selection-end-line="64" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4366#4373#0" expanded="true" />
-            <element signature="e#4439#4456#0" expanded="true" />
+            <element signature="e#4168#4185#0" expanded="true" />
+            <element signature="e#4996#5013#0" expanded="true" />
+            <element signature="e#5501#5508#0" expanded="true" />
+            <element signature="e#5574#5591#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -517,8 +490,8 @@
         <state relative-caret-position="135">
           <caret line="9" column="36" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1056#1063#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1056#1063#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -537,8 +510,10 @@
           <caret line="122" column="43" lean-forward="false" selection-start-line="122" selection-start-column="43" selection-end-line="122" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4366#4373#0" expanded="true" />
-            <element signature="e#4439#4456#0" expanded="true" />
+            <element signature="e#4168#4185#0" expanded="true" />
+            <element signature="e#4996#5013#0" expanded="true" />
+            <element signature="e#5501#5508#0" expanded="true" />
+            <element signature="e#5574#5591#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -621,6 +596,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4">
           <caret line="92" column="25" lean-forward="true" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -642,13 +618,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="71">
           <caret line="46" column="12" lean-forward="false" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/model/IAnimationModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="36" column="61" lean-forward="false" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
           <folding />
         </state>
       </provider>
@@ -657,14 +626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
           <caret line="48" column="31" lean-forward="false" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/TestAnimationModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-317">
-          <caret line="76" column="40" lean-forward="false" selection-start-line="76" selection-start-column="40" selection-end-line="76" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -699,14 +660,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/TextView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/SVGView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -730,25 +683,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/model/ReadOnlySimpleAnimation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/model/shapes/Shape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="128" column="3" lean-forward="false" selection-start-line="128" selection-start-column="3" selection-end-line="128" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cs3500/animator/model/shapes/IAnimationPiece.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
           <caret line="99" column="82" lean-forward="false" selection-start-line="99" selection-start-column="82" selection-end-line="99" selection-end-column="82" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -756,6 +695,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="23" column="3" lean-forward="false" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -772,20 +712,8 @@
         <state relative-caret-position="432">
           <caret line="54" column="24" lean-forward="true" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1056#1063#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/model/SimpleAnimation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2655">
-          <caret line="217" column="18" lean-forward="true" selection-start-line="217" selection-start-column="18" selection-end-line="217" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4366#4373#0" expanded="true" />
-            <element signature="e#4439#4456#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1056#1063#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -824,16 +752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/TestTextView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/TestViewFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -841,6 +759,73 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/model/IAnimationModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="30" column="64" lean-forward="true" selection-start-line="30" selection-start-column="64" selection-end-line="30" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/model/shapes/Shape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="128" column="3" lean-forward="false" selection-start-line="128" selection-start-column="3" selection-end-line="128" selection-end-column="3" />
+          <folding>
+            <element signature="e#3195#3196#0" expanded="true" />
+            <element signature="e#3232#3233#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/model/ReadOnlySimpleAnimation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/TestTextView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-267">
+          <caret line="49" column="28" lean-forward="true" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/TestAnimationModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="99" column="51" lean-forward="false" selection-start-line="99" selection-start-column="51" selection-end-line="99" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/model/SimpleAnimation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="140" column="13" lean-forward="false" selection-start-line="140" selection-start-column="13" selection-end-line="140" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4168#4185#0" expanded="true" />
+            <element signature="e#4996#5013#0" expanded="true" />
+            <element signature="e#5501#5508#0" expanded="true" />
+            <element signature="e#5574#5591#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/TextView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-129">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

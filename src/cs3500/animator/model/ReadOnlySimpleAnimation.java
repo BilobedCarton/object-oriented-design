@@ -17,6 +17,7 @@ public class ReadOnlySimpleAnimation implements IReadOnlyAnimationModel {
    */
   public ReadOnlySimpleAnimation(IAnimationModel model) {
     this.model = model;
+    this.model.updateActions();
   }
 
   @Override

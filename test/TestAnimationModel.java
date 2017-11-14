@@ -59,6 +59,7 @@ public class TestAnimationModel {
     model.addAction(colorShift);
     model.addAction(move);
     model.addAction(scale);
+    model.updateActions();
     Shape rectAt3 = model.getShapeStateAt(3, rect);
     assertEquals(rectAt3.getColor(), new Color(16, 32, 48));
     assertEquals(rectAt3.getSizeX(), 20, 0);
@@ -94,9 +95,9 @@ public class TestAnimationModel {
             .build(AnimationActionBuilder.AnimationActionType.COLORSHIFT);
     model.addAction(colorShift);
     model.runCycle(5);
-    assertEquals(rect.getColor(), new Color(8, 8, 8));
+    assertEquals(rect.getColor(), new Color(0, 0, 0));
     model.runCycle(6);
-    assertEquals(rect.getColor(), new Color(16, 16, 16));
+    assertEquals(rect.getColor(), new Color(8, 8, 8));
     model.runCycle(10);
     assertEquals(rect.getColor(), new Color(40, 40, 40));
   }

@@ -22,7 +22,8 @@ import cs3500.animator.util.TweenModelBuilder;
  *  * Oval - a oblong shape.
  */
 public class SimpleAnimation implements IAnimationModel {
-  private List<AnimationAction> actions;
+  private List<AnimationAction> updatedActions;
+  private List<AnimationAction> actionsToBeUpdated;
   private List<Shape> shapes;
 
   /**
@@ -30,13 +31,15 @@ public class SimpleAnimation implements IAnimationModel {
    * @throws IllegalArgumentException if ticksPerSecond is less than or eqaul to zero.
    */
   public SimpleAnimation() throws IllegalArgumentException {
-    actions = new ArrayList<AnimationAction>();
+    updatedActions = new ArrayList<AnimationAction>();
+    actionsToBeUpdated = new ArrayList<AnimationAction>();
     shapes = new ArrayList<Shape>();
   }
 
   @Override
   public List<AnimationAction> getActions() {
-    return Collections.unmodifiableList(this.actions);
+    this.updatedActions.addAll(this.actionsToBeUpdated);
+    return Collections.unmodifiableList(this.updatedActions);
   }
 
   @Override
@@ -46,9 +49,11 @@ public class SimpleAnimation implements IAnimationModel {
 
   @Override
   public void addAction(AnimationAction action) {
-    Shape shape = this.getShapeStateAt(action.getStartTick(), action.getShape());
-    action.setOriginalValues(shape);
-    this.actions.add(action);
+    if (this.shapes.contains(action.getShape()) == false) {
+      throw new IllegalArgumentException("SimpleAnimation.getShapeStateAt(int, Shape) -- "
+              + "The given shape does not exist in this model.");
+    }
+    this.actionsToBeUpdated.add(action);
   }
 
   @Override
@@ -62,11 +67,15 @@ public class SimpleAnimation implements IAnimationModel {
 
   @Override
   public void runCycle(int currTick) {
-    for (AnimationAction action : actions) {
-      if (action.getStartTick() <= currTick && action.getEndTick() > currTick) {
+    this.updateActions();
+    for (AnimationAction action : updatedActions) {
+      if (action.getStartTick() == currTick) {
+        action.updateOriginalValues();
+      }
+      else if (action.getStartTick() < currTick && action.getEndTick() > currTick) {
         action.execute();
       }
-      if (action.getEndTick() == currTick) {
+      else if (action.getEndTick() == currTick) {
         action.executeFinal();
       }
     }
@@ -77,11 +86,12 @@ public class SimpleAnimation implements IAnimationModel {
    * @return the String representing this object.
    */
   public String toString(double ticksPerSecond) {
+    this.updateActions();
     String str = "Shapes:\n";
     for (Shape shape : this.shapes) {
       str += shape.toString(ticksPerSecond) + "\n";
     }
-    for (AnimationAction action : this.actions) {
+    for (AnimationAction action : this.updatedActions) {
       str += action.toString(ticksPerSecond);
     }
 
@@ -112,28 +122,48 @@ public class SimpleAnimation implements IAnimationModel {
     // Create a identical copy to modify.
     Shape sCopy = ShapeBuilder.copy(s);
 
-    for (int i = 0; i < tick; i++) {
-      for (AnimationAction a : this.actions) {
-        if (a.getShape().getName().equals(s.getName())) {
-          a.setShape(sCopy);
-          if (a.getStartTick() == i) {
-            a.updateOriginalValues();
-          }
-          if (a.getStartTick() <= i && a.getEndTick() > i) {
-            a.execute();
-          }
+    // Create a list of actions that correspond to our new shape
+    List<AnimationAction> actionsOnS = new ArrayList<AnimationAction>();
+
+    for (AnimationAction a : this.updatedActions) {
+      if (a.getShape().getName().equals(s.getName())) {
+        actionsOnS.add(a);
+        a.setShape(sCopy);
+        a.updateOriginalValues();
+      }
+    }
+
+    for (int i = 0; i <= tick; i++) {
+      for (AnimationAction a : actionsOnS) {
+        if (i == a.getStartTick()) {
+          a.updateOriginalValues();
+        }
+        else if (i > a.getStartTick() && i < a.getEndTick()) {
+          a.execute();
+        }
+        else if (i == a.getEndTick()) {
+          a.executeFinal();
         }
       }
     }
 
     // Set actions back to original shape.
-    for (AnimationAction a : this.actions) {
-      if (a.getShape().getName().equals(s.getName())) {
-        a.setShape(s);
-      }
+    for (AnimationAction a : actionsOnS) {
+      a.setShape(s);
     }
 
     return sCopy;
+  }
+
+  @Override
+  public void updateActions() {
+    List<AnimationAction> newUpdatedActions = new ArrayList<AnimationAction>();
+    for (AnimationAction a : actionsToBeUpdated) {
+      a.setOriginalValues(this.getShapeStateAt(a.getStartTick(), a.getShape()));
+      newUpdatedActions.add(a);
+    }
+    this.updatedActions.addAll(newUpdatedActions);
+    this.actionsToBeUpdated.removeAll(newUpdatedActions);
   }
 
   /**
@@ -227,6 +257,7 @@ public class SimpleAnimation implements IAnimationModel {
       for (AnimationAction a : this.actionsToAdd) {
         animationModel.addAction(a);
       }
+      animationModel.updateActions();
       return animationModel;
     }
   }
