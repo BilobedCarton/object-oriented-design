@@ -30,6 +30,7 @@ public class AnimationController implements IAnimationController {
     this.view = view;
     this.ticksPerSecond = ticksPerSecond;
     resetTimer();
+    view.update(currTick);
   }
 
   @Override
