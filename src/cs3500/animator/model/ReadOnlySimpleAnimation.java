@@ -13,6 +13,7 @@ public class ReadOnlySimpleAnimation implements IReadOnlyAnimationModel {
 
   /**
    * Creates a new {@code ReadOnlySimpleAnimation} object.
+   *
    * @param model is the model whose data we are reading.
    */
   public ReadOnlySimpleAnimation(IAnimationModel model) {

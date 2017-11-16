@@ -12,9 +12,10 @@ public abstract class AnimationAction implements ITimedAction {
 
   /**
    * Creates a new {@code AnimationAction} object.
+   *
    * @param timeStart is the time when this animation should begin.
-   * @param timeEnd is the time when this animation should finish.
-   * @param shape is the shape this action is being executed upon.
+   * @param timeEnd   is the time when this animation should finish.
+   * @param shape     is the shape this action is being executed upon.
    * @throws IllegalArgumentException if the given times are invalid or the shape is null.
    */
   AnimationAction(int timeStart, int timeEnd, Shape shape) {
@@ -45,6 +46,7 @@ public abstract class AnimationAction implements ITimedAction {
   /**
    * Sets the original values of this AnimationAction to the given Shape's current corresponding
    * values.
+   *
    * @param s is the shape we are getting the values of.
    * @throws IllegalArgumentException if the given shape is not the shape modified by this action.
    */
@@ -62,6 +64,7 @@ public abstract class AnimationAction implements ITimedAction {
 
   /**
    * Return the shape this action is executed upon.
+   *
    * @return the shape.
    */
   public Shape getShape() {
@@ -69,13 +72,14 @@ public abstract class AnimationAction implements ITimedAction {
   }
 
   /**
-   * Sets the target shape of this action to the given one.
-   * This should only be used if the shape has the same name as the current target shape.
+   * Sets the target shape of this action to the given one. This should only be used if the shape
+   * has the same name as the current target shape.
+   *
    * @param s is the new target Shape of this action.
    * @throws IllegalArgumentException if s has a different name from the current target shape.
    */
   public void setShape(Shape s) {
-    if (s.getName().equals(this.shape.getName()) == false) {
+    if (!s.getName().equals(this.shape.getName())) {
       throw new IllegalArgumentException("AnimationAction.setShape(Shape) -- Shape s has different "
               + "name from current target Shape.");
     }

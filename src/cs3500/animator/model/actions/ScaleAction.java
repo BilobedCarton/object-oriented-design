@@ -13,9 +13,10 @@ public class ScaleAction extends AnimationAction {
 
   /**
    * Creates a new {@code ScaleAction} object.
-   * @param timeStart is the time this action begins.
-   * @param timeEnd is the time this action ends.
-   * @param shape is the shape this action executes upon.
+   *
+   * @param timeStart   is the time this action begins.
+   * @param timeEnd     is the time this action ends.
+   * @param shape       is the shape this action executes upon.
    * @param targetSizeX is the target sizeX we are changing the shape to.
    * @param targetSizeY is the target sizeY we are changing the shape to.
    */
@@ -48,7 +49,7 @@ public class ScaleAction extends AnimationAction {
             + this.getShape().getSizeX() + " Height: " + this.getShape().getSizeY() + " to Width: "
             + this.targetSizeX + " Height: " + this.targetSizeY + " from t="
             + this.getStartTick() / ticksPerSecond + "s to t="
-            +  this.getEndTick() / ticksPerSecond + "s\n";
+            + this.getEndTick() / ticksPerSecond + "s\n";
   }
 
   @Override
@@ -59,7 +60,7 @@ public class ScaleAction extends AnimationAction {
 
   @Override
   public void setOriginalValues(Shape s) throws IllegalArgumentException {
-    if (this.getShape().getName().equals(s.getName()) == false) {
+    if (!this.getShape().getName().equals(s.getName())) {
       throw new IllegalArgumentException("ColorShiftAction.setOriginalValues(Shape) -- "
               + "This action does not execute upon the given shape.");
     }
@@ -69,6 +70,7 @@ public class ScaleAction extends AnimationAction {
 
   /**
    * Gets the target size in the x dimension.
+   *
    * @return the double representing the target width or size in the x dimension.
    */
   public double getTargetSizeX() {
@@ -77,6 +79,7 @@ public class ScaleAction extends AnimationAction {
 
   /**
    * Gets the target size in the y dimension.
+   *
    * @return the double representing the target height or size in the y dimension.
    */
   public double getTargetSizeY() {
@@ -84,11 +87,11 @@ public class ScaleAction extends AnimationAction {
   }
 
   @Override
-  public String toSVG(double ticksPerSecond){
+  public String toSVG(double ticksPerSecond) {
     updateOriginalValues();
     String xChar;
     String yChar;
-    switch(getShape().getType()) {
+    switch (getShape().getType()) {
       case "rect":
         xChar = "width";
         yChar = "height";
@@ -101,13 +104,15 @@ public class ScaleAction extends AnimationAction {
         throw new IllegalArgumentException("invalid shape type");
     }
     String retString = "\t<animate attributeType=\"xml\" begin=\""
-            + (getStartTick()/ticksPerSecond*1000) +"ms\" dur=\""
-            + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" attributeName=\"" + xChar
-            + "\" from=\"" + originalSizeX + "\" to=\"" + targetSizeX +"\" fill=\"freeze\" />\n";
-    retString += "\t<animate attributeType=\"xml\" begin=\"" + (getStartTick()/ticksPerSecond*1000)
-            +"ms\" dur=\"" + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" "
-            +"attributeName=\"" + yChar + "\" from=\"" + originalSizeY + "\" to=\"" + targetSizeY
-            +"\" fill=\"freeze\" />\n";
+            + (getStartTick() / ticksPerSecond * 1000) + "ms\" dur=\""
+            + ((getEndTick() - getStartTick()) / ticksPerSecond * 1000) + "ms\" attributeName=\""
+            + xChar + "\" from=\"" + originalSizeX + "\" to=\"" + targetSizeX
+            + "\" fill=\"freeze\" />\n";
+    retString += "\t<animate attributeType=\"xml\" begin=\""
+            + (getStartTick() / ticksPerSecond * 1000)
+            + "ms\" dur=\"" + ((getEndTick() - getStartTick()) / ticksPerSecond * 1000) + "ms\" "
+            + "attributeName=\"" + yChar + "\" from=\"" + originalSizeY + "\" to=\"" + targetSizeY
+            + "\" fill=\"freeze\" />\n";
     executeFinal();
     return retString;
   }

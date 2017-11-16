@@ -94,7 +94,8 @@ public class TestAnimationActions {
             .setTargetShape(oval)
             .build(AnimationActionBuilder.AnimationActionType.COLORSHIFT);
     assertEquals(colorShift.toString(1),
-            "Shape Test changes color from (0,0,0) to (40,90,160) from t=0.0s to t=10.0s\n");
+            "Shape Test changes color from (0.0,0.0,0.0) to (0.0,0.0,0.0) from t=0.0s to"
+                    + " t=10.0s\n");
   }
 
   @Test

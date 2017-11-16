@@ -13,11 +13,12 @@ public class MoveAction extends AnimationAction {
 
   /**
    * Creates a new {@code MoveAction} object.
+   *
    * @param timeStart is the time this action begins.
-   * @param timeEnd is the time this action ends.
-   * @param shape is the shape this action executes upon.
-   * @param targetX is the target x coord the shape should be moved to.
-   * @param targetY is the target y coord the shape should be moved to.
+   * @param timeEnd   is the time this action ends.
+   * @param shape     is the shape this action executes upon.
+   * @param targetX   is the target x coord the shape should be moved to.
+   * @param targetY   is the target y coord the shape should be moved to.
    */
   MoveAction(int timeStart, int timeEnd, Shape shape, double targetX,
              double targetY) {
@@ -60,7 +61,7 @@ public class MoveAction extends AnimationAction {
 
   @Override
   public void setOriginalValues(Shape s) throws IllegalArgumentException {
-    if (this.getShape().getName().equals(s.getName()) == false) {
+    if (!this.getShape().getName().equals(s.getName())) {
       throw new IllegalArgumentException("ColorShiftAction.setOriginalValues(Shape) -- "
               + "This action does not execute upon the given shape.");
     }
@@ -70,6 +71,7 @@ public class MoveAction extends AnimationAction {
 
   /**
    * Gets the target x coordinate.
+   *
    * @return the double representing the target x coordinate.
    */
   public double getTargetX() {
@@ -78,6 +80,7 @@ public class MoveAction extends AnimationAction {
 
   /**
    * Gets the target y coordinate.
+   *
    * @return the double representing the target y coordinate.
    */
   public double getTargetY() {
@@ -85,11 +88,11 @@ public class MoveAction extends AnimationAction {
   }
 
   @Override
-  public String toSVG(double ticksPerSecond){
+  public String toSVG(double ticksPerSecond) {
     updateOriginalValues();
     String xChar;
     String yChar;
-    switch(getShape().getType()) {
+    switch (getShape().getType()) {
       case "rect":
         xChar = "x";
         yChar = "y";
@@ -102,13 +105,15 @@ public class MoveAction extends AnimationAction {
         throw new IllegalArgumentException("invalid shape type");
     }
     String retString = "\t<animate attributeType=\"xml\" begin=\""
-            + (getStartTick()/ticksPerSecond*1000) +"ms\" dur=\""
-            + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" attributeName=\"" + xChar
-            + "\" from=\"" + originalX + "\" to=\"" + getTargetX() +"\" fill=\"freeze\" />\n";
-    retString += "\t<animate attributeType=\"xml\" begin=\"" + (getStartTick()/ticksPerSecond*1000)
-            +"ms\" dur=\"" + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" "
-            +"attributeName=\"" + yChar + "\" from=\"" + originalY + "\" to=\"" + getTargetY()
-            +"\" fill=\"freeze\" />\n";
+            + (getStartTick() / ticksPerSecond * 1000) + "ms\" dur=\""
+            + ((getEndTick() - getStartTick()) / ticksPerSecond * 1000) + "ms\" attributeName=\""
+            + xChar + "\" from=\"" + originalX + "\" to=\"" + getTargetX()
+            + "\" fill=\"freeze\" />\n";
+    retString += "\t<animate attributeType=\"xml\" begin=\""
+            + (getStartTick() / ticksPerSecond * 1000)
+            + "ms\" dur=\"" + ((getEndTick() - getStartTick()) / ticksPerSecond * 1000) + "ms\" "
+            + "attributeName=\"" + yChar + "\" from=\"" + originalY + "\" to=\"" + getTargetY()
+            + "\" fill=\"freeze\" />\n";
     executeFinal();
     return retString;
   }

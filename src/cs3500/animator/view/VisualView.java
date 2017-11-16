@@ -5,7 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.*;
+
+import javax.swing.Timer;
 
 import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.shapes.Shape;
@@ -21,6 +22,7 @@ public class VisualView extends AbstractView {
 
   /**
    * Creates a new {@code TextView} object.
+   *
    * @param model is the model.
    */
   public VisualView(
@@ -28,11 +30,11 @@ public class VisualView extends AbstractView {
           double speed,
           int windowWidth,
           int windowHeight) {
-  super(model, speed);
-  this.frame = new AnimationGraphicsFrame(windowWidth, windowHeight);
-  this.timer = new Timer((int) (1000 / speed), new UpdateListener(this));
-  this.currTick = 0;
-}
+    super(model, speed);
+    this.frame = new AnimationGraphicsFrame(windowWidth, windowHeight);
+    this.timer = new Timer((int) (1000 / speed), new UpdateListener(this));
+    this.currTick = 0;
+  }
 
   @Override
   public void update() {
@@ -72,6 +74,7 @@ public class VisualView extends AbstractView {
 
     /**
      * Creates a new {@code UpdateListener} object.
+     *
      * @param view is the view that will be updated when an action is performed.
      */
     UpdateListener(VisualView view) {

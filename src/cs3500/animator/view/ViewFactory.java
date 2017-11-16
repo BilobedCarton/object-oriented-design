@@ -11,23 +11,24 @@ import cs3500.animator.model.ReadOnlySimpleAnimation;
  */
 public class ViewFactory {
   /**
-   * Creates and returns a new view based on the given viewType.
-   * Returns null if a view could not be created.
-   * @param viewType is the type of view we want: "text", "visual", "svg".
-   * @param outputFile is the name of the potential output file for either an svg or text view.
-   *                   This can be null if an output is not needed.
-   * @param speed is the speed of the animation in ticksPerSecond.
-   * @param model is the model this new view will be using to get data from.
+   * Creates and returns a new view based on the given viewType. Returns null if a view could not be
+   * created.
+   *
+   * @param viewType   is the type of view we want: "text", "visual", "svg".
+   * @param outputFile is the name of the potential output file for either an svg or text view. This
+   *                   can be null if an output is not needed.
+   * @param speed      is the speed of the animation in ticksPerSecond.
+   * @param model      is the model this new view will be using to get data from.
    */
   public static IView build(String viewType,
-                     String outputFile,
-                     double speed,
-                     ReadOnlySimpleAnimation model) {
+                            String outputFile,
+                            double speed,
+                            ReadOnlySimpleAnimation model) {
     IView view;
 
     switch (viewType) {
       case "text":
-        if (outputFile != "System.out") {
+        if (!outputFile.equals("System.out")) {
           if (!outputFile.substring(outputFile.length() - 4).equals(".txt")) {
             EasyAnimator.throwErrorMessage("Invalid input, output must be .txt for type text.");
             return null;
@@ -57,7 +58,7 @@ public class ViewFactory {
         ((VisualView) view).start();
         break;
       case "svg":
-        if (outputFile != "System.out") {
+        if (!outputFile.equals("System.out")) {
           System.out.println(outputFile);
           if (!outputFile.substring(outputFile.length() - 4).equals(".svg")) {
             EasyAnimator.throwErrorMessage("Invalid input, output must be svg for type svg.");

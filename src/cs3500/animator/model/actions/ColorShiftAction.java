@@ -13,9 +13,10 @@ public class ColorShiftAction extends AnimationAction {
 
   /**
    * Creates a new {@code ColorShiftAction} object.
-   * @param timeStart is the time this action begins.
-   * @param timeEnd is the time this action ends.
-   * @param shape is the shape this action is executed upon.
+   *
+   * @param timeStart   is the time this action begins.
+   * @param timeEnd     is the time this action ends.
+   * @param shape       is the shape this action is executed upon.
    * @param targetColor is the color this action changes the shape to.
    */
   ColorShiftAction(
@@ -29,8 +30,8 @@ public class ColorShiftAction extends AnimationAction {
   public void execute() {
     this.getShape().recolor(
             new Color(this.getShape().getColor().getRed()
-                            + ((this.targetColor.getRed() - this.originalColor.getRed())
-                            / (this.getEndTick() - this.getStartTick())),
+                    + ((this.targetColor.getRed() - this.originalColor.getRed())
+                    / (this.getEndTick() - this.getStartTick())),
                     this.getShape().getColor().getGreen()
                             + ((this.targetColor.getGreen() - this.originalColor.getGreen())
                             / (this.getEndTick() - this.getStartTick())),
@@ -64,7 +65,7 @@ public class ColorShiftAction extends AnimationAction {
 
   @Override
   public void setOriginalValues(Shape s) throws IllegalArgumentException {
-    if (this.getShape().getName().equals(s.getName()) == false) {
+    if (!this.getShape().getName().equals(s.getName())) {
       throw new IllegalArgumentException("ColorShiftAction.setOriginalValues(Shape) -- "
               + "This action does not execute upon the given shape.");
     }
@@ -73,6 +74,7 @@ public class ColorShiftAction extends AnimationAction {
 
   /**
    * Get the target color of this colorshift.
+   *
    * @return the target Color.
    */
   public Color getTargetColor() {
@@ -80,16 +82,17 @@ public class ColorShiftAction extends AnimationAction {
   }
 
   @Override
-  public String toSVG(double ticksPerSecond){
+  public String toSVG(double ticksPerSecond) {
     String startColor = "rgb(" + originalColor.getRed() + ","
             + originalColor.getGreen() + "," + originalColor.getBlue() + ")";
     String endColor = "rgb(" + targetColor.getRed() + ","
             + targetColor.getGreen() + "," + targetColor.getBlue() + ")";
 
     String retString = "\t<animate attributeType=\"xml\" begin=\""
-            + (getStartTick()/ticksPerSecond*1000) +"ms\" dur=\""
-            + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" attributeName=\"fill\""
-            + " from=\"" + startColor + "\" to=\"" + endColor +"\" fill=\"freeze\" />\n";
+            + (getStartTick() / ticksPerSecond * 1000) + "ms\" dur=\""
+            + ((getEndTick() - getStartTick()) / ticksPerSecond * 1000) + "ms\" attributeName"
+            + "=\"fill\""
+            + " from=\"" + startColor + "\" to=\"" + endColor + "\" fill=\"freeze\" />\n";
     return retString;
   }
 }

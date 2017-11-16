@@ -9,64 +9,74 @@ public interface IAnimationPiece {
 
   /**
    * Gets the name of this IAnimationPiece.
+   *
    * @return the String representing the name.
    */
   String getName();
 
   /**
    * Gets the x coordinate position of this IAnimationPiece.
+   *
    * @return the double representing the x position.
    */
   double getPosX();
 
   /**
    * Gets the y coordinate position of this IAnimationPiece.
+   *
    * @return the double representing the y position.
    */
   double getPosY();
 
   /**
    * Gets the color of this IAnimationPiece.
+   *
    * @return the Color representing the color.
    */
   Color getColor();
 
   /**
    * Gets the x size of this IAnimationPiece.
+   *
    * @return the double representing the x size.
    */
   double getSizeX();
 
   /**
    * Gets the type of this IAnimationPiece.
+   *
    * @return the string representing the type.
    */
   String getType();
 
   /**
    * Gets the y size of this IAnimationPiece.
+   *
    * @return the double representing the x size.
    */
   double getSizeY();
 
   /**
    * Gets the time of appearance of this IAnimationPiece.
+   *
    * @return the int representing the tick this IAnimationPiece appears.
    */
   int getAppearTick();
 
   /**
    * Gets the time of disappearance of this IAnimationPiece.
+   *
    * @return the int representing the tick this IAnimationPiece disappears.
    */
   int getDisappearTick();
 
   /**
    * Changes the size of this IAnimationPiece.
-   * @param sizeX is the desired length in the x dimension. e.g. Width for rectangles,
-   *              x-radius for circles.
-   * @param sizeY is the desired length in the y dimension. e.g. Height for rectangles,
-   *              y-radius for circles.
+   *
+   * @param sizeX is the desired length in the x dimension. e.g. Width for rectangles, x-radius for
+   *              circles.
+   * @param sizeY is the desired length in the y dimension. e.g. Height for rectangles, y-radius for
+   *              circles.
    * @return this IAnimationPiece.
    * @throws IllegalArgumentException if the given sizes are negative.
    */
@@ -74,6 +84,7 @@ public interface IAnimationPiece {
 
   /**
    * Changes the color of this IAnimationPiece.
+   *
    * @param color is the desired color of this IAnimationPiece.
    * @return this IAnimationPiece.
    * @throws IllegalArgumentException if color is null.
@@ -81,8 +92,9 @@ public interface IAnimationPiece {
   IAnimationPiece recolor(Color color) throws IllegalArgumentException;
 
   /**
-   * Relocate this IAnimationPiece. Change its position values.
-   * Negative values are currently allowed since we haven't implemented rendering yet.
+   * Relocate this IAnimationPiece. Change its position values. Negative values are currently
+   * allowed since we haven't implemented rendering yet.
+   *
    * @param x is the desired x coordinate to move this IAnimationPiece to.
    * @param y is the desired y coordinate to move this IAnimationPiece to.
    * @return this Shape.
@@ -90,17 +102,20 @@ public interface IAnimationPiece {
   IAnimationPiece relocate(double x, double y);
 
   /**
-   * Change the lifespan of this IAnimationPiece. Change the time it appears and time it disappears.
+   * Change the lifespan of this IAnimationPiece. Change the time it appears and time it
+   * disappears.
+   *
    * @param start is the tick when this IAnimationPiece should first appear.
-   * @param end is the tick when this IAnimationPiece should disappear.
+   * @param end   is the tick when this IAnimationPiece should disappear.
    * @return this IAnimationPiece.
-   * @throws IllegalArgumentException if the given start or end values are less than 0
-   *                                  or end is less than start.
+   * @throws IllegalArgumentException if the given start or end values are less than 0 or end is
+   *                                  less than start.
    */
   IAnimationPiece setLifeSpan(int start, int end) throws IllegalArgumentException;
 
   /**
    * We make sure all AnimationPieces can be converted into Strings.
+   *
    * @param ticksPerSecond is the number of ticks executed by the model per second.
    * @return the string representing this IAnimationPiece
    */
@@ -108,6 +123,7 @@ public interface IAnimationPiece {
 
   /**
    * We make sure all AnimationPieces can be converted into svg format.
+   *
    * @param ticksPerSecond is the number of ticks executed by the model per second.
    * @return the svg string representing this IAnimationPiece
    */
@@ -115,6 +131,7 @@ public interface IAnimationPiece {
 
   /**
    * We make sure all AnimationPieces can be converted into svg format via their end.
+   *
    * @return the svg string representing this IAnimationPiece's end string
    */
   String svgEnd();

@@ -9,6 +9,7 @@ public interface IView {
 
   /**
    * Gets the model being rendered by this view.
+   *
    * @return this view's corresponding IAnimationModel.
    */
   ReadOnlySimpleAnimation getModel();

@@ -1,15 +1,15 @@
 package cs3500.animator.view.graphics;
 
-import java.awt.*;
+import java.awt.Graphics2D;
+import java.awt.Graphics;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
-import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.shapes.Oval;
 import cs3500.animator.model.shapes.Rectangle;
 import cs3500.animator.model.shapes.Shape;

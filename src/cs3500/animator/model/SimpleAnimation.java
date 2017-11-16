@@ -12,14 +12,11 @@ import cs3500.animator.model.shapes.ShapeBuilder;
 import cs3500.animator.util.TweenModelBuilder;
 
 /**
- * This represents an animation that involves shapesToAdd and various actionsToAdd taken upon these shapesToAdd.
- * The actionsToAdd consist of:
- *  * ColorShiftAction - Change the color of a shape over time.
- *  * MoveAction - Move the shape from one place to another over time.
- *  * ScaleAction - Change the size of a shape from one size to another.
- * The shapesToAdd consist of:
- *  * Rectangle - a rectangular shape.
- *  * Oval - a oblong shape.
+ * This represents an animation that involves shapesToAdd and various actionsToAdd taken upon these
+ * shapesToAdd. The actionsToAdd consist of: * ColorShiftAction - Change the color of a shape over
+ * time. * MoveAction - Move the shape from one place to another over time. * ScaleAction - Change
+ * the size of a shape from one size to another. The shapesToAdd consist of: * Rectangle - a
+ * rectangular shape. * Oval - a oblong shape.
  */
 public class SimpleAnimation implements IAnimationModel {
   private List<AnimationAction> actions;
@@ -27,6 +24,7 @@ public class SimpleAnimation implements IAnimationModel {
 
   /**
    * Creates a new {@code SimpleAnimation} object.
+   *
    * @throws IllegalArgumentException if ticksPerSecond is less than or eqaul to zero.
    */
   public SimpleAnimation() throws IllegalArgumentException {
@@ -74,6 +72,7 @@ public class SimpleAnimation implements IAnimationModel {
 
   /**
    * Converts this object into a string.
+   *
    * @return the String representing this object.
    */
   public String toString(double ticksPerSecond) {
@@ -90,6 +89,7 @@ public class SimpleAnimation implements IAnimationModel {
 
   /**
    * Finds the shape in the given list with the given name.
+   *
    * @param name the name of the shape we want. If we return null, the shape doesn't exist in the
    *             list.
    * @return the Shape we are looking for.
@@ -105,7 +105,7 @@ public class SimpleAnimation implements IAnimationModel {
 
   @Override
   public Shape getShapeStateAt(int tick, Shape s) throws IllegalArgumentException {
-    if (this.shapes.contains(s) == false) {
+    if (!this.shapes.contains(s)) {
       throw new IllegalArgumentException("SimpleAnimation.getShapeStateAt(int, Shape) -- "
               + "The given shape does not exist in this model.");
     }
@@ -145,6 +145,7 @@ public class SimpleAnimation implements IAnimationModel {
 
     /**
      * Initializes the builder to begin construction of a new model.
+     *
      * @return the new builder.
      */
     public static TweenModelBuilder<IAnimationModel> initialize() {

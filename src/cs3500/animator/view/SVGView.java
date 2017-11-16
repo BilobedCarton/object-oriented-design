@@ -13,27 +13,28 @@ public class SVGView extends AbstractView {
   private Appendable out;
 
   public SVGView(ReadOnlySimpleAnimation model, Appendable out, double speed) {
-    super(model,speed);
+    super(model, speed);
     this.out = out;
   }
 
   @Override
   public void update() {
-    for(Shape shape : getModel().getShapes()) {
-      if(shape.getSizeX() > frameSizeX){
-        frameSizeX = (int)shape.getSizeX();
+    for (Shape shape : getModel().getShapes()) {
+      if (shape.getSizeX() > frameSizeX) {
+        frameSizeX = (int) shape.getSizeX();
       }
-      if(shape.getSizeY() > frameSizeY){
-        frameSizeY = (int)shape.getSizeY();
+      if (shape.getSizeY() > frameSizeY) {
+        frameSizeY = (int) shape.getSizeY();
       }
     }
 
-    String retString ="<svg width=\""+frameSizeX+"\" height=\""+frameSizeY+"\" version=\"1.1\" " +
-            "xmlns=\"http://www.w3.org/2000/svg\">\n";
-    for(Shape shape : getModel().getShapes()) {
+    String retString = "<svg width=\"" + frameSizeX + "\" height=\"" + frameSizeY + "\" "
+            + "version=\"1.1\" "
+            + "xmlns=\"http://www.w3.org/2000/svg\">\n";
+    for (Shape shape : getModel().getShapes()) {
       retString += shape.toSVG(this.speed);
       for (AnimationAction action : getModel().getActions()) {
-        if(action.getShape().getName() == shape.getName()){
+        if (action.getShape().getName() == shape.getName()) {
           retString += action.toSVG(this.speed);
         }
       }

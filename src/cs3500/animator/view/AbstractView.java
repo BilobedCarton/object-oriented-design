@@ -13,11 +13,12 @@ public abstract class AbstractView implements IView {
 
   /**
    * Creates a new {@code AbstractView} object.
+   *
    * @param model is the model related to this view.
    */
   AbstractView(ReadOnlySimpleAnimation model, double speed) {
     this.frameSizeX = 700;
-    this.frameSizeY= 500;
+    this.frameSizeY = 500;
     this.model = model;
     this.speed = speed;
   }

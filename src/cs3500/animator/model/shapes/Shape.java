@@ -18,13 +18,14 @@ public abstract class Shape implements IAnimationPiece {
 
   /**
    * Creates a new {@code Shape} object.
-   * @param name is the name of the Shape object.
-   * @param posX is the position in the x axis of this Shape object.
-   * @param posY is the position in the y axis of this Shape object.
-   * @param color is the color of this Shape object.
-   * @param sizeX is the size in the x axis of this Shape object.
-   * @param sizeY is the size in the y axis of this Shape object.
-   * @param appearTick is the tick when this Shape first appears.
+   *
+   * @param name          is the name of the Shape object.
+   * @param posX          is the position in the x axis of this Shape object.
+   * @param posY          is the position in the y axis of this Shape object.
+   * @param color         is the color of this Shape object.
+   * @param sizeX         is the size in the x axis of this Shape object.
+   * @param sizeY         is the size in the y axis of this Shape object.
+   * @param appearTick    is the tick when this Shape first appears.
    * @param disappearTick is the tick when this shape disappears.
    */
   Shape(String name, double posX, double posY, Color color, double sizeX, double sizeY,
@@ -41,10 +42,14 @@ public abstract class Shape implements IAnimationPiece {
   }
 
   @Override
-  public String getType() { return type; }
+  public String getType() {
+    return type;
+  }
 
   @Override
-  public String getName() { return name; }
+  public String getName() {
+    return name;
+  }
 
   @Override
   public double getPosX() {
@@ -72,10 +77,14 @@ public abstract class Shape implements IAnimationPiece {
   }
 
   @Override
-  public int getAppearTick() { return appearTick; }
+  public int getAppearTick() {
+    return appearTick;
+  }
 
   @Override
-  public int getDisappearTick() { return disappearTick; }
+  public int getDisappearTick() {
+    return disappearTick;
+  }
 
   @Override
   public Shape resize(double sizeX, double sizeY) throws IllegalArgumentException {

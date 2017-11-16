@@ -1,15 +1,26 @@
 package cs3500.animator.view.graphics;
 
-import java.awt.*;
+
+import java.awt.Dimension;
+import java.awt.BorderLayout;
+
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 
 import cs3500.animator.model.shapes.Shape;
 
+/**
+ * Represents the frame that we will be drawing on.
+ */
 public class AnimationGraphicsFrame extends JFrame {
   private AnimationPanel animationPanel;
 
+  /**
+   * The default constructor.
+   * @param width is the width of the frame.
+   * @param height the length of the frame.
+   */
   public AnimationGraphicsFrame(int width, int height) {
     super();
     this.setTitle("Animation");
