@@ -33,13 +33,20 @@ public class OriginalShape {
   }
 
   /**
-   * Resets the linked shapes values to this one's values.
+   * Resets the linked shape's values to this one's values, including visibility.
    */
   void resetShape() {
+    resetShapeWithCurrentVisibility();
+    shape.setVisibility(this.visible);
+  }
+
+  /**
+   * Resets the linked shape's values to this one's values.
+   */
+  void resetShapeWithCurrentVisibility() {
     shape.relocate(this.posX, this.posY);
     shape.recolor(this.color);
     shape.resize(this.sizeX, this.sizeY);
     shape.setLifeSpan(this.appearTick, this.disappearTick);
-    shape.setVisibility(this.visible);
   }
 }

@@ -1,5 +1,8 @@
 package cs3500.animator.view;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import cs3500.animator.control.InteractiveAnimationController;
 import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.shapes.Shape;
 
@@ -35,5 +38,15 @@ public abstract class AbstractView implements IView {
   @Override
   public boolean isInteractive() {
     return false;
+  }
+
+  @Override
+  public void setUpInteractivity(InteractiveAnimationController controller) {
+    throw new NotImplementedException();
+  }
+
+  @Override
+  public void export() {
+    throw new NotImplementedException();
   }
 }

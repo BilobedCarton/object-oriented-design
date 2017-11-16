@@ -11,7 +11,8 @@ import cs3500.animator.control.listeners.ShapeSelectionListener;
 import cs3500.animator.control.listeners.SpeedChangeListener;
 
 public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFrame {
-  private JButton startButton, pauseButton, unpauseButton, resetButton, selectShapesButton;
+  private JButton startButton, pauseButton, unpauseButton, restartButton, resetButton,
+          selectShapesButton;
   private ToggleButton loopingToggle;
   private JPanel buttonPanel, sliderPanel;
   private JSlider speedSlider;
@@ -33,6 +34,9 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
 
     unpauseButton = new JButton("Resume");
     buttonPanel.add(unpauseButton);
+
+    restartButton = new JButton("Restart");
+    buttonPanel.add(restartButton);
 
     resetButton = new JButton("Reset");
     buttonPanel.add(resetButton);
@@ -65,7 +69,11 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
     startButton.addActionListener((ActionEvent e) -> {controller.startAnimation();});
     pauseButton.addActionListener((ActionEvent e) -> {controller.pauseAnimation();});
     unpauseButton.addActionListener((ActionEvent e) -> {controller.startAnimation();});
-    resetButton.addActionListener((ActionEvent e) -> {controller.reset();});
+    restartButton.addActionListener((ActionEvent e) -> {
+      controller.reset(false);
+      controller.startAnimation();
+    });
+    resetButton.addActionListener((ActionEvent e) -> {controller.reset(true);});
     loopingToggle.addActionListener((ActionEvent e) -> {
       controller.toggleLooping();
       loopingToggle.toggle();

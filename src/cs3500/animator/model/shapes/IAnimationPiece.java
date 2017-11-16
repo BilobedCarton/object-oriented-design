@@ -103,8 +103,9 @@ public interface IAnimationPiece {
 
   /**
    * Resets this IAnimationPiece to its original state at time of construction.
+   * @param originalVisibility tells us whether or not to set the visibility to the original value.
    */
-  void reset();
+  void reset(boolean originalVisibility);
 
   /**
    * We make sure all AnimationPieces can be converted into Strings.

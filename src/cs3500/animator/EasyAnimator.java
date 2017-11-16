@@ -1,9 +1,6 @@
 package cs3500.animator;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 
 import javax.swing.*;
 
@@ -43,7 +40,7 @@ public final class EasyAnimator {
   public static void main(String[] args) throws FileNotFoundException {
     String inputFile = "";
     String viewType = "";
-    String outputFile = null;
+    String outputFile = "System.out";
     double speed = 1;
     String s2 = "";
 

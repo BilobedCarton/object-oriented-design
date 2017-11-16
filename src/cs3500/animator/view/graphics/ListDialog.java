@@ -8,6 +8,7 @@ import javax.swing.*;
 import cs3500.animator.control.InteractiveAnimationController;
 import cs3500.animator.control.listeners.ISelectionListener;
 import cs3500.animator.model.IReadOnlyAnimationModel;
+import cs3500.animator.view.IView;
 
 /**
  * Represents a dialog with a multiple selection list.
@@ -16,12 +17,13 @@ public class ListDialog extends JDialog {
   IReadOnlyAnimationModel model;
   private JList jList;
   private JPanel buttonPanel;
-  private JButton closeButton, visibleButton, invisibleButton;
+  private JButton closeButton, visibleButton, invisibleButton, exportButton;
 
   /**
    * Creates a new {@code ListDialog} object.
    * @param frame is the frame this dialog is dependent on.
    * @param model is the model whose data is used by this dialog.
+   * @param listener is the listener used by this dialog on selection.
    */
   public ListDialog(JFrame frame, IReadOnlyAnimationModel model, ISelectionListener listener) {
     super(frame);
@@ -54,6 +56,9 @@ public class ListDialog extends JDialog {
     invisibleButton = new JButton("Set as invisible");
     buttonPanel.add(invisibleButton);
 
+    exportButton = new JButton("Export as SVG");
+    buttonPanel.add(exportButton);
+
     this.pack();
   }
 
@@ -74,13 +79,14 @@ public class ListDialog extends JDialog {
     visibleButton.addActionListener((ActionEvent e) -> {
       controller.markSelectedShapesVisibility(true);
       jList.setListData(this.getShapeStates());
-      this.repaint();
+      controller.getView().update(controller.getCurrTick());
     });
     invisibleButton.addActionListener((ActionEvent e) -> {
       controller.markSelectedShapesVisibility(false);
       jList.setListData(this.getShapeStates());
-      this.repaint();
+      controller.getView().update(controller.getCurrTick());
     });
+    exportButton.addActionListener((ActionEvent e) -> {controller.getView().export();});
   }
 
   /**

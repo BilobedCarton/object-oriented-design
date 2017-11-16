@@ -16,7 +16,7 @@ public class AnimationController implements IAnimationController {
   IAnimationModel model;
   IView view;
   double ticksPerSecond;
-  int currTick = 0;
+  int currTick = 1;
   Timer timer;
 
   /**
@@ -48,6 +48,11 @@ public class AnimationController implements IAnimationController {
   }
 
   @Override
+  public int getCurrTick() {
+    return currTick;
+  }
+
+  @Override
   public void go() {
     view.start();
     timer.start();
@@ -72,13 +77,13 @@ public class AnimationController implements IAnimationController {
   }
 
   @Override
-  public void reset() {
+  public void reset(boolean originalVisibility) {
     this.timer.stop();
     for (Shape s : this.getModel().getShapes()) {
-      s.reset();
+      s.reset(originalVisibility);
     }
     resetTimer();
-    this.currTick = 0;
+    this.currTick = 1;
     view.update(currTick);
   }
 

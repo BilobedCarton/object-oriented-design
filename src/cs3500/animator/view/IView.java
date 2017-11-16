@@ -1,5 +1,9 @@
 package cs3500.animator.view;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import cs3500.animator.control.IAnimationController;
+import cs3500.animator.control.InteractiveAnimationController;
 import cs3500.animator.model.ReadOnlySimpleAnimation;
 
 /**
@@ -29,4 +33,17 @@ public interface IView {
    * @return the boolean telling us if this is interactive.
    */
   boolean isInteractive();
+
+  /**
+   * Set up the various listeners and buttons involved in this view.
+   * @param controller is the controller using this view.
+   * @throws NotImplementedException if this is being called by a view that is not interactive.
+   */
+  void setUpInteractivity(InteractiveAnimationController controller) throws NotImplementedException;
+
+  /**
+   * Export this view in the corresponding form: text or SVG.
+   * @throws NotImplementedException if this is being called by a view that does not export.
+   */
+  void export() throws NotImplementedException;
 }

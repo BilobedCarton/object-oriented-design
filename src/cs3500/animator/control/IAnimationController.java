@@ -32,6 +32,12 @@ public interface IAnimationController {
   double getSpeed();
 
   /**
+   * Gets the current tick of this controller.
+   * @return the int representing the current tick.
+   */
+  int getCurrTick();
+
+  /**
    * Run the animation software. i.e. pass control to the controller and let it update the view.
    */
   void go();
@@ -49,6 +55,7 @@ public interface IAnimationController {
 
   /**
    * Resets the animation to the beginning.
+   * @param originalVisibility tells us whether or not to reset the visibilities of the shapes.
    */
-  void reset();
+  void reset(boolean originalVisibility);
 }

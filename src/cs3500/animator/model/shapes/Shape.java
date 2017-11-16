@@ -133,8 +133,13 @@ public abstract class Shape implements IAnimationPiece {
   }
 
   @Override
-  public void reset() {
-    this.originalShape.resetShape();
+  public void reset(boolean originalVisibility) {
+    if (originalVisibility == false) {
+      this.originalShape.resetShapeWithCurrentVisibility();
+    }
+    else {
+      this.originalShape.resetShape();
+    }
   }
 
   @Override

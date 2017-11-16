@@ -22,9 +22,7 @@ public class InteractiveAnimationController extends AnimationController {
   @Override
   public void go() {
     this.view.start();
-    ((InteractiveView) this.view).setButtonActions(this);
-    ((InteractiveView) this.view).linkSpeedSlider(this);
-    ((InteractiveView) this.view).buildListDialog(this);
+    ((InteractiveView) this.view).setUpInteractivity(this);
   }
 
   @Override
@@ -40,7 +38,7 @@ public class InteractiveAnimationController extends AnimationController {
       }
 
       if (finalTick <= currTick) {
-        this.reset();
+        this.reset(false);
         this.startAnimation();
       }
     }
@@ -74,5 +72,9 @@ public class InteractiveAnimationController extends AnimationController {
         }
       }
     }
+  }
+
+  public void exportSVG() {
+    view.export();
   }
 }

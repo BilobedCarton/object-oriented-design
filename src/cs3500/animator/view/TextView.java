@@ -29,7 +29,11 @@ public class TextView extends AbstractView {
   //in this case we output the shapes and such as a string.
   @Override
   public void start() {
+    this.export();
+  }
 
+  @Override
+  public void export() {
     int[] shapeTimes = new int[getModel().getShapes().size()];
     for (int i = 0; i < getModel().getShapes().size(); i++) {
       shapeTimes[i] = getModel().getShapes().get(i).getAppearTick();
