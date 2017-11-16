@@ -155,10 +155,13 @@ public abstract class Shape implements IAnimationPiece {
     return this.name.hashCode();
   }
 
+  @Override
   public abstract String toString(double ticksPerSecond);
 
+  @Override
   public abstract String toSVG(double ticksPerSecond);
 
+  @Override
   public abstract String svgEnd();
 
 }

@@ -2,7 +2,6 @@ package cs3500.animator.view;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import cs3500.animator.control.IAnimationController;
 import cs3500.animator.control.InteractiveAnimationController;
 import cs3500.animator.model.ReadOnlySimpleAnimation;
 

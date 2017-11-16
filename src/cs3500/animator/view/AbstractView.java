@@ -4,7 +4,6 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import cs3500.animator.control.InteractiveAnimationController;
 import cs3500.animator.model.ReadOnlySimpleAnimation;
-import cs3500.animator.model.shapes.Shape;
 
 /**
  * Represents an abstract implementation of a view for an animation program.

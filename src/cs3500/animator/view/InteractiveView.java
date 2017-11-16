@@ -4,11 +4,23 @@ import cs3500.animator.control.InteractiveAnimationController;
 import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.view.graphics.InteractiveAnimationGraphicsFrame;
 
+/**
+ * Represents an interactive visual view for an animation.
+ * It can also export the animation as an SVG file.
+ */
 public class InteractiveView extends AbstractView {
   private Appendable out;
   private double speed;
   protected InteractiveAnimationGraphicsFrame frame;
 
+  /**
+   * Creates a new {@code InteractiveView} object.
+   * @param model is the model linked to this view.
+   * @param out is the location where the data can be exported as SVG.
+   * @param speed is the speed in ticksPerSecond of this animation.
+   * @param windowWidth is the width of the window to be displayed.
+   * @param windowHeight is the height of the window to be displayed.
+   */
   public InteractiveView(
           ReadOnlySimpleAnimation model,
           Appendable out,
@@ -42,7 +54,7 @@ public class InteractiveView extends AbstractView {
   @Override
   public void setUpInteractivity(InteractiveAnimationController controller) {
     this.frame.setButtonActions(controller);
-    this.frame.linkSpeedSlider(controller, controller.getSpeed());
+    this.frame.linkSpeedSlider(controller);
     this.frame.buildListDialog(controller);
   }
 

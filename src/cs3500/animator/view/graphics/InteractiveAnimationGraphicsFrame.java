@@ -10,6 +10,9 @@ import cs3500.animator.control.InteractiveAnimationController;
 import cs3500.animator.control.listeners.ShapeSelectionListener;
 import cs3500.animator.control.listeners.SpeedChangeListener;
 
+/**
+ * Represents a graphics frame for use by an InteractiveView for an animation.
+ */
 public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFrame {
   private JButton startButton, pauseButton, unpauseButton, restartButton, resetButton,
           selectShapesButton;
@@ -18,6 +21,11 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
   private JSlider speedSlider;
   private ListDialog listDialog;
 
+  /**
+   * Creates a new {@code InteractiveAnimationGraphicsFrame} object.
+   * @param width is the width of the frame.
+   * @param height is the height of the frame.
+   */
   public InteractiveAnimationGraphicsFrame(int width, int height) {
     super(width, height);
 
@@ -65,6 +73,10 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
     this.pack();
   }
 
+  /**
+   * Set up the actions for the frame based upon the given controller.
+   * @param controller is the controller to be linked with this frame's input areas.
+   */
   public void setButtonActions(InteractiveAnimationController controller) {
     startButton.addActionListener((ActionEvent e) -> {controller.startAnimation();});
     pauseButton.addActionListener((ActionEvent e) -> {controller.pauseAnimation();});
@@ -80,11 +92,19 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
     });
   }
 
-  public void linkSpeedSlider(IAnimationController controller, double ticksPerSecond) {
-    speedSlider.setValue((int) ticksPerSecond);
+  /**
+   * Link the value and listener for speed slider of this frame.
+   * @param controller is the controller whose values are used or changed.
+   */
+  public void linkSpeedSlider(IAnimationController controller) {
+    speedSlider.setValue((int) controller.getSpeed());
     speedSlider.addChangeListener((new SpeedChangeListener(controller)));
   }
 
+  /**
+   * Builds the ListDialog object used for this frame's shape selection window.
+   * @param controller is the controller linked to the dialog box.
+   */
   public void buildListDialog(InteractiveAnimationController controller) {
     String[] shapeNamesList = new String[controller.getModel().getShapes().size()];
     for (int i = 0; i < controller.getModel().getShapes().size(); i++) {

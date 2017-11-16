@@ -8,7 +8,6 @@ import javax.swing.*;
 import cs3500.animator.control.InteractiveAnimationController;
 import cs3500.animator.control.listeners.ISelectionListener;
 import cs3500.animator.model.IReadOnlyAnimationModel;
-import cs3500.animator.view.IView;
 
 /**
  * Represents a dialog with a multiple selection list.

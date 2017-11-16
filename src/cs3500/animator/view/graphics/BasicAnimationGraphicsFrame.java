@@ -7,6 +7,9 @@ import javax.swing.*;
 
 import cs3500.animator.model.shapes.Shape;
 
+/**
+ * Represents a basic graphics frame for use by an Animation view.
+ */
 public class BasicAnimationGraphicsFrame extends JFrame {
   AnimationPanel animationPanel;
 

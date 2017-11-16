@@ -44,19 +44,32 @@ public class InteractiveAnimationController extends AnimationController {
     }
   }
 
+  /**
+   * Starts the timer and begins the animation updating.
+   */
   public void startAnimation() {
     this.timer.start();
   }
 
+  /**
+   * Stops and resets the timer, pausing the animation.
+   */
   public void pauseAnimation() {
     this.timer.stop();
     this.resetTimer();
   }
 
+  /**
+   * Toggles looping behavior on this controller.
+   */
   public void toggleLooping() {
     this.loopAnimation = !this.loopAnimation;
   }
 
+  /**
+   * Set the shapes currently selected for visibility changes.
+   * @param shapeStates is the array of slected shapes with their current visibility status.
+   */
   public void setSelectedShapes(String[] shapeStates) {
     this.selectedShapes.clear();
     for (String shapeState : shapeStates) {
@@ -64,6 +77,10 @@ public class InteractiveAnimationController extends AnimationController {
     }
   }
 
+  /**
+   * Marks the selected shapes with the given visibility.
+   * @param visible is the target visibility of the selected shapes.
+   */
   public void markSelectedShapesVisibility(boolean visible) {
     for (String shapeState : selectedShapes) {
       for (Shape s : this.getModel().getShapes()) {
@@ -72,9 +89,5 @@ public class InteractiveAnimationController extends AnimationController {
         }
       }
     }
-  }
-
-  public void exportSVG() {
-    view.export();
   }
 }

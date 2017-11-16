@@ -11,5 +11,5 @@ public interface ISelectionListener extends ListSelectionListener {
    * Set the JList of this listener object.
    * @param jList is the JList we are related to.
    */
-  public void setJList(JList jList);
+  void setJList(JList jList);
 }
