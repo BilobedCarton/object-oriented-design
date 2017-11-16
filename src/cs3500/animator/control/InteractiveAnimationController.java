@@ -1,5 +1,8 @@
 package cs3500.animator.control;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cs3500.animator.model.IAnimationModel;
 import cs3500.animator.model.shapes.Shape;
 import cs3500.animator.view.InteractiveView;
@@ -9,6 +12,7 @@ import cs3500.animator.view.InteractiveView;
  */
 public class InteractiveAnimationController extends AnimationController {
   private boolean loopAnimation = false;
+  private List<String> selectedShapes = new ArrayList<>();
 
   public InteractiveAnimationController(
           IAnimationModel model, InteractiveView view, double ticksPerSecond) {
@@ -20,6 +24,7 @@ public class InteractiveAnimationController extends AnimationController {
     this.view.start();
     ((InteractiveView) this.view).setButtonActions(this);
     ((InteractiveView) this.view).linkSpeedSlider(this);
+    ((InteractiveView) this.view).buildListDialog(this);
   }
 
   @Override
@@ -34,7 +39,7 @@ public class InteractiveAnimationController extends AnimationController {
         }
       }
 
-      if (finalTick < currTick) {
+      if (finalTick <= currTick) {
         this.reset();
         this.startAnimation();
       }
@@ -52,5 +57,22 @@ public class InteractiveAnimationController extends AnimationController {
 
   public void toggleLooping() {
     this.loopAnimation = !this.loopAnimation;
+  }
+
+  public void setSelectedShapes(String[] shapeStates) {
+    this.selectedShapes.clear();
+    for (String shapeState : shapeStates) {
+      this.selectedShapes.add(shapeState);
+    }
+  }
+
+  public void markSelectedShapesVisibility(boolean visible) {
+    for (String shapeState : selectedShapes) {
+      for (Shape s : this.getModel().getShapes()) {
+        if (shapeState.contains(s.getName())) {
+          s.setVisibility(visible);
+        }
+      }
+    }
   }
 }

@@ -57,8 +57,20 @@ public class InteractiveView extends AbstractView {
     this.frame.setButtonActions(controller);
   }
 
+  /**
+   * Set up the speed slider values for the frame used by this view.
+   * @param controller is the controller linked to this speed slider.
+   */
   public void linkSpeedSlider(IAnimationController controller) {
     this.frame.linkSpeedSlider(controller, controller.getSpeed());
+  }
+
+  /**
+   * Build the list dialog object for this view's frame.
+   * @param controller is the controller whose shapes will be used for the list.
+   */
+  public void buildListDialog(InteractiveAnimationController controller) {
+    this.frame.buildListDialog(controller);
   }
 
   /**

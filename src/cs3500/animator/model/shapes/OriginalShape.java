@@ -14,6 +14,7 @@ public class OriginalShape {
   private final double sizeY;
   private final int appearTick;
   private final int disappearTick;
+  private final boolean visible;
 
   /**
    * Creates a new {@code OriginalShape} object.
@@ -28,6 +29,7 @@ public class OriginalShape {
     this.sizeY = s.getSizeY();
     this.appearTick = s.getAppearTick();
     this.disappearTick = s.getDisappearTick();
+    this.visible = s.isVisible();
   }
 
   /**
@@ -38,5 +40,6 @@ public class OriginalShape {
     shape.recolor(this.color);
     shape.resize(this.sizeX, this.sizeY);
     shape.setLifeSpan(this.appearTick, this.disappearTick);
+    shape.setVisibility(this.visible);
   }
 }

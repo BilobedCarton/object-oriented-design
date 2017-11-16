@@ -1,7 +1,5 @@
 package cs3500.animator.view.graphics;
 
-import sun.jvm.hotspot.utilities.Hashtable;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
@@ -9,13 +7,15 @@ import javax.swing.*;
 
 import cs3500.animator.control.IAnimationController;
 import cs3500.animator.control.InteractiveAnimationController;
+import cs3500.animator.control.listeners.ShapeSelectionListener;
 import cs3500.animator.control.listeners.SpeedChangeListener;
 
 public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFrame {
-  private JButton startButton, pauseButton, unpauseButton, resetButton;
+  private JButton startButton, pauseButton, unpauseButton, resetButton, selectShapesButton;
   private ToggleButton loopingToggle;
   private JPanel buttonPanel, sliderPanel;
   private JSlider speedSlider;
+  private ListDialog listDialog;
 
   public InteractiveAnimationGraphicsFrame(int width, int height) {
     super(width, height);
@@ -39,6 +39,12 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
 
     loopingToggle = new ToggleButton("Disable looping", "Enable  looping");
     buttonPanel.add(loopingToggle);
+
+    selectShapesButton = new JButton("Toggle shapes");
+    selectShapesButton.addActionListener((ActionEvent e) -> {
+      listDialog.doModal();
+    });
+    buttonPanel.add(selectShapesButton);
 
     // Slider
     sliderPanel = new JPanel();
@@ -69,5 +75,16 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
   public void linkSpeedSlider(IAnimationController controller, double ticksPerSecond) {
     speedSlider.setValue((int) ticksPerSecond);
     speedSlider.addChangeListener((new SpeedChangeListener(controller)));
+  }
+
+  public void buildListDialog(InteractiveAnimationController controller) {
+    String[] shapeNamesList = new String[controller.getModel().getShapes().size()];
+    for (int i = 0; i < controller.getModel().getShapes().size(); i++) {
+      shapeNamesList[i] = controller.getModel().getShapes().get(i).getName();
+    }
+    listDialog =
+            new ListDialog(this, controller.getModel(),
+                    new ShapeSelectionListener(controller));
+    listDialog.setUpButtons(controller);
   }
 }
