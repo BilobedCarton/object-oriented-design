@@ -1,14 +1,10 @@
 package cs3500.animator.view;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
 
 import cs3500.animator.model.ReadOnlySimpleAnimation;
-import cs3500.animator.model.actions.AnimationAction;
-import cs3500.animator.model.actions.ITimedAction;
-import cs3500.animator.model.shapes.Shape;
-
 /**
  * Represents a text based view for an animation program.
  */
@@ -18,8 +14,9 @@ public class TextView extends AbstractView {
 
   /**
    * Creates a new {@code TextView} object.
+   *
    * @param model is the model.
-   * @param out is the output location for this TextView, where we output the text to.
+   * @param out   is the output location for this TextView, where we output the text to.
    */
   public TextView(ReadOnlySimpleAnimation model, Appendable out, double speed) {
     super(model);
@@ -52,7 +49,7 @@ public class TextView extends AbstractView {
 
     int[] actionTimes = new int[getModel().getActions().size()];
     for (int i = 0; i < getModel().getActions().size(); i++) {
-      if(i == 0) {
+      if (i == 0) {
         retString += "\n";
       }
       actionTimes[i] = getModel().getActions().get(i).getStartTick();
@@ -76,8 +73,8 @@ public class TextView extends AbstractView {
       throw new IllegalStateException("error with writing file");
     }
 
-    if(out != System.out) {
-      FileWriter outN = (FileWriter)out;
+    if (out != System.out) {
+      FileWriter outN = (FileWriter) out;
       try {
         outN.close();
       } catch (IOException error) {

@@ -15,31 +15,32 @@ import static org.junit.Assert.assertEquals;
 
 
 public class TestSVGView {
-  Shape R1 = new ShapeBuilder().setColor(Color.red).setName("R1").setPosition(
+  Shape r1 = new ShapeBuilder().setColor(Color.red).setName("r1").setPosition(
           0, 0).setSize(800, 800).setTimeSpan(1, 12).build(
           ShapeBuilder.ShapeType.RECTANGLE);
-  Shape R2 = new ShapeBuilder().setColor(Color.red).setName("R2").setPosition(
+  Shape r2 = new ShapeBuilder().setColor(Color.red).setName("r2").setPosition(
           0, 0).setSize(300, 300).setTimeSpan(1, 12).build(
           ShapeBuilder.ShapeType.RECTANGLE);
-  Shape O1 = new ShapeBuilder().setColor(Color.red).setName("O1").setPosition(
+  Shape o1 = new ShapeBuilder().setColor(Color.red).setName("o1").setPosition(
           100, 100).setSize(10, 10).setTimeSpan(1, 12).build(
           ShapeBuilder.ShapeType.OVAL);
-  AnimationAction M1 = new AnimationActionBuilder().setTargetShape(R2).setTargetPosition(
+  AnimationAction m1 = new AnimationActionBuilder().setTargetShape(r2).setTargetPosition(
           200, 200).setTimeTicks(5, 10).build(AnimationActionBuilder.AnimationActionType.MOVE);
-  AnimationAction M2 = new AnimationActionBuilder().setTargetShape(R2).setTargetPosition(
-          100, 200).setTimeTicks(10, 12).build(AnimationActionBuilder.AnimationActionType.MOVE);
-  AnimationAction M3 = new AnimationActionBuilder().setTargetShape(O1).setTargetPosition(
+  AnimationAction m2 = new AnimationActionBuilder().setTargetShape(r2).setTargetPosition(
+          100, 200).setTimeTicks(10, 12).build(AnimationActionBuilder.
+          AnimationActionType.MOVE);
+  AnimationAction m3 = new AnimationActionBuilder().setTargetShape(o1).setTargetPosition(
           200, 200).setTimeTicks(5, 10).build(AnimationActionBuilder.AnimationActionType.MOVE);
-  AnimationAction RS1 = new AnimationActionBuilder().setTargetShape(R2).setTargetSize(
+  AnimationAction rs1 = new AnimationActionBuilder().setTargetShape(r2).setTargetSize(
           200, 200).setTimeTicks(5, 10).build(
           AnimationActionBuilder.AnimationActionType.SCALE);
-  AnimationAction RS2 = new AnimationActionBuilder().setTargetShape(O1).setTargetSize(
+  AnimationAction rs2 = new AnimationActionBuilder().setTargetShape(o1).setTargetSize(
           60, 60).setTimeTicks(5, 10).build(
           AnimationActionBuilder.AnimationActionType.SCALE);
-  AnimationAction C1 = new AnimationActionBuilder().setTargetShape(R2).setTargetColor(
+  AnimationAction c1 = new AnimationActionBuilder().setTargetShape(r2).setTargetColor(
           Color.black).setTimeTicks(5, 10).build(
           AnimationActionBuilder.AnimationActionType.COLORSHIFT);
-  AnimationAction C2 = new AnimationActionBuilder().setTargetShape(O1).setTargetColor(
+  AnimationAction c2 = new AnimationActionBuilder().setTargetShape(o1).setTargetColor(
           Color.black).setTimeTicks(5, 10).build(
           AnimationActionBuilder.AnimationActionType.COLORSHIFT);
 
@@ -50,7 +51,7 @@ public class TestSVGView {
   public void testAddShapesR() {
     SimpleAnimation buildModel = new SimpleAnimation();
     StringBuilder testBuilder = new StringBuilder();
-    buildModel.addShape(R2);
+    buildModel.addShape(r2);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
@@ -68,7 +69,7 @@ public class TestSVGView {
   public void testAddShapesO() {
     SimpleAnimation buildModel = new SimpleAnimation();
     StringBuilder testBuilder = new StringBuilder();
-    buildModel.addShape(O1);
+    buildModel.addShape(o1);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
@@ -87,7 +88,7 @@ public class TestSVGView {
   public void testAddShapesRWindowScale() {
     SimpleAnimation buildModel = new SimpleAnimation();
     StringBuilder testBuilder = new StringBuilder();
-    buildModel.addShape(R1);
+    buildModel.addShape(r1);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"800\" height=\"800\" version=\"1.1\" "
@@ -105,9 +106,9 @@ public class TestSVGView {
   public void testAddShapesRMoves2() {
     SimpleAnimation buildModel = new SimpleAnimation();
     StringBuilder testBuilder = new StringBuilder();
-    buildModel.addShape(R2);
-    buildModel.addAction(M1);
-    buildModel.addAction(M2);
+    buildModel.addShape(r2);
+    buildModel.addAction(m1);
+    buildModel.addAction(m2);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
@@ -132,8 +133,8 @@ public class TestSVGView {
   public void testAddShapesOMove() {
     SimpleAnimation buildModel = new SimpleAnimation();
     StringBuilder testBuilder = new StringBuilder();
-    buildModel.addShape(O1);
-    buildModel.addAction(M3);
+    buildModel.addShape(o1);
+    buildModel.addAction(m3);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
@@ -154,8 +155,8 @@ public class TestSVGView {
   public void testAddShapesRCol() {
     SimpleAnimation buildModel = new SimpleAnimation();
     StringBuilder testBuilder = new StringBuilder();
-    buildModel.addShape(R2);
-    buildModel.addAction(C1);
+    buildModel.addShape(r2);
+    buildModel.addAction(c1);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
@@ -175,8 +176,8 @@ public class TestSVGView {
   public void testAddShapesOCol() {
     SimpleAnimation buildModel = new SimpleAnimation();
     StringBuilder testBuilder = new StringBuilder();
-    buildModel.addShape(O1);
-    buildModel.addAction(C2);
+    buildModel.addShape(o1);
+    buildModel.addAction(c2);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
@@ -196,8 +197,8 @@ public class TestSVGView {
   public void testAddShapesRDimChange() {
     SimpleAnimation buildModel = new SimpleAnimation();
     StringBuilder testBuilder = new StringBuilder();
-    buildModel.addShape(R2);
-    buildModel.addAction(RS1);
+    buildModel.addShape(r2);
+    buildModel.addAction(rs1);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
@@ -219,8 +220,8 @@ public class TestSVGView {
   public void testAddShapesODimChange() {
     SimpleAnimation buildModel = new SimpleAnimation();
     StringBuilder testBuilder = new StringBuilder();
-    buildModel.addShape(O1);
-    buildModel.addAction(RS2);
+    buildModel.addShape(o1);
+    buildModel.addAction(rs2);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "

@@ -18,6 +18,7 @@ public class OriginalShape {
 
   /**
    * Creates a new {@code OriginalShape} object.
+   *
    * @param s is the shape whose original values we are getting.
    */
   OriginalShape(Shape s) {

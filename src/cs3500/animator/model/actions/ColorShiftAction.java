@@ -13,9 +13,10 @@ public class ColorShiftAction extends AnimationAction {
 
   /**
    * Creates a new {@code ColorShiftAction} object.
-   * @param timeStart is the time this action begins.
-   * @param timeEnd is the time this action ends.
-   * @param shape is the shape this action is executed upon.
+   *
+   * @param timeStart   is the time this action begins.
+   * @param timeEnd     is the time this action ends.
+   * @param shape       is the shape this action is executed upon.
    * @param targetColor is the color this action changes the shape to.
    */
   ColorShiftAction(
@@ -29,8 +30,8 @@ public class ColorShiftAction extends AnimationAction {
   public void execute() {
     this.getShape().recolor(
             new Color(this.getShape().getColor().getRed()
-                            + ((this.targetColor.getRed() - this.originalColor.getRed())
-                            / (this.getEndTick() - this.getStartTick())),
+                    + ((this.targetColor.getRed() - this.originalColor.getRed())
+                    / (this.getEndTick() - this.getStartTick())),
                     this.getShape().getColor().getGreen()
                             + ((this.targetColor.getGreen() - this.originalColor.getGreen())
                             / (this.getEndTick() - this.getStartTick())),
@@ -73,6 +74,7 @@ public class ColorShiftAction extends AnimationAction {
 
   /**
    * Get the target color of this colorshift.
+   *
    * @return the target Color.
    */
   public Color getTargetColor() {
@@ -80,7 +82,7 @@ public class ColorShiftAction extends AnimationAction {
   }
 
   @Override
-  public String toSVG(double ticksPerSecond, boolean loop){
+  public String toSVG(double ticksPerSecond, boolean loop) {
     String startColor = "rgb(" + originalColor.getRed() + ","
             + originalColor.getGreen() + "," + originalColor.getBlue() + ")";
     String endColor = "rgb(" + targetColor.getRed() + ","
@@ -88,7 +90,7 @@ public class ColorShiftAction extends AnimationAction {
 
     String retString;
 
-    if(!loop) {
+    if (!loop) {
       retString = "\t<animate attributeType=\"xml\" begin=\""
               + (getStartTick() / ticksPerSecond * 1000) + "ms\" dur=\""
               + ((getEndTick() - getStartTick()) / ticksPerSecond * 1000) + "ms\" attributeName=\"f"
@@ -99,7 +101,7 @@ public class ColorShiftAction extends AnimationAction {
               + ((getEndTick() - getStartTick()) / ticksPerSecond * 1000) + "ms\" attributeName=\"f"
               + "ill\" from=\"" + startColor + "\" to=\"" + endColor + "\" fill=\"freeze\" />\n";
 
-      retString +=  "\t<animate attributeType=\"xml\" begin=\"base.end\" dur=\"1ms\""
+      retString += "\t<animate attributeType=\"xml\" begin=\"base.end\" dur=\"1ms\""
               + " attributeName=\"fill\" to=\"" + startColor + "\" fill=\"freeze\" />\n";
     }
     return retString;

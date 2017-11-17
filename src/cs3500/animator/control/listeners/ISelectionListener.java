@@ -1,6 +1,6 @@
 package cs3500.animator.control.listeners;
 
-import javax.swing.*;
+import javax.swing.JList;
 import javax.swing.event.ListSelectionListener;
 
 /**
@@ -9,6 +9,7 @@ import javax.swing.event.ListSelectionListener;
 public interface ISelectionListener extends ListSelectionListener {
   /**
    * Set the JList of this listener object.
+   *
    * @param jList is the JList we are related to.
    */
   void setJList(JList jList);

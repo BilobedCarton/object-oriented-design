@@ -31,34 +31,34 @@ public class SVGView extends AbstractView {
 
   @Override
   public void export(boolean loop) {
-    for(Shape shape : getModel().getShapes()) {
-      if(shape.getSizeX() > frameSizeX){
-        frameSizeX = (int)shape.getSizeX();
+    for (Shape shape : getModel().getShapes()) {
+      if (shape.getSizeX() > frameSizeX) {
+        frameSizeX = (int) shape.getSizeX();
       }
-      if(shape.getSizeY() > frameSizeY){
-        frameSizeY = (int)shape.getSizeY();
+      if (shape.getSizeY() > frameSizeY) {
+        frameSizeY = (int) shape.getSizeY();
       }
     }
 
-    String retString ="<svg width=\""+frameSizeX+"\" height=\""+frameSizeY+"\" version=\"1.1\" " +
-            "xmlns=\"http://www.w3.org/2000/svg\">\n";
+    String retString = "<svg width=\"" + frameSizeX + "\" height=\"" + frameSizeY + "\" "
+            + "version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n";
 
     //if we need to worry about looping.
-    if(loop) {
+    if (loop) {
       int maxLife = 1;
-      for(Shape shape: getModel().getShapes()) {
-        if(shape.isVisible()) {
-          if(shape.getDisappearTick() > maxLife) {
+      for (Shape shape : getModel().getShapes()) {
+        if (shape.isVisible()) {
+          if (shape.getDisappearTick() > maxLife) {
             maxLife = shape.getDisappearTick();
           }
         }
       }
       maxLife += 1;
       retString += "<rect>\n\t<animate id=\"base\" begin=\"0;base.end\" dur=\""
-              + (maxLife/speed*1000) + "ms\" attributeName=\"visibility\" from=\"hide\""
+              + (maxLife / speed * 1000) + "ms\" attributeName=\"visibility\" from=\"hide\""
               + " to=\"hide\"/>\n</rect>\n";
     }
-    for(Shape shape : getModel().getShapes()) {
+    for (Shape shape : getModel().getShapes()) {
       if (shape.isVisible()) {
         retString += shape.toSVG(this.speed, loop);
         for (AnimationAction action : getModel().getActions()) {
@@ -77,11 +77,11 @@ public class SVGView extends AbstractView {
       throw new IllegalStateException(e.getMessage());
     }
 
-    if(out != System.out) {
+    if (out instanceof FileWriter) {
 
-      FileWriter outN = (FileWriter)out;
+      FileWriter outN = (FileWriter) out;
       try {
-      outN.close();
+        outN.close();
       } catch (IOException error) {
         throw new IllegalStateException("Error closing file.");
       }

@@ -3,7 +3,7 @@ package cs3500.animator.control.listeners;
 
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 
 import cs3500.animator.control.InteractiveAnimationController;
@@ -17,6 +17,7 @@ public class ShapeSelectionListener implements ISelectionListener {
 
   /**
    * Creates a new {@code ShapeSelectionListener} object.
+   *
    * @param controller is the controller whose shapes will be modified.
    */
   public ShapeSelectionListener(InteractiveAnimationController controller) {

@@ -13,6 +13,7 @@ public abstract class AbstractView implements IView {
 
   /**
    * Creates a new {@code AbstractView} object.
+   *
    * @param model is the model related to this view.
    */
   AbstractView(ReadOnlySimpleAnimation model) {

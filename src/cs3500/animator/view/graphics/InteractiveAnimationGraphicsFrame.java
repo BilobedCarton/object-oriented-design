@@ -1,9 +1,14 @@
 package cs3500.animator.view.graphics;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.BoxLayout;
 
 import cs3500.animator.control.IAnimationController;
 import cs3500.animator.control.InteractiveAnimationController;
@@ -23,7 +28,8 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
 
   /**
    * Creates a new {@code InteractiveAnimationGraphicsFrame} object.
-   * @param width is the width of the frame.
+   *
+   * @param width  is the width of the frame.
    * @param height is the height of the frame.
    */
   public InteractiveAnimationGraphicsFrame(int width, int height) {
@@ -49,7 +55,8 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
     resetButton = new JButton("Reset");
     buttonPanel.add(resetButton);
 
-    loopingToggle = new ToggleButton("Disable looping", "Enable  looping");
+    loopingToggle = new ToggleButton("Disable looping",
+            "Enable  looping");
     buttonPanel.add(loopingToggle);
 
     selectShapesButton = new JButton("Toggle shapes");
@@ -75,17 +82,26 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
 
   /**
    * Set up the actions for the frame based upon the given controller.
+   *
    * @param controller is the controller to be linked with this frame's input areas.
    */
   public void setButtonActions(InteractiveAnimationController controller) {
-    startButton.addActionListener((ActionEvent e) -> {controller.startAnimation();});
-    pauseButton.addActionListener((ActionEvent e) -> {controller.pauseAnimation();});
-    unpauseButton.addActionListener((ActionEvent e) -> {controller.startAnimation();});
+    startButton.addActionListener((ActionEvent e) -> {
+      controller.startAnimation();
+    });
+    pauseButton.addActionListener((ActionEvent e) -> {
+      controller.pauseAnimation();
+    });
+    unpauseButton.addActionListener((ActionEvent e) -> {
+      controller.startAnimation();
+    });
     restartButton.addActionListener((ActionEvent e) -> {
       controller.reset(false);
       controller.startAnimation();
     });
-    resetButton.addActionListener((ActionEvent e) -> {controller.reset(true);});
+    resetButton.addActionListener((ActionEvent e) -> {
+      controller.reset(true);
+    });
     loopingToggle.addActionListener((ActionEvent e) -> {
       controller.toggleLooping();
       loopingToggle.toggle();
@@ -94,6 +110,7 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
 
   /**
    * Link the value and listener for speed slider of this frame.
+   *
    * @param controller is the controller whose values are used or changed.
    */
   public void linkSpeedSlider(IAnimationController controller) {
@@ -103,6 +120,7 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
 
   /**
    * Builds the ListDialog object used for this frame's shape selection window.
+   *
    * @param controller is the controller linked to the dialog box.
    */
   public void buildListDialog(InteractiveAnimationController controller) {

@@ -13,6 +13,7 @@ public class UpdateListener implements ActionListener {
 
   /**
    * Creates a new {@code UpdateListener} object.
+   *
    * @param controller is the controller that will run the update when an action is performed.
    */
   public UpdateListener(IAnimationController controller) {

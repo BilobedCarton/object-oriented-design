@@ -74,13 +74,14 @@ public class TestBuilders {
   public void testBuildColorShift() {
     Shape rect = baseShapeBuilder.build(ShapeBuilder.ShapeType.RECTANGLE);
     AnimationAction colorShift = baseActionBuilder
-            .setTargetColor(new Color(100, 100 ,100))
+            .setTargetColor(new Color(100, 100, 100))
             .setTargetShape(rect)
             .build(AnimationActionBuilder.AnimationActionType.COLORSHIFT);
     assertEquals(colorShift.getStartTick(), 5);
     assertEquals(colorShift.getEndTick(), 10);
     assertEquals(colorShift.getShape().getName(), rect.getName());
-    assertEquals(((ColorShiftAction) colorShift).getTargetColor(), new Color(100, 100, 100));
+    assertEquals(((ColorShiftAction) colorShift).getTargetColor(), new Color(100,
+            100, 100));
   }
 
   @Test
@@ -115,7 +116,7 @@ public class TestBuilders {
   public void testCopyAction() {
     Shape rect = baseShapeBuilder.build(ShapeBuilder.ShapeType.RECTANGLE);
     AnimationAction colorShift = baseActionBuilder
-            .setTargetColor(new Color(100, 100 ,100))
+            .setTargetColor(new Color(100, 100, 100))
             .setTargetShape(rect)
             .build(AnimationActionBuilder.AnimationActionType.COLORSHIFT);
     AnimationAction copy = AnimationActionBuilder.copy(colorShift);
@@ -132,11 +133,16 @@ public class TestBuilders {
   public void testBuildModel() {
     // TODO create more indepth test.
     IAnimationModel model = SimpleAnimation.Builder.initialize()
-            .addRectangle("R", 0, 0, 10, 20, 0.3f, 0.3f ,0.3f, 0, 10)
-            .addOval("O", 10, 20, 5, 5, 0.1f, 0.1f, 0.1f, 5, 15)
-            .addMove("O", 10, 20, 10, 0, 10, 15)
-            .addColorChange("R", 0.3f, 0.3f, 0.3f, 0.05f, 0.1f, 0.15f, 2, 7)
-            .addScaleToChange("O", 5, 5, 20, 10, 8, 13)
+            .addRectangle("R", 0, 0, 10, 20, 0.3f, 0.3f,
+                    0.3f, 0, 10)
+            .addOval("O", 10, 20, 5, 5, 0.1f, 0.1f,
+                    0.1f, 5, 15)
+            .addMove("O", 10, 20, 10, 0,
+                    10, 15)
+            .addColorChange("R", 0.3f, 0.3f, 0.3f, 0.05f,
+                    0.1f, 0.15f, 2, 7)
+            .addScaleToChange("O", 5, 5, 20, 10, 8,
+                    13)
             .build();
     assertEquals(model.getActions().size(), 3);
     assertEquals(model.getShapes().size(), 2);

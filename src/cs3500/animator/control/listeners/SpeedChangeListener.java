@@ -1,6 +1,6 @@
 package cs3500.animator.control.listeners;
 
-import javax.swing.*;
+import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -14,6 +14,7 @@ public class SpeedChangeListener implements ChangeListener {
 
   /**
    * Creates a new {@code SpeedChangeListener} object.
+   *
    * @param controller is the controller whose speed we change.
    */
   public SpeedChangeListener(IAnimationController controller) {

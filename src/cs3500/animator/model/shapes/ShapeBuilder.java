@@ -24,6 +24,7 @@ public class ShapeBuilder {
 
   /**
    * Initializes the ShapeBuilder to build a new shape.
+   *
    * @return a new ShapeBuilder.
    */
   public static ShapeBuilder initialize() {
@@ -32,6 +33,7 @@ public class ShapeBuilder {
 
   /**
    * Set the name of the new Shape to be built.
+   *
    * @param name the name of the Shape.
    * @return this ShapeBuilder.
    */
@@ -42,6 +44,7 @@ public class ShapeBuilder {
 
   /**
    * Set the position of the new Shape to be built.
+   *
    * @param x is the x coordinate of the shape.
    * @param y is the y coordinate of the shape.
    * @return this ShapeBuilder.
@@ -54,6 +57,7 @@ public class ShapeBuilder {
 
   /**
    * Set the color of the new Shape to be built.
+   *
    * @param c is the color of the shape.
    * @return this ShapeBuilder.
    */
@@ -64,6 +68,7 @@ public class ShapeBuilder {
 
   /**
    * Set the size of the new Shape to be built.
+   *
    * @param sizeX is the size in the x axis of the shape.
    * @param sizeY is the size in the y axis of the shape.
    * @return this ShapeBuilder.
@@ -76,7 +81,8 @@ public class ShapeBuilder {
 
   /**
    * Set the lifespan of the new Shape to be built.
-   * @param appearTick is the tick when the shape appears.
+   *
+   * @param appearTick    is the tick when the shape appears.
    * @param disappearTick is the tick when the shape disappears.
    * @return this ShapeBuilder.
    */
@@ -88,10 +94,11 @@ public class ShapeBuilder {
 
   /**
    * Creates a new shape of the given type without any set values.
+   *
    * @param type the type of shape we want.
    * @return the Shape we have created.
-   * @throws IllegalArgumentException if the given shape type is not recognized
-   *                                  or a parameter is invalid.
+   * @throws IllegalArgumentException if the given shape type is not recognized or a parameter is
+   *                                  invalid.
    */
   public Shape build(ShapeType type) throws IllegalArgumentException {
     if (this.name == null) {
@@ -124,6 +131,7 @@ public class ShapeBuilder {
 
   /**
    * Copies the given shape and creates a new one with identical parameters.
+   *
    * @param shape the shape to be copied.
    * @return the new copy of the given shape.
    * @throws IllegalArgumentException if the given shape is not a recognizable shape.
@@ -137,11 +145,9 @@ public class ShapeBuilder {
             .setTimeSpan(shape.getAppearTick(), shape.getDisappearTick());
     if (shape.getClass() == Oval.class) {
       return builder.build(ShapeType.OVAL);
-    }
-    else if (shape.getClass() == Rectangle.class) {
+    } else if (shape.getClass() == Rectangle.class) {
       return builder.build(ShapeType.RECTANGLE);
-    }
-    else {
+    } else {
       throw new IllegalArgumentException("ShapeBuilder.copy(Shape) -- shape is not recognizable.");
     }
   }

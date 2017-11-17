@@ -94,7 +94,8 @@ public class TestAnimationActions {
             .setTargetShape(oval)
             .build(AnimationActionBuilder.AnimationActionType.COLORSHIFT);
     assertEquals(colorShift.toString(1),
-            "Shape Test changes color from (0.0,0.0,0.0) to (0.0,0.0,0.0) from t=0.0s to t=10.0s\n");
+            "Shape Test changes color from (0.0,0.0,0.0) to (0.0,0.0,0.0) " +
+                    "from t=0.0s to t=10.0s\n");
   }
 
   @Test
@@ -123,7 +124,8 @@ public class TestAnimationActions {
             .setTimeTicks(0, 10)
             .setTargetShape(rect)
             .build(AnimationActionBuilder.AnimationActionType.SCALE);
-    assertEquals(scale.toString(1), "Shape Test scales from Width: 0.0 Height: 0.0 to Width:"
+    assertEquals(scale.toString(1), "Shape Test scales from Width: "
+            + "0.0 Height: 0.0 to Width:"
             + " 400.0 Height: 20.0 from t=0.0s to t=10.0s\n");
   }
 }

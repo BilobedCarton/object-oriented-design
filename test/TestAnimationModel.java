@@ -26,7 +26,8 @@ public class TestAnimationModel {
             .build(AnimationActionBuilder.AnimationActionType.MOVE);
     model.addShape(rect);
     model.addAction(action);
-    assertEquals(model.toString(1), "Shapes:\n" + "Name: Test\n" + "Type: rectangle\n"
+    assertEquals(model.toString(1), "Shapes:\n" + "Name: Test\n"
+            + "Type: rectangle\n"
             + "Lower-left corner: (0.0,0.0), Width: 0.0 Height: 0.0, Color: (0.0,0.0,0.0)\n"
             + "Appears at t=0.0s\n" + "Disappears at t=0.0s\n" + "\n"
             + "Shape Test moves from (0.0,0.0) to (12.0,12.0) from t=10.0s to t=20.0s\n");

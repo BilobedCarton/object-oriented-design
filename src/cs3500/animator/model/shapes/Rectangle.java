@@ -9,17 +9,18 @@ public class Rectangle extends Shape {
 
   /**
    * Creates a {@code Rectangle} object.
-   * @param name is the name of the Rectangle object.
-   * @param posX is the position in the x axis of this Rectangle object.
-   * @param posY is the position in the y axis of this Rectangle object.
-   * @param color is the color of this Rectangle object.
-   * @param sizeX is the size in the x axis of this Rectangle object.
-   * @param sizeY is the size in the y axis of this Rectangle object.
-   * @param timeAppear is the tick when this Rectangle first appears.
+   *
+   * @param name          is the name of the Rectangle object.
+   * @param posX          is the position in the x axis of this Rectangle object.
+   * @param posY          is the position in the y axis of this Rectangle object.
+   * @param color         is the color of this Rectangle object.
+   * @param sizeX         is the size in the x axis of this Rectangle object.
+   * @param sizeY         is the size in the y axis of this Rectangle object.
+   * @param timeAppear    is the tick when this Rectangle first appears.
    * @param timeDisappear is the tick when this Rectangle disappears.
    */
   Rectangle(String name, double posX, double posY, Color color, double sizeX, double sizeY,
-              int timeAppear, int timeDisappear) {
+            int timeAppear, int timeDisappear) {
     super(name, posX, posY, color, sizeX, sizeY, timeAppear, timeDisappear,
             ShapeBuilder.ShapeType.RECTANGLE);
   }
@@ -44,19 +45,19 @@ public class Rectangle extends Shape {
             + this.getColor().getGreen() + "," + this.getColor().getBlue() + ")\""
             + " visibility=\"hidden\" >\n";
 
-    if(!loop) {
+    if (!loop) {
       retString += "\t<animate attributeType=\"xml\" begin=\""
-              + (getAppearTick()/ticksPerSecond*1000)
+              + (getAppearTick() / ticksPerSecond * 1000)
               + "ms\" attributeName=\"visibility\" to=\"visible\" />\n";
       retString += "\t<animate attributeType=\"xml\" begin=\""
-              +(getDisappearTick()/ticksPerSecond*1000) +"ms\" attributeName=\"visibility\""
+              + (getDisappearTick() / ticksPerSecond * 1000) + "ms\" attributeName=\"visibility\""
               + " to=\"hidden\" />\n";
     } else {
       retString += "\t<animate attributeType=\"xml\" begin=\"base.begin+"
-              + (getAppearTick()/ticksPerSecond*1000)
+              + (getAppearTick() / ticksPerSecond * 1000)
               + "ms\" attributeName=\"visibility\" to=\"visible\" />\n";
       retString += "\t<animate attributeType=\"xml\" begin=\"base.begin+"
-              +(getDisappearTick()/ticksPerSecond*1000) +"ms\" attributeName=\"visibility\""
+              + (getDisappearTick() / ticksPerSecond * 1000) + "ms\" attributeName=\"visibility\""
               + " to=\"hidden\" />\n";
     }
 

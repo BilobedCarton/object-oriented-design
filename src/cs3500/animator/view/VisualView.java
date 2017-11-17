@@ -12,15 +12,16 @@ public class VisualView extends AbstractView {
 
   /**
    * Creates a new {@code TextView} object.
+   *
    * @param model is the model.
    */
   public VisualView(
           ReadOnlySimpleAnimation model,
           int windowWidth,
           int windowHeight) {
-  super(model);
-  this.frame = new BasicAnimationGraphicsFrame(windowWidth, windowHeight);
-}
+    super(model);
+    this.frame = new BasicAnimationGraphicsFrame(windowWidth, windowHeight);
+  }
 
   @Override
   public void update(int currTick) {

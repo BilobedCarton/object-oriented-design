@@ -61,11 +61,13 @@ public class InteractiveAnimationController extends AnimationController {
 
   /**
    * A getter for the looping property.
+   *
    * @return the looping boolean.
    */
   public boolean getLooping() {
     return this.loopAnimation;
   }
+
   /**
    * Toggles looping behavior on this controller.
    */
@@ -75,6 +77,7 @@ public class InteractiveAnimationController extends AnimationController {
 
   /**
    * Set the shapes currently selected for visibility changes.
+   *
    * @param shapeStates is the array of slected shapes with their current visibility status.
    */
   public void setSelectedShapes(String[] shapeStates) {
@@ -86,6 +89,7 @@ public class InteractiveAnimationController extends AnimationController {
 
   /**
    * Marks the selected shapes with the given visibility.
+   *
    * @param visible is the target visibility of the selected shapes.
    */
   public void markSelectedShapesVisibility(boolean visible) {

@@ -1,6 +1,6 @@
 package cs3500.animator.control;
 
-import javax.swing.*;
+import javax.swing.Timer;
 
 import cs3500.animator.control.listeners.UpdateListener;
 import cs3500.animator.model.IAnimationModel;
@@ -13,16 +13,17 @@ import cs3500.animator.view.IView;
  * Represents a controller for an animation using an IAnimationModel and an IView.
  */
 public class AnimationController implements IAnimationController {
-  IAnimationModel model;
-  IView view;
-  double ticksPerSecond;
-  int currTick = 1;
-  Timer timer;
+  protected IAnimationModel model;
+  protected IView view;
+  protected double ticksPerSecond;
+  protected int currTick = 1;
+  protected Timer timer;
 
   /**
    * Creates a new {@code AnimationController} object.
-   * @param model is the associated IAnimationModel for this controller.
-   * @param view is the associated IView for this controller.
+   *
+   * @param model          is the associated IAnimationModel for this controller.
+   * @param view           is the associated IView for this controller.
    * @param ticksPerSecond is the number of ticks executed per second by this controller.
    */
   public AnimationController(IAnimationModel model, IView view, double ticksPerSecond) {
@@ -90,9 +91,15 @@ public class AnimationController implements IAnimationController {
 
   /**
    * Creates a new timer for use by the controller.
+   *
    * @return the new Timer.
    */
-  void resetTimer() {
+  public void resetTimer() {
     this.timer = new Timer((int) (1000 / this.ticksPerSecond), new UpdateListener(this));
+  }
+
+  @Override
+  public Timer getTimer(){
+    return this.timer;
   }
 }

@@ -1,9 +1,10 @@
 package cs3500.animator.view.graphics;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.BorderLayout;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 
 import cs3500.animator.model.shapes.Shape;
 
@@ -40,6 +41,7 @@ public class BasicAnimationGraphicsFrame extends JFrame {
 
   /**
    * Update the animationPanel's shape data for the next update.
+   *
    * @param shapes is the list of shapes whose data we are using.
    */
   public void updateShapeData(List<Shape> shapes) {

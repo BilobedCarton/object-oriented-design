@@ -1,9 +1,17 @@
 package cs3500.animator.view.graphics;
 
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JDialog;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 
 import cs3500.animator.control.InteractiveAnimationController;
 import cs3500.animator.control.listeners.ISelectionListener;
@@ -20,8 +28,9 @@ public class ListDialog extends JDialog {
 
   /**
    * Creates a new {@code ListDialog} object.
-   * @param frame is the frame this dialog is dependent on.
-   * @param model is the model whose data is used by this dialog.
+   *
+   * @param frame    is the frame this dialog is dependent on.
+   * @param model    is the model whose data is used by this dialog.
    * @param listener is the listener used by this dialog on selection.
    */
   public ListDialog(JFrame frame, IReadOnlyAnimationModel model, ISelectionListener listener) {
@@ -46,7 +55,9 @@ public class ListDialog extends JDialog {
     this.add(buttonPanel, BorderLayout.SOUTH);
 
     closeButton = new JButton("Close");
-    closeButton.addActionListener((ActionEvent e) -> {this.dispose();});
+    closeButton.addActionListener((ActionEvent e) -> {
+      this.dispose();
+    });
     buttonPanel.add(closeButton);
 
     visibleButton = new JButton("Set as visible");
@@ -72,6 +83,7 @@ public class ListDialog extends JDialog {
 
   /**
    * Link the controller's functionality to this dialog box's buttons.
+   *
    * @param controller is the controller being linked to this dialog box.
    */
   public void setUpButtons(InteractiveAnimationController controller) {
@@ -92,6 +104,7 @@ public class ListDialog extends JDialog {
 
   /**
    * Get the string version of the states of the shape.
+   *
    * @return the String array of shape states.
    */
   private String[] getShapeStates() {

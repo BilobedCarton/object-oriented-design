@@ -1,6 +1,6 @@
 package cs3500.animator.view.graphics;
 
-import javax.swing.*;
+import javax.swing.JButton;
 
 /**
  * Represents a button that toggles functionality.
@@ -12,7 +12,8 @@ public class ToggleButton extends JButton {
 
   /**
    * Creates a new {@code ToggleButton} object.
-   * @param textWhenActive is the text displayed when the functionality is active.
+   *
+   * @param textWhenActive   is the text displayed when the functionality is active.
    * @param textWhenInactive is the text displayed when the functionality is inactive.
    */
   public ToggleButton(String textWhenActive, String textWhenInactive) {

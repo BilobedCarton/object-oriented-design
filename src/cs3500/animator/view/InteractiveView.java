@@ -5,8 +5,8 @@ import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.view.graphics.InteractiveAnimationGraphicsFrame;
 
 /**
- * Represents an interactive visual view for an animation.
- * It can also export the animation as an SVG file.
+ * Represents an interactive visual view for an animation. It can also export the animation as an
+ * SVG file.
  */
 public class InteractiveView extends AbstractView {
   private Appendable out;
@@ -15,10 +15,11 @@ public class InteractiveView extends AbstractView {
 
   /**
    * Creates a new {@code InteractiveView} object.
-   * @param model is the model linked to this view.
-   * @param out is the location where the data can be exported as SVG.
-   * @param speed is the speed in ticksPerSecond of this animation.
-   * @param windowWidth is the width of the window to be displayed.
+   *
+   * @param model        is the model linked to this view.
+   * @param out          is the location where the data can be exported as SVG.
+   * @param speed        is the speed in ticksPerSecond of this animation.
+   * @param windowWidth  is the width of the window to be displayed.
    * @param windowHeight is the height of the window to be displayed.
    */
   public InteractiveView(
@@ -31,6 +32,15 @@ public class InteractiveView extends AbstractView {
     this.out = out;
     this.speed = speed;
     this.frame = new InteractiveAnimationGraphicsFrame(windowWidth, windowHeight);
+  }
+
+
+  /**
+   * A getter for our frame.
+   * @return the frame.
+   */
+  public InteractiveAnimationGraphicsFrame getFrame() {
+    return this.frame;
   }
 
   @Override

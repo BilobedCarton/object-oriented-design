@@ -137,6 +137,7 @@ public class AnimationActionBuilder {
 
   /**
    * Copies the given action and creates a new one with the same parameters.
+   *
    * @param action is the action to be copied.
    * @return the new action.
    * @throws IllegalArgumentException if the given action is not recognizable.
@@ -148,18 +149,15 @@ public class AnimationActionBuilder {
     if (action.getClass() == ColorShiftAction.class) {
       return builder.setTargetColor(((ColorShiftAction) action).getTargetColor())
               .build(AnimationActionType.COLORSHIFT);
-    }
-    else if (action.getClass() == MoveAction.class) {
+    } else if (action.getClass() == MoveAction.class) {
       return builder.setTargetPosition(
-                  ((MoveAction) action).getTargetX(), ((MoveAction) action).getTargetY())
+              ((MoveAction) action).getTargetX(), ((MoveAction) action).getTargetY())
               .build(AnimationActionType.MOVE);
-    }
-    else if (action.getClass() == ScaleAction.class) {
+    } else if (action.getClass() == ScaleAction.class) {
       return builder.setTargetSize(
-                  ((ScaleAction) action).getTargetSizeX(), ((ScaleAction) action).getTargetSizeY())
+              ((ScaleAction) action).getTargetSizeX(), ((ScaleAction) action).getTargetSizeY())
               .build(AnimationActionType.SCALE);
-    }
-    else {
+    } else {
       throw new IllegalArgumentException("AnimationActionBuilder.copy(AnimationAction) -- "
               + "action is not recognized.");
     }
