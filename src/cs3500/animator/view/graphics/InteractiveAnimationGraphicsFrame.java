@@ -24,10 +24,7 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
   private JButton unpauseButton;
   private JButton restartButton;
   private JButton resetButton;
-  private JButton selectShapesButton;
   private ToggleButton loopingToggle;
-  private JPanel buttonPanel;
-  private JPanel sliderPanel;
   private JSlider speedSlider;
   private ListDialog listDialog;
 
@@ -41,7 +38,10 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
     super(width, height);
 
     // buttons
-    buttonPanel = new JPanel();
+    JPanel buttonPanel = new JPanel();
+    JPanel sliderPanel;
+    JButton selectShapesButton;
+
     buttonPanel.setLayout(new FlowLayout());
     this.add(buttonPanel, BorderLayout.SOUTH);
 

@@ -23,7 +23,6 @@ import cs3500.animator.model.IReadOnlyAnimationModel;
 public class ListDialog extends JDialog {
   IReadOnlyAnimationModel model;
   private JList jList;
-  private JButton closeButton;
   private JButton visibleButton;
   private JButton invisibleButton;
   private JButton exportButton;
@@ -42,6 +41,7 @@ public class ListDialog extends JDialog {
     this.setLayout(new BorderLayout());
 
     JPanel buttonPanel;
+    JButton closeButton;
 
     jList = new JList(this.getShapeStates());
     jList.setVisibleRowCount(5);

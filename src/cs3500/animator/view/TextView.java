@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import cs3500.animator.model.ReadOnlySimpleAnimation;
+
 /**
  * Represents a text based view for an animation program.
  */

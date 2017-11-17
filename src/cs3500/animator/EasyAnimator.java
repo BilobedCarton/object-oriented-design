@@ -5,7 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import cs3500.animator.control.AnimationController;
 import cs3500.animator.control.IAnimationController;
@@ -43,12 +44,18 @@ public final class EasyAnimator {
   }
 
 
+  /**
+   * Generates a filewriter for our output.
+   * @param viewType the input type.
+   * @param outputFile the output location.
+   * @return a filewriter to hold the output.
+   */
   public static FileWriter getWriter(String viewType,
                                      String outputFile) {
     FileWriter writer;
     switch (viewType) {
       case "text":
-        if (outputFile != "System.out") {
+        if (!outputFile.equals("System.out")) {
           if (!outputFile.substring(outputFile.length() - 4).equals(".txt")) {
             throwErrorMessage("Invalid input, output must be .txt for type text.");
             return null;
@@ -63,7 +70,7 @@ public final class EasyAnimator {
         }
         break;
       case "svg":
-        if (outputFile != "System.out") {
+        if (!outputFile.equals("System.out")) {
           if (!outputFile.substring(outputFile.length() - 4).equals(".svg")) {
             EasyAnimator.throwErrorMessage("Invalid input, output must be svg for type svg.");
           }
@@ -77,7 +84,7 @@ public final class EasyAnimator {
         }
         break;
       case "interactive":
-        if (outputFile != "System.out") {
+        if (!outputFile.equals("System.out")) {
           if (!outputFile.substring(outputFile.length() - 4).equals(".svg")) {
             EasyAnimator.throwErrorMessage("Invalid input, output must be svg for type svg.");
           }
