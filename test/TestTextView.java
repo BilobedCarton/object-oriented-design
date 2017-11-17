@@ -51,7 +51,7 @@ public class TestTextView {
     buildModel.addShape(r2);
     IView testView = new TextView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
-    assertEquals(testBuilder.toString(), "Shapes:\nName: R2\nType: rectangle\n"
+    assertEquals(testBuilder.toString(), "Shapes:\nName: r2\nType: rectangle\n"
             + "Lower-left corner: (0.0,0.0), Width: 300.0 Height: 300.0, Color: (1.0,0.0,0.0)\n"
             + "Appears at t=1.0s\nDisappears at t=12.0s\n");
   }
@@ -66,7 +66,7 @@ public class TestTextView {
     buildModel.addShape(o1);
     IView testView = new TextView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
-    assertEquals(testBuilder.toString(), "Shapes:\nName: O1\nType: oval\nLower-left corner:"
+    assertEquals(testBuilder.toString(), "Shapes:\nName: o1\nType: oval\nLower-left corner:"
             + " (100.0,100.0), Width: 10.0 Height: 10.0, Color: (1.0,0.0,0.0)\n"
             + "Appears at t=1.0s\nDisappears at t=12.0s\n");
   }
@@ -84,11 +84,11 @@ public class TestTextView {
     buildModel.addAction(m2);
     IView testView = new TextView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
-    assertEquals(testBuilder.toString(), "Shapes:\nName: R2\nType: rectangle\n"
+    assertEquals(testBuilder.toString(), "Shapes:\nName: r2\nType: rectangle\n"
             + "Lower-left corner: (0.0,0.0), Width: 300.0 Height: 300.0, Color: (1.0,0.0,0.0)\n"
             + "Appears at t=1.0s\nDisappears at t=12.0s\n\n"
-            + "Shape R2 moves from (0.0,0.0) to (200.0,200.0) from t=5.0s to t=10.0s\n"
-            + "Shape R2 moves from (200.0,200.0) to (100.0,200.0) from t=10.0s to t=12.0s\n");
+            + "Shape r2 moves from (0.0,0.0) to (200.0,200.0) from t=5.0s to t=10.0s\n"
+            + "Shape r2 moves from (200.0,200.0) to (100.0,200.0) from t=10.0s to t=12.0s\n");
   }
 
   /**
@@ -102,10 +102,10 @@ public class TestTextView {
     buildModel.addAction(m3);
     IView testView = new TextView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
-    assertEquals(testBuilder.toString(), "Shapes:\nName: O1\nType: oval\n"
+    assertEquals(testBuilder.toString(), "Shapes:\nName: o1\nType: oval\n"
             + "Lower-left corner: (100.0,100.0), Width: 10.0 Height: 10.0, Color: (1.0,0.0,0.0)\n"
             + "Appears at t=1.0s\nDisappears at t=12.0s\n\n"
-            + "Shape O1 moves from (100.0,100.0) to (200.0,200.0) from t=5.0s to t=10.0s\n");
+            + "Shape o1 moves from (100.0,100.0) to (200.0,200.0) from t=5.0s to t=10.0s\n");
   }
 
   /**
@@ -119,10 +119,10 @@ public class TestTextView {
     buildModel.addAction(c1);
     IView testView = new TextView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
-    assertEquals(testBuilder.toString(), "Shapes:\nName: R2\nType: rectangle\n"
+    assertEquals(testBuilder.toString(), "Shapes:\nName: r2\nType: rectangle\n"
             + "Lower-left corner: (0.0,0.0), Width: 300.0 Height: 300.0, Color: (1.0,0.0,0.0)\n"
             + "Appears at t=1.0s\nDisappears at t=12.0s\n\n"
-            + "Shape R2 changes color from (1.0,0.0,0.0) to (1.0,0.0,0.0) from t=5.0s to t=10"
+            + "Shape r2 changes color from (1.0,0.0,0.0) to (1.0,0.0,0.0) from t=5.0s to t=10"
             + ".0s\n");
   }
 
@@ -137,10 +137,10 @@ public class TestTextView {
     buildModel.addAction(c2);
     IView testView = new TextView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
-    assertEquals(testBuilder.toString(), "Shapes:\nName: O1\nType: oval\n"
+    assertEquals(testBuilder.toString(), "Shapes:\nName: o1\nType: oval\n"
             + "Lower-left corner: (100.0,100.0), Width: 10.0 Height: 10.0, Color: (1.0,0.0,0.0)\n"
             + "Appears at t=1.0s\nDisappears at t=12.0s\n\n"
-            + "Shape O1 changes color from (1.0,0.0,0.0) to (1.0,0.0,0.0) from t=5.0s to t=10"
+            + "Shape o1 changes color from (1.0,0.0,0.0) to (1.0,0.0,0.0) from t=5.0s to t=10"
             + ".0s\n");
   }
 
@@ -155,10 +155,10 @@ public class TestTextView {
     buildModel.addAction(rs1);
     IView testView = new TextView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
-    assertEquals(testBuilder.toString(), "Shapes:\nName: R2\nType: rectangle\n"
+    assertEquals(testBuilder.toString(), "Shapes:\nName: r2\nType: rectangle\n"
             + "Lower-left corner: (0.0,0.0), Width: 300.0 Height: 300.0, Color: (1.0,0.0,0.0)\n"
             + "Appears at t=1.0s\nDisappears at t=12.0s\n\n"
-            + "Shape R2 scales from Width: 300.0 Height: 300.0 to Width: 200.0 Height: 200.0 from"
+            + "Shape r2 scales from Width: 300.0 Height: 300.0 to Width: 200.0 Height: 200.0 from"
             + " t=5.0s to t=10.0s\n");
   }
 
@@ -173,10 +173,10 @@ public class TestTextView {
     buildModel.addAction(rs2);
     IView testView = new TextView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
-    assertEquals(testBuilder.toString(), "Shapes:\nName: O1\nType: oval\n"
+    assertEquals(testBuilder.toString(), "Shapes:\nName: o1\nType: oval\n"
             + "Lower-left corner: (100.0,100.0), Width: 10.0 Height: 10.0, Color: (1.0,0.0,0.0)\n"
             + "Appears at t=1.0s\nDisappears at t=12.0s\n\n"
-            + "Shape O1 scales from Width: 10.0 Height: 10.0 to Width: 60.0 Height: 60.0 from "
+            + "Shape o1 scales from Width: 10.0 Height: 10.0 to Width: 60.0 Height: 60.0 from "
             + "t=5.0s to t=10.0s\n");
   }
 }

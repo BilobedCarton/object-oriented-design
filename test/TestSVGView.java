@@ -55,7 +55,7 @@ public class TestSVGView {
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
-            + "xmlns=\"http://www.w3.org/2000/svg\">\n<rect id=\"R2\" x=\"0.0\" y=\"0.0\""
+            + "xmlns=\"http://www.w3.org/2000/svg\">\n<rect id=\"r2\" x=\"0.0\" y=\"0.0\""
             + " width=\"300.0\" height=\"300.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n\t"
             + "<animate attributeType=\"xml\" begin=\"1000.0ms\" attributeName=\"visibility\" to=\""
             + "visible\" />\n\t<animate attributeType=\"xml\" begin=\"12000.0ms\" attributeName=\""
@@ -73,7 +73,7 @@ public class TestSVGView {
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
-            + "xmlns=\"http://www.w3.org/2000/svg\">\n<ellipse id=\"O1\" cx=\"100.0\" cy=\"100.0\""
+            + "xmlns=\"http://www.w3.org/2000/svg\">\n<ellipse id=\"o1\" cx=\"100.0\" cy=\"100.0\""
             + " rx=\"10.0\" ry=\"10.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n\t"
             + "<animate attributeType=\"xml\" begin=\"1000.0ms\" attributeName=\"visibility\" to=\""
             + "visible\" />\n\t<animate attributeType=\"xml\" begin=\"12000.0ms\" attributeName=\""
@@ -92,7 +92,7 @@ public class TestSVGView {
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"800\" height=\"800\" version=\"1.1\" "
-            + "xmlns=\"http://www.w3.org/2000/svg\">\n<rect id=\"R1\" x=\"0.0\" y=\"0.0\""
+            + "xmlns=\"http://www.w3.org/2000/svg\">\n<rect id=\"r1\" x=\"0.0\" y=\"0.0\""
             + " width=\"800.0\" height=\"800.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n\t"
             + "<animate attributeType=\"xml\" begin=\"1000.0ms\" attributeName=\"visibility\" to=\""
             + "visible\" />\n\t<animate attributeType=\"xml\" begin=\"12000.0ms\" attributeName=\""
@@ -112,7 +112,7 @@ public class TestSVGView {
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
-            + "xmlns=\"http://www.w3.org/2000/svg\">\n<rect id=\"R2\" x=\"0.0\" y=\"0.0\""
+            + "xmlns=\"http://www.w3.org/2000/svg\">\n<rect id=\"r2\" x=\"0.0\" y=\"0.0\""
             + " width=\"300.0\" height=\"300.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n\t"
             + "<animate attributeType=\"xml\" begin=\"1000.0ms\" attributeName=\"visibility\" to=\""
             + "visible\" />\n\t<animate attributeType=\"xml\" begin=\"12000.0ms\" attributeName=\""
@@ -138,7 +138,7 @@ public class TestSVGView {
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
-            + "xmlns=\"http://www.w3.org/2000/svg\">\n<ellipse id=\"O1\" cx=\"100.0\" cy=\"100.0\""
+            + "xmlns=\"http://www.w3.org/2000/svg\">\n<ellipse id=\"o1\" cx=\"100.0\" cy=\"100.0\""
             + " rx=\"10.0\" ry=\"10.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n"
             + "\t<animate attributeType=\"xml\" begin=\"1000.0ms\" attributeName=\"visibility\" "
             + "to=\"visible\" />\n\t<animate attributeType=\"xml\" begin=\"12000.0ms\" attributeN"
@@ -160,7 +160,7 @@ public class TestSVGView {
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
-            + "xmlns=\"http://www.w3.org/2000/svg\">\n<rect id=\"R2\" x=\"0.0\" y=\"0.0\" width=\""
+            + "xmlns=\"http://www.w3.org/2000/svg\">\n<rect id=\"r2\" x=\"0.0\" y=\"0.0\" width=\""
             + "300.0\" height=\"300.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n"
             + "\t<animate attributeType=\"xml\" begin=\"1000.0ms\" attributeName=\"visibility\" "
             + "to=\"visible\" />\n\t<animate attributeType=\"xml\" begin=\"12000.0ms\" attributeN"
@@ -181,7 +181,7 @@ public class TestSVGView {
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
-            + "xmlns=\"http://www.w3.org/2000/svg\">\n<ellipse id=\"O1\" cx=\"100.0\" cy=\"100.0\""
+            + "xmlns=\"http://www.w3.org/2000/svg\">\n<ellipse id=\"o1\" cx=\"100.0\" cy=\"100.0\""
             + " rx=\"10.0\" ry=\"10.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n"
             + "\t<animate attributeType=\"xml\" begin=\"1000.0ms\" attributeName=\"visibility\" "
             + "to=\"visible\" />\n\t<animate attributeType=\"xml\" begin=\"12000.0ms\" attributeN"
@@ -202,7 +202,7 @@ public class TestSVGView {
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
-            + "xmlns=\"http://www.w3.org/2000/svg\">\n<rect id=\"R2\" x=\"0.0\" y=\"0.0\" width=\""
+            + "xmlns=\"http://www.w3.org/2000/svg\">\n<rect id=\"r2\" x=\"0.0\" y=\"0.0\" width=\""
             + "300.0\" height=\"300.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n"
             + "\t<animate attributeType=\"xml\" begin=\"1000.0ms\" attributeName=\"visibility\" "
             + "to=\"visible\" />\n\t<animate attributeType=\"xml\" begin=\"12000.0ms\" attributeN"
@@ -225,7 +225,7 @@ public class TestSVGView {
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     testView.start();
     assertEquals(testBuilder.toString(), "<svg width=\"700\" height=\"500\" version=\"1.1\" "
-            + "xmlns=\"http://www.w3.org/2000/svg\">\n<ellipse id=\"O1\" cx=\"100.0\" cy=\"100.0\""
+            + "xmlns=\"http://www.w3.org/2000/svg\">\n<ellipse id=\"o1\" cx=\"100.0\" cy=\"100.0\""
             + " rx=\"10.0\" ry=\"10.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n"
             + "\t<animate attributeType=\"xml\" begin=\"1000.0ms\" attributeName=\"visibility\" "
             + "to=\"visible\" />\n\t<animate attributeType=\"xml\" begin=\"12000.0ms\" attributeN"

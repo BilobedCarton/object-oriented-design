@@ -9,6 +9,7 @@ import cs3500.animator.model.ReadOnlySimpleAnimation;
  * Represents a text based view for an animation program.
  */
 public class TextView extends AbstractView {
+
   private Appendable out;
   private double speed;
 
@@ -73,7 +74,8 @@ public class TextView extends AbstractView {
       throw new IllegalStateException("error with writing file");
     }
 
-    if (out != System.out) {
+    if (out instanceof FileWriter) {
+
       FileWriter outN = (FileWriter) out;
       try {
         outN.close();

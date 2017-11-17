@@ -16,6 +16,12 @@ public class SVGView extends AbstractView {
   private int frameSizeX;
   private int frameSizeY;
 
+  /**
+   * The constructor for our svg view.
+   * @param model is the model the view uses .
+   * @param out is where the output will be appended to.
+   * @param speed is how many ticks per second to run at.
+   */
   public SVGView(ReadOnlySimpleAnimation model, Appendable out, double speed) {
     super(model);
     this.frameSizeX = 700;

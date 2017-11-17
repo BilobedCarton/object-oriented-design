@@ -60,7 +60,7 @@ public class ScaleAction extends AnimationAction {
 
   @Override
   public void setOriginalValues(Shape s) throws IllegalArgumentException {
-    if (this.getShape().getName().equals(s.getName()) == false) {
+    if (!this.getShape().getName().equals(s.getName())) {
       throw new IllegalArgumentException("ColorShiftAction.setOriginalValues(Shape) -- "
               + "This action does not execute upon the given shape.");
     }

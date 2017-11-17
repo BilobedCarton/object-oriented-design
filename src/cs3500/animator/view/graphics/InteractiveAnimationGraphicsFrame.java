@@ -19,10 +19,15 @@ import cs3500.animator.control.listeners.SpeedChangeListener;
  * Represents a graphics frame for use by an InteractiveView for an animation.
  */
 public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFrame {
-  private JButton startButton, pauseButton, unpauseButton, restartButton, resetButton,
-          selectShapesButton;
+  private JButton startButton;
+  private JButton pauseButton;
+  private JButton unpauseButton;
+  private JButton restartButton;
+  private JButton resetButton;
+  private JButton selectShapesButton;
   private ToggleButton loopingToggle;
-  private JPanel buttonPanel, sliderPanel;
+  private JPanel buttonPanel;
+  private JPanel sliderPanel;
   private JSlider speedSlider;
   private ListDialog listDialog;
 

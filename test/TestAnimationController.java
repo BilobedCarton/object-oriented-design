@@ -113,7 +113,7 @@ public class TestAnimationController {
     buildModel.addShape(r2);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     IAnimationController testCont = new AnimationController(buildModel, testView, 5);
-    testCont.go();
+    testCont.goStart();
     assertEquals(testCont.getTimer().isRunning(),true);
   }
 
@@ -152,7 +152,7 @@ public class TestAnimationController {
     buildModel.addShape(r2);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
     IAnimationController testCont = new AnimationController(buildModel, testView, 5);
-    testCont.go();
+    testCont.goStart();
     assertEquals(testCont.getTimer().isRunning(),true);
     testCont.reset(true);
     assertEquals(testCont.getTimer().isRunning(),false);

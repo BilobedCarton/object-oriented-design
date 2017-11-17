@@ -9,10 +9,8 @@ import cs3500.animator.model.actions.AnimationActionBuilder;
 import cs3500.animator.model.shapes.Shape;
 import cs3500.animator.model.shapes.ShapeBuilder;
 import cs3500.animator.view.InteractiveView;
-import cs3500.animator.view.graphics.InteractiveAnimationGraphicsFrame;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 public class TestInteractiveView {
 

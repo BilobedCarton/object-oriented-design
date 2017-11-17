@@ -1,4 +1,5 @@
 package cs3500.animator.view;
+
 import cs3500.animator.EasyAnimator;
 import cs3500.animator.model.ReadOnlySimpleAnimation;
 

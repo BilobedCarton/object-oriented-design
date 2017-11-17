@@ -12,8 +12,14 @@ import cs3500.animator.model.shapes.Shape;
  * Represents a basic graphics frame for use by an Animation view.
  */
 public class BasicAnimationGraphicsFrame extends JFrame {
+
   AnimationPanel animationPanel;
 
+  /**
+   * The constructor for the give graphics frame.
+   * @param width the pixel width of the frame.
+   * @param height the pixel height of the frame.
+   */
   public BasicAnimationGraphicsFrame(int width, int height) {
     super();
     this.setTitle("Animation");

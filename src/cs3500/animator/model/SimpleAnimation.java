@@ -47,7 +47,7 @@ public class SimpleAnimation implements IAnimationModel {
 
   @Override
   public void addAction(AnimationAction action) {
-    if (this.shapes.contains(action.getShape()) == false) {
+    if (!this.shapes.contains(action.getShape())) {
       throw new IllegalArgumentException("SimpleAnimation.getShapeStateAt(int, Shape) -- "
               + "The given shape does not exist in this model.");
     }
@@ -113,7 +113,7 @@ public class SimpleAnimation implements IAnimationModel {
 
   @Override
   public Shape getShapeStateAt(int tick, Shape s) throws IllegalArgumentException {
-    if (this.shapes.contains(s) == false) {
+    if (!this.shapes.contains(s)) {
       throw new IllegalArgumentException("SimpleAnimation.getShapeStateAt(int, Shape) -- "
               + "The given shape does not exist in this model.");
     }

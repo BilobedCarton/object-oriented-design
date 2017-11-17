@@ -55,7 +55,7 @@ public class AnimationController implements IAnimationController {
   }
 
   @Override
-  public void go() {
+  public void goStart() {
     view.start();
     timer.start();
   }
@@ -92,14 +92,13 @@ public class AnimationController implements IAnimationController {
   /**
    * Creates a new timer for use by the controller.
    *
-   * @return the new Timer.
    */
   public void resetTimer() {
     this.timer = new Timer((int) (1000 / this.ticksPerSecond), new UpdateListener(this));
   }
 
   @Override
-  public Timer getTimer(){
+  public Timer getTimer() {
     return this.timer;
   }
 }

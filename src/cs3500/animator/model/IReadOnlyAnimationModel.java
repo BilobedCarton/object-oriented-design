@@ -6,7 +6,7 @@ import cs3500.animator.model.actions.AnimationAction;
 import cs3500.animator.model.shapes.Shape;
 
 /**
- * Represents a readonly version of an IAnimationModel
+ * Represents a readonly version of an IAnimationModel.
  */
 public interface IReadOnlyAnimationModel {
 

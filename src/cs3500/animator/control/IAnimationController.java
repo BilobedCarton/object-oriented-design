@@ -44,7 +44,7 @@ public interface IAnimationController {
   /**
    * Run the animation software. i.e. pass control to the controller and let it update the view.
    */
-  void go();
+  void goStart();
 
   /**
    * A getter for our timer.

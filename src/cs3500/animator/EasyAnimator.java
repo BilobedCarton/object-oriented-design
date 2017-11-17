@@ -189,7 +189,7 @@ public final class EasyAnimator {
       }
     }
 
-    AnimationFileReader animReader = new <IAnimationModel>AnimationFileReader();
+    AnimationFileReader animReader = new AnimationFileReader();
     String useFile = System.getProperty("user.dir") + "/resources/" + inputFile;
 
     IAnimationModel model = animReader.readFile(useFile, new SimpleAnimation.Builder());
@@ -204,6 +204,6 @@ public final class EasyAnimator {
             ? new InteractiveAnimationController(model, (InteractiveView) view, speed)
             : new AnimationController(model, view, speed);
 
-    controller.go();
+    controller.goStart();
   }
 }

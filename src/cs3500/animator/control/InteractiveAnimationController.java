@@ -8,7 +8,7 @@ import cs3500.animator.model.shapes.Shape;
 import cs3500.animator.view.InteractiveView;
 
 /**
- * Represents a controller for an animation using an InteractiveView and an IAnimationModel
+ * Represents a controller for an animation using an InteractiveView and an IAnimationModel.
  */
 public class InteractiveAnimationController extends AnimationController {
   private boolean loopAnimation = false;
@@ -20,7 +20,7 @@ public class InteractiveAnimationController extends AnimationController {
   }
 
   @Override
-  public void go() {
+  public void goStart() {
     this.view.start();
     ((InteractiveView) this.view).setUpInteractivity(this);
   }
@@ -29,7 +29,7 @@ public class InteractiveAnimationController extends AnimationController {
   public void runUpdate() {
     super.runUpdate();
 
-    if (this.loopAnimation == true) {
+    if (this.loopAnimation) {
       int finalTick = 0;
       for (Shape s : this.model.getShapes()) {
         if (s.getDisappearTick() > finalTick) {

@@ -79,7 +79,7 @@ public abstract class AnimationAction implements ITimedAction {
    * @throws IllegalArgumentException if s has a different name from the current target shape.
    */
   public void setShape(Shape s) {
-    if (s.getName().equals(this.shape.getName()) == false) {
+    if (!s.getName().equals(this.shape.getName())) {
       throw new IllegalArgumentException("AnimationAction.setShape(Shape) -- Shape s has different "
               + "name from current target Shape.");
     }

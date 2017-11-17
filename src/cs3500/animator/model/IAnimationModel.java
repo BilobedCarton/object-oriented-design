@@ -14,14 +14,14 @@ public interface IAnimationModel {
   /**
    * Gets the list of AnimationActions used in this animation.
    *
-   * @return the List\<AnimationAction\> used.
+   * @return the List of AnimationAction used.
    */
   List<AnimationAction> getActions();
 
   /**
    * Gets the list of Shapes used in this animation.
    *
-   * @return the List\<Shape\> used.
+   * @return the List of Shape used.
    */
   List<Shape> getShapes();
 
