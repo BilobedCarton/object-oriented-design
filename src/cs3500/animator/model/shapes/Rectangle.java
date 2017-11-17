@@ -37,17 +37,29 @@ public class Rectangle extends Shape {
   }
 
   @Override
-  public String toSVG(double ticksPerSecond) {
+  public String toSVG(double ticksPerSecond, boolean loop) {
     String retString = "<rect id=\"" + this.getName() + "\"" + " x=\"" + this.getPosX() + "\" y=\""
             + this.getPosY() + "\" width=\"" + this.getSizeX() + "\" height=\""
             + this.getSizeY() + "\" fill=\"rgb(" + this.getColor().getRed() + ","
             + this.getColor().getGreen() + "," + this.getColor().getBlue() + ")\""
             + " visibility=\"hidden\" >\n";
-    retString += "\t<animate attributeType=\"xml\" begin=\""+ (getAppearTick()/ticksPerSecond*1000)
-            + "ms\" attributeName=\"visibility\" to=\"visible\" />\n";
-    retString += "\t<animate attributeType=\"xml\" begin=\""
-            +(getDisappearTick()/ticksPerSecond*1000) +"ms\" attributeName=\"visibility\""
-            + " to=\"hidden\" />\n";
+
+    if(!loop) {
+      retString += "\t<animate attributeType=\"xml\" begin=\""
+              + (getAppearTick()/ticksPerSecond*1000)
+              + "ms\" attributeName=\"visibility\" to=\"visible\" />\n";
+      retString += "\t<animate attributeType=\"xml\" begin=\""
+              +(getDisappearTick()/ticksPerSecond*1000) +"ms\" attributeName=\"visibility\""
+              + " to=\"hidden\" />\n";
+    } else {
+      retString += "\t<animate attributeType=\"xml\" begin=\"base.begin+"
+              + (getAppearTick()/ticksPerSecond*1000)
+              + "ms\" attributeName=\"visibility\" to=\"visible\" />\n";
+      retString += "\t<animate attributeType=\"xml\" begin=\"base.begin+"
+              +(getDisappearTick()/ticksPerSecond*1000) +"ms\" attributeName=\"visibility\""
+              + " to=\"hidden\" />\n";
+    }
+
     return retString;
   }
 

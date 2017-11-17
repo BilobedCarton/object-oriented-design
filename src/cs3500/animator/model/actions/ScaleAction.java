@@ -84,7 +84,7 @@ public class ScaleAction extends AnimationAction {
   }
 
   @Override
-  public String toSVG(double ticksPerSecond){
+  public String toSVG(double ticksPerSecond, boolean loop){
     updateOriginalValues();
     String xChar;
     String yChar;
@@ -100,14 +100,34 @@ public class ScaleAction extends AnimationAction {
       default:
         throw new IllegalArgumentException("invalid shape type");
     }
-    String retString = "\t<animate attributeType=\"xml\" begin=\""
-            + (getStartTick()/ticksPerSecond*1000) +"ms\" dur=\""
-            + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" attributeName=\"" + xChar
-            + "\" from=\"" + originalSizeX + "\" to=\"" + targetSizeX +"\" fill=\"freeze\" />\n";
-    retString += "\t<animate attributeType=\"xml\" begin=\"" + (getStartTick()/ticksPerSecond*1000)
-            +"ms\" dur=\"" + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" "
-            +"attributeName=\"" + yChar + "\" from=\"" + originalSizeY + "\" to=\"" + targetSizeY
-            +"\" fill=\"freeze\" />\n";
+
+    String retString;
+    if(!loop) {
+      retString = "\t<animate attributeType=\"xml\" begin=\""
+              + (getStartTick()/ticksPerSecond*1000) +"ms\" dur=\""
+              + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" attributeName=\"" + xChar
+              + "\" from=\"" + originalSizeX + "\" to=\"" + targetSizeX +"\" fill=\"freeze\" />\n";
+      retString += "\t<animate attributeType=\"xml\" begin=\""
+              + (getStartTick()/ticksPerSecond*1000)
+              +"ms\" dur=\"" + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" "
+              +"attributeName=\"" + yChar + "\" from=\"" + originalSizeY + "\" to=\"" + targetSizeY
+              +"\" fill=\"freeze\" />\n";
+    }else {
+      retString = "\t<animate attributeType=\"xml\" begin=\"base.begin+"
+              + (getStartTick()/ticksPerSecond*1000) +"ms\" dur=\""
+              + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" attributeName=\"" + xChar
+              + "\" from=\"" + originalSizeX + "\" to=\"" + targetSizeX +"\" fill=\"freeze\" />\n";
+      retString += "\t<animate attributeType=\"xml\" begin=\"base.begin+"
+              + (getStartTick()/ticksPerSecond*1000)
+              +"ms\" dur=\"" + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" "
+              +"attributeName=\"" + yChar + "\" from=\"" + originalSizeY + "\" to=\"" + targetSizeY
+              +"\" fill=\"freeze\" />\n";
+
+      retString +=  "\t<animate attributeType=\"xml\" begin=\"base.end\" dur=\"1ms\""
+              + " attributeName=\""+ xChar +"\" to=\"" + originalSizeX + "\" fill=\"freeze\" />\n";
+      retString +=  "\t<animate attributeType=\"xml\" begin=\"base.end\" dur=\"1ms\""
+              + " attributeName=\""+ yChar +"\" to=\"" + originalSizeY + "\" fill=\"freeze\" />\n";
+    }
     executeFinal();
     return retString;
   }

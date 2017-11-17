@@ -60,6 +60,13 @@ public class InteractiveAnimationController extends AnimationController {
   }
 
   /**
+   * A getter for the looping property.
+   * @return the looping boolean.
+   */
+  public boolean getLooping() {
+    return this.loopAnimation;
+  }
+  /**
    * Toggles looping behavior on this controller.
    */
   public void toggleLooping() {

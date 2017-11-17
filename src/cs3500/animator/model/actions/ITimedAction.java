@@ -44,5 +44,5 @@ public interface ITimedAction {
    * @param ticksPerSecond is the number of ticks executed by the model per second.
    * @return the svg string representing this ITimedAction.
    */
-  String toSVG(double ticksPerSecond);
+  String toSVG(double ticksPerSecond, boolean loop);
 }

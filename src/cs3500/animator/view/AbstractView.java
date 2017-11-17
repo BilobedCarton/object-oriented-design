@@ -45,7 +45,7 @@ public abstract class AbstractView implements IView {
   }
 
   @Override
-  public void export() {
+  public void export(boolean loop) {
     throw new NotImplementedException();
   }
 }

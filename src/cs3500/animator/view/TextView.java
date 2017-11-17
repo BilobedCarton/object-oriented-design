@@ -1,4 +1,5 @@
 package cs3500.animator.view;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -29,11 +30,11 @@ public class TextView extends AbstractView {
   //in this case we output the shapes and such as a string.
   @Override
   public void start() {
-    this.export();
+    this.export(false);
   }
 
   @Override
-  public void export() {
+  public void export(boolean loop) {
     int[] shapeTimes = new int[getModel().getShapes().size()];
     for (int i = 0; i < getModel().getShapes().size(); i++) {
       shapeTimes[i] = getModel().getShapes().get(i).getAppearTick();
@@ -73,6 +74,15 @@ public class TextView extends AbstractView {
       out.append(retString);
     } catch (IOException e) {
       throw new IllegalStateException("error with writing file");
+    }
+
+    if(out != System.out) {
+      FileWriter outN = (FileWriter)out;
+      try {
+        outN.close();
+      } catch (IOException error) {
+        throw new IllegalStateException("Error closing file.");
+      }
     }
   }
 }

@@ -1,6 +1,9 @@
 package cs3500.animator;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.*;
 
@@ -13,12 +16,89 @@ import cs3500.animator.model.SimpleAnimation;
 import cs3500.animator.util.AnimationFileReader;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.InteractiveView;
+import cs3500.animator.view.SVGView;
+import cs3500.animator.view.TextView;
 import cs3500.animator.view.ViewFactory;
+import cs3500.animator.view.VisualView;
 
 /**
  * The class housing our main method. Handles user input for starting the animator.
  */
 public final class EasyAnimator {
+
+
+  /**
+   * Generates a filewrite object for the given output.
+   * @param output the name of the output file to be made.
+   * @return the fileWriter set to write to this file.
+   */
+  private static FileWriter genFileWriter(String output) throws IOException {
+    File file = new File(System.getProperty("user.dir") + "\\resources\\"+output);
+    try {
+      file.createNewFile();
+    } catch (IOException e) {
+      EasyAnimator.throwErrorMessage("Issue creating file.");
+    }
+    FileWriter writer;
+    writer = new FileWriter(file);
+    return writer;
+  }
+
+
+  public static FileWriter getWriter(String viewType,
+                                      String outputFile) {
+    FileWriter writer;
+    switch (viewType) {
+      case "text":
+        if (outputFile != "System.out") {
+          if (!outputFile.substring(outputFile.length() - 4).equals(".txt")) {
+            throwErrorMessage("Invalid input, output must be .txt for type text.");
+            return null;
+          }
+          try {
+            writer = genFileWriter(outputFile);
+            return writer;
+          } catch (IOException e) {
+            EasyAnimator.throwErrorMessage("Error making file.");
+            return null;
+          }
+        }
+        break;
+      case "svg":
+        if (outputFile != "System.out") {
+          if (!outputFile.substring(outputFile.length() - 4).equals(".svg")) {
+            EasyAnimator.throwErrorMessage("Invalid input, output must be svg for type svg.");
+          }
+          try {
+            writer = genFileWriter(outputFile);
+            return writer;
+          } catch (IOException e) {
+            EasyAnimator.throwErrorMessage("Error making file.");
+            return null;
+          }
+        }
+        break;
+      case "interactive":
+        if (outputFile != "System.out") {
+          if (!outputFile.substring(outputFile.length() - 4).equals(".svg")) {
+            EasyAnimator.throwErrorMessage("Invalid input, output must be svg for type svg.");
+          }
+          try {
+            writer = genFileWriter(outputFile);
+            return writer;
+          } catch (IOException e) {
+            EasyAnimator.throwErrorMessage("Error making file.");
+            return null;
+          }
+        }
+        break;
+      default:
+        EasyAnimator.throwErrorMessage("Not supported view type");
+        return null;
+    }
+    throwErrorMessage("Not supported view type");
+    return null;
+  }
 
   /**
    * Opens a JOptionPane error window with the provided error message.
@@ -43,6 +123,7 @@ public final class EasyAnimator {
     String outputFile = "System.out";
     double speed = 1;
     String s2 = "";
+    boolean writeF = false;
 
     for(int i = 0; i < args.length; i++) {
       String s = args[i];
@@ -82,6 +163,7 @@ public final class EasyAnimator {
             if(s2.length() >= 4 && (s2.substring(s2.length() - 4).equals(".txt") ||
                     s2.substring(s2.length() - 4).equals(".svg"))) {
               outputFile = s2;
+              writeF = true;
             }else {
               throwErrorMessage("Invalid output, must output to .svg for svg or .txt for text "
                       + "defaulting to System.out. If System.out intended, omit -o from command");
@@ -110,7 +192,13 @@ public final class EasyAnimator {
     String useFile = System.getProperty("user.dir") + "/resources/" + inputFile;
 
     IAnimationModel model = animReader.readFile(useFile, new SimpleAnimation.Builder());
-    IView view = ViewFactory.build(viewType, outputFile, speed, new ReadOnlySimpleAnimation(model));
+    IView view;
+    if(writeF) {
+      view = ViewFactory.build(viewType, getWriter(viewType, outputFile), speed,
+              new ReadOnlySimpleAnimation(model));
+    } else {
+      view = ViewFactory.build(viewType, System.out, speed, new ReadOnlySimpleAnimation(model));
+    }
     IAnimationController controller = view.isInteractive()
             ? new InteractiveAnimationController(model, (InteractiveView) view, speed)
             : new AnimationController(model, view, speed);

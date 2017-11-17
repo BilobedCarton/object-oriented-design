@@ -119,7 +119,7 @@ public interface IAnimationPiece {
    * @param ticksPerSecond is the number of ticks executed by the model per second.
    * @return the svg string representing this IAnimationPiece
    */
-  String toSVG(double ticksPerSecond);
+  String toSVG(double ticksPerSecond, boolean loop);
 
   /**
    * We make sure all AnimationPieces can be converted into svg format via their end.

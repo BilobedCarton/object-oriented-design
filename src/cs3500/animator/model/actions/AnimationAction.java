@@ -83,5 +83,5 @@ public abstract class AnimationAction implements ITimedAction {
   }
 
   @Override
-  public abstract String toSVG(double ticksPerSecond);
+  public abstract String toSVG(double ticksPerSecond, boolean loop);
 }

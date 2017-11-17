@@ -59,7 +59,7 @@ public class InteractiveView extends AbstractView {
   }
 
   @Override
-  public void export() {
-    (new SVGView(this.getModel(), out, speed)).export();
+  public void export(boolean loop) {
+    (new SVGView(this.getModel(), out, speed)).export(loop);
   }
 }

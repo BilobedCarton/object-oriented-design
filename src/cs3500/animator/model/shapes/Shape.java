@@ -159,7 +159,7 @@ public abstract class Shape implements IAnimationPiece {
   public abstract String toString(double ticksPerSecond);
 
   @Override
-  public abstract String toSVG(double ticksPerSecond);
+  public abstract String toSVG(double ticksPerSecond, boolean loop);
 
   @Override
   public abstract String svgEnd();

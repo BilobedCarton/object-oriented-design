@@ -80,16 +80,28 @@ public class ColorShiftAction extends AnimationAction {
   }
 
   @Override
-  public String toSVG(double ticksPerSecond){
+  public String toSVG(double ticksPerSecond, boolean loop){
     String startColor = "rgb(" + originalColor.getRed() + ","
             + originalColor.getGreen() + "," + originalColor.getBlue() + ")";
     String endColor = "rgb(" + targetColor.getRed() + ","
             + targetColor.getGreen() + "," + targetColor.getBlue() + ")";
 
-    String retString = "\t<animate attributeType=\"xml\" begin=\""
-            + (getStartTick()/ticksPerSecond*1000) +"ms\" dur=\""
-            + ((getEndTick()- getStartTick())/ticksPerSecond*1000)+"ms\" attributeName=\"fill\""
-            + " from=\"" + startColor + "\" to=\"" + endColor +"\" fill=\"freeze\" />\n";
+    String retString;
+
+    if(!loop) {
+      retString = "\t<animate attributeType=\"xml\" begin=\""
+              + (getStartTick() / ticksPerSecond * 1000) + "ms\" dur=\""
+              + ((getEndTick() - getStartTick()) / ticksPerSecond * 1000) + "ms\" attributeName=\"f"
+              + "ill\" from=\"" + startColor + "\" to=\"" + endColor + "\" fill=\"freeze\" />\n";
+    } else {
+      retString = "\t<animate attributeType=\"xml\" begin=\"base.begin+"
+              + (getStartTick() / ticksPerSecond * 1000) + "ms\" dur=\""
+              + ((getEndTick() - getStartTick()) / ticksPerSecond * 1000) + "ms\" attributeName=\"f"
+              + "ill\" from=\"" + startColor + "\" to=\"" + endColor + "\" fill=\"freeze\" />\n";
+
+      retString +=  "\t<animate attributeType=\"xml\" begin=\"base.end\" dur=\"1ms\""
+              + " attributeName=\"fill\" to=\"" + startColor + "\" fill=\"freeze\" />\n";
+    }
     return retString;
   }
 }

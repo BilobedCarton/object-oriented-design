@@ -85,7 +85,9 @@ public class ListDialog extends JDialog {
       jList.setListData(this.getShapeStates());
       controller.getView().update(controller.getCurrTick());
     });
-    exportButton.addActionListener((ActionEvent e) -> {controller.getView().export();});
+    exportButton.addActionListener((ActionEvent e) -> {
+      controller.getView().export(controller.getLooping());
+    });
   }
 
   /**
