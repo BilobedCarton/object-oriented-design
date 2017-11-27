@@ -1,0 +1,63 @@
+package cs3500.animator.view.graphics;
+
+import cs3500.animator.model.shapes.IAnimationPiece;
+
+import java.awt.Dimension;
+import java.awt.BorderLayout;
+import java.util.List;
+
+import javax.swing.JFrame;
+
+/**
+ * Represents a basic graphics frame for use by an Animation view.
+ */
+public class BasicAnimationGraphicsFrame extends JFrame {
+
+  AnimationPanel animationPanel;
+
+  /**
+   * The constructor for the give graphics frame.
+   * @param width the pixel width of the frame.
+   * @param height the pixel height of the frame.
+   */
+  public BasicAnimationGraphicsFrame(int width, int height) {
+    super();
+    this.setTitle("Animation");
+
+    this.setSize(width, height);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setMinimumSize(new Dimension(300, 300));
+
+    this.setLayout(new BorderLayout());
+
+    animationPanel = new AnimationPanel();
+    animationPanel.setPreferredSize(new Dimension(width, height));
+
+    this.add(animationPanel, BorderLayout.CENTER);
+
+    this.pack();
+  }
+
+  /**
+   * Makes the frame visible.
+   */
+  public void makeVisible() {
+    this.setVisible(true);
+  }
+
+  /**
+   * Update the animationPanel's shape data for the next update.
+   *
+   * @param shapes is the list of shapes whose data we are using.
+   */
+  public void updateShapeData(List<IAnimationPiece> shapes) {
+    this.animationPanel.updateShapes(shapes);
+  }
+
+  /**
+   * Refresh the image using the current state of data held by the AnimationPanel.
+   */
+  public void refresh() {
+    this.repaint();
+  }
+}
