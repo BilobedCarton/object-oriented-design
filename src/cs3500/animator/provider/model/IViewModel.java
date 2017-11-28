@@ -1,9 +1,6 @@
-package cs3500.animator.model;
+package cs3500.animator.provider.model;
 
 import java.util.List;
-
-import cs3500.animator.model.animation.IAnimation;
-import cs3500.animator.model.shape.IShape;
 
 /**
  * Adapter class for the IAnimationModel. This class is a read-only version of the model that

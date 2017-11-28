@@ -1,4 +1,4 @@
-package cs3500.animator.controller;
+package cs3500.animator.provider.controller;
 
 /**
  * All concrete implementations of AnimationControllers should implement this interface.
