@@ -9,6 +9,8 @@ import java.util.TimerTask;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionListener;
 
+import cs3500.animator.provider.model.AnimationType;
+import cs3500.animator.provider.model.IAnimation;
 import cs3500.animator.provider.model.IViewModel;
 
 /**

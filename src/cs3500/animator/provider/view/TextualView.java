@@ -3,7 +3,6 @@ package cs3500.animator.provider.view;
 import java.io.IOException;
 import java.util.List;
 
-import cs3500.animator.model.IViewModel;
 import cs3500.animator.provider.model.AnimationType;
 import cs3500.animator.provider.model.IAnimation;
 import cs3500.animator.provider.model.IViewModel;

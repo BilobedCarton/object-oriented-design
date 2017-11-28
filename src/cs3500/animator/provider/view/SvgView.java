@@ -6,9 +6,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.TreeMap;
 
-import cs3500.animator.model.IViewModel;
 import cs3500.animator.provider.model.AnimationType;
 import cs3500.animator.provider.model.IAnimation;
+import cs3500.animator.provider.model.IViewModel;
 
 /**
  * View class that is able to render an animation as an SVG file that can by played back.

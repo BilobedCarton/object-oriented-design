@@ -22,7 +22,7 @@ public interface IShape {
    * @return identical shape with only anchor moved
    * @throws IllegalArgumentException if move is invalid
    */
-  IShape move(Coordinate anchor) throws IllegalArgumentException;
+  IShape move(ICoordinate anchor) throws IllegalArgumentException;
 
   /**
    * Creates a new shape with all parameters identical except with scaled dimensions.
@@ -68,7 +68,7 @@ public interface IShape {
    * Get the anchor coordinate of this shape.
    * @return the coordinate held by the shape
    */
-  Coordinate getAnchor();
+  ICoordinate getAnchor();
 
   /**
    * Get the size of the shape in the x axis.

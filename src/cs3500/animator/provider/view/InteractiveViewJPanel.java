@@ -22,7 +22,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionListener;
 
-import cs3500.animator.controller.Command;
+import cs3500.animator.provider.controller.Command;
 import cs3500.animator.provider.model.IShape;
 
 /**
