@@ -1,6 +1,8 @@
 package cs3500.animator.view;
 
+import cs3500.animator.adapters.AdapterInteractiveView;
 import cs3500.animator.model.IReadOnlyAnimationModel;
+import cs3500.animator.provider.view.InteractiveView;
 
 /**
  * Represents a factory to create new views.
@@ -44,15 +46,22 @@ public class ViewFactory {
         break;
       case "interactive":
         if (outputFile == null) {
-          view = new InteractiveView(model, null, 0, 700, 700);
-          break;
+          view = new cs3500.animator.view.InteractiveView(model, null, 0, 700, 700);
         } else if (outputFile != System.out) {
-          view = new InteractiveView(model, outputFile, speed, 700, 700);
-          break;
+          view = new cs3500.animator.view.InteractiveView(model, outputFile, speed, 700, 700);
         } else {
-          view = new InteractiveView(model, System.out, speed, 700, 700);
-          break;
+          view = new cs3500.animator.view.InteractiveView(model, System.out, speed, 700, 700);
         }
+        break;
+      case "provider":
+        if (outputFile == null) {
+          view = new AdapterInteractiveView(new InteractiveView(), model);
+        } else if (outputFile != System.out) {
+
+        } else {
+
+        }
+        break;
       default:
         throw new IllegalArgumentException("Not supported view type");
     }

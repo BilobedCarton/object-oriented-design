@@ -97,6 +97,20 @@ public final class EasyAnimator {
           }
         }
         break;
+      case "provider":
+        if (!outputFile.equals("System.out")) {
+          if (!outputFile.substring(outputFile.length() - 4).equals(".svg")) {
+            EasyAnimator.throwErrorMessage("Invalid input, output must be svg for type svg.");
+          }
+          try {
+            writer = genFileWriter(outputFile);
+            return writer;
+          } catch (IOException e) {
+            EasyAnimator.throwErrorMessage("Error making file.");
+            return null;
+          }
+        }
+        break;
       default:
         EasyAnimator.throwErrorMessage("Not supported view type");
         return null;
@@ -146,7 +160,8 @@ public final class EasyAnimator {
             if (!s2.equals("text")
                     && !s2.equals("visual")
                     && !s2.equals("svg")
-                    && !s2.equals("interactive")) {
+                    && !s2.equals("interactive")
+                    && !s2.equals("provider")) {
               throwErrorMessage("Invalid input, invalid view.");
               return;
             } else {
