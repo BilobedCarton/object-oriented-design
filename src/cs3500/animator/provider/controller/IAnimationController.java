@@ -1,11 +1,5 @@
-package cs3500.animator.provider.controller;
+package cs3500.animator.controller;
 
-/**
- * All concrete implementations of AnimationControllers should implement this interface.
- * This is because, at the bare minimum, any given concrete implementation of an
- * AnimationController should have a processCommand() method (to process commands) and a
- * start() method, to actually start the animation.
- */
 public interface IAnimationController {
 
   /**
@@ -15,9 +9,5 @@ public interface IAnimationController {
    */
   int processCommand(String cmd);
 
-  /**
-   * Starts the whole animation. Initial ticksPerSecond required.
-   * @param initialTicksPerSec      initial ticks per second of the animation
-   */
   void start(int initialTicksPerSec);
 }

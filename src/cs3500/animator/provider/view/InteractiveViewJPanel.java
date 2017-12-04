@@ -1,35 +1,32 @@
-package cs3500.animator.provider.view;
+package cs3500.animator.view;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
 import javax.swing.JFrame;
-
-
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JList;
-import javax.swing.JScrollPane;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.ListSelectionModel;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ListSelectionListener;
 
-import cs3500.animator.provider.controller.Command;
-import cs3500.animator.provider.model.IShape;
+import cs3500.animator.controller.Command;
+import cs3500.animator.model.shape.IShape;
 
 /**
  * JPanel extension used by VisualView to display the GUI to the user.
  */
 class InteractiveViewJPanel extends JPanel {
-  private final int MAX_TPS = Integer.MAX_VALUE;
   private List<IShape> shapes;
   private List<String> names;
   private JButton togglePlayback;
@@ -75,18 +72,10 @@ class InteractiveViewJPanel extends JPanel {
     this.shapes = shapes;
   }
 
-  /**
-   * Produce the currently selected shapes.
-   * @return      a list of the names of the currently selected shapes.
-   */
   List<String> getSelectedShapes() {
     return this.shapeList.getSelectedValuesList();
   }
 
-  /**
-   * Set up the components of this JPanel.
-   * @param initialTicksPerSec      the ticksPerSecond to set the components up with.
-   */
   private void setupComponents(int initialTicksPerSec) {
     this.togglePlayback = new JButton("play/pause");
     this.toggleLoopback = new JButton("toggle loopback");
@@ -100,7 +89,7 @@ class InteractiveViewJPanel extends JPanel {
     this.listScroll = new JScrollPane(this.shapeList);
     this.listScroll.setPreferredSize(new Dimension(500,500));
 
-    SpinnerModel spinnerModel = new SpinnerNumberModel(initialTicksPerSec, 1, this.MAX_TPS, 1);
+    SpinnerModel spinnerModel = new SpinnerNumberModel(initialTicksPerSec, 1, 1000, 1);
     this.speed = new JSpinner(spinnerModel);
 
     this.togglePlayback.setActionCommand(Command.TOGGLE_PLAYBACK.getCode());
@@ -110,12 +99,6 @@ class InteractiveViewJPanel extends JPanel {
     this.printSvg.setActionCommand(Command.GET_SVG.getCode());
   }
 
-  /**
-   * Add the provided listeners to the appropriate components.
-   * @param ar      provided ActionListener
-   * @param cr      provided ChangeListener
-   * @param lr      provided ListSelectionListener
-   */
   public void addListeners(ActionListener ar, ChangeListener cr, ListSelectionListener lr) {
     this.togglePlayback.addActionListener(ar);
     this.toggleLoopback.addActionListener(ar);
@@ -128,9 +111,6 @@ class InteractiveViewJPanel extends JPanel {
     this.addComponentsToPanel();
   }
 
-  /**
-   * Add the components to the JPanel (this).
-   */
   private void addComponentsToPanel() {
     this.add(this.toggleLoopback);
     this.add(this.togglePlayback);
@@ -140,10 +120,7 @@ class InteractiveViewJPanel extends JPanel {
     this.add(this.speed);
   }
 
-  /**
-   * Show the interface that allows the user to manually select shapes.
-   */
-  public void showShapeSelection() {
+  void showShapeSelection() {
     JFrame popup = new JFrame();
     popup.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     popup.setSize(new Dimension(500,500));

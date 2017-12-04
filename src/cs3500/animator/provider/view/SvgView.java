@@ -1,4 +1,4 @@
-package cs3500.animator.provider.view;
+package cs3500.animator.view;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -6,9 +6,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.TreeMap;
 
-import cs3500.animator.provider.model.AnimationType;
-import cs3500.animator.provider.model.IAnimation;
-import cs3500.animator.provider.model.IViewModel;
+import cs3500.animator.model.IViewModel;
+import cs3500.animator.model.animation.AnimationType;
+import cs3500.animator.model.animation.IAnimation;
 
 /**
  * View class that is able to render an animation as an SVG file that can by played back.
@@ -54,10 +54,7 @@ public class SvgView extends AAnimationView {
 
     // initial svg setup
     svgOutput.append(this.defaultSvgInfo(model.getWidthRequired(), model.getHeightRequired()));
-
-    if (this.loopBack) {
-      svgOutput.append(this.loopBackSetup(model, ticksPerSec));
-    }
+    svgOutput.append(this.loopBackSetup(model, ticksPerSec));
 
     // count how many unique animation types there are, besides non_animation
     HashSet<AnimationType> animationTypes = new HashSet<AnimationType>();
@@ -121,9 +118,7 @@ public class SvgView extends AAnimationView {
     for (String shapeName : shapes) {
       svgOutput.append(wrappersOfShapes.get(shapeName).get(0)).append("\n");
       svgOutput.append(wrappersOfShapes.get(shapeName).get(1)).append("\n");
-      if (this.loopBack) {
-        svgOutput.append(wrappersOfShapes.get(shapeName).get(3)).append("\n");
-      }
+      svgOutput.append(wrappersOfShapes.get(shapeName).get(3)).append("\n");
       for (String animationInfo : animationsOfShapes.get(shapeName)) {
         svgOutput.append(animationInfo).append("\n");
       }
@@ -136,13 +131,6 @@ public class SvgView extends AAnimationView {
     return svgOutput.toString();
   }
 
-  /**
-   * Transforms a given animation that applies to the x aspect and y aspect of its shape.
-   * @param a           given animation
-   * @param xName       what to call the x attribute
-   * @param yName       what to call the y attribute
-   * @return            list of Strings representing this animation in SVG format
-   */
   private List<String> xyAnimationToSvg(IAnimation a, String xName, String yName) {
     String svgShapeName = a.getShapeName();
 
@@ -172,18 +160,6 @@ public class SvgView extends AAnimationView {
     return null;
   }
 
-  /**
-   * Helper for transforming an animation to its SVG representation.
-   * @param defAnimInfo       default animation information
-   * @param svgShapeName      name of the shape
-   * @param svgXName          name of the x attribute
-   * @param svgYName          name of the y attribute
-   * @param xStart            time to start the x transformation
-   * @param xEnd              time to end the x transformation
-   * @param yStart            time to start the y transformation
-   * @param yEnd              time to end the y animation
-   * @return                  list of Strings representing this animation in SVG format
-   */
   private List<String> xyAnimationToSvgHelper(String defAnimInfo, String svgShapeName,
                                               String svgXName, String svgYName,
                                               int xStart, int xEnd, int yStart, int yEnd) {
@@ -274,7 +250,8 @@ public class SvgView extends AAnimationView {
 
     toReturn.add(colorAnimation.append("/>").toString());
 
-    if (this.loopBack && !this.resetChecks.get(a.getShapeName()).get(2)) {
+    if (this.loopBack &&
+        !this.resetChecks.get(a.getShapeName()).get(2)) {
       StringBuilder colorReset = new StringBuilder();
 
       colorReset.append(this.resetAnimation("set", "fill", startShapeColor));
@@ -289,13 +266,6 @@ public class SvgView extends AAnimationView {
     return toReturn;
   }
 
-  /**
-   * Produce the animation to reset the original animation.
-   * @param animSet     either "animate" or "set"
-   * @param attributeName     name of attribute to reset
-   * @param value             value of attribute
-   * @return                information necessary to reset this animation
-   */
   private String resetAnimation(String animSet, String attributeName, Object value) {
     StringBuilder toRet = new StringBuilder();
 
@@ -424,8 +394,8 @@ public class SvgView extends AAnimationView {
     toReturn.append("<rect>");
     toReturn.append("<animate " + this.wrapVarInQuotes("id", "base"));
     toReturn.append(this.wrapVarInQuotes("begin", "0;base.end"));
-    toReturn.append(
-        this.wrapVarInQuotes("dur", (int)(model.getEndTick() / (double)ticksPerSec * 1000) + "ms"));
+    toReturn.append(this.wrapVarInQuotes("dur", (int)(model.getEndTick()
+            / (double)ticksPerSec * 1000) + "ms"));
     toReturn.append(this.wrapVarInQuotes("attributeName", "visibility"));
     toReturn.append(this.wrapVarInQuotes("from", "hide"));
     toReturn.append(this.wrapVarInQuotes("to", "hide"));
@@ -436,11 +406,6 @@ public class SvgView extends AAnimationView {
     return toReturn.toString();
   }
 
-  /**
-   * Format the begin attribute value depending on if we're looping or not.
-   * @param arg       given value to append, if we're looping
-   * @return          formatted appropriately due to looping
-   */
   private String formatBegin(Object arg) {
     if (this.loopBack) {
       return "base.begin+" + arg;

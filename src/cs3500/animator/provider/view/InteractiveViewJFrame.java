@@ -1,4 +1,4 @@
-package cs3500.animator.provider.view;
+package cs3500.animator.view;
 
 import java.awt.Dimension;
 import java.awt.BorderLayout;
@@ -10,7 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionListener;
 
-import cs3500.animator.provider.model.IShape;
+import cs3500.animator.model.shape.IShape;
 
 /**
  * JFrame extension that is used by VisualView to display the animation to the user.
@@ -50,27 +50,14 @@ class InteractiveViewJFrame extends JFrame {
     this.panel.repaint();
   }
 
-  /**
-   * Pass the provided listeners to this JFrame's JPanel.
-   * @param ar    provided ActionListener
-   * @param cr    provided ChangeListener
-   * @param lr    provided ListSelectionListener
-   */
   void addListeners(ActionListener ar, ChangeListener cr, ListSelectionListener lr) {
     this.panel.addListeners(ar, cr, lr);
   }
 
-  /**
-   * Produce the currently selected shapes.
-   * @return      the names of the currently selected shapes
-   */
   List<String> getSelectedShapes() {
     return this.panel.getSelectedShapes();
   }
 
-  /**
-   * Show the shape selection utility.
-   */
   void showShapeSelection() {
     this.panel.showShapeSelection();
   }

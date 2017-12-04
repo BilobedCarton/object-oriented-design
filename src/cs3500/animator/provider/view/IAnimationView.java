@@ -1,6 +1,6 @@
-package cs3500.animator.provider.view;
+package cs3500.animator.view;
 
-import cs3500.animator.provider.model.IViewModel;
+import cs3500.animator.model.IViewModel;
 
 /**
  * Defines the public facing functions every valid AnimationView implmentation must provide.
@@ -61,11 +61,5 @@ public interface IAnimationView {
   String viewAsSvg(IViewModel model, int ticksPerSec)
           throws UnsupportedOperationException;
 
-
-  /**
-   * A view that allows for user interaction.
-   * @throws UnsupportedOperationException      if for a given concrete implementation, this method
-   *                                            is not supported
-   */
   void viewAsInteractive() throws UnsupportedOperationException;
 }

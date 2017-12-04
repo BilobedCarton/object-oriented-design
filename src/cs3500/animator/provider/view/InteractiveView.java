@@ -1,17 +1,23 @@
-package cs3500.animator.provider.view;
+package cs3500.animator.view;
 
+import java.awt.Frame;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.JOptionPane;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionListener;
 
-import cs3500.animator.provider.model.AnimationType;
-import cs3500.animator.provider.model.IAnimation;
-import cs3500.animator.provider.model.IViewModel;
+import cs3500.animator.model.IViewModel;
+import cs3500.animator.model.animation.AnimationType;
+import cs3500.animator.model.animation.IAnimation;
 
 /**
  * A hybrid view capable of taking interactive input from the user, and provides the option to
@@ -27,7 +33,7 @@ public class InteractiveView extends AAnimationView implements Interactive {
   private boolean loop;
 
   /**
-   * Set default values of this InteractiveView. Set ticksPerSec to 1 to prevent unwanted errors.
+   * Constructs an interactive view, and initializes variables to defaults.
    */
   public InteractiveView() {
     this.currentTick = 0;
@@ -38,11 +44,6 @@ public class InteractiveView extends AAnimationView implements Interactive {
     this.loop = false;
   }
 
-  /**
-   * Initialize more values of this InteractiveView.
-   * @param model           given model to use for initialization
-   * @param ticksPerSec     desired initial tickspersecond
-   */
   private void init(IViewModel model, int ticksPerSec) {
     this.ticksPerSec = ticksPerSec;
     this.model = model;
@@ -50,9 +51,21 @@ public class InteractiveView extends AAnimationView implements Interactive {
   }
 
   @Override
-  public String getStateAsSvg() {
-    IAnimationView svgView = new SvgView(this.loop);
-    return svgView.viewAsSvg(this.model, this.ticksPerSec);
+  public void printCurrentAsSvg() {
+    try {
+      PrintWriter fOut = new PrintWriter(Files.newOutputStream(Paths.get(
+              JOptionPane.showInputDialog("Enter SVG File Output:"))));
+      IAnimationView svgView = new SvgView(this.loop);
+      fOut.write(svgView.viewAsSvg(this.model, this.ticksPerSec));
+      fOut.close();
+      Frame successFrame = new Frame();
+      JOptionPane.showMessageDialog(successFrame, "File write successful!", "SVG File Written",
+              JOptionPane.INFORMATION_MESSAGE);
+    } catch (IOException e) {
+      Frame errorFrame = new Frame();
+      JOptionPane.showMessageDialog(errorFrame, "Error writing to file!", "SVG Write Error",
+              JOptionPane.ERROR_MESSAGE);
+    }
   }
 
   @Override
@@ -115,7 +128,7 @@ public class InteractiveView extends AAnimationView implements Interactive {
     return this.frame.getSelectedShapes();
   }
 
-  protected List<String> getShapeNames() {
+  List<String> getShapeNames() {
     List<IAnimation> animations = model.getAnimations();
     List<String> retList = new ArrayList<String>();
     for (IAnimation a : animations) {
@@ -139,14 +152,8 @@ public class InteractiveView extends AAnimationView implements Interactive {
     currentTick += 1;
   }
 
-  @Override
   public void makeVisible() {
     this.frame.setVisible(true);
-  }
-
-  @Override
-  public int getCurrentTick() {
-    return this.currentTick;
   }
 
   class NextTick extends TimerTask {

@@ -1,6 +1,9 @@
-package cs3500.animator.provider.model;
+package cs3500.animator.model;
 
 import java.util.List;
+
+import cs3500.animator.model.animation.IAnimation;
+import cs3500.animator.model.shape.IShape;
 
 /**
  * Describes the public facing methods of a basic 2D animation model. The model registers shapes
@@ -13,7 +16,6 @@ public interface IAnimationModel {
    * @param name the unique name identifier for the shape
    * @param shape the initial appearance of the shape being animated
    * @param appears a time >= 0 that the shape appears in the scene
-   * @param disappears when the shape dissapears
    *
    * @throws IllegalArgumentException if name is not unique, shape appears at an invalid time, or
    *      if shape has an invalid duration

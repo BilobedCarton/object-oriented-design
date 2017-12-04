@@ -1,4 +1,4 @@
-package cs3500.animator.provider.view;
+package cs3500.animator.view;
 
 import java.awt.Dimension;
 import java.awt.BorderLayout;
@@ -7,7 +7,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
-import cs3500.animator.provider.model.IShape;
+import cs3500.animator.model.shape.IShape;
 
 /**
  * JFrame extension that is used by VisualView to display the animation to the user.

@@ -1,6 +1,6 @@
-package cs3500.animator.provider.view;
+package cs3500.animator.view;
 
-import cs3500.animator.provider.model.IViewModel;
+import cs3500.animator.model.IViewModel;
 
 /**
  * Contains abstractions for the IAnimationView classes. Every view by default throws an exception
@@ -25,14 +25,14 @@ public class AAnimationView implements IAnimationView {
   public void viewAsAppendable(Appendable appendable, IViewModel model, int ticksPerSec)
           throws UnsupportedOperationException {
     this.checkModel(model, ticksPerSec);
-    throw new UnsupportedOperationException("Appendable not available.");
+    throw new UnsupportedOperationException("Avg not available.");
   }
 
   @Override
   public String viewAsSvg(IViewModel model, int ticksPerSec)
           throws UnsupportedOperationException {
     this.checkModel(model, ticksPerSec);
-    throw new UnsupportedOperationException("Svg not available.");
+    throw new UnsupportedOperationException("Avg not available.");
   }
 
   @Override
@@ -47,12 +47,6 @@ public class AAnimationView implements IAnimationView {
     throw new UnsupportedOperationException("StringBuilder not available.");
   }
 
-  /**
-   * Provides a way to ensure that the given model with the given ticksPerSec make a valid model.
-   * @param model               given model to check
-   * @param ticksPerSec         given ticksPerSec to check the model with
-   * @throws IllegalArgumentException       if the model+ticksPerSecond make for an invalid model
-   */
   protected void checkModel(IViewModel model, int ticksPerSec)
       throws IllegalArgumentException {
     if (model == null) {

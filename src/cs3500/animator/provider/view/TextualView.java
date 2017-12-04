@@ -1,11 +1,11 @@
-package cs3500.animator.provider.view;
+package cs3500.animator.view;
 
 import java.io.IOException;
 import java.util.List;
 
-import cs3500.animator.provider.model.AnimationType;
-import cs3500.animator.provider.model.IAnimation;
-import cs3500.animator.provider.model.IViewModel;
+import cs3500.animator.model.IViewModel;
+import cs3500.animator.model.animation.AnimationType;
+import cs3500.animator.model.animation.IAnimation;
 
 /**
  * A View that can render an animation in human-readable text format. Shapes and animations are

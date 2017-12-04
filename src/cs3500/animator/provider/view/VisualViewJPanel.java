@@ -1,4 +1,4 @@
-package cs3500.animator.provider.view;
+package cs3500.animator.view;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import cs3500.animator.provider.model.IShape;
+import cs3500.animator.model.shape.IShape;
 
 /**
  * JPanel extension used by VisualView to display the GUI to the user.
