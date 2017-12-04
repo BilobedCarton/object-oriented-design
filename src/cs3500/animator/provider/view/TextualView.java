@@ -1,17 +1,18 @@
-package cs3500.animator.view;
+package cs3500.animator.provider.view;
 
 import java.io.IOException;
 import java.util.List;
 
-import cs3500.animator.model.IViewModel;
-import cs3500.animator.model.animation.AnimationType;
-import cs3500.animator.model.animation.IAnimation;
+import cs3500.animator.provider.model.IViewModel;
+import cs3500.animator.provider.model.animation.AnimationType;
+import cs3500.animator.provider.model.animation.IAnimation;
 
 /**
  * A View that can render an animation in human-readable text format. Shapes and animations are
  * displayed in order in which they appear/the animation begins.
  */
 public class TextualView extends AAnimationView {
+
   @Override
   public StringBuilder viewAsStringBuilder(IViewModel model, int ticksPerSec)
           throws UnsupportedOperationException {

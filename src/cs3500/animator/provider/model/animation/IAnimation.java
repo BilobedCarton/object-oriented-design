@@ -1,8 +1,8 @@
-package cs3500.animator.model.animation;
+package cs3500.animator.provider.model.animation;
 
 import java.util.Comparator;
 
-import cs3500.animator.model.shape.IShape;
+import cs3500.animator.provider.model.shape.IShape;
 
 /**
  * Represents an animation to be attached to a shape.

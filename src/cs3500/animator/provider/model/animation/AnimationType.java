@@ -1,4 +1,4 @@
-package cs3500.animator.model.animation;
+package cs3500.animator.provider.model.animation;
 
 /**
  * Lists the types of animations that can be added to AnimatedShapes.

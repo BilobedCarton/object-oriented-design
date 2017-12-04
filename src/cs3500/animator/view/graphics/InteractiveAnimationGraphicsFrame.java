@@ -16,7 +16,7 @@ import cs3500.animator.control.listeners.ShapeSelectionListener;
 import cs3500.animator.control.listeners.SpeedChangeListener;
 
 /**
- * Represents a graphics frame for use by an InteractiveView for an animation.
+ * Represents a graphics frame for use by an InteractiveViewO for an animation.
  */
 public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFrame {
   private JButton startButton;

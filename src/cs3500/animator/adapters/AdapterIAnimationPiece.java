@@ -1,11 +1,13 @@
 package cs3500.animator.adapters;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Shape;
+import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 
 import cs3500.animator.model.shapes.IAnimationPiece;
-import cs3500.animator.provider.model.ICoordinate;
-import cs3500.animator.provider.model.IShape;
+import cs3500.animator.provider.model.shape.ICoordinate;
+import cs3500.animator.provider.model.shape.IShape;
 
 public class AdapterIAnimationPiece implements IShape {
   private IAnimationPiece animationPiece;
@@ -32,12 +34,14 @@ public class AdapterIAnimationPiece implements IShape {
 
   @Override
   public IShape scale(double xScale, double yScale) throws IllegalArgumentException {
-    animationPiece.resize(animationPiece.getSizeX() * xScale, animationPiece.getSizeY() * yScale);
+    animationPiece.resize(animationPiece.getSizeX() * xScale, animationPiece.getSizeY()
+            * yScale);
     return this;
   }
 
   @Override
-  public String getScaleDescription(double startXScale, double startYScale, double endXScale, double endYScale) {
+  public String getScaleDescription(double startXScale, double startYScale, double endXScale,
+                                    double endYScale) {
     return null;
   }
 

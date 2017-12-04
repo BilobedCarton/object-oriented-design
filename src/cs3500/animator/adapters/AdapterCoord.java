@@ -1,6 +1,6 @@
 package cs3500.animator.adapters;
 
-import cs3500.animator.provider.model.ICoordinate;
+import cs3500.animator.provider.model.shape.ICoordinate;
 
 public class AdapterCoord implements ICoordinate {
   private double x;

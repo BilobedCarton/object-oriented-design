@@ -1,4 +1,4 @@
-package cs3500.animator.view;
+package cs3500.animator.provider.view;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -20,8 +20,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
-import cs3500.animator.controller.Command;
-import cs3500.animator.model.shape.IShape;
+import cs3500.animator.provider.controller.Command;
+import cs3500.animator.provider.model.shape.IShape;
 
 /**
  * JPanel extension used by VisualView to display the GUI to the user.

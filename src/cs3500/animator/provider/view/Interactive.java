@@ -1,4 +1,4 @@
-package cs3500.animator.view;
+package cs3500.animator.provider.view;
 
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionListener;
 
-import cs3500.animator.model.IViewModel;
+import cs3500.animator.provider.model.IViewModel;
 
 public interface Interactive {
   void togglePlayback();

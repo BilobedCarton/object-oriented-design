@@ -1,4 +1,4 @@
-package cs3500.animator.view;
+package cs3500.animator.provider.view;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -6,9 +6,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.TreeMap;
 
-import cs3500.animator.model.IViewModel;
-import cs3500.animator.model.animation.AnimationType;
-import cs3500.animator.model.animation.IAnimation;
+import cs3500.animator.provider.model.IViewModel;
+import cs3500.animator.provider.model.animation.AnimationType;
+import cs3500.animator.provider.model.animation.IAnimation;
 
 /**
  * View class that is able to render an animation as an SVG file that can by played back.

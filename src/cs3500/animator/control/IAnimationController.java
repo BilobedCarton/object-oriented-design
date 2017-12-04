@@ -8,7 +8,7 @@ import cs3500.animator.view.IView;
 /**
  * Represents the controller for an animation program that uses various views: TextView - Outputs
  * the data as a piece of text. SVGView - Outputs the data in SVG format. VisualView - Renders the
- * data using swing graphical components. InteractiveView - Renders the data using swing graphical
+ * data using swing graphical components. InteractiveViewO - Renders the data using swing graphical
  * components. Outputs the data in SVG format. Allows for some user interaction.
  */
 public interface IAnimationController {

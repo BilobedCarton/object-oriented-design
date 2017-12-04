@@ -41,7 +41,7 @@ public class SVGView extends AbstractView {
   }
 
   @Override
-  public void export(boolean loop) {
+  public String export(boolean loop) {
     for (IAnimationPiece shape : getModel().getShapes()) {
       if (shape.getSizeX() > frameSizeX) {
         frameSizeX = (int) shape.getSizeX();
@@ -97,6 +97,6 @@ public class SVGView extends AbstractView {
         throw new IllegalStateException("Error closing file.");
       }
     }
-
+    return retString;
   }
 }

@@ -46,7 +46,8 @@ public interface IView {
   /**
    * Export this view in the corresponding form: text or SVG.
    *
+   * @return the string to be output.
    * @throws NotImplementedException if this is being called by a view that does not export.
    */
-  void export(boolean loop) throws NotImplementedException;
+  String export(boolean loop) throws NotImplementedException;
 }

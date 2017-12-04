@@ -1,6 +1,6 @@
-package cs3500.animator.view;
+package cs3500.animator.provider.view;
 
-import cs3500.animator.model.IViewModel;
+import cs3500.animator.provider.model.IViewModel;
 
 /**
  * Visual view that can display a given animation as a java swing GUI application.

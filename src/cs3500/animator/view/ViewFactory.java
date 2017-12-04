@@ -46,16 +46,18 @@ public class ViewFactory {
         break;
       case "interactive":
         if (outputFile == null) {
-          view = new cs3500.animator.view.InteractiveView(model, null, 0, 700, 700);
+          view = new InteractiveViewO(model, null, 0, 700, 700);
         } else if (outputFile != System.out) {
-          view = new cs3500.animator.view.InteractiveView(model, outputFile, speed, 700, 700);
+          view = new InteractiveViewO(model, outputFile, speed, 700, 700);
         } else {
-          view = new cs3500.animator.view.InteractiveView(model, System.out, speed, 700, 700);
+          view = new InteractiveViewO(model, System.out, speed, 700, 700);
         }
         break;
       case "provider":
         if (outputFile == null) {
-          view = new AdapterInteractiveView(new InteractiveView(), model);
+          InteractiveViewO interactiveOrig = new
+                  InteractiveViewO(model, null, 0, 700, 700);
+          view = new AdapterInteractiveView(interactiveOrig, model, System.out);
         } else if (outputFile != System.out) {
 
         } else {

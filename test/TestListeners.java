@@ -16,7 +16,7 @@ import cs3500.animator.model.actions.AnimationActionBuilder;
 import cs3500.animator.model.shapes.Shape;
 import cs3500.animator.model.shapes.ShapeBuilder;
 import cs3500.animator.model.shapes.ShapeType;
-import cs3500.animator.view.InteractiveView;
+import cs3500.animator.view.InteractiveViewO;
 
 import static org.junit.Assert.assertEquals;
 
@@ -38,7 +38,7 @@ public class TestListeners {
   @Test
   public void testActionPerformed() {
     buildModel.addShape(r2);
-    InteractiveView testView = new InteractiveView(new ReadOnlySimpleAnimation(buildModel),
+    InteractiveViewO testView = new InteractiveViewO(new ReadOnlySimpleAnimation(buildModel),
             testBuilder, 1, 500,200);
     IAnimationController testCont = new InteractiveAnimationController(buildModel,
             testView, 5);
@@ -57,7 +57,7 @@ public class TestListeners {
   @Test
   public void testSetJList() {
     buildModel.addShape(r2);
-    InteractiveView testView = new InteractiveView(new ReadOnlySimpleAnimation(buildModel),
+    InteractiveViewO testView = new InteractiveViewO(new ReadOnlySimpleAnimation(buildModel),
             testBuilder, 1, 500,200);
     InteractiveAnimationController testCont = new InteractiveAnimationController(buildModel,
             testView, 5);

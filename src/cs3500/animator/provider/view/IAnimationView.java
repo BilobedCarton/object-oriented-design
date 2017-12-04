@@ -1,6 +1,6 @@
-package cs3500.animator.view;
+package cs3500.animator.provider.view;
 
-import cs3500.animator.model.IViewModel;
+import cs3500.animator.provider.model.IViewModel;
 
 /**
  * Defines the public facing functions every valid AnimationView implmentation must provide.

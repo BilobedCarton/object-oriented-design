@@ -33,7 +33,7 @@ public class TextView extends AbstractView {
   }
 
   @Override
-  public void export(boolean loop) {
+  public String export(boolean loop) {
     int[] shapeTimes = new int[getModel().getShapes().size()];
     for (int i = 0; i < getModel().getShapes().size(); i++) {
       shapeTimes[i] = getModel().getShapes().get(i).getAppearTick();
@@ -84,5 +84,6 @@ public class TextView extends AbstractView {
         throw new IllegalStateException("Error closing file.");
       }
     }
+    return retString;
   }
 }

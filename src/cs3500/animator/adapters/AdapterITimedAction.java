@@ -4,9 +4,9 @@ import cs3500.animator.model.actions.ColorShiftAction;
 import cs3500.animator.model.actions.ITimedAction;
 import cs3500.animator.model.actions.MoveAction;
 import cs3500.animator.model.actions.ScaleAction;
-import cs3500.animator.provider.model.AnimationType;
-import cs3500.animator.provider.model.IAnimation;
-import cs3500.animator.provider.model.IShape;
+import cs3500.animator.provider.model.animation.AnimationType;
+import cs3500.animator.provider.model.animation.IAnimation;
+import cs3500.animator.provider.model.shape.IShape;
 
 /**
  * Adapts a ITimedAction into the form of an IAnimation.

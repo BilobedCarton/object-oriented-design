@@ -9,7 +9,7 @@ import cs3500.animator.provider.view.IAnimationView;
 import cs3500.animator.view.IView;
 
 /**
- * Adapts the provider version of InteractiveView for use by the native animation software.
+ * Adapts the provider version of InteractiveViewO for use by the native animation software.
  */
 public class AdapterIAnimationView implements IView {
   private IAnimationView view;

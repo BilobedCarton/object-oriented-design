@@ -16,7 +16,7 @@ import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.SimpleAnimation;
 import cs3500.animator.util.AnimationFileReader;
 import cs3500.animator.view.IView;
-import cs3500.animator.view.InteractiveView;
+import cs3500.animator.view.InteractiveViewO;
 import cs3500.animator.view.ViewFactory;
 
 /**
@@ -223,7 +223,7 @@ public final class EasyAnimator {
       view = ViewFactory.build(viewType, System.out, speed, new ReadOnlySimpleAnimation(model));
     }
     IAnimationController controller = view.isInteractive()
-            ? new InteractiveAnimationController(model, (InteractiveView) view, speed)
+            ? new InteractiveAnimationController(model, (InteractiveViewO) view, speed)
             : new AnimationController(model, view, speed);
 
     controller.goStart();

@@ -1,4 +1,4 @@
-package cs3500.animator.model.shape;
+package cs3500.animator.provider.model.shape;
 
 /**
  * Contains the x and y coordinates of a 2D plane. Represents a point.
@@ -8,20 +8,20 @@ public interface ICoordinate {
    * Returns the x-component of the point.
    * @return xCoord
    */
-  public double getXCoord() {}
+  public double getXCoord();
 
   /**
    * Returns teh y-component of the point.
    * @return yCoord
    */
-  public double getYCoord() {}
+  public double getYCoord();
 
   /**
    * Add two Coordinates together and return their sum as a new Coordinate.
    * @param other other coordinate to sum with (can be negative)
    * @return Coordinate representing the sum of the two coordinates
    */
-  public Coordinate add(Coordinate other) {}
+  public ICoordinate add(ICoordinate other);
 
   /**
    * Add to a coordinate and return the sum as a new coordinate.
@@ -29,5 +29,5 @@ public interface ICoordinate {
    * @param y value to be added to this coordinate y
    * @return Coordinate representing teh sum of the two components sum with x and y respectively
    */
-  public Coordinate add(double x, double y) {}
+  public ICoordinate add(double x, double y);
 }

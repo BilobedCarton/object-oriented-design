@@ -8,14 +8,14 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  * Represents an abstract implementation of a view for an animation program.
  */
 public abstract class AbstractView implements IView {
-  private IReadOnlyAnimationModel model;
+  protected IReadOnlyAnimationModel model;
 
   /**
    * Creates a new {@code AbstractView} object.
    *
    * @param model is the model related to this view.
    */
-  AbstractView(IReadOnlyAnimationModel model) {
+  public AbstractView(IReadOnlyAnimationModel model) {
     this.model = model;
   }
 
@@ -45,7 +45,7 @@ public abstract class AbstractView implements IView {
   }
 
   @Override
-  public void export(boolean loop) {
+  public String export(boolean loop) {
     throw new NotImplementedException();
   }
 }

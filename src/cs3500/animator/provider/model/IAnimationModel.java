@@ -1,9 +1,9 @@
-package cs3500.animator.model;
+package cs3500.animator.provider.model;
 
 import java.util.List;
 
-import cs3500.animator.model.animation.IAnimation;
-import cs3500.animator.model.shape.IShape;
+import cs3500.animator.provider.model.animation.IAnimation;
+import cs3500.animator.provider.model.shape.IShape;
 
 /**
  * Describes the public facing methods of a basic 2D animation model. The model registers shapes

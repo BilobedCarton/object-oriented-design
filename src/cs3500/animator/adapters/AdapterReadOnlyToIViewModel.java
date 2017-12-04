@@ -3,24 +3,28 @@ package cs3500.animator.adapters;
 import java.util.ArrayList;
 import java.util.List;
 
-import cs3500.animator.model.IAnimationModel;
+import cs3500.animator.model.IReadOnlyAnimationModel;
 import cs3500.animator.model.actions.ITimedAction;
 import cs3500.animator.model.shapes.IAnimationPiece;
+import cs3500.animator.model.shapes.Shape;
+import cs3500.animator.model.shapes.ShapeBuilder;
+import cs3500.animator.provider.model.IViewModel;
 import cs3500.animator.provider.model.animation.IAnimation;
 import cs3500.animator.provider.model.shape.IShape;
-import cs3500.animator.provider.model.IViewModel;
+
 
 /**
- * Represents an Adapter for an IAnimationModel to turn it into IViewModel.
+ * An adapter to convert our readonly models into IViewModels
  */
-public class AdapterIAnimationModel implements IViewModel {
-  private IAnimationModel model;
+public class AdapterReadOnlyToIViewModel implements IViewModel {
+  private IReadOnlyAnimationModel model;
+
 
   /**
-   * Creates a new {@code AdapterIAnimationModel} object.
-   * @param model is the IAnimationModel being adapted by this adapter.
+   * An adapter for the IReadonlyAnimation's constructor.
+   * @param model
    */
-  public AdapterIAnimationModel(IAnimationModel model) {
+  AdapterReadOnlyToIViewModel(IReadOnlyAnimationModel model) {
     this.model = model;
   }
 
@@ -37,8 +41,39 @@ public class AdapterIAnimationModel implements IViewModel {
   @Override
   public List<IShape> getShapesAtT(int ticks) throws IllegalArgumentException {
     List<IShape> shapesAtT = new ArrayList<>();
-    for (IAnimationPiece shape : model.getShapes()) {
-      shapesAtT.add(new AdapterIAnimationPiece(model.getShapeStateAt(ticks, shape)));
+    for (IAnimationPiece s : model.getShapes()) {
+      // Create a identical copy to modify.
+      Shape sCopy = ShapeBuilder.copy((Shape) s);
+
+      // Create a list of actions that correspond to our new shape
+      List<ITimedAction> actionsOnS = new ArrayList<ITimedAction>();
+
+      for (ITimedAction a : model.getActions()) {
+        if (a.getShape().getName().equals(s.getName())) {
+          actionsOnS.add(a);
+          a.setShape(sCopy);
+          a.updateOriginalValues();
+        }
+      }
+
+      for (int i = 0; i <= ticks; i++) {
+        for (ITimedAction a : actionsOnS) {
+          if (i == a.getStartTick()) {
+            a.updateOriginalValues();
+          } else if (i > a.getStartTick() && i < a.getEndTick()) {
+            a.execute();
+          } else if (i == a.getEndTick()) {
+            a.executeFinal();
+          }
+        }
+      }
+
+      // Set actions back to original shape.
+      for (ITimedAction a : actionsOnS) {
+        a.setShape(s);
+      }
+
+      shapesAtT.add(new AdapterIAnimationPiece(sCopy));
     }
     return shapesAtT;
   }

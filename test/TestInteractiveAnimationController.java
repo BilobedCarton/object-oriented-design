@@ -10,7 +10,7 @@ import cs3500.animator.model.actions.AnimationActionBuilder;
 import cs3500.animator.model.shapes.Shape;
 import cs3500.animator.model.shapes.ShapeBuilder;
 import cs3500.animator.model.shapes.ShapeType;
-import cs3500.animator.view.InteractiveView;
+import cs3500.animator.view.InteractiveViewO;
 
 import static org.junit.Assert.assertEquals;
 
@@ -33,7 +33,7 @@ public class TestInteractiveAnimationController {
   @Test
   public void testRunUpdate() {
     buildModel.addShape(r2);
-    InteractiveView testView = new InteractiveView(new ReadOnlySimpleAnimation(buildModel),
+    InteractiveViewO testView = new InteractiveViewO(new ReadOnlySimpleAnimation(buildModel),
             testBuilder, 1, 500,200);
     InteractiveAnimationController testCont = new InteractiveAnimationController(buildModel,
             testView, 5);
@@ -47,7 +47,7 @@ public class TestInteractiveAnimationController {
   @Test
   public void testStartAnimation() {
     buildModel.addShape(r2);
-    InteractiveView testView = new InteractiveView(new ReadOnlySimpleAnimation(buildModel),
+    InteractiveViewO testView = new InteractiveViewO(new ReadOnlySimpleAnimation(buildModel),
             testBuilder, 1, 500,200);
     InteractiveAnimationController testCont = new InteractiveAnimationController(buildModel,
             testView, 5);
@@ -62,7 +62,7 @@ public class TestInteractiveAnimationController {
   @Test
   public void testPauseAnimation() {
     buildModel.addShape(r2);
-    InteractiveView testView = new InteractiveView(new ReadOnlySimpleAnimation(buildModel),
+    InteractiveViewO testView = new InteractiveViewO(new ReadOnlySimpleAnimation(buildModel),
             testBuilder, 1, 500,200);
     InteractiveAnimationController testCont = new InteractiveAnimationController(buildModel,
             testView, 5);
@@ -79,7 +79,7 @@ public class TestInteractiveAnimationController {
   @Test
   public void testGetLooper() {
     buildModel.addShape(r2);
-    InteractiveView testView = new InteractiveView(new ReadOnlySimpleAnimation(buildModel),
+    InteractiveViewO testView = new InteractiveViewO(new ReadOnlySimpleAnimation(buildModel),
             testBuilder, 1, 500,200);
     InteractiveAnimationController testCont = new InteractiveAnimationController(buildModel,
             testView, 5);
@@ -93,7 +93,7 @@ public class TestInteractiveAnimationController {
   @Test
   public void testSetLooper() {
     buildModel.addShape(r2);
-    InteractiveView testView = new InteractiveView(new ReadOnlySimpleAnimation(buildModel),
+    InteractiveViewO testView = new InteractiveViewO(new ReadOnlySimpleAnimation(buildModel),
             testBuilder, 1, 500,200);
     InteractiveAnimationController testCont = new InteractiveAnimationController(buildModel,
             testView, 5);
@@ -109,7 +109,7 @@ public class TestInteractiveAnimationController {
   @Test
   public void testSetVisibility() {
     buildModel.addShape(r2);
-    InteractiveView testView = new InteractiveView(new ReadOnlySimpleAnimation(buildModel),
+    InteractiveViewO testView = new InteractiveViewO(new ReadOnlySimpleAnimation(buildModel),
             testBuilder, 1, 500,200);
     InteractiveAnimationController testCont = new InteractiveAnimationController(buildModel,
             testView, 5);
