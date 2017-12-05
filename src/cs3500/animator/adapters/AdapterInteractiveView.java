@@ -5,32 +5,23 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import cs3500.animator.control.IInteractiveAnimationController;
 import cs3500.animator.model.IReadOnlyAnimationModel;
 import cs3500.animator.provider.model.IViewModel;
-import cs3500.animator.provider.view.IAnimationView;
 import cs3500.animator.provider.view.InteractiveView;
-import cs3500.animator.provider.view.SvgView;
 import cs3500.animator.view.IView;
+import cs3500.animator.view.SVGView;
 
 public class AdapterInteractiveView implements IView {
   private InteractiveView interactive;
   private IReadOnlyAnimationModel model;
   private Appendable out;
+  private int speed;
 
   public AdapterInteractiveView(
           InteractiveView interactive, IReadOnlyAnimationModel model, Appendable out) {
     this.interactive = interactive;
     this.model = model;
     this.out = out;
-  }
+    this.speed =1;
 
-  private void checkModel(IViewModel model, int ticksPerSec)
-          throws IllegalArgumentException {
-    if (model == null) {
-      throw new IllegalArgumentException("model can't be null");
-    }
-
-    if (ticksPerSec < 1) {
-      throw new IllegalArgumentException("ticks per second has to be > 0");
-    }
   }
 
 
@@ -41,12 +32,13 @@ public class AdapterInteractiveView implements IView {
 
   @Override
   public void update(int currTick) {
-
+    interactive.setSpeed(currTick);
   }
 
   @Override
   public void start() {
 
+    interactive.restart();
   }
 
   @Override
@@ -55,15 +47,15 @@ public class AdapterInteractiveView implements IView {
   }
 
   @Override
-  public void setUpInteractivity(IInteractiveAnimationController controller) throws NotImplementedException {
-    interactive.addListeners();
+  public void setUpInteractivity(IInteractiveAnimationController controller)
+          throws NotImplementedException {
+    IViewModel viewM = new AdapterReadOnlyToIViewModel(model);
+    interactive.viewAsSwing(viewM, interactive.getSpeed());
   }
 
   @Override
   public String export(boolean loop) throws NotImplementedException {
-    IAnimationView svgView = new SvgView(loop);
-
-    fOut.write(svgView.viewAsSvg(this.model, this.ticksPerSec));
-
+    String s =(new SVGView(this.getModel(), out, interactive.getSpeed())).export(loop);
+    return s;
   }
 }

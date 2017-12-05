@@ -55,13 +55,16 @@ public class ViewFactory {
         break;
       case "provider":
         if (outputFile == null) {
-          InteractiveViewO interactiveOrig = new
-                  InteractiveViewO(model, null, 0, 700, 700);
+          InteractiveView interactiveOrig = new InteractiveView();
           view = new AdapterInteractiveView(interactiveOrig, model, System.out);
+
         } else if (outputFile != System.out) {
+          InteractiveView interactiveOrig = new InteractiveView();
+          view = new AdapterInteractiveView(interactiveOrig, model, outputFile);
 
         } else {
-
+          InteractiveView interactiveOrig = new InteractiveView();
+          view = new AdapterInteractiveView(interactiveOrig, model, System.out);
         }
         break;
       default:
