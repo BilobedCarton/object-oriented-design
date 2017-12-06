@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import cs3500.animator.control.InteractiveAnimationController;
 import cs3500.animator.model.ReadOnlySimpleAnimation;
-import cs3500.animator.model.SimpleAnimation;
+import cs3500.animator.model.SimpleAnimationOrig;
 import cs3500.animator.model.actions.AnimationAction;
 import cs3500.animator.model.actions.AnimationActionBuilder;
 import cs3500.animator.model.shapes.Shape;
@@ -24,7 +24,7 @@ public class TestInteractiveAnimationController {
   AnimationAction m2 = new AnimationActionBuilder().setTargetShape(r2).setTargetPosition(
           100, 200).setTimeTicks(10, 12).build(AnimationActionBuilder.
           AnimationActionType.MOVE);
-  SimpleAnimation buildModel = new SimpleAnimation();
+  SimpleAnimationOrig buildModel = new SimpleAnimationOrig();
   StringBuilder testBuilder = new StringBuilder();
 
   /**

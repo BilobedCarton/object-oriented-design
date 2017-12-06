@@ -14,7 +14,7 @@ import cs3500.animator.provider.model.shape.IShape;
 
 
 /**
- * An adapter to convert our readonly models into IViewModels
+ * An adapter to convert our readonly models into IViewModels.
  */
 public class AdapterReadOnlyToIViewModel implements IViewModel {
   private IReadOnlyAnimationModel model;
@@ -22,7 +22,7 @@ public class AdapterReadOnlyToIViewModel implements IViewModel {
 
   /**
    * An adapter for the IReadonlyAnimation's constructor.
-   * @param model
+   * @param model the model whose information we need.
    */
   AdapterReadOnlyToIViewModel(IReadOnlyAnimationModel model) {
     this.model = model;

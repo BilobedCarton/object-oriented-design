@@ -8,12 +8,12 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import cs3500.animator.control.AnimationController;
 import cs3500.animator.control.IAnimationController;
+import cs3500.animator.control.AnimationController;
 import cs3500.animator.control.InteractiveAnimationController;
-import cs3500.animator.model.IAnimationModel;
+import cs3500.animator.model.IAnimationModelOrig;
 import cs3500.animator.model.ReadOnlySimpleAnimation;
-import cs3500.animator.model.SimpleAnimation;
+import cs3500.animator.model.SimpleAnimationOrig;
 import cs3500.animator.util.AnimationFileReader;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.InteractiveViewO;
@@ -214,7 +214,7 @@ public final class EasyAnimator {
     AnimationFileReader animReader = new AnimationFileReader();
     String useFile = System.getProperty("user.dir") + "/" + inputFile;
 
-    IAnimationModel model = animReader.readFile(useFile, new SimpleAnimation.Builder());
+    IAnimationModelOrig model = animReader.readFile(useFile, new SimpleAnimationOrig.Builder());
     IView view;
     if (writeF) {
       view = ViewFactory.build(viewType, getWriter(viewType, outputFile), speed,

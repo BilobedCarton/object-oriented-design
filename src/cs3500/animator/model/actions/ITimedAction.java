@@ -1,7 +1,6 @@
 package cs3500.animator.model.actions;
 
 import cs3500.animator.model.shapes.IAnimationPiece;
-import cs3500.animator.model.shapes.Shape;
 
 /**
  * Represents an action that takes place over time. Could be for an animation, could be for game,

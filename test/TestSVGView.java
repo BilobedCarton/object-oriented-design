@@ -3,7 +3,7 @@ import org.junit.Test;
 import java.awt.Color;
 
 import cs3500.animator.model.ReadOnlySimpleAnimation;
-import cs3500.animator.model.SimpleAnimation;
+import cs3500.animator.model.SimpleAnimationOrig;
 import cs3500.animator.model.actions.AnimationAction;
 import cs3500.animator.model.actions.AnimationActionBuilder;
 import cs3500.animator.model.shapes.Shape;
@@ -50,7 +50,7 @@ public class TestSVGView {
    */
   @Test
   public void testAddShapesR() {
-    SimpleAnimation buildModel = new SimpleAnimation();
+    SimpleAnimationOrig buildModel = new SimpleAnimationOrig();
     StringBuilder testBuilder = new StringBuilder();
     buildModel.addShape(r2);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
@@ -68,7 +68,7 @@ public class TestSVGView {
    */
   @Test
   public void testAddShapesO() {
-    SimpleAnimation buildModel = new SimpleAnimation();
+    SimpleAnimationOrig buildModel = new SimpleAnimationOrig();
     StringBuilder testBuilder = new StringBuilder();
     buildModel.addShape(o1);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
@@ -87,7 +87,7 @@ public class TestSVGView {
    */
   @Test
   public void testAddShapesRWindowScale() {
-    SimpleAnimation buildModel = new SimpleAnimation();
+    SimpleAnimationOrig buildModel = new SimpleAnimationOrig();
     StringBuilder testBuilder = new StringBuilder();
     buildModel.addShape(r1);
     IView testView = new SVGView(new ReadOnlySimpleAnimation(buildModel), testBuilder, 1);
@@ -105,7 +105,7 @@ public class TestSVGView {
    */
   @Test
   public void testAddShapesRMoves2() {
-    SimpleAnimation buildModel = new SimpleAnimation();
+    SimpleAnimationOrig buildModel = new SimpleAnimationOrig();
     StringBuilder testBuilder = new StringBuilder();
     buildModel.addShape(r2);
     buildModel.addAction(m1);
@@ -132,7 +132,7 @@ public class TestSVGView {
    */
   @Test
   public void testAddShapesOMove() {
-    SimpleAnimation buildModel = new SimpleAnimation();
+    SimpleAnimationOrig buildModel = new SimpleAnimationOrig();
     StringBuilder testBuilder = new StringBuilder();
     buildModel.addShape(o1);
     buildModel.addAction(m3);
@@ -154,7 +154,7 @@ public class TestSVGView {
    */
   @Test
   public void testAddShapesRCol() {
-    SimpleAnimation buildModel = new SimpleAnimation();
+    SimpleAnimationOrig buildModel = new SimpleAnimationOrig();
     StringBuilder testBuilder = new StringBuilder();
     buildModel.addShape(r2);
     buildModel.addAction(c1);
@@ -175,7 +175,7 @@ public class TestSVGView {
    */
   @Test
   public void testAddShapesOCol() {
-    SimpleAnimation buildModel = new SimpleAnimation();
+    SimpleAnimationOrig buildModel = new SimpleAnimationOrig();
     StringBuilder testBuilder = new StringBuilder();
     buildModel.addShape(o1);
     buildModel.addAction(c2);
@@ -196,7 +196,7 @@ public class TestSVGView {
    */
   @Test
   public void testAddShapesRDimChange() {
-    SimpleAnimation buildModel = new SimpleAnimation();
+    SimpleAnimationOrig buildModel = new SimpleAnimationOrig();
     StringBuilder testBuilder = new StringBuilder();
     buildModel.addShape(r2);
     buildModel.addAction(rs1);
@@ -219,7 +219,7 @@ public class TestSVGView {
    */
   @Test
   public void testAddShapesODimChange() {
-    SimpleAnimation buildModel = new SimpleAnimation();
+    SimpleAnimationOrig buildModel = new SimpleAnimationOrig();
     StringBuilder testBuilder = new StringBuilder();
     buildModel.addShape(o1);
     buildModel.addAction(rs2);

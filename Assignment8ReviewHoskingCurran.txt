@@ -1,0 +1,20 @@
+﻿Matthew Hosking & Jeffrey Curran
+Experiential Review
+
+Our design would really have benefited from a more cohesive foundation of principles. In the beginnning we were working with slightly different style
+and design philosophies that may have led to some early conflicts that never really got ironed out. For example there were inconsistencies between how the 
+the visual and svg views took in arguments and output results. This was fine in early assignments so we did not realize the difference, but once we began 
+work on the interactive view, we saw the need to standardize. If we had sat down and planned out everything from the beginning, our animation program
+would likely have been much more coherent, efficient, and effective. Dividing and conquering from the very beginning may have seemed smart at the time, 
+but it did not serve us on the long term. Based on this, I think in the future a better process would be to come together for a longer plannign session 
+based on planning out design patters, and writing protocode. While we spoke through our process briefly at the start, it is obvious we missed some hiccups
+that would have been apparent had we written it out. That being said, we believe our final design was simple enough to be understandable and usable.
+There were sections that were could have been removed or were redundent, such as the getShapeStateAt(...) method, which we spent a lot of time reworking 
+over and over again as its scope changed, but overall I think the code worked well.
+ 
+Working with someone else’s design was illuminating, especially in regards to documentation. It really made it clear how important 
+good documentation is when trying to expand a design team. In a professional situation of course, there should normally be a general 
+style guide that is consistent across teams. In smaller teams however, the idea of a consistent design philosophy is really foreign.
+Their design was similar enough to be easily understood as achieving the same goals, but it was more unclear in some sections and 
+certainly more precise in others. There visual view implementation was very elegant and it showed that ours was perhaps overly roundabout 
+and complex. Our providers were helpful, even if on first delivery we received code with substantial pieces missing.

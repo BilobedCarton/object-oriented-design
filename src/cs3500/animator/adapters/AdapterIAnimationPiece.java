@@ -47,7 +47,7 @@ public class AdapterIAnimationPiece implements IShape {
 
   @Override
   public Shape getImage() {
-    switch(animationPiece.getShapeType()) {
+    switch (animationPiece.getShapeType()) {
       case RECTANGLE:
         return new Rectangle.Double(animationPiece.getPosX(), animationPiece.getPosY(),
                 animationPiece.getSizeX(), animationPiece.getSizeY());
@@ -66,7 +66,7 @@ public class AdapterIAnimationPiece implements IShape {
 
   @Override
   public String getType() {
-    switch(animationPiece.getShapeType()) {
+    switch (animationPiece.getShapeType()) {
       case RECTANGLE:
         return "Rectangle";
       case OVAL:

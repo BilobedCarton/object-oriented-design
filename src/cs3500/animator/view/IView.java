@@ -12,7 +12,7 @@ public interface IView {
   /**
    * Gets the model being rendered by this view.
    *
-   * @return this view's corresponding IAnimationModel.
+   * @return this view's corresponding IAnimationModelOrig.
    */
   IReadOnlyAnimationModel getModel();
 
@@ -41,7 +41,8 @@ public interface IView {
    * @param controller is the controller using this view.
    * @throws NotImplementedException if this is being called by a view that is not interactive.
    */
-  void setUpInteractivity(IInteractiveAnimationController controller) throws NotImplementedException;
+  void setUpInteractivity(IInteractiveAnimationController controller)
+          throws NotImplementedException;
 
   /**
    * Export this view in the corresponding form: text or SVG.

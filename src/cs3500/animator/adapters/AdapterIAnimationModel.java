@@ -3,7 +3,7 @@ package cs3500.animator.adapters;
 import java.util.ArrayList;
 import java.util.List;
 
-import cs3500.animator.model.IAnimationModel;
+import cs3500.animator.model.IAnimationModelOrig;
 import cs3500.animator.model.actions.ITimedAction;
 import cs3500.animator.model.shapes.IAnimationPiece;
 import cs3500.animator.provider.model.animation.IAnimation;
@@ -11,16 +11,16 @@ import cs3500.animator.provider.model.shape.IShape;
 import cs3500.animator.provider.model.IViewModel;
 
 /**
- * Represents an Adapter for an IAnimationModel to turn it into IViewModel.
+ * Represents an Adapter for an IAnimationModelOrig to turn it into IViewModel.
  */
 public class AdapterIAnimationModel implements IViewModel {
-  private IAnimationModel model;
+  private IAnimationModelOrig model;
 
   /**
    * Creates a new {@code AdapterIAnimationModel} object.
-   * @param model is the IAnimationModel being adapted by this adapter.
+   * @param model is the IAnimationModelOrig being adapted by this adapter.
    */
-  public AdapterIAnimationModel(IAnimationModel model) {
+  public AdapterIAnimationModel(IAnimationModelOrig model) {
     this.model = model;
   }
 

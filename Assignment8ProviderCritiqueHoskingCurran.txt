@@ -1,0 +1,32 @@
+﻿Matthew Hosking & Jeffrey Curran
+Code Critique
+
+The overall design of their code seemed good to us, and made followed a similar structure that ours did. The file structure was sound, with the only confusing thing
+being the view, which was crowded with jframe and panels. This probably would have been easier to get a feel for at a glance if theses had been moved to another 
+subdirectory of views. I did like the amount of versatility that was built into the views, though honestly it seemed to be too much. For example, the svg view 
+that they built is incredibly long, and all the logic for constructing it seems up to the view itself. While this removes clutter from the objects and shapes, 
+it makes adding new shapes and actions very difficult. In our view we put much of the string building into the objects and shapes themselves, which resulted in
+a much simpler svg view. In addition, lack of dependency on the controller was something that caught my attention. The controller only had two methods in it, 
+and the one I assumed to be most important, start(), had no documentation. That being said the design was good I think, and most of the difficulties probably came
+ from me being used to my own design.
+
+As for the implementation, I think this was well done, though a bit confusing at times. The interfaces we received were relatively flexible, they generally used
+simple, clear inputs and outputs, but a couple of the functions involved were either poorly described or had inputs that were not fully defined or described. 
+Again, a large point of confusion here was the controller. The controller processed commands as strings which made it hard to understand the desired string inputs
+from an interface level. Their views followed the structure of including methods for each of the types of views, using nomenclature like “viewAsXYZ(inputs)” for 
+the executing method. This style of implementation can be really unwieldy as more and more views are added. Especially if more specific sub-views are added like 
+their viewAsStringBuilder(...) method. They already had a viewAsAppendable(...) method which could be given a StringBuilder if that’s what the user wants. Their 
+method of converting animations into strings or svg format was also overly complex. Instead of giving each object a method to specifically convert it into text 
+of svg, they put all the logic for parsing animation objects in the views. This makes it really difficult to figure out exactly what is happening and why.
+
+The documentation was definitely the biggest hurdle for us. While at times it was great, like in the IAnimationModel, which has a short paragraph describing most 
+functions, at others it was tough to interpret what a function was meant to do. For example Animations has a function called transitionInfo() which has pretty
+useless documentation, stating "Transition info an animation. This is different for each different type of information." Not only is the description tough to 
+understand grammatically, the idea of transition info is never defined, so we had no clue what that was. Another issue was with the model interface. The interface
+has a method to get something they call a scale description which was never defined in documentation. 
+ 
+In regards to their overall design philosophy, it seemed as if they were making things more complex than they really needed to be. Their interfaces had methods 
+that seemed unnecessary or pointless. Their way of handling commands was weirdly specific and finicky. They used an enum for commands where each enum value had 
+a corresponding string. Then using those enums they pass them as strings into the controller in order to correctly execute the desired action. They also were not 
+entirely clear on what their invariants were, there’s a section in their shape interface that labels things as invariants but the actual invariance being labeled 
+is not described. All in all, I think their design probably needed a second pass and rework in order to reach its full potential.

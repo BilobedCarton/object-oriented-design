@@ -2,7 +2,7 @@ import org.junit.Test;
 
 import java.awt.Color;
 
-import cs3500.animator.model.SimpleAnimation;
+import cs3500.animator.model.SimpleAnimationOrig;
 import cs3500.animator.model.actions.AnimationAction;
 import cs3500.animator.model.actions.AnimationActionBuilder;
 import cs3500.animator.model.shapes.Shape;
@@ -12,7 +12,7 @@ import cs3500.animator.model.shapes.ShapeType;
 import static org.junit.Assert.assertEquals;
 
 public class TestAnimationModel {
-  SimpleAnimation model = new SimpleAnimation();
+  SimpleAnimationOrig model = new SimpleAnimationOrig();
 
   @Test
   public void testAdd() {

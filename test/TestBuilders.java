@@ -4,8 +4,8 @@ import java.awt.Color;
 
 import static org.junit.Assert.assertEquals;
 
-import cs3500.animator.model.IAnimationModel;
-import cs3500.animator.model.SimpleAnimation;
+import cs3500.animator.model.IAnimationModelOrig;
+import cs3500.animator.model.SimpleAnimationOrig;
 import cs3500.animator.model.actions.AnimationAction;
 import cs3500.animator.model.actions.AnimationActionBuilder;
 import cs3500.animator.model.actions.ColorShiftAction;
@@ -133,7 +133,7 @@ public class TestBuilders {
   @Test
   public void testBuildModel() {
     // TODO create more indepth test.
-    IAnimationModel model = SimpleAnimation.Builder.initialize()
+    IAnimationModelOrig model = SimpleAnimationOrig.Builder.initialize()
             .addRectangle("R", 0, 0, 10, 20, 0.3f, 0.3f,
                     0.3f, 0, 10)
             .addOval("O", 10, 20, 5, 5, 0.1f, 0.1f,

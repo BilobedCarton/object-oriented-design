@@ -9,18 +9,28 @@ import cs3500.animator.provider.view.InteractiveView;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGView;
 
+
+/**
+ * The adapter from interactive view to an iview.
+ */
 public class AdapterInteractiveView implements IView {
   private InteractiveView interactive;
   private IReadOnlyAnimationModel model;
   private Appendable out;
-  private int speed;
 
+
+  /**
+   * The constructor for our adapter.
+   *
+   * @param interactive the interactive view to adapt.
+   * @param model       the model whose information we ned.
+   * @param out         where to export.
+   */
   public AdapterInteractiveView(
           InteractiveView interactive, IReadOnlyAnimationModel model, Appendable out) {
     this.interactive = interactive;
     this.model = model;
     this.out = out;
-    this.speed =1;
 
   }
 
@@ -37,7 +47,6 @@ public class AdapterInteractiveView implements IView {
 
   @Override
   public void start() {
-
     interactive.restart();
   }
 
@@ -55,7 +64,7 @@ public class AdapterInteractiveView implements IView {
 
   @Override
   public String export(boolean loop) throws NotImplementedException {
-    String s =(new SVGView(this.getModel(), out, interactive.getSpeed())).export(loop);
+    String s = (new SVGView(this.getModel(), out, interactive.getSpeed())).export(loop);
     return s;
   }
 }

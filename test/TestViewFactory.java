@@ -1,9 +1,9 @@
 import org.junit.Test;
 
 import cs3500.animator.EasyAnimator;
-import cs3500.animator.model.IAnimationModel;
+import cs3500.animator.model.IAnimationModelOrig;
 import cs3500.animator.model.ReadOnlySimpleAnimation;
-import cs3500.animator.model.SimpleAnimation;
+import cs3500.animator.model.SimpleAnimationOrig;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGView;
 import cs3500.animator.view.TextView;
@@ -13,7 +13,7 @@ import cs3500.animator.view.VisualView;
 import static org.junit.Assert.assertEquals;
 
 public class TestViewFactory {
-  IAnimationModel model = new SimpleAnimation();
+  IAnimationModelOrig model = new SimpleAnimationOrig();
 
   @Test
   public void testNewTextViewToOut() {

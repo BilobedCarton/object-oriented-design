@@ -9,7 +9,7 @@ import cs3500.animator.view.AbstractView;
 
 
 /**
- * The adapter to our textView
+ * The adapter to our textView.
  */
 public class AdapterTextView extends AbstractView {
 
@@ -25,7 +25,7 @@ public class AdapterTextView extends AbstractView {
   public AdapterTextView(IReadOnlyAnimationModel model,TextualView theView, Appendable out) {
     super(model);
     this.theirView = theView;
-    out = out;
+    this.out = out;
   }
 
 

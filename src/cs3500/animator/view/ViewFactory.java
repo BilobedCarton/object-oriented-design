@@ -23,7 +23,7 @@ public class ViewFactory {
   public static IView build(String viewType,
                             Appendable outputFile,
                             double speed,
-                            IReadOnlyAnimationModel model) throws IllegalArgumentException{
+                            IReadOnlyAnimationModel model) throws IllegalArgumentException {
     IView view;
 
     switch (viewType) {

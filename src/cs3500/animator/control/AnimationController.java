@@ -3,18 +3,17 @@ package cs3500.animator.control;
 import javax.swing.Timer;
 
 import cs3500.animator.control.listeners.UpdateListener;
-import cs3500.animator.model.IAnimationModel;
+import cs3500.animator.model.IAnimationModelOrig;
 import cs3500.animator.model.IReadOnlyAnimationModel;
 import cs3500.animator.model.ReadOnlySimpleAnimation;
 import cs3500.animator.model.shapes.IAnimationPiece;
-import cs3500.animator.model.shapes.Shape;
 import cs3500.animator.view.IView;
 
 /**
- * Represents a controller for an animation using an IAnimationModel and an IView.
+ * Represents a controller for an animation using an IAnimationModelOrig and an IView.
  */
 public class AnimationController implements IAnimationController {
-  protected IAnimationModel model;
+  protected IAnimationModelOrig model;
   protected IView view;
   protected double ticksPerSecond;
   protected int currTick = 1;
@@ -23,11 +22,11 @@ public class AnimationController implements IAnimationController {
   /**
    * Creates a new {@code AnimationController} object.
    *
-   * @param model          is the associated IAnimationModel for this controller.
+   * @param model          is the associated IAnimationModelOrig for this controller.
    * @param view           is the associated IView for this controller.
    * @param ticksPerSecond is the number of ticks executed per second by this controller.
    */
-  public AnimationController(IAnimationModel model, IView view, double ticksPerSecond) {
+  public AnimationController(IAnimationModelOrig model, IView view, double ticksPerSecond) {
     this.model = model;
     this.view = view;
     this.ticksPerSecond = ticksPerSecond;

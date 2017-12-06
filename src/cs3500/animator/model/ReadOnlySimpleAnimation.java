@@ -3,23 +3,21 @@ package cs3500.animator.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import cs3500.animator.model.actions.AnimationAction;
 import cs3500.animator.model.actions.ITimedAction;
 import cs3500.animator.model.shapes.IAnimationPiece;
-import cs3500.animator.model.shapes.Shape;
 
 /**
- * Represents a readonly version of an IAnimationModel.
+ * Represents a readonly version of an IAnimationModelOrig.
  */
 public class ReadOnlySimpleAnimation implements IReadOnlyAnimationModel {
-  private IAnimationModel model;
+  private IAnimationModelOrig model;
 
   /**
    * Creates a new {@code ReadOnlySimpleAnimation} object.
    *
    * @param model is the model whose data we are reading.
    */
-  public ReadOnlySimpleAnimation(IAnimationModel model) {
+  public ReadOnlySimpleAnimation(IAnimationModelOrig model) {
     this.model = model;
     this.model.updateActions();
   }

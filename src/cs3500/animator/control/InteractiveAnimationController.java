@@ -3,12 +3,12 @@ package cs3500.animator.control;
 import java.util.ArrayList;
 import java.util.List;
 
-import cs3500.animator.model.IAnimationModel;
+import cs3500.animator.model.IAnimationModelOrig;
 import cs3500.animator.model.shapes.IAnimationPiece;
 import cs3500.animator.view.InteractiveViewO;
 
 /**
- * Represents a controller for an animation using an InteractiveViewO and an IAnimationModel.
+ * Represents a controller for an animation using an InteractiveViewO and an IAnimationModelOrig.
  */
 public class InteractiveAnimationController extends AnimationController
         implements IInteractiveAnimationController {
@@ -16,7 +16,7 @@ public class InteractiveAnimationController extends AnimationController
   private List<String> selectedShapes = new ArrayList<>();
 
   public InteractiveAnimationController(
-          IAnimationModel model, InteractiveViewO view, double ticksPerSecond) {
+          IAnimationModelOrig model, InteractiveViewO view, double ticksPerSecond) {
     super(model, view, ticksPerSecond);
   }
 

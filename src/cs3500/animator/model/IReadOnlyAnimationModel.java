@@ -6,7 +6,7 @@ import cs3500.animator.model.shapes.IAnimationPiece;
 import java.util.List;
 
 /**
- * Represents a readonly version of an IAnimationModel.
+ * Represents a readonly version of an IAnimationModelOrig.
  */
 public interface IReadOnlyAnimationModel {
 
