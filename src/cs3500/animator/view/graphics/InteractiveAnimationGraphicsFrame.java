@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.BoxLayout;
+import javax.swing.border.Border;
+import javax.swing.event.ChangeEvent;
 
 import cs3500.animator.control.IAnimationController;
 import cs3500.animator.control.InteractiveAnimationController;
@@ -27,6 +29,7 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
   private ToggleButton loopingToggle;
   private JSlider speedSlider;
   private ListDialog listDialog;
+  private JPanel bottomPanel;
 
   /**
    * Creates a new {@code InteractiveAnimationGraphicsFrame} object.
@@ -38,12 +41,16 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
     super(width, height);
 
     // buttons
-    JPanel buttonPanel = new JPanel();
+    bottomPanel = new JPanel();
+    bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.Y_AXIS));
+    this.add(bottomPanel, BorderLayout.SOUTH);
+
     JPanel sliderPanel;
     JButton selectShapesButton;
 
+    JPanel buttonPanel = new JPanel();
+    bottomPanel.add(buttonPanel);
     buttonPanel.setLayout(new FlowLayout());
-    this.add(buttonPanel, BorderLayout.SOUTH);
 
     startButton = new JButton("Start");
     buttonPanel.add(startButton);
@@ -121,6 +128,22 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
   public void linkSpeedSlider(IAnimationController controller) {
     speedSlider.setValue((int) controller.getSpeed());
     speedSlider.addChangeListener((new SpeedChangeListener(controller)));
+  }
+
+  /**
+   * Builds the scrubber slider object used for scrubbing through the animation.
+   * @param controller is the IAnimationController whose data is linked to this frame.
+   */
+  public void buildScrubberSlider(InteractiveAnimationController controller) {
+    JSlider scrubberSlider = new TickScrubberSlider(controller);
+    scrubberSlider.addChangeListener((ChangeEvent e) -> {
+      controller.setModelToStateAt(scrubberSlider.getValue());
+    });
+    scrubberSlider.setMajorTickSpacing(controller.getLastTick() / 10);
+    scrubberSlider.setPaintLabels(true);
+    scrubberSlider.setPaintTicks(true);
+    bottomPanel.add(new JLabel("Tick Scrubber."));
+    bottomPanel.add(scrubberSlider);
   }
 
   /**

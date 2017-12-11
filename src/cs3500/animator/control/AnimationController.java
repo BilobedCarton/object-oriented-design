@@ -101,4 +101,15 @@ public class AnimationController implements IAnimationController {
   public Timer getTimer() {
     return this.timer;
   }
+
+  @Override
+  public int getLastTick()  {
+    int finalTick = 0;
+    for (Shape s : this.model.getShapes()) {
+      if (s.getDisappearTick() > finalTick) {
+        finalTick = s.getDisappearTick();
+      }
+    }
+    return finalTick;
+  }
 }

@@ -3,6 +3,7 @@ package cs3500.animator.control;
 import javax.swing.Timer;
 
 import cs3500.animator.model.IReadOnlyAnimationModel;
+import cs3500.animator.model.shapes.Shape;
 import cs3500.animator.view.IView;
 
 /**
@@ -70,4 +71,10 @@ public interface IAnimationController {
    * @param originalVisibility tells us whether or not to reset the visibilities of the shapes.
    */
   void reset(boolean originalVisibility);
+
+  /**
+   * Gets the value of the last tick of this animation.
+   * @return the int representing the value of the last tick.
+   */
+  int getLastTick();
 }

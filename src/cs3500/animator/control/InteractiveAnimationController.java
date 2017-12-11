@@ -30,12 +30,7 @@ public class InteractiveAnimationController extends AnimationController {
     super.runUpdate();
 
     if (this.loopAnimation) {
-      int finalTick = 0;
-      for (Shape s : this.model.getShapes()) {
-        if (s.getDisappearTick() > finalTick) {
-          finalTick = s.getDisappearTick();
-        }
-      }
+      int finalTick = this.getLastTick();
 
       if (finalTick <= currTick) {
         this.reset(false);
@@ -99,6 +94,24 @@ public class InteractiveAnimationController extends AnimationController {
           s.setVisibility(visible);
         }
       }
+    }
+  }
+
+  /**
+   * Sets this model's state to the given tick.
+   * @param tick is the tick that this model's state is to be based upon.
+   * @throws IllegalArgumentException if the given tick is negative.
+   */
+  public void setModelToStateAt(int tick) throws IllegalArgumentException {
+    if (tick < 0) {
+      throw new IllegalArgumentException("Given tick is less than zero.");
+    }
+    if (this.currTick > tick) {
+      this.reset(false);
+    }
+
+    while (this.currTick < tick) {
+      this.runUpdate();
     }
   }
 }
