@@ -80,23 +80,6 @@ public class SimpleAnimation implements IAnimationModel {
   }
 
   @Override
-  public void moveShapeToLayer(Shape shape, int layer) throws IllegalArgumentException {
-    if (layer < 0) {
-      throw new IllegalArgumentException("The given layer does not exist (less than 0).");
-    }
-    for (List<Shape> list : this.shapes) {
-      for (Shape s : list) {
-        if (s.getName().equals(shape.getName())) {
-          list.remove(s);
-          this.shapes.get(layer).add(s);
-          return;
-        }
-      }
-    }
-    throw new IllegalArgumentException("The given shape could not be found.");
-  }
-
-  @Override
   public void runCycle(int currTick) {
     this.updateActions();
     for (AnimationAction action : updatedActions) {

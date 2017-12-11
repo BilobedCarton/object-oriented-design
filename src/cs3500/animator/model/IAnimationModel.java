@@ -52,14 +52,6 @@ public interface IAnimationModel {
   void addShape(Shape shape, int layer) throws IllegalArgumentException;
 
   /**
-   * Moves the given shape from its current layer to the given one.
-   * @param shape is the shape to be moved.
-   * @param layer is the layer the shape will be moved to.
-   * @throws IllegalArgumentException if the given shape does not exist or the given layer is negative.
-   */
-  void moveShapeToLayer(Shape shape, int layer) throws IllegalArgumentException;
-
-  /**
    * Runs a cycle of this animation. Updates all not updated actions prior to the cycle run.
    *
    * @param currTick is the current tick of this animation.
