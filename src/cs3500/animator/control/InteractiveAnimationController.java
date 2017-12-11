@@ -78,7 +78,7 @@ public class InteractiveAnimationController extends AnimationController {
   /**
    * Set the shapes currently selected for visibility changes.
    *
-   * @param shapeStates is the array of slected shapes with their current visibility status.
+   * @param shapeStates is the array of selected shapes with their current visibility status.
    */
   public void setSelectedShapes(String[] shapeStates) {
     this.selectedShapes.clear();

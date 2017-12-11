@@ -35,12 +35,29 @@ public interface IAnimationModel {
   void addAction(AnimationAction action);
 
   /**
-   * Adds the given shape to this model's list of shapes.
+   * Adds the given shape to this model's list of shapes at the bottom layer.
    *
    * @param shape is the Shape to be added.
    * @throws IllegalArgumentException if the shape has the same name as one already in the model.
    */
   void addShape(Shape shape) throws IllegalArgumentException;
+
+  /**
+   * Adds the given shape to this model's list of shapes at the given layer.
+   * @param shape is the shape to be added
+   * @param layer is the layer the shape should be added at.
+   * @throws IllegalArgumentException if the shape has the name name as one already in the model of the given layer
+   *                                  is invalid. Or if the given layer is negative.
+   */
+  void addShape(Shape shape, int layer) throws IllegalArgumentException;
+
+  /**
+   * Moves the given shape from its current layer to the given one.
+   * @param shape is the shape to be moved.
+   * @param layer is the layer the shape will be moved to.
+   * @throws IllegalArgumentException if the given shape does not exist or the given layer is negative.
+   */
+  void moveShapeToLayer(Shape shape, int layer) throws IllegalArgumentException;
 
   /**
    * Runs a cycle of this animation. Updates all not updated actions prior to the cycle run.

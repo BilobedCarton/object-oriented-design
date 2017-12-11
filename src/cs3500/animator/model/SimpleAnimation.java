@@ -21,7 +21,7 @@ import cs3500.animator.util.TweenModelBuilder;
 public class SimpleAnimation implements IAnimationModel {
   private List<AnimationAction> updatedActions;
   private List<AnimationAction> actionsToBeUpdated;
-  private List<Shape> shapes;
+  private List<List<Shape>> shapes;
 
   /**
    * Creates a new {@code SimpleAnimation} object.
@@ -31,7 +31,7 @@ public class SimpleAnimation implements IAnimationModel {
   public SimpleAnimation() throws IllegalArgumentException {
     updatedActions = new ArrayList<AnimationAction>();
     actionsToBeUpdated = new ArrayList<AnimationAction>();
-    shapes = new ArrayList<Shape>();
+    shapes = new ArrayList<List<Shape>>();
   }
 
   @Override
@@ -42,12 +42,16 @@ public class SimpleAnimation implements IAnimationModel {
 
   @Override
   public List<Shape> getShapes() {
-    return Collections.unmodifiableList(this.shapes);
+    List<Shape> shapeList = new ArrayList<>();
+    for (List<Shape> list : this.shapes) {
+      shapeList.addAll(list);
+    }
+    return Collections.unmodifiableList(shapeList);
   }
 
   @Override
   public void addAction(AnimationAction action) {
-    if (!this.shapes.contains(action.getShape())) {
+    if (!this.getShapes().contains(action.getShape())) {
       throw new IllegalArgumentException("SimpleAnimation.getShapeStateAt(int, Shape) -- "
               + "The given shape does not exist in this model.");
     }
@@ -56,11 +60,40 @@ public class SimpleAnimation implements IAnimationModel {
 
   @Override
   public void addShape(Shape shape) throws IllegalArgumentException {
-    if (findShape(shape.getName(), this.shapes) != null) {
+    this.addShape(shape, 0);
+  }
+
+  @Override
+  public void addShape(Shape shape, int layer) throws IllegalArgumentException {
+    if (findShape(shape.getName(), this.getShapes()) != null) {
       throw new IllegalArgumentException("SimpleAnimation.addShape(Shape) -- Shape with the given "
               + "name already exists in this model.");
     }
-    this.shapes.add(shape);
+    if (layer < 0) {
+      throw new IllegalArgumentException("The given layer does not exist (less than 0).");
+    }
+    if (this.shapes.size() <= layer) {
+      this.shapes.add(layer, new ArrayList<Shape>());
+    }
+
+    this.shapes.get(layer).add(shape);
+  }
+
+  @Override
+  public void moveShapeToLayer(Shape shape, int layer) throws IllegalArgumentException {
+    if (layer < 0) {
+      throw new IllegalArgumentException("The given layer does not exist (less than 0).");
+    }
+    for (List<Shape> list : this.shapes) {
+      for (Shape s : list) {
+        if (s.getName().equals(shape.getName())) {
+          list.remove(s);
+          this.shapes.get(layer).add(s);
+          return;
+        }
+      }
+    }
+    throw new IllegalArgumentException("The given shape could not be found.");
   }
 
   @Override
@@ -85,8 +118,10 @@ public class SimpleAnimation implements IAnimationModel {
   public String toString(double ticksPerSecond) {
     this.updateActions();
     String str = "Shapes:\n";
-    for (Shape shape : this.shapes) {
-      str += shape.toString(ticksPerSecond) + "\n";
+    for (List<Shape> layer : this.shapes) {
+      for (Shape shape : layer) {
+        str += shape.toString(ticksPerSecond) + "\n";
+      }
     }
     for (AnimationAction action : this.updatedActions) {
       str += action.toString(ticksPerSecond);
@@ -113,7 +148,7 @@ public class SimpleAnimation implements IAnimationModel {
 
   @Override
   public Shape getShapeStateAt(int tick, Shape s) throws IllegalArgumentException {
-    if (!this.shapes.contains(s)) {
+    if (!this.getShapes().contains(s)) {
       throw new IllegalArgumentException("SimpleAnimation.getShapeStateAt(int, Shape) -- "
               + "The given shape does not exist in this model.");
     }
