@@ -45,7 +45,8 @@ public class AnimationFileReader {
                   rinfo.getX(), rinfo.getY(),
                   rinfo.getWidth(), rinfo.getHeight(),
                   rinfo.getR(), rinfo.getG(), rinfo.getB(),
-                  rinfo.getStart(), rinfo.getEnd());
+                  rinfo.getStart(), rinfo.getEnd(),
+                  rinfo.getLayer());
           break;
         case "oval":
           OvalInfo cinfo = readOvalInfo(sc);
@@ -54,7 +55,8 @@ public class AnimationFileReader {
                   cinfo.getX(), cinfo.getY(),
                   cinfo.getXRadius(), cinfo.getYRadius(),
                   cinfo.getR(), cinfo.getG(), cinfo.getB(),
-                  cinfo.getStart(), cinfo.getEnd());
+                  cinfo.getStart(), cinfo.getEnd(),
+                  cinfo.getLayer());
           break;
         case "move":
           MoveInfo minfo = readMoveInfo(sc);
@@ -131,6 +133,9 @@ public class AnimationFileReader {
         case "to":
           info.setEnd(sc.nextInt());
           break;
+        case "layer":
+          info.setLayer(sc.nextInt());
+          break;
         default:
           throw new IllegalStateException("Invalid attribute " + command + " for "
                   + "rectangle");
@@ -172,6 +177,9 @@ public class AnimationFileReader {
           break;
         case "to":
           info.setEnd(sc.nextInt());
+          break;
+        case "layer":
+          info.setLayer(sc.nextInt());
           break;
         default:
           throw new IllegalStateException("Invalid attribute " + command + " for "
@@ -303,6 +311,7 @@ public class AnimationFileReader {
     private float b;
     private int start;
     private int end;
+    private int layer = 0;
 
 
     ShapeInfo() {
@@ -346,6 +355,10 @@ public class AnimationFileReader {
       valueFlags.replace("end", true);
     }
 
+    void setLayer(int layer) {
+      this.layer = layer;
+    }
+
     float getR() {
       return r;
     }
@@ -370,7 +383,7 @@ public class AnimationFileReader {
       return end;
     }
 
-
+    public int getLayer() { return layer; }
   }
 
   class RectangleInfo extends ShapeInfo {

@@ -201,8 +201,7 @@ public class SimpleAnimation implements IAnimationModel {
    * Represents a builder for a new SimpleAnimation.
    */
   public static final class Builder implements TweenModelBuilder<IAnimationModel> {
-    private List<Shape> shapesToAdd = new ArrayList<Shape>();
-    private List<AnimationAction> actionsToAdd = new ArrayList<AnimationAction>();
+    private IAnimationModel simpleAnimation = new SimpleAnimation();
 
     /**
      * Initializes the builder to begin construction of a new model.
@@ -217,14 +216,14 @@ public class SimpleAnimation implements IAnimationModel {
     public TweenModelBuilder<IAnimationModel> addOval(String name, float cx, float cy,
                                                       float xRadius, float yRadius, float red,
                                                       float green, float blue, int startOfLife,
-                                                      int endOfLife) {
-      this.shapesToAdd.add(ShapeBuilder.initialize()
+                                                      int endOfLife, int layer) {
+      this.simpleAnimation.addShape(ShapeBuilder.initialize()
               .setName(name)
               .setPosition(cx, cy)
               .setSize(xRadius, yRadius)
               .setColor(new Color(red, green, blue))
               .setTimeSpan(startOfLife, endOfLife)
-              .build(ShapeBuilder.ShapeType.OVAL));
+              .build(ShapeBuilder.ShapeType.OVAL), layer);
       return this;
     }
 
@@ -232,14 +231,14 @@ public class SimpleAnimation implements IAnimationModel {
     public TweenModelBuilder<IAnimationModel> addRectangle(String name, float lx, float ly,
                                                            float width, float height, float red,
                                                            float green, float blue, int startOfLife,
-                                                           int endOfLife) {
-      this.shapesToAdd.add(ShapeBuilder.initialize()
+                                                           int endOfLife, int layer) {
+      this.simpleAnimation.addShape(ShapeBuilder.initialize()
               .setName(name)
               .setPosition(lx, ly)
               .setSize(width, height)
               .setColor(new Color(red, green, blue))
               .setTimeSpan(startOfLife, endOfLife)
-              .build(ShapeBuilder.ShapeType.RECTANGLE));
+              .build(ShapeBuilder.ShapeType.RECTANGLE), layer);
       return this;
     }
 
@@ -247,8 +246,8 @@ public class SimpleAnimation implements IAnimationModel {
     public TweenModelBuilder<IAnimationModel> addMove(String name, float moveFromX, float moveFromY,
                                                       float moveToX, float moveToY, int startTime,
                                                       int endTime) {
-      this.actionsToAdd.add(AnimationActionBuilder.initialize()
-              .setTargetShape(SimpleAnimation.findShape(name, this.shapesToAdd))
+      this.simpleAnimation.addAction(AnimationActionBuilder.initialize()
+              .setTargetShape(SimpleAnimation.findShape(name, simpleAnimation.getShapes()))
               .setTargetPosition(moveToX, moveToY)
               .setTimeTicks(startTime, endTime)
               .build(AnimationActionBuilder.AnimationActionType.MOVE));
@@ -260,8 +259,8 @@ public class SimpleAnimation implements IAnimationModel {
                                                              float oldB, float newR, float newG,
                                                              float newB, int startTime,
                                                              int endTime) {
-      this.actionsToAdd.add(AnimationActionBuilder.initialize()
-              .setTargetShape(SimpleAnimation.findShape(name, this.shapesToAdd))
+      this.simpleAnimation.addAction(AnimationActionBuilder.initialize()
+              .setTargetShape(SimpleAnimation.findShape(name, simpleAnimation.getShapes()))
               .setTargetColor(new Color(newR, newG, newB))
               .setTimeTicks(startTime, endTime)
               .build(AnimationActionBuilder.AnimationActionType.COLORSHIFT));
@@ -272,8 +271,8 @@ public class SimpleAnimation implements IAnimationModel {
     public TweenModelBuilder<IAnimationModel> addScaleToChange(String name, float fromSx,
                                                                float fromSy, float toSx, float toSy,
                                                                int startTime, int endTime) {
-      this.actionsToAdd.add(AnimationActionBuilder.initialize()
-              .setTargetShape(SimpleAnimation.findShape(name, this.shapesToAdd))
+      this.simpleAnimation.addAction(AnimationActionBuilder.initialize()
+              .setTargetShape(SimpleAnimation.findShape(name, simpleAnimation.getShapes()))
               .setTargetSize(toSx, toSy)
               .setTimeTicks(startTime, endTime)
               .build(AnimationActionBuilder.AnimationActionType.SCALE));
@@ -282,15 +281,8 @@ public class SimpleAnimation implements IAnimationModel {
 
     @Override
     public IAnimationModel build() {
-      IAnimationModel animationModel = new SimpleAnimation();
-      for (Shape s : this.shapesToAdd) {
-        animationModel.addShape(s);
-      }
-      for (AnimationAction a : this.actionsToAdd) {
-        animationModel.addAction(a);
-      }
-      animationModel.updateActions();
-      return animationModel;
+      simpleAnimation.updateActions();
+      return simpleAnimation;
     }
   }
 }

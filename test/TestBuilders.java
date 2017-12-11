@@ -134,9 +134,9 @@ public class TestBuilders {
     // TODO create more indepth test.
     IAnimationModel model = SimpleAnimation.Builder.initialize()
             .addRectangle("R", 0, 0, 10, 20, 0.3f, 0.3f,
-                    0.3f, 0, 10)
+                    0.3f, 0, 10, 0)
             .addOval("O", 10, 20, 5, 5, 0.1f, 0.1f,
-                    0.1f, 5, 15)
+                    0.1f, 5, 15, 0)
             .addMove("O", 10, 20, 10, 0,
                     10, 15)
             .addColorChange("R", 0.3f, 0.3f, 0.3f, 0.05f,
