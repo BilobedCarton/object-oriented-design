@@ -72,8 +72,8 @@ public class SimpleAnimation implements IAnimationModel {
     if (layer < 0) {
       throw new IllegalArgumentException("The given layer does not exist (less than 0).");
     }
-    if (this.shapes.size() <= layer) {
-      this.shapes.add(layer, new ArrayList<Shape>());
+    while (this.shapes.size() <= layer) {
+      this.shapes.add(new ArrayList<Shape>());
     }
 
     this.shapes.get(layer).add(shape);
