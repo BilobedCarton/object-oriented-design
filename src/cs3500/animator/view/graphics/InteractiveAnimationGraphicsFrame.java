@@ -13,7 +13,6 @@ import javax.swing.event.ChangeEvent;
 
 import cs3500.animator.control.IAnimationController;
 import cs3500.animator.control.InteractiveAnimationController;
-import cs3500.animator.control.listeners.ColorSelectionListener;
 import cs3500.animator.control.listeners.ShapeSelectionListener;
 import cs3500.animator.control.listeners.SpeedChangeListener;
 
@@ -176,9 +175,11 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
    * @param controller is the controller linked to the dialog box.
    */
   public void buildColorDialog(InteractiveAnimationController controller) {
+
     colorDialog =
-            new ColorDialog(this, controller.getModel(),
-                    new ColorSelectionListener(controller));
+            new ColorDialog(this, controller.getModel());
+
     colorDialog.setUpButtons(controller);
+
   }
 }

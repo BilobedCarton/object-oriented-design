@@ -1,6 +1,6 @@
 package cs3500.animator.control;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,12 +15,20 @@ import cs3500.animator.view.InteractiveView;
 public class InteractiveAnimationController extends AnimationController {
   private boolean loopAnimation = false;
   private Color prospectiveBG = null;
+  private float rCol = 1;
+  private float gCol = 1;
+  private float bCol = 1;
+
   private List<String> selectedShapes = new ArrayList<>();
 
   public InteractiveAnimationController(
           IAnimationModel model, InteractiveView view, double ticksPerSecond) {
     super(model, view, ticksPerSecond);
 
+  }
+
+  public enum rgbType {
+    R,G,B
   }
 
   @Override
@@ -122,12 +130,24 @@ public class InteractiveAnimationController extends AnimationController {
 
 
   /**
-   * Set the color currently selected for background assignment.
+   * sets a part of the new color.
    *
-   * @param col is the color to set.
+   * @param num the new rgb value.
+   * @param type the r,g,b it is.
    */
-  public void setSelectedColor(Color col) {
-    prospectiveBG = col;
+  public void setSelectedColor(double num, rgbType type) {
+    float number = (float) num;
+    switch(type) {
+      case R:
+        rCol = number;
+        break;
+      case G:
+        gCol = number;
+        break;
+      case B:
+        bCol = number;
+        break;
+    }
   }
 
   /**
@@ -135,7 +155,7 @@ public class InteractiveAnimationController extends AnimationController {
    *
    */
   public void applyBGColor() {
-    if(prospectiveBG != null) this.setBackGroundColor(prospectiveBG);
+    this.setBackGroundColor(new Color(rCol, gCol, bCol));
   }
 
 
@@ -158,7 +178,6 @@ public class InteractiveAnimationController extends AnimationController {
               800,800).setPosition(0,0).setTimeSpan(0,getLastTick());
       model.pushShape(builder.build(ShapeBuilder.ShapeType.RECTANGLE));
     }
-    System.out.println("here");
 
     view.update(getCurrTick());
   }

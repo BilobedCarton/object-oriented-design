@@ -1,45 +1,40 @@
 package cs3500.animator.view.graphics;
 
-import java.awt.Color;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.awt.Component;
 
 import javax.swing.JDialog;
-import javax.swing.JList;
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JSpinner;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ListSelectionModel;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.JFormattedTextField;
+
+import javax.swing.event.ChangeEvent;
 
 import cs3500.animator.control.InteractiveAnimationController;
-import cs3500.animator.control.listeners.ISelectionListener;
 import cs3500.animator.model.IReadOnlyAnimationModel;
 
 public class ColorDialog extends JDialog {
   IReadOnlyAnimationModel model;
-  private JList jList;
-  private JTextArea rInput;
-  private JTextArea gInput;
-  private JTextArea bInput;
   private JButton subColor;
   private JButton exportButton;
+  private JSpinner rSpinner;
+  private JSpinner gSpinner;
+  private JSpinner bSpinner;
+
 
   /**
    * Creates a new {@code ListDialog} object.
    *
-   * @param frame    is the frame this dialog is dependent on.
-   * @param model    is the model whose data is used by this dialog.
-   * @param listener is the listener used by this dialog on selection.
+   * @param frame     is the frame this dialog is dependent on.
+   * @param model     is the model whose data is used by this dialog.
    */
-  public ColorDialog(JFrame frame, IReadOnlyAnimationModel model, ISelectionListener listener) {
+  public ColorDialog(JFrame frame, IReadOnlyAnimationModel model) {
     super(frame);
     this.model = model;
 
@@ -47,18 +42,45 @@ public class ColorDialog extends JDialog {
 
     JPanel buttonPanel;
     JButton closeButton;
+    JPanel controlPanel;
+    String[] labels = {"R Component", "G Component", "B Component"};
+    double orig = 1.0;
+    double bot = 0.0;
+    double step = 0.1;
+    SpinnerNumberModel spinnerModelr = new SpinnerNumberModel(orig, bot, orig, step);
+    SpinnerNumberModel spinnerModelg = new SpinnerNumberModel(orig, bot, orig, step);
+    SpinnerNumberModel spinnerModelb = new SpinnerNumberModel(orig, bot, orig, step);
 
-    String[] colList = {"Black", "Red","Blue", "Green", "Yellow", "White","Orange"};
-    jList = new JList(colList);
-    jList.setVisibleRowCount(4);
-    jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    listener.setJList(jList);
-    jList.addListSelectionListener(listener);
+    controlPanel = new JPanel();
+    controlPanel.setLayout(new FlowLayout());
+    JLabel rLabel = new JLabel("R Component");
+    controlPanel.add(rLabel);
+    rSpinner = new JSpinner(spinnerModelr);
+    Component mySpinnerEditor = rSpinner.getEditor();
+    JFormattedTextField jftf = ((JSpinner.DefaultEditor) mySpinnerEditor).getTextField();
+    jftf.setColumns(2);
+    rLabel.setLabelFor(rSpinner);
+    controlPanel.add(rSpinner);
 
-    this.add(new JScrollPane(jList));
-    this.setMinimumSize(new Dimension(300, 300));
-    this.setLocationRelativeTo(frame);
-    this.setTitle("Select Color for BackGround");
+    JLabel gLabel = new JLabel("G Component");
+    controlPanel.add(gLabel);
+    gSpinner = new JSpinner(spinnerModelg);
+    mySpinnerEditor = gSpinner.getEditor();
+    jftf = ((JSpinner.DefaultEditor) mySpinnerEditor).getTextField();
+    jftf.setColumns(2);
+    gLabel.setLabelFor(gSpinner);
+    controlPanel.add(gSpinner);
+
+    JLabel bLabel = new JLabel("B Component");
+    controlPanel.add(bLabel);
+    bSpinner = new JSpinner(spinnerModelb);
+    mySpinnerEditor = bSpinner.getEditor();
+    jftf = ((JSpinner.DefaultEditor) mySpinnerEditor).getTextField();
+    jftf.setColumns(2);
+    bLabel.setLabelFor(bSpinner);
+    controlPanel.add(bSpinner);
+
+    this.add(controlPanel, BorderLayout.CENTER);
 
     buttonPanel = new JPanel();
     buttonPanel.setLayout(new FlowLayout());
@@ -69,11 +91,6 @@ public class ColorDialog extends JDialog {
       this.dispose();
     });
     buttonPanel.add(closeButton);
-
-
-    rInput = new JTextArea("rComponent");
-    gInput = new JTextArea("gComponent");
-    bInput = new JTextArea("bComponent");
 
     subColor = new JButton("Set background");
     buttonPanel.add(subColor);
@@ -90,6 +107,7 @@ public class ColorDialog extends JDialog {
   public void doModal() {
     setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
     setModal(true);
+    System.out.println("her");
     setVisible(true);
   }
 
@@ -100,36 +118,29 @@ public class ColorDialog extends JDialog {
    */
   public void setUpButtons(InteractiveAnimationController controller) {
     subColor.addActionListener((ActionEvent e) -> {
-      if(isValidNum(rInput.getText()) && isValidNum(gInput.getText()) &&
-              isValidNum(bInput.getText())) {
-        controller.setBackGroundColor(new Color(Integer.parseInt(rInput.getText()),
-                Integer.parseInt(gInput.getText()), Integer.parseInt(bInput.getText())));
-      } else {
-        controller.applyBGColor();
-      }
+      controller.applyBGColor();
+
       controller.getView().update(controller.getCurrTick());
     });
     exportButton.addActionListener((ActionEvent e) -> {
       controller.getView().export(controller.getLooping());
     });
+    rSpinner.addChangeListener((ChangeEvent e) -> {
+      JSpinner source = (JSpinner) e.getSource();
+      double currentVal = (double) source.getValue();
+      controller.setSelectedColor(currentVal, InteractiveAnimationController.rgbType.R);
+    });
+    gSpinner.addChangeListener((ChangeEvent e) -> {
+      JSpinner source = (JSpinner) e.getSource();
+      double currentVal = (double) source.getValue();
+      controller.setSelectedColor(currentVal, InteractiveAnimationController.rgbType.G);
+    });
+    bSpinner.addChangeListener((ChangeEvent e) -> {
+      JSpinner source = (JSpinner) e.getSource();
+      double currentVal = (double) source.getValue();
+      controller.setSelectedColor(currentVal, InteractiveAnimationController.rgbType.B);
+    });
   }
 
 
-  /**
-   * Tests if the provided string has an rgb equivalent.
-   * @param check the string to check.
-   * @return true if valid int
-   */
-  public boolean isValidNum(String check) {
-    if(check.isEmpty()) return false;
-    for(int i = 0; i < check.length(); i++) {
-      if(i == 0 && check.charAt(i) == '-') {
-        return false;
-      } else if(Character.digit(check.charAt(i),10) < 0) {
-        return false;
-      }
-    }
-    if(Integer.parseInt(check) > 255) return false;
-    return true;
-  }
 }
