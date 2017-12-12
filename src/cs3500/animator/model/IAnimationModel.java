@@ -43,6 +43,19 @@ public interface IAnimationModel {
   void addShape(Shape shape) throws IllegalArgumentException;
 
   /**
+   * Removes the background.
+   */
+  void removeBG();
+
+  /**
+   * Adds the given shape to the beginning of the list.
+   *
+   * @param shape is the Shape to be added.
+   * @throws IllegalArgumentException if the shape has the same name as one already in the model.
+   */
+  void pushShape(Shape shape) throws IllegalArgumentException;
+
+  /**
    * Adds the given shape to this model's list of shapes at the given layer.
    * @param shape is the shape to be added
    * @param layer is the layer the shape should be added at.

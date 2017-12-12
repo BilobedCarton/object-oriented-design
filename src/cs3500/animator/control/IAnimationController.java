@@ -1,9 +1,10 @@
 package cs3500.animator.control;
 
+import java.awt.Color;
+
 import javax.swing.Timer;
 
 import cs3500.animator.model.IReadOnlyAnimationModel;
-import cs3500.animator.model.shapes.Shape;
 import cs3500.animator.view.IView;
 
 /**
@@ -77,4 +78,11 @@ public interface IAnimationController {
    * @return the int representing the value of the last tick.
    */
   int getLastTick();
+
+
+  /**
+   * Gets the original bg color.
+   * @return the original color.
+   */
+  Color getOrigBG();
 }

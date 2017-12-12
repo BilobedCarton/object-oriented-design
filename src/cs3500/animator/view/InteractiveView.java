@@ -66,6 +66,7 @@ public class InteractiveView extends AbstractView {
     this.frame.setButtonActions(controller);
     this.frame.linkSpeedSlider(controller);
     this.frame.buildListDialog(controller);
+    this.frame.buildColorDialog(controller);
     this.frame.buildScrubberSlider(controller);
   }
 

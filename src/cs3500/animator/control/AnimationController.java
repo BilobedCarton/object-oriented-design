@@ -1,5 +1,7 @@
 package cs3500.animator.control;
 
+import java.awt.*;
+
 import javax.swing.Timer;
 
 import cs3500.animator.control.listeners.UpdateListener;
@@ -18,6 +20,8 @@ public class AnimationController implements IAnimationController {
   protected double ticksPerSecond;
   protected int currTick = 1;
   protected Timer timer;
+  protected Color orginalBG = null;
+
 
   /**
    * Creates a new {@code AnimationController} object.
@@ -32,12 +36,20 @@ public class AnimationController implements IAnimationController {
     this.ticksPerSecond = ticksPerSecond;
     resetTimer();
     view.update(currTick);
+    for(Shape s : model.getShapes()) {
+      if(s.getName() == "bgColor") {
+        orginalBG = s.getColor();
+      }
+    }
   }
 
   @Override
   public IReadOnlyAnimationModel getModel() {
     return new ReadOnlySimpleAnimation(model);
   }
+
+  @Override
+  public Color getOrigBG() { return orginalBG; }
 
   @Override
   public IView getView() {
@@ -83,7 +95,15 @@ public class AnimationController implements IAnimationController {
     this.timer.stop();
     for (Shape s : this.getModel().getShapes()) {
       s.reset(originalVisibility);
+      if(s.getName() == "bgColor" && originalVisibility) {
+        if(getOrigBG() == null) {
+          model.removeBG();
+        }else {
+          s.recolor(getOrigBG());
+        }
+      }
     }
+
     resetTimer();
     this.currTick = 1;
     view.update(currTick);

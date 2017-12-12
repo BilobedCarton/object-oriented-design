@@ -9,11 +9,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.BoxLayout;
-import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 
 import cs3500.animator.control.IAnimationController;
 import cs3500.animator.control.InteractiveAnimationController;
+import cs3500.animator.control.listeners.ColorSelectionListener;
 import cs3500.animator.control.listeners.ShapeSelectionListener;
 import cs3500.animator.control.listeners.SpeedChangeListener;
 
@@ -29,6 +29,7 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
   private ToggleButton loopingToggle;
   private JSlider speedSlider;
   private ListDialog listDialog;
+  private ColorDialog colorDialog;
   private JPanel bottomPanel;
 
   /**
@@ -47,6 +48,7 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
 
     JPanel sliderPanel;
     JButton selectShapesButton;
+    JButton setBGColor;
 
     JPanel buttonPanel = new JPanel();
     bottomPanel.add(buttonPanel);
@@ -76,6 +78,12 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
       listDialog.doModal();
     });
     buttonPanel.add(selectShapesButton);
+
+    setBGColor = new JButton("Change bgColor");
+    setBGColor.addActionListener((ActionEvent e) -> {
+      colorDialog.doModal();
+    });
+    buttonPanel.add(setBGColor);
 
     // Slider
     sliderPanel = new JPanel();
@@ -160,5 +168,17 @@ public class InteractiveAnimationGraphicsFrame extends BasicAnimationGraphicsFra
             new ListDialog(this, controller.getModel(),
                     new ShapeSelectionListener(controller));
     listDialog.setUpButtons(controller);
+  }
+
+  /**
+   * Builds the ColorDialog object used for this frame's color selection window.
+   *
+   * @param controller is the controller linked to the dialog box.
+   */
+  public void buildColorDialog(InteractiveAnimationController controller) {
+    colorDialog =
+            new ColorDialog(this, controller.getModel(),
+                    new ColorSelectionListener(controller));
+    colorDialog.setUpButtons(controller);
   }
 }

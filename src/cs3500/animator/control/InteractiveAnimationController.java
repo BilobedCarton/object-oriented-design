@@ -1,10 +1,12 @@
 package cs3500.animator.control;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import cs3500.animator.model.IAnimationModel;
 import cs3500.animator.model.shapes.Shape;
+import cs3500.animator.model.shapes.ShapeBuilder;
 import cs3500.animator.view.InteractiveView;
 
 /**
@@ -12,11 +14,13 @@ import cs3500.animator.view.InteractiveView;
  */
 public class InteractiveAnimationController extends AnimationController {
   private boolean loopAnimation = false;
+  private Color prospectiveBG = null;
   private List<String> selectedShapes = new ArrayList<>();
 
   public InteractiveAnimationController(
           IAnimationModel model, InteractiveView view, double ticksPerSecond) {
     super(model, view, ticksPerSecond);
+
   }
 
   @Override
@@ -53,6 +57,7 @@ public class InteractiveAnimationController extends AnimationController {
     this.timer.stop();
     this.resetTimer();
   }
+
 
   /**
    * A getter for the looping property.
@@ -113,5 +118,48 @@ public class InteractiveAnimationController extends AnimationController {
     while (this.currTick < tick) {
       this.runUpdate();
     }
+  }
+
+
+  /**
+   * Set the color currently selected for background assignment.
+   *
+   * @param col is the color to set.
+   */
+  public void setSelectedColor(Color col) {
+    prospectiveBG = col;
+  }
+
+  /**
+   * Set the color currently selected for background setting.
+   *
+   */
+  public void applyBGColor() {
+    if(prospectiveBG != null) this.setBackGroundColor(prospectiveBG);
+  }
+
+
+  /**
+   * Sets the background color of this animation.
+   * @param col the color to make the background.
+   */
+  public void setBackGroundColor(Color col) {
+    boolean set = false;
+    for(Shape s : model.getShapes()) {
+        if(s.getName() == "bgColor") {
+          s.recolor(col);
+          set = true;
+        }
+    }
+
+
+    if(!set) {
+      ShapeBuilder builder = new ShapeBuilder().setColor(col).setName("bgColor").setSize(
+              800,800).setPosition(0,0).setTimeSpan(0,getLastTick());
+      model.pushShape(builder.build(ShapeBuilder.ShapeType.RECTANGLE));
+    }
+    System.out.println("here");
+
+    view.update(getCurrTick());
   }
 }

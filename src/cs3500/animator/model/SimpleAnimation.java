@@ -59,6 +59,17 @@ public class SimpleAnimation implements IAnimationModel {
   }
 
   @Override
+  public void pushShape(Shape shape) {
+    if (findShape(shape.getName(), this.getShapes()) != null) {
+      throw new IllegalArgumentException("SimpleAnimation.addShape(Shape) -- Shape with the given "
+              + "name already exists in this model.");
+    }
+    List<Shape> shapeList = new ArrayList<Shape>();
+    shapeList.add(shape);
+    shapes.add(0, shapeList);
+  }
+
+  @Override
   public void addShape(Shape shape) throws IllegalArgumentException {
     this.addShape(shape, 0);
   }
@@ -113,6 +124,12 @@ public class SimpleAnimation implements IAnimationModel {
     return str;
   }
 
+
+  @Override
+  public void removeBG() {
+    shapes.remove(0);
+  }
+
   /**
    * Finds the shape in the given list with the given name.
    *
@@ -128,6 +145,7 @@ public class SimpleAnimation implements IAnimationModel {
     }
     return null;
   }
+
 
   @Override
   public Shape getShapeStateAt(int tick, Shape s) throws IllegalArgumentException {
